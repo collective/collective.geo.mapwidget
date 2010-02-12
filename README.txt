@@ -1,8 +1,10 @@
 Introduction
 ============
 
-collective.geo.mapwidget provides a graphical user interface to store settings of collective.geo packages.
-Also provides a set of macros to display openlayer map in Plone with a z3cform widget and macros
+collective.geo.mapwidget provides some handy page macros and adapters t easily manage
+multiple maps on one page.
+This package also provides a graphical user interface to store settings of collective.geo packages.
+
 
 Requirements
 ------------
