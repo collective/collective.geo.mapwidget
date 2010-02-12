@@ -1,6 +1,7 @@
 from z3c.form import field, form, subform, button
 from z3c.form.interfaces import IFormLayer
 from plone.z3cform import z2
+from plone.z3cform.fieldsets import extensible
 
 from Acquisition import aq_inner
 
@@ -39,7 +40,7 @@ class GeopointForm(subform.EditSubForm):
         self.updateWidgets()
 
 
-class GeoControlpanelForm(form.EditForm):
+class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
     template = viewpagetemplatefile.ViewPageTemplateFile(
                                             'form-with-subforms.pt')
 
@@ -49,6 +50,8 @@ class GeoControlpanelForm(form.EditForm):
                                                'yahoomaps',
                                                'yahooapi',
                                                'bingmaps')
+
+    default_fieldset_label = _(u"Base settings")
 
     heading = _(u'Configure Collective Geo Settings')
 
@@ -60,7 +63,6 @@ class GeoControlpanelForm(form.EditForm):
 
     def __init__(self, context, request):
         super(GeoControlpanelForm, self).__init__(context, request)
-
         subform = GeopointForm(self.context, self.request, self)
         subform.level = self.level + 1
 
@@ -76,6 +78,7 @@ class GeoControlpanelForm(form.EditForm):
     def updateWidgets(self):
         super(GeoControlpanelForm, self).updateWidgets()
         self.widgets['googleapi'].size = 80
+        self.widgets['yahooapi'].size = 80
 
     @button.handler(form.EditForm.buttons['apply'])
     def handle_add(self, action):
@@ -134,7 +137,7 @@ class ControlPanelMapWidget(MapWidget):
     @property
     def js(self):
         return """
-    jq(function() {
+    jq(window).load(function() {
       var map = cgmap.config['geosettings-cgmap'].map;
       var layer = map.getLayersByName('Marker')[0];
       var elctl = new OpenLayers.Control.MarkerEditingToolbar(layer,
