@@ -1,0 +1,41 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="collective.geo.mapwidget"
+      tal:omit-tag="">
+
+  <div class="portalMessage"
+       tal:condition="view/status" tal:content="view/status">
+  </div>
+
+  <div tal:attributes="class view/css_class|nothing">
+    
+    <form action="." method="post"
+          tal:define="groups view/groups | nothing;
+                      form_name view/form_name | nothing;
+                      has_groups python:bool(groups);
+                      form_tabbing  python:has_groups and 'enableFormTabbing' or '';"
+          tal:attributes="action request/getURL;
+                          enctype view/enctype;
+                          class python:'rowlike enableUnloadProtection %s kssattr-formname-%s' % (form_tabbing, request.getURL().split('/')[-1]);"
+          tal:omit-tag="not:view/actions|nothing">
+
+        <metal:use use-macro="context/@@ploneform-macros/fields" />
+
+      <fieldset class="subforms">
+        
+        <div tal:repeat="form view/subforms"
+             tal:replace="structure form/render">
+        </div>
+
+      </fieldset>
+      
+      <div class="action" tal:repeat="action view/actions/values|nothing">
+        <input type="submit" tal:replace="structure action/render" />
+      </div>
+
+    </form>
+
+  </div>
+</html>

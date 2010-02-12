@@ -1,0 +1,55 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2009-06-12 21:36+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.geo.mapwidget\n"
+
+#: ./interfaces.py:16
+msgid "Check if you want to use google maps layer"
+msgstr ""
+
+#: ./browser/controlpanel.py:79
+msgid "Collective Geo Default Settings"
+msgstr ""
+
+#: ./browser/controlpanel.py:36
+msgid "Configure Collective Geo Settings"
+msgstr ""
+
+#: ./interfaces.py:11
+msgid "Default map's zoom level"
+msgstr ""
+
+#: ./browser/controlpanel.py:78
+msgid "Geo Settings"
+msgstr ""
+
+#: ./interfaces.py:20
+msgid "Google API Code"
+msgstr ""
+
+#: ./interfaces.py:21
+msgid "Set google api code if you want use google maps layer"
+msgstr ""
+
+#: ./interfaces.py:15
+msgid "Use Google maps layer?"
+msgstr ""
+
+#: ./interfaces.py:10
+msgid "Zoom"
+msgstr ""
+
