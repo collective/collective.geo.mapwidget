@@ -1,9 +1,10 @@
 from zope.component import getUtility
-
 from collective.geo.mapwidget.interfaces import IGeoSettings
+
 
 class GeoSettingsView(object):
     """ Geo Settings macros """
+
     def __init__(self, context, request):
         self.context = context
         self.request = request
@@ -60,10 +61,10 @@ class GeoSettingsView(object):
 
     @property
     def geo_setting_js(self):
-        lon, lat  = self.map_center
-        state = { 'lon': lon,
-                  'lat': lat,
-                  'zoom': self.zoom }
+        lon, lat = self.map_center
+        state = {'lon': lon,
+                 'lat': lat,
+                 'zoom': self.zoom}
         # set default configuration
         ret = ["cgmap.state = {'default': {lon: %(lon)7f, lat: %(lat)7f, zoom: %(zoom)d }};" % state]
         # go through all maps in request and extract their state
@@ -76,4 +77,3 @@ class GeoSettingsView(object):
                 state[param] = (val is not None) and ("'%s'" % val) or 'undefined'
             ret.append("cgmap.state['%(mapid)s'] = {lon: %(lon)s, lat: %(lat)s, zoom: %(zoom)s, activebaselayer: %(activebaselayer)s, activelayers: %(activelayers)s };" % state)
         return '\n'.join(ret)
-

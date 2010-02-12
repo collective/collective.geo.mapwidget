@@ -6,6 +6,7 @@ or may be re-used in manually configured map-widgets.
 
 from collective.geo.mapwidget.browser.widget import MapLayer
 
+
 class OSMMapLayer(MapLayer):
 
     def __init__(self, view=None, request=None, context=None, widget=None):
@@ -21,6 +22,7 @@ class OSMMapLayer(MapLayer):
           displayOutsideMaxExtent: true,
           attribution: '<a href="http://www.openstreetmap.org/">OpenStreetMap</a>'});}"""
 
+
 class BingStreetMapLayer(MapLayer):
 
     def __init__(self, view=None, request=None, context=None, widget=None):
@@ -32,6 +34,7 @@ class BingStreetMapLayer(MapLayer):
     function() { return new OpenLayers.Layer.VirtualEarth('Bing Streets',
         { 'type': VEMapStyle.Shaded,
           'sphericalMercator': true });}"""
+
 
 class BingRoadsMapLayer(MapLayer):
 
@@ -45,6 +48,7 @@ class BingRoadsMapLayer(MapLayer):
         { 'type': VEMapStyle.Road,
           'sphericalMercator': true });}"""
 
+
 class BingAerialMapLayer(MapLayer):
 
     def __init__(self, view=None, request=None, context=None, widget=None):
@@ -56,6 +60,7 @@ class BingAerialMapLayer(MapLayer):
     function() { return new OpenLayers.Layer.VirtualEarth('Bing Aerial',
         { 'type': VEMapStyle.Aerial,
           'sphericalMercator': true });}"""
+
 
 class BingHybridMapLayer(MapLayer):
 
@@ -69,6 +74,7 @@ class BingHybridMapLayer(MapLayer):
         { 'type': VEMapStyle.Hybrid,
           'sphericalMercator': true });}"""
 
+
 class GoogleStreetMapLayer(MapLayer):
 
     def __init__(self, view=None, request=None, context=None, widget=None):
@@ -79,6 +85,7 @@ class GoogleStreetMapLayer(MapLayer):
     jsfactory = """
     function() { return new OpenLayers.Layer.Google('Google',
         {'sphericalMercator': true});}"""
+
 
 class GoogleSatelliteMapLayer(MapLayer):
 
@@ -91,6 +98,7 @@ class GoogleSatelliteMapLayer(MapLayer):
     function() { return new OpenLayers.Layer.Google('Satellite (Google)' ,
         {'type': G_SATELLITE_MAP, 'sphericalMercator': true});}"""
 
+
 class GoogleHybridMapLayer(MapLayer):
 
     def __init__(self, view=None, request=None, context=None, widget=None):
@@ -101,6 +109,7 @@ class GoogleHybridMapLayer(MapLayer):
     jsfactory = """
     function() { return new OpenLayers.Layer.Google('Hybrid (Google)' ,
         {'type': G_HYBRID_MAP, 'sphericalMercator': true});}"""
+
 
 class GoogleTerrainMapLayer(MapLayer):
 
@@ -113,6 +122,7 @@ class GoogleTerrainMapLayer(MapLayer):
     function() { return new OpenLayers.Layer.Google('Terrain (Google)' ,
         {'type': G_PHYSICAL_MAP, 'sphericalMercator': true});}"""
 
+
 class YahooStreetMapLayer(MapLayer):
 
     def __init__(self, view=None, request=None, context=None, widget=None):
@@ -124,6 +134,7 @@ class YahooStreetMapLayer(MapLayer):
     function() { return new OpenLayers.Layer.Yahoo('Yahoo Street',
         {'type': YAHOO_MAP_REG, 'sphericalMercator': true});}"""
 
+
 class YahooSatelliteMapLayer(MapLayer):
 
     def __init__(self, view=None, request=None, context=None, widget=None):
@@ -134,6 +145,7 @@ class YahooSatelliteMapLayer(MapLayer):
     jsfactory = """
     function() { return new OpenLayers.Layer.Yahoo('Yahoo Satellite',
         {'type': YAHOO_MAP_SAT, 'sphericalMercator': true});}"""
+
 
 class YahooHybridMapLayer(MapLayer):
 

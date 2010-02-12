@@ -4,8 +4,10 @@ from zope.component import getMultiAdapter, getUtility
 
 from Products.Five import BrowserView
 
-from collective.geo.mapwidget.interfaces import (IMaps, IMapWidget, IGeoSettings,
-                                                IMapLayer, IMapLayers, IMapView)
+from collective.geo.mapwidget.interfaces import (IMaps, IMapWidget,
+                                                IGeoSettings, IMapLayer,
+                                                IMapLayers, IMapView)
+
 
 class MapView(BrowserView):
     '''
@@ -16,7 +18,9 @@ class MapView(BrowserView):
 
     @property
     def mapwidgets(self):
-        return getMultiAdapter((self.context, self.request, self.context.context), IMaps)
+        return getMultiAdapter((self.context, self.request,
+                                        self.context.context), IMaps)
+
 
 class MapWidgets(list):
     '''
@@ -75,12 +79,20 @@ class MapWidgets(list):
                     self.__append(mapid.mapid, mapid)
                 elif isinstance(mapid, basestring):
                     # is only a name... lookup the widget
-                    self.__append(mapid, getMultiAdapter((self.view, self.request, self.context), IMapWidget, name=mapid))
+                    self.__append(mapid,
+                                  getMultiAdapter((self.view, self.request,
+                                                                self.context),
+                                                  IMapWidget,
+                                                  name=mapid))
                 else:
                     raise ValueError("Can't create IMapWidget for %s" % repr(mapid))
         else:
             # there are no mapfields let's look up the default widget
-            self.__append('default-cgmap', getMultiAdapter((self.view, self.request, self.context), IMapWidget, name='default-cgmap'))
+            self.__append('default-cgmap',
+                          getMultiAdapter((self.view, self.request,
+                                                          self.context),
+                                          IMapWidget,
+                                          name='default-cgmap'))
 
     def __append(self, key, value):
         self.keys[key] = value
@@ -90,6 +102,7 @@ class MapWidgets(list):
         if isinstance(key, basestring):
             return self.keys[key]
         return super(MapWidgets, self).__getitem__(key)
+
 
 class MapWidget(object):
     '''
@@ -111,7 +124,8 @@ class MapWidget(object):
 
     @property
     def layers(self):
-        return getMultiAdapter((self.view, self.request, self.context, self), IMapLayers)
+        return getMultiAdapter((self.view, self.request, self.context, self),
+                                                                    IMapLayers)
 
     def addClass(self, klass):
         if not self.klass:
@@ -121,13 +135,16 @@ class MapWidget(object):
             parts = self.klass.split() + [unicode(klass)]
             self.klass = u' '.join(frozenset(parts))
 
+
 class MapLayers(dict):
     '''
     The default IMapLayers implementation.
 
-    Checks geo settings tool for enabled layers and adds them if enabled (widget.usedefault).
+    Checks geo settings tool for enabled layers and adds them
+    if enabled (widget.usedefault).
 
-    TODO: this impl is too tigly copled with the default MapWigdet implementation.
+    TODO: this impl is too tigly copled with the default MapWigdet
+          implementation.
           esp.: it should not look for widget._layers attribute.
     '''
 
@@ -164,11 +181,13 @@ class MapLayers(dict):
                ",\n".join([l.jsfactory for l in layers]) + \
                "]}, '%s');" % (self.widget.mapid)
 
+
 class MapLayer(object):
     '''
     An empty IMapLayer implementation, useful as base class.
 
-    MapLayers are named components specific for (view, request, context, widget).
+    MapLayers are named components specific for
+    (view, request, context, widget).
     '''
 
     def __init__(self, view, request, context, widget):

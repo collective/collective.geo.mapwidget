@@ -1,4 +1,3 @@
-
 import decimal
 
 from zope.interface import Interface
@@ -8,9 +7,11 @@ from zope import schema
 from collective.geo.mapwidget.z3cform import Decimal
 from collective.geo.mapwidget import GeoMapwidgetMessageFactory as _
 
+
 class IGeoConfig(Interface):
     """ marker interface """
     pass
+
 
 class IGeoSettings(Interface):
     longitude = Decimal(
@@ -19,7 +20,7 @@ class IGeoSettings(Interface):
         default=None,
         required=True)
 
-    latitude  = Decimal(
+    latitude = Decimal(
         title=_(u'Latitude'),
         description=_(u""),
         default=None,
@@ -61,11 +62,13 @@ class IGeoSettings(Interface):
         default=False,
         required=False)
 
+
 class IMaps(IEnumerableMapping):
     """A mapping form mapids to IMapWidgets
 
     looked up as ((view, request, context), IMaps)
     """
+
 
 class IMapLayers(IEnumerableMapping):
     """
@@ -79,14 +82,15 @@ class IMapLayers(IEnumerableMapping):
         description=_("Returns some js-code to set up available layers."),
         required=True)
 
+
 class IMapWidget(Interface):
     """
     Provides configuration options for a specific map widget.
     """
     mapid = schema.TextLine(
         title=_(u"Map id"),
-        description=_(u"Used to identify the map in the dom-tree and to lookup"\
-                      u" an IMapWidget component if necessary."),
+        description=_(u"Used to identify the map in the dom-tree and to "\
+                      u"lookup an IMapWidget component if necessary."),
         default=u"default-cgmap",
         required=True)
 
@@ -123,12 +127,14 @@ class IMapWidget(Interface):
         add klass to self.klass
         '''
 
+
 class IMapView(Interface):
     """
     A view implementing this interface provides configurable
     map widgets.
     """
-    # TODO: is this the right field for an IMapView or should it be mapfields here?
+    # TODO: is this the right field for an IMapView or should it be
+    #       mapfields here?
     mapwidgets = schema.Object(
         title=_('Map Widgets'),
         description=_('A mapping from mapids to IMapWidgets'),
@@ -142,6 +148,6 @@ class IMapLayer(Interface):
 
     jsfactory = schema.Text(
         title=_(u"Javascrpit factory"),
-        description=_(u"Javascript code which returns a new instance of this layer"\
-                      u" and does not expect any parameters"),
+        description=_(u"Javascript code which returns a new instance of this "\
+                      u"layer and does not expect any parameters"),
         required=True)

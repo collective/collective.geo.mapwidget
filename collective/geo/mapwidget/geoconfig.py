@@ -1,5 +1,7 @@
 from persistent import Persistent
 from zope.interface import implements
+from zope.component import getUtility
+
 from collective.geo.mapwidget.interfaces import IGeoSettings
 from collective.geo.mapwidget.maplayers import (OSMMapLayer, BingStreetMapLayer, BingRoadsMapLayer,
                                                BingAerialMapLayer, BingHybridMapLayer,
@@ -7,7 +9,7 @@ from collective.geo.mapwidget.maplayers import (OSMMapLayer, BingStreetMapLayer,
                                                GoogleHybridMapLayer, GoogleTerrainMapLayer,
                                                YahooStreetMapLayer, YahooSatelliteMapLayer,
                                                YahooHybridMapLayer)
-from zope.component import getUtility
+
 
 class GeoSettings(Persistent):
     """
@@ -71,7 +73,8 @@ class GeoSettings(Persistent):
 
     # TODO: turn this into a Folder (or some sort of btree/dict storage), and manage layers as content objects in this folder
     # TODO: basically this tool imlpements the IMapLayers interface....
-    #       shall we mark this out and make it really conform/adaptable to IMapLayers?
+    #       shall we mark this out and make it really conform/adaptable to
+    #       IMapLayers?
     @property
     def layers(self):
         layers = [OSMMapLayer()]
@@ -91,14 +94,15 @@ class GeoSettings(Persistent):
             layers.append(BingHybridMapLayer())
         return layers
 
-    def set(self, key,  val):
+    def set(self, key, val):
         return self.__setattr__(key, val)
 
-    def get(self, key,  default=False):
+    def get(self, key, default=False):
         try:
             return self.__getattribute__(key)
         except:
             return default
+
 
 class GeoConfig(object):
     """
@@ -113,5 +117,6 @@ class GeoConfig(object):
         10.0
 
     """
+
     def getSettings(self):
         return getUtility(IGeoSettings)

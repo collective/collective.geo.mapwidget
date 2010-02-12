@@ -27,7 +27,7 @@ class TestSetup(base.GeoSettingsTestCase):
                           'http://maps.google.com/maps?file=api&v=2&key=ABQIAAAAaKes6QWqobpCx2AOamo-shTwM0brOpm-All5BF6PoaKBxRWWERSUWbHs4SIAMkeC1KV98E2EdJKuJw')
 
         # when IGeoSettings.googlemaps equals False self.settings.googleapi must be ''
-        IGeoSettings(self.portal).googlemaps  = False
+        IGeoSettings(self.portal).googlemaps = False
         self.assertEquals(self.settings.google_maps_js,
                           None)
 
@@ -40,12 +40,12 @@ class TestSetup(base.GeoSettingsTestCase):
 
     def test_property_jsyahoomaps(self):
         # IGeoSettings yahoomaps == True
-        IGeoSettings(self.portal).yahoomaps  = True
+        IGeoSettings(self.portal).yahoomaps = True
         self.assertEquals(self.settings.yahoo_maps_js,
                           'http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=YOUR_API_KEY')
 
         # when IGeoSettings.yahoomaps equals False self.settings.yahooapi must be ''
-        IGeoSettings(self.portal).yahoomaps  = False
+        IGeoSettings(self.portal).yahoomaps = False
         self.assertEquals(self.settings.yahoo_maps_js,
                           None)
 
@@ -54,20 +54,19 @@ class TestSetup(base.GeoSettingsTestCase):
 
     def test_property_jsbingmaps(self):
         # IGeoSettings bingmaps == True
-        IGeoSettings(self.portal).bingmaps  = True
+        IGeoSettings(self.portal).bingmaps = True
         self.assertEquals(self.settings.bing_maps_js,
                           'http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6')
 
         # when IGeoSettings.yahoomaps equals False self.settings.yahooapi must be ''
-        IGeoSettings(self.portal).bingmaps  = False
+        IGeoSettings(self.portal).bingmaps = False
         self.assertEquals(self.settings.bing_maps_js,
                           None)
 
     def test_property_geosettingjs(self):
-        IGeoSettings(self.portal).googlemaps  = True
+        IGeoSettings(self.portal).googlemaps = True
         self.assertEquals(self.settings.geo_setting_js,
                           "cgmap.state = {'default': {lon: 7.680470, lat: 45.682143, zoom: 10 }};")
-
 
 
 def test_suite():
