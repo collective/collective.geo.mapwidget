@@ -4,7 +4,7 @@
           xmlns:five="http://namespaces.zope.org/five">
 
     <browser:page
-        name="geosettings-controlpanel"
+        name="collectivegeo-controlpanel"
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
         class=".controlpanel.GeoControlpanel"
         permission = "cmf.ManagePortal"
@@ -13,21 +13,21 @@
     <browser:page
         name="geosettings-view"
         for="*"
-        class=".geosettings_macros.GeoSettingsView"
+        class=".geosettings_view.GeoSettingsView"
         permission = "zope2.View"
         />
 
     <browser:page
-        name="geosettings-macros"
+        name="collectivegeo-macros"
         for="*"
-        class=".geosettings_macros.GeoSettingsMacros"
+        class=".collectivegeo_macros.CollectiveGeoMacros"
         permission="zope2.View"
         />
 
     <browser:page
-        name="geosettings-maps"
+        name="collectivegeo-maps"
         for="*"
-        class=".widget.GeoSettingsMapView"
+        class=".widget.MapView"
         permission="zope2.View"
         />
 
@@ -74,13 +74,13 @@
         />
 
     <browser:resource
-        name="geosettings.png"
-        file="geosettings.png"
+        name="collectivegeo.png"
+        file="collectivegeo.png"
         />
 
     <browser:resource
-        name="geo-settings.js"
-        file="geo-settings.js"
+        name="collectivegeo.js"
+        file="collectivegeo.js"
         />
 
 </configure>

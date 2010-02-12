@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <metadata>
-  <version>1.0</version>
+  <version>0.1dev</version>
   <dependencies>
     <dependency>profile-collective.geo.openlayers:default</dependency>
   </dependencies>

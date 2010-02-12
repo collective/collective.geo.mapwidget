@@ -1,5 +1,3 @@
-from zope.app.pagetemplate.viewpagetemplatefile import ViewPageTemplateFile
-from zope.publisher.browser import BrowserView
 from zope.component import getUtility
 
 from collective.geo.mapwidget.interfaces import IGeoSettings
@@ -79,8 +77,3 @@ class GeoSettingsView(object):
             ret.append("cgmap.state['%(mapid)s'] = {lon: %(lon)s, lat: %(lat)s, zoom: %(zoom)s, activebaselayer: %(activebaselayer)s, activelayers: %(activelayers)s };" % state)
         return '\n'.join(ret)
 
-class GeoSettingsMacros(BrowserView):
-    template = ViewPageTemplateFile('macros.pt')
-
-    def __getitem__(self, key):
-        return self.template.macros[key]

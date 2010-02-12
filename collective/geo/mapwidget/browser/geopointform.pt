@@ -6,4 +6,4 @@
   <div tal:replace="structure view/contents_bottom|nothing" />
 </div>
 
-<metal:map use-macro="context/@@geosettings-macros/map-widget" />
+<metal:map use-macro="context/@@collectivegeo-macros/map-widget" />

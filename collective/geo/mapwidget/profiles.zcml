@@ -5,7 +5,7 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="Collective Geo settings"
+      title="Collective Geo MapWidget"
       directory="profiles/default"
       description='Extension profile for collective.geo.mapwidget.'
       provides="Products.GenericSetup.interfaces.EXTENSION"

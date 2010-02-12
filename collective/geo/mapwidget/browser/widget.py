@@ -7,7 +7,7 @@ from Products.Five import BrowserView
 from collective.geo.mapwidget.interfaces import (IMaps, IMapWidget, IGeoSettings,
                                                 IMapLayer, IMapLayers, IMapView)
 
-class GeoSettingsMapView(BrowserView):
+class MapView(BrowserView):
     '''
     Helper view to look up mapwidgets for current view and context.
     '''

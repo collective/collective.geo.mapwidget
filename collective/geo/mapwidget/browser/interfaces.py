@@ -1,5 +1,5 @@
 from zope.interface import Interface
 from z3c.form.interfaces import IWidget
 
-class IGeoSettingsLayer(Interface):
+class IGeoMapWidgetLayer(Interface):
     """A layer specific to my product """

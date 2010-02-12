@@ -9,14 +9,14 @@
 
   <body>
 
-    <tal:commont>A macro to include all necessary javascript files</tal:commont>
+    <tal:comment>A macro to include all necessary javascript files</tal:comment>
     <metal:define define-macro="openlayers"
                   tal:define="geosettings python:context.restrictedTraverse('@@geosettings-view');
                               google_maps_js python:geosettings.google_maps_js;
                               yahoo_maps_js python:geosettings.yahoo_maps_js">
       <script type="text/javascript" src="./OpenLayers.js"></script>
       <script type="text/javascript" src="./proj4js-compressed.js"></script>
-      <script type="text/javascript" src="++resource++geo-settings.js"></script>
+      <script type="text/javascript" src="++resource++collectivegeo.js"></script>
       <script type="text/javascript"
               tal:condition="google_maps_js"
               tal:attributes="src google_maps_js"></script>
@@ -33,7 +33,7 @@
     <tal:comment>This macro needs a variable 'cgmap' in the namespace</tal:comment>
     <metal:define define-macro="map-widget"
                   tal:define="cgmap nocall:cgmap | nothing;
-                              mapwidgets view/@@geosettings-maps/mapwidgets;
+                              mapwidgets view/@@collectivegeo-maps/mapwidgets;
                               cgmap python:cgmap or mapwidgets[0]">
       <div id="map" class="widget-cgmap" style="witdh:100%;height:450px;"
            tal:attributes="id cgmap/mapid | string:map;

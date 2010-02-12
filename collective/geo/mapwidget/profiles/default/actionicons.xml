@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <action-icons>
     <action-icon category="controlpanel" action_id="collective.geo.mapwidget"
-                 title="GeoSettings" priority="0"
-                 icon_expr="++resource++geosettings.png"/>
+                 title="Collective Geo" priority="0"
+                 icon_expr="++resource++collectivegeo.png"/>
 </action-icons>

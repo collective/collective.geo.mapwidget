@@ -10,7 +10,7 @@ multiple maps on one page.
 Tests
 -----
 
-let's creat a view which should display a map.
+let's create a view which should display a map.
     >>> from Products.Five import BrowserView
     >>> class TestView(BrowserView):
     ...    def __call__(self):
@@ -36,10 +36,10 @@ We also need a page template to render
     >>> open(template, 'w').write('''<html xmlns="http://www.w3.org/1999/xhtml"
     ...       xmlns:metal="http://xml.zope.org/namespaces/metal">
     ...     <head>
-    ...         <metal:use use-macro="context/@@geosettings-macros/openlayers" />
+    ...         <metal:use use-macro="context/@@collectivegeo-macros/openlayers" />
     ...     </head>
     ...     <body>
-    ...         <metal:use use-macro="context/@@geosettings-macros/map-widget" />
+    ...         <metal:use use-macro="context/@@collectivegeo-macros/map-widget" />
     ...     </body>
     ... </html>
     ... ''')
@@ -59,7 +59,7 @@ cgmap.state and cgmap.config to initialise OpenLayers on these elements.
     ...
           <script type="text/javascript" src="./OpenLayers.js"></script>
     ...
-          <script type="text/javascript" src="++resource++geo-settings.js"></script>
+          <script type="text/javascript" src="++resource++collectivegeo.js"></script>
     ...
           <script type="text/javascript">cgmap.state = {'default': {lon: 7.680470, lat: 45.682143, zoom: 10 }};</script>
     ...
@@ -124,15 +124,15 @@ a small helper view which makes things easier later, so let's use it.
     >>> open(template, 'w').write('''<html xmlns="http://www.w3.org/1999/xhtml"
     ...       xmlns:metal="http://xml.zope.org/namespaces/metal">
     ...     <head>
-    ...         <metal:use use-macro="context/@@geosettings-macros/openlayers" />
+    ...         <metal:use use-macro="context/@@collectivegeo-macros/openlayers" />
     ...     </head>
     ...     <body>
-    ...         <tal:omit tal:define="maps context/@@geosettings-maps/mapwidgets" tal:omit-tag="">
+    ...         <tal:omit tal:define="maps context/@@collectivegeo-maps/mapwidgets" tal:omit-tag="">
     ...             <tal:omit tal:define="cgmap maps/mymap1" tal:omit-tag="">
-    ...                 <metal:use use-macro="context/@@geosettings-macros/map-widget" />
+    ...                 <metal:use use-macro="context/@@collectivegeo-macros/map-widget" />
     ...             </tal:omit>
     ...             <tal:omit tal:define="cgmap maps/mymap2" tal:omit-tag="">
-    ...                 <metal:use use-macro="context/@@geosettings-macros/map-widget" />
+    ...                 <metal:use use-macro="context/@@collectivegeo-macros/map-widget" />
     ...             </tal:omit>
     ...         </tal:omit>
     ...     </body>
@@ -165,11 +165,11 @@ We can also just iterate over the mapwidgets list:
     >>> open(template, 'w').write('''<html xmlns="http://www.w3.org/1999/xhtml"
     ...       xmlns:metal="http://xml.zope.org/namespaces/metal">
     ...     <head>
-    ...         <metal:use use-macro="context/@@geosettings-macros/openlayers" />
+    ...         <metal:use use-macro="context/@@collectivegeo-macros/openlayers" />
     ...     </head>
     ...     <body>
-    ...         <tal:omit tal:repeat="cgmap context/@@geosettings-maps/mapwidgets" tal:omit-tag="">
-    ...             <metal:use use-macro="context/@@geosettings-macros/map-widget" />
+    ...         <tal:omit tal:repeat="cgmap context/@@collectivegeo-maps/mapwidgets" tal:omit-tag="">
+    ...             <metal:use use-macro="context/@@collectivegeo-macros/map-widget" />
     ...         </tal:omit>
     ...     </body>
     ... </html>
@@ -379,7 +379,7 @@ JS Configuration:
       default configurations which are used as fallback if there are no
       specific options for a map. Currently it has an attribute 'options' which
       is directly passed into the OpneLayers constructor and halsd values for
-      projection, displayProjection, controls, etc... (see geo-settings.js for
+      projection, displayProjection, controls, etc... (see collectivegeo.js for
       details)
 
     - cgmap.config[mapid]: It is possible to set map specic options for each
