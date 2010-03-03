@@ -27,10 +27,12 @@ we get some properties in that utility
     >>> config.googlemaps
     True
 
-we log in and verify the functionality of collective.geo.mapwidget control panel form;
-    >>> browser.getControl(name='__ac_name').value = portal_owner
-    >>> browser.getControl(name='__ac_password').value = default_password
-    >>> browser.getControl(name='submit').click()
+we log in as manager and verify the functionality of collective.geo.mapwidget control panel form;
+    >>> from Products.PloneTestCase.setup import portal_owner
+    >>> from Products.PloneTestCase.setup import default_password
+    >>> browser.addHeader('Authorization',
+    ...                   'Basic %s:%s' % (portal_owner, default_password))
+
     >>> browser.open('%s/@@collectivegeo-controlpanel' % portal_url)
     >>> browser.getControl(name = 'form.widgets.zoom').value
     '10.0'

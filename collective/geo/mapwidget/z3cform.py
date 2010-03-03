@@ -36,10 +36,11 @@ class DecimalDataConverter(converter.DecimalDataConverter):
     u'7.43445'
     >>> conv.toWidgetValue(decimal.Decimal('10239.43559933'))
     u'10239.43559933'
-    >>> conv.toFieldValue(u'7.434445')
-    Decimal("7.434445")
-    >>> conv.toFieldValue(u'10239.43559933')
-    Decimal("10239.43559933")
+    >>> conv.toFieldValue(u'7.434445') == decimal.Decimal("7.434445")
+    True
+
+    >>> conv.toFieldValue(u'10239.43559933') == decimal.Decimal('10239.43559933')
+    True
 
     Test field.missing_value
     >>> conv.toWidgetValue(None)
