@@ -28,9 +28,9 @@
         Description
       </p>
 
-      <div class="portalMessage"
+      <!-- <div class="portalMessage"
            tal:condition="view/status | nothing" tal:content="view/status">
-      </div>
+      </div> -->
 
       <div id="skel-contents">
         <span tal:replace="structure contents" />

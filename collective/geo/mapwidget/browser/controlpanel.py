@@ -98,8 +98,7 @@ class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
         for key, val in subdata.items():
             utility.set(key, val)
 
-        self.ptool.addPortalMessage(self.successMessage, 'info')
-        self.request.response.redirect(self.back_link)
+        self.status = self.successMessage
 
     @button.buttonAndHandler(_(u'Cancel'), name='cancel')
     def handle_cancel(self, action):
