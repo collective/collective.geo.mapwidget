@@ -29,6 +29,7 @@
         for="*"
         class=".widget.MapView"
         permission="zope2.View"
+        allowed_attributes="mapwidgets"
         />
 
     <!-- ..interfaces.IMapView -->

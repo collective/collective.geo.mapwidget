@@ -1,6 +1,7 @@
 
 from zope.interface import implements
 from zope.component import getMultiAdapter, getUtility
+from zope.publisher.interfaces.browser import IBrowserView
 
 from Products.Five import BrowserView
 
@@ -16,10 +17,11 @@ class MapView(BrowserView):
     # TODO: shall this be a IMapView or the view itself?
     implements(IMapView)
 
-    @property
     def mapwidgets(self):
-        return getMultiAdapter((self.context, self.request,
+        if IBrowserView.providedBy(self.context):
+            return getMultiAdapter((self.context, self.request,
                                         self.context.context), IMaps)
+        return []
 
 
 class MapWidgets(list):

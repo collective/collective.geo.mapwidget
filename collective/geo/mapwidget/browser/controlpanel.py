@@ -1,17 +1,18 @@
-from z3c.form import field, form, subform, button
-from z3c.form.interfaces import IFormLayer
-from plone.z3cform import z2
-from plone.z3cform.fieldsets import extensible
-
 from Acquisition import aq_inner
-
-from Products.Five import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from zope.interface import implements
 from zope.component import getUtility
 from zope.app.pagetemplate import viewpagetemplatefile
 from zope.app.component.hooks import getSite
+
+from Products.Five import BrowserView
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from Products.CMFPlone.utils import getToolByName
+
+from z3c.form import field, form, subform, button
+from z3c.form.interfaces import IFormLayer
+from plone.z3cform import z2
+from plone.z3cform.fieldsets import extensible
 
 from collective.geo.mapwidget.interfaces import IGeoSettings, IMapView
 from collective.geo.mapwidget import GeoMapwidgetMessageFactory as _
@@ -43,6 +44,7 @@ class GeopointForm(subform.EditSubForm):
 class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
     template = viewpagetemplatefile.ViewPageTemplateFile(
                                             'form-with-subforms.pt')
+    form.extends(form.EditForm, ignoreButtons=True)
 
     fields = field.Fields(IGeoSettings).select('zoom',
                                                'googlemaps',
@@ -64,6 +66,7 @@ class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
     def __init__(self, context, request):
         super(GeoControlpanelForm, self).__init__(context, request)
         subform = GeopointForm(self.context, self.request, self)
+        self.ptool = getToolByName(self.context, 'plone_utils')
         subform.level = self.level + 1
 
         self.subforms = [subform, ]
@@ -80,11 +83,12 @@ class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
         self.widgets['googleapi'].size = 80
         self.widgets['yahooapi'].size = 80
 
-    @button.handler(form.EditForm.buttons['apply'])
-    def handle_add(self, action):
+    @button.buttonAndHandler(_(u'Apply'), name='apply')
+    def handle_apply(self, action):
         subdata, suberrors = self.subforms[0].extractData()
         data, errors = self.extractData()
         if errors or suberrors:
+            self.status = self.formErrorsMessage
             return
 
         utility = IGeoSettings(self.context)
@@ -93,6 +97,18 @@ class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
 
         for key, val in subdata.items():
             utility.set(key, val)
+
+        self.ptool.addPortalMessage(self.successMessage, 'info')
+        self.request.response.redirect(self.back_link)
+
+    @button.buttonAndHandler(_(u'Cancel'), name='cancel')
+    def handle_cancel(self, action):
+        self.ptool.addPortalMessage(self.noChangesMessage, 'info')
+        self.request.response.redirect(self.back_link)
+
+    @property
+    def back_link(self):
+        return back_to_controlpanel(self)['url']
 
 
 class GeoControlpanel(BrowserView):

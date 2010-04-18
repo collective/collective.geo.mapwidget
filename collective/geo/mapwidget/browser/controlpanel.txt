@@ -42,9 +42,12 @@ we set 'use google maps' property to 'No' and save data
     >>> browser.getControl('Apply').click()
 
 Check that there weren't any errors
-
     >>> '<div class="error">' in browser.contents
     False
+
+Check the message status
+    >>> 'Data successfully updated.' in browser.contents
+    True
 
 and check the modifications in the configuration utility
     >>> config.googlemaps

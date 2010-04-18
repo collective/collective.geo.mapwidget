@@ -4,7 +4,7 @@ collective.geo.mapwidget
 Overview
 --------
 
-This package provides some handy page macros and adapters t easily manage
+This package provides some handy page macros and adapters to easily manage
 multiple maps on one page.
 
 Tests
@@ -96,6 +96,7 @@ Let's examine the result:
             'http://tile.openstreetmap.org/',
     ...
 
+
 If there is more than one entry in mapfields, then only the first one will be
 rendered unless we change the template slightly.
 
@@ -117,28 +118,29 @@ Let's examine the result with an unchanged template:
             'http://tile.openstreetmap.org/',
     ...
 
+
 Adapt the template to get both maps. We can do this in various ways.
 To render each map individually we have to iterate the list manually. There is
 a small helper view which makes things easier later, so let's use it.
 
-    >>> open(template, 'w').write('''<html xmlns="http://www.w3.org/1999/xhtml"
-    ...       xmlns:metal="http://xml.zope.org/namespaces/metal">
-    ...     <head>
-    ...         <metal:use use-macro="context/@@collectivegeo-macros/openlayers" />
-    ...     </head>
-    ...     <body>
-    ...         <tal:omit tal:define="maps context/@@collectivegeo-maps/mapwidgets" tal:omit-tag="">
-    ...             <tal:omit tal:define="cgmap maps/mymap1" tal:omit-tag="">
-    ...                 <metal:use use-macro="context/@@collectivegeo-macros/map-widget" />
-    ...             </tal:omit>
-    ...             <tal:omit tal:define="cgmap maps/mymap2" tal:omit-tag="">
-    ...                 <metal:use use-macro="context/@@collectivegeo-macros/map-widget" />
-    ...             </tal:omit>
-    ...         </tal:omit>
-    ...     </body>
-    ... </html>
-    ... ''')
-    >>> setTemplate(view, template)
+>>> open(template, 'w').write('''<html xmlns="http://www.w3.org/1999/xhtml"
+...       xmlns:metal="http://xml.zope.org/namespaces/metal">
+...     <head>
+...         <metal:use use-macro="context/@@collectivegeo-macros/openlayers" />
+...     </head>
+...     <body>
+...         <tal:omit tal:define="maps view/@@collectivegeo-maps/mapwidgets" tal:omit-tag="">
+...             <tal:omit tal:define="cgmap maps/mymap1" tal:omit-tag="">
+...                 <metal:use use-macro="context/@@collectivegeo-macros/map-widget" />
+...             </tal:omit>
+...             <tal:omit tal:define="cgmap maps/mymap2" tal:omit-tag="">
+...                 <metal:use use-macro="context/@@collectivegeo-macros/map-widget" />
+...             </tal:omit>
+...         </tal:omit>
+...     </body>
+... </html>
+... ''')
+>>> setTemplate(view, template)
 
 Let's see what happens:
     >>> print view()
@@ -161,6 +163,7 @@ Let's see what happens:
             'http://tile.openstreetmap.org/',
     ...
 
+
 We can also just iterate over the mapwidgets list:
     >>> open(template, 'w').write('''<html xmlns="http://www.w3.org/1999/xhtml"
     ...       xmlns:metal="http://xml.zope.org/namespaces/metal">
@@ -168,13 +171,14 @@ We can also just iterate over the mapwidgets list:
     ...         <metal:use use-macro="context/@@collectivegeo-macros/openlayers" />
     ...     </head>
     ...     <body>
-    ...         <tal:omit tal:repeat="cgmap context/@@collectivegeo-maps/mapwidgets" tal:omit-tag="">
+    ...         <tal:omit tal:repeat="cgmap view/@@collectivegeo-maps/mapwidgets" tal:omit-tag="">
     ...             <metal:use use-macro="context/@@collectivegeo-macros/map-widget" />
     ...         </tal:omit>
     ...     </body>
     ... </html>
     ... ''')
     >>> setTemplate(view, template)
+
 
 As our first template was not very sophisticated, we should get the same
 result:
@@ -197,6 +201,7 @@ result:
         function() { return new OpenLayers.Layer.TMS( 'OpenStreetMap',
             'http://tile.openstreetmap.org/',
     ...
+
 
 It is also possible to register an IMapWidget as named adapter and just give
 it's name in mapfields. IMapMidgets are looked up by ((view, request, context),
@@ -245,6 +250,7 @@ string or IMapWidget:
 
 Now we have covered the most important things about map midgets. Set us try
 some things with map layers.
+
 
 Layers:
 -------

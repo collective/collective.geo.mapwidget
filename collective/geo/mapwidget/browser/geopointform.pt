@@ -5,5 +5,5 @@
   <metal:use use-macro="context/@@ploneform-macros/actions" />
   <div tal:replace="structure view/contents_bottom|nothing" />
 </div>
-
+<div class="visualClear"><!-- clear floats --></div>
 <metal:map use-macro="context/@@collectivegeo-macros/map-widget" />

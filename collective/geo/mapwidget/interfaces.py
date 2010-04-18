@@ -39,10 +39,10 @@ class IGeoSettings(Interface):
         required=False)
 
     googleapi = schema.TextLine(
-        title=_(u"Google API Code"),
-        description=_(u"Set Google api code if you want use Google maps layer"),
-        default=None,
-        required=False)
+       title=_(u"Google API Code"),
+       description=_(u"Set Google api code if you want use Google maps layer"),
+       default=None,
+       required=False)
 
     yahoomaps = schema.Bool(
         title=_(u"Use Yahoo maps layer?"),
@@ -74,7 +74,8 @@ class IMapLayers(IEnumerableMapping):
     """
     A mapping of IMapLayer instances
 
-    specific for IMapWidget... looked up as ((view, request, context, mapwidget), name)
+    specific for IMapWidget... looked up as
+      ((view, request, context, mapwidget), name)
     """
 
     js = schema.TextLine(
@@ -107,7 +108,8 @@ class IMapWidget(Interface):
 
     js = schema.Text(
         title=_("Javascript extras"),
-        description=_(u"Additional Javascript code inserted after the map widget."),
+        description=_(u"Additional Javascript code inserted after the map"
+                      u" widget."),
         required=False)
 
     layers = schema.Object(
@@ -117,8 +119,9 @@ class IMapWidget(Interface):
 
     usedefault = schema.Bool(
         title=_(u"Enable default layers."),
-        description=_(u"If set to true, the default IMapLayers implementation"\
-                      u" adds all enabled default layers from the geo settings tool."),
+        description=_(u"If set to true, the default IMapLayers implementation"
+                      u" adds all enabled default layers from the geo settings"
+                      u" tool."),
         default=True,
         required=False)
 
