@@ -5,4 +5,4 @@ Changelog
 0.1dev (unreleased)
 ----------------
 
-* Initial release moved from collective.geo.mapwidget
+* Initial release moved from collective.geo.settings

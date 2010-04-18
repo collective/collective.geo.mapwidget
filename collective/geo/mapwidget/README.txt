@@ -18,7 +18,10 @@ let's create a view which should display a map.
 
 We need a request to instantiate the view
     >>> from zope.publisher.browser import TestRequest
+    >>> from zope.annotation.interfaces import IAttributeAnnotatable
+    >>> from zope.interface import alsoProvides
     >>> request = TestRequest()
+    >>> alsoProvides(request, IAttributeAnnotatable)
     >>> view = TestView(self.portal, request)
 
 A small helper method to set the template for a view:
@@ -57,9 +60,9 @@ cgmap.state and cgmap.config to initialise OpenLayers on these elements.
     >>> print view()
     <html xmlns="http://www.w3.org/1999/xhtml">
     ...
-          <script type="text/javascript" src="./OpenLayers.js"></script>
-    ...
-          <script type="text/javascript" src="++resource++collectivegeo.js"></script>
+          <script type="text/javascript" src="http://nohost/plone/OpenLayers.js"></script>
+          <script type="text/javascript" src="http://nohost/plone/proj4js-compressed.js"></script>
+          <script type="text/javascript" src="http://nohost/plone/++resource++collectivegeo.js"></script>
     ...
           <script type="text/javascript">cgmap.state = {'default': {lon: 7.680470, lat: 45.682143, zoom: 10 }};</script>
     ...

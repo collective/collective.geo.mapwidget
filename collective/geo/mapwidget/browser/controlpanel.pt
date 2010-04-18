@@ -28,10 +28,6 @@
         Description
       </p>
 
-      <!-- <div class="portalMessage"
-           tal:condition="view/status | nothing" tal:content="view/status">
-      </div> -->
-
       <div id="skel-contents">
         <span tal:replace="structure contents" />
       </div>

@@ -13,10 +13,12 @@
     <metal:define define-macro="openlayers"
                   tal:define="geosettings python:context.restrictedTraverse('@@geosettings-view');
                               google_maps_js python:geosettings.google_maps_js;
-                              yahoo_maps_js python:geosettings.yahoo_maps_js">
-      <script type="text/javascript" src="./OpenLayers.js"></script>
-      <script type="text/javascript" src="./proj4js-compressed.js"></script>
-      <script type="text/javascript" src="++resource++collectivegeo.js"></script>
+                              yahoo_maps_js python:geosettings.yahoo_maps_js;
+                              portal_state context/@@plone_portal_state;
+                              portal_url portal_state/portal_url;">
+      <script type="text/javascript" tal:attributes="src string:$portal_url/OpenLayers.js"></script>
+      <script type="text/javascript" tal:attributes="src string:$portal_url/proj4js-compressed.js"></script>
+      <script type="text/javascript" tal:attributes="src string:$portal_url/++resource++collectivegeo.js"></script>
       <script type="text/javascript"
               tal:condition="google_maps_js"
               tal:attributes="src google_maps_js"></script>
