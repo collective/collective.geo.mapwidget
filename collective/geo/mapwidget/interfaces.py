@@ -150,7 +150,7 @@ class IMapLayer(Interface):
     """
 
     jsfactory = schema.Text(
-        title=_(u"Javascrpit factory"),
+        title=_(u"Javascript factory"),
         description=_(u"Javascript code which returns a new instance of this "\
                       u"layer and does not expect any parameters"),
         required=True)

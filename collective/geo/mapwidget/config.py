@@ -1,3 +1,3 @@
 GLOBALS = globals()
 
-PROJECTNAME = "collective.geo.settings"
+PROJECTNAME = "collective.geo.mapwidget"
