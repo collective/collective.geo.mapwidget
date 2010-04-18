@@ -1,8 +1,8 @@
-collective.geo.settings Installation
+collective.geo.mapwidget Installation
 =======================
 
  * When you're reading this you have probably already run
-   ``easy_install collective.geo.settings``. Find out how to install setuptools
+   ``easy_install collective.geo.mapwidget``. Find out how to install setuptools
    (and EasyInstall) here:
    http://peak.telecommunity.com/DevCenter/EasyInstall
 
@@ -12,24 +12,24 @@ collective.geo.settings Installation
 
    into your Zope instance.
 
- * Create a file called ``collective.geo.settings-configure.zcml`` in the
+ * Create a file called ``collective.geo.mapwidget-configure.zcml`` in the
    ``/path/to/instance/etc/package-includes`` directory.  The file
    should only contain this::
 
-       <include package="collective.geo.settings" />
+       <include package="collective.geo.mapwidget" />
 
 .. _pythonproducts: http://plone.org/products/pythonproducts
 
 Alternatively, if you are using zc.buildout and the plone.recipe.zope2instance
 recipe to manage your project, you can do this:
 
- * Add ``collective.geo.settings`` to the list of eggs to install, e.g.:
+ * Add ``collective.geo.mapwidget`` to the list of eggs to install, e.g.:
 
     [buildout]
     ...
     eggs =
         ...
-        collective.geo.settings
+        collective.geo.mapwidget
 
   * Tell the plone.recipe.zope2instance recipe to install a ZCML slug:
 
@@ -37,7 +37,7 @@ recipe to manage your project, you can do this:
     recipe = plone.recipe.zope2instance
     ...
     zcml =
-        collective.geo.settings
+        collective.geo.mapwidget
 
   * Re-run buildout, e.g. with:
 
