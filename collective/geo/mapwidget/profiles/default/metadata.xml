@@ -3,5 +3,6 @@
   <version>0.1dev</version>
   <dependencies>
     <dependency>profile-collective.geo.openlayers:default</dependency>
+    <dependency>profile-collective.geo.settings:default</dependency>
   </dependencies>
 </metadata>

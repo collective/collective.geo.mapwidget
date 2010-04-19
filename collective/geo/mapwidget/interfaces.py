@@ -4,7 +4,7 @@ from zope.interface import Interface
 from zope.interface.common.mapping import IEnumerableMapping
 from zope import schema
 
-from collective.geo.mapwidget.z3cform import Decimal
+from collective.geo.settings.schema import Coordinate
 from collective.geo.mapwidget import GeoMapwidgetMessageFactory as _
 
 
@@ -14,19 +14,19 @@ class IGeoConfig(Interface):
 
 
 class IGeoSettings(Interface):
-    longitude = Decimal(
+    longitude = Coordinate(
         title=_(u'Longitude'),
         description=_(u""),
         default=None,
         required=True)
 
-    latitude = Decimal(
+    latitude = Coordinate(
         title=_(u'Latitude'),
         description=_(u""),
         default=None,
         required=True)
 
-    zoom = Decimal(
+    zoom = schema.Decimal(
         title=_(u"Zoom"),
         description=_(u"Default map's zoom level"),
         default=decimal.Decimal("10.0"),

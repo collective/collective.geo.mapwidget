@@ -8,6 +8,7 @@
 
   <include package="plone.app.z3cform" />
   <include package="collective.geo.openlayers" />
+  <include package="collective.geo.settings" />
 
   <include package=".browser" />
   <include file="profiles.zcml" />
@@ -22,10 +23,6 @@
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       provides=".interfaces.IGeoSettings"
       factory=".browser.controlpanel.geo_settings"
-      />
-
-  <adapter
-      factory=".z3cform.DecimalDataConverter"
       />
 
 </configure>

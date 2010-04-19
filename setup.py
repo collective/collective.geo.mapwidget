@@ -27,6 +27,7 @@ setup(name='collective.geo.mapwidget',
           'setuptools',
           # -*- Extra requirements: -*-
           'collective.geo.openlayers',
+          'collective.geo.settings',
           'plone.app.z3cform',
       ],
       entry_points="""

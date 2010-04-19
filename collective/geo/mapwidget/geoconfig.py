@@ -63,7 +63,7 @@ class GeoSettings(Persistent):
     latitude = 45.682143
     longitude = 7.68047
     zoom = 10.0
-    googlemaps = True # key works only for localhost?
+    googlemaps = True # key works only for localhost
     googleapi = 'ABQIAAAAaKes6QWqobpCx2AOamo-shTwM0brOpm-All5BF6PoaKBxRWWERSUWbHs4SIAMkeC1KV98E2EdJKuJw'
 
     yahoomaps = False # turned off by default because it needs API key
