@@ -11,11 +11,11 @@ def test_suite():
 
         ztc.ZopeDocFileSuite(
             'README.txt', package='collective.geo.mapwidget',
-            test_class=base.GeoSettingsFunctionalTestCase,
+            test_class=base.FunctionalTestCase,
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE | doctest.NORMALIZE_WHITESPACE | doctest.ELLIPSIS),
         ztc.ZopeDocFileSuite(
             'controlpanel.txt', package='collective.geo.mapwidget.browser',
-            test_class=base.GeoSettingsFunctionalTestCase,
+            test_class=base.FunctionalTestCase,
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE | doctest.NORMALIZE_WHITESPACE | doctest.ELLIPSIS),
 
         ])

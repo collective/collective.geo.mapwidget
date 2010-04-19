@@ -23,9 +23,9 @@ setup_product()
 ptc.setupPloneSite(products=['collective.geo.mapwidget'])
 
 
-class GeoSettingsTestCase(ptc.PloneTestCase):
+class TestCase(ptc.PloneTestCase):
     pass
 
 
-class GeoSettingsFunctionalTestCase(ptc.FunctionalTestCase):
+class FunctionalTestCase(ptc.FunctionalTestCase):
     pass

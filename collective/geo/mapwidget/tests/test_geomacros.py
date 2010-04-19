@@ -3,7 +3,7 @@ from collective.geo.mapwidget.tests import base
 from collective.geo.mapwidget.interfaces import IGeoSettings
 
 
-class TestSetup(base.GeoSettingsTestCase):
+class TestSetup(base.TestCase):
 
     def afterSetUp(self):
         self.settings = self.portal.restrictedTraverse('@@geosettings-view')
