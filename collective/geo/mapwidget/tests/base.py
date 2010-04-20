@@ -17,7 +17,6 @@ def setup_product():
 
     fiveconfigure.debug_mode = False
 
-    #ztc.installPackage('collective.geo.mapwidget')
 
 setup_product()
 ptc.setupPloneSite(products=['collective.geo.mapwidget'])

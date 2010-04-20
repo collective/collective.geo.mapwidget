@@ -8,6 +8,11 @@ from collective.geo.settings.schema import Coordinate
 from collective.geo.mapwidget import GeoMapwidgetMessageFactory as _
 
 
+class IGeoMapWidgetLayer(Interface):
+    """ marker interface """
+    pass
+
+
 class IGeoConfig(Interface):
     """ marker interface """
     pass
