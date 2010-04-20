@@ -1,71 +1,8 @@
-import decimal
-
 from zope.interface import Interface
 from zope.interface.common.mapping import IEnumerableMapping
 from zope import schema
 
-from collective.geo.settings.schema import Coordinate
 from collective.geo.mapwidget import GeoMapwidgetMessageFactory as _
-
-
-class IGeoMapWidgetLayer(Interface):
-    """ marker interface """
-    pass
-
-
-class IGeoConfig(Interface):
-    """ marker interface """
-    pass
-
-
-class IGeoSettings(Interface):
-    longitude = Coordinate(
-        title=_(u'Longitude'),
-        description=_(u""),
-        default=None,
-        required=True)
-
-    latitude = Coordinate(
-        title=_(u'Latitude'),
-        description=_(u""),
-        default=None,
-        required=True)
-
-    zoom = schema.Decimal(
-        title=_(u"Zoom"),
-        description=_(u"Default map's zoom level"),
-        default=decimal.Decimal("10.0"),
-        required=True)
-
-    googlemaps = schema.Bool(
-        title=_(u"Use Google maps layer?"),
-        description=_(u"Check if you want to use Google maps layer"),
-        default=False,
-        required=False)
-
-    googleapi = schema.TextLine(
-       title=_(u"Google API Code"),
-       description=_(u"Set Google api code if you want use Google maps layer"),
-       default=None,
-       required=False)
-
-    yahoomaps = schema.Bool(
-        title=_(u"Use Yahoo maps layer?"),
-        description=_(u"Check if you want to use Yahoo maps layer"),
-        default=False,
-        required=False)
-
-    yahooapi = schema.TextLine(
-        title=_(u"Yahoo API Code"),
-        description=_(u"Set Yahoo api code if you want use Yahoo maps layer"),
-        default=None,
-        required=False)
-
-    bingmaps = schema.Bool(
-        title=_(u"Use Bing maps layer?"),
-        description=_(u"Check if you want to use Bing maps layer"),
-        default=False,
-        required=False)
 
 
 class IMaps(IEnumerableMapping):

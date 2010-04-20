@@ -14,19 +14,6 @@ we start the tests with the usual boilerplate
     >>> from Products.PloneTestCase.setup import portal_owner, default_password
     >>> browser.open(portal_url)
 
-verifiy the registration of the configuration utility
-    >>> import zope.component
-    >>> from collective.geo.mapwidget.interfaces import IGeoSettings
-    >>> config = zope.component.getUtility(IGeoSettings)
-    >>> config
-    <collective.geo.mapwidget.geoconfig.GeoSettings object ...>
-
-we get some properties in that utility
-    >>> str(config.zoom)
-    '10.0'
-    >>> config.googlemaps
-    True
-
 we log in as manager and verify the functionality of collective.geo.mapwidget control panel form;
     >>> from Products.PloneTestCase.setup import portal_owner
     >>> from Products.PloneTestCase.setup import default_password
@@ -46,7 +33,10 @@ Check that there weren't any errors
     True
 
 and check the modifications in the configuration utility
-    >>> config.googlemaps
+    >>> from plone.registry.interfaces import IRegistry
+    >>> from zope.component import getUtility
+    >>> registry = getUtility(IRegistry)
+    >>> registry['collective.geo.settings.interfaces.IGeoSettings.googlemaps']
     False
 
 check error handling in main form:
@@ -56,8 +46,8 @@ check error handling in main form:
     True
 
 zoom should be unchanged
-    >>> str(config.zoom)
-    '10.0'
+    >>> registry['collective.geo.settings.interfaces.IGeoSettings.zoom']
+    Decimal('10.0')
 
 try it for subforms:
     >>> browser.getControl(name = 'form.widgets.zoom').value = '5.0'
@@ -67,7 +57,7 @@ try it for subforms:
     True
 
 zoom and longitude should be unchanged
-    >>> str(config.zoom)
-    '10.0'
-    >>> str(config.longitude)
-    '7.68047'
+    >>> registry['collective.geo.settings.interfaces.IGeoSettings.zoom']
+    Decimal('10.0')
+    >>> registry['collective.geo.settings.interfaces.IGeoSettings.longitude']
+    Decimal('0.0')

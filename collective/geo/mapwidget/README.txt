@@ -64,7 +64,7 @@ cgmap.state and cgmap.config to initialise OpenLayers on these elements.
           <script type="text/javascript" src="http://nohost/plone/proj4js-compressed.js"></script>
           <script type="text/javascript" src="http://nohost/plone/++resource++collectivegeo.js"></script>
     ...
-          <script type="text/javascript">cgmap.state = {'default': {lon: 7.680470, lat: 45.682143, zoom: 10 }};</script>
+          <script type="text/javascript">cgmap.state = {'default': {lon: 0.000000, lat: 0.000000, zoom: 10 }};</script>
     ...
           <div id="default-cgmap" class="widget-cgmap"
     ...
@@ -326,7 +326,7 @@ static image on a map. Let's assume our context is an Image object in Plone
 demonstrate the concept). MapWidgets also support a 'js' attribute to render
 additional java-script if necessary.
 
-    >>> from collective.geo.mapwidget.browser.widget import MapLayer
+    >>> from collective.geo.mapwidget.maplayers import MapLayer
     >>> class ImageLayer(MapLayer):
     ...     name = "imagelayer"
     ...
@@ -435,7 +435,7 @@ the default center lon/lat.
     >>> print view()
     <html xmlns="http://www.w3.org/1999/xhtml">
     ...
-          <script type="text/javascript">cgmap.state = {'default': {lon: 7.680470, lat: 45.682143, zoom: 10 }};
+          <script type="text/javascript">cgmap.state = {'default': {lon: 0.000000, lat: 0.000000, zoom: 10 }};
     cgmap.state['mymap1'] = {lon: '33.33', lat: '66.66', zoom: undefined, activebaselayer: undefined, activelayers: undefined };</script>
     ...
 

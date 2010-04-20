@@ -14,13 +14,17 @@ from z3c.form.interfaces import IFormLayer
 from plone.z3cform import z2
 from plone.z3cform.fieldsets import extensible
 
-from collective.geo.mapwidget.interfaces import IGeoSettings, IMapView
+from plone.registry.interfaces import IRegistry
+
+from collective.geo.settings.interfaces import IGeoSettings
+from collective.geo.mapwidget.interfaces import IMapView
 from collective.geo.mapwidget import GeoMapwidgetMessageFactory as _
-from collective.geo.mapwidget.browser.widget import MapWidget, MapLayer
+from collective.geo.mapwidget.browser.widget import MapWidget
+from collective.geo.mapwidget.maplayers import MapLayer
 
 
 def geo_settings(context):
-    return getUtility(IGeoSettings)
+    return getUtility(IRegistry).forInterface(IGeoSettings)
 
 
 def back_to_controlpanel(self):
@@ -91,12 +95,13 @@ class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
             self.status = self.formErrorsMessage
             return
 
-        utility = IGeoSettings(self.context)
+        settings = getUtility(IRegistry).forInterface(IGeoSettings)
+
         for key, val in data.items():
-            utility.set(key, val)
+            setattr(settings, key, val)
 
         for key, val in subdata.items():
-            utility.set(key, val)
+            setattr(settings, key, val)
 
         self.status = self.successMessage
 

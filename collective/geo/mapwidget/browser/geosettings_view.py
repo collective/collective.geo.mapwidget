@@ -1,5 +1,6 @@
 from zope.component import getUtility
-from collective.geo.mapwidget.interfaces import IGeoSettings
+from plone.registry.interfaces import IRegistry
+from collective.geo.settings.interfaces import IGeoSettings
 
 
 class GeoSettingsView(object):
@@ -8,7 +9,7 @@ class GeoSettingsView(object):
     def __init__(self, context, request):
         self.context = context
         self.request = request
-        self.geosettings = getUtility(IGeoSettings)
+        self.geosettings = getUtility(IRegistry).forInterface(IGeoSettings)
 
     @property
     def zoom(self):

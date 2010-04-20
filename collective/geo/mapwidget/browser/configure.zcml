@@ -7,7 +7,7 @@
         name="collectivegeo-controlpanel"
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
         class=".controlpanel.GeoControlpanel"
-        layer="collective.geo.mapwidget.interfaces.IGeoMapWidgetLayer"
+        layer=".interfaces.IGeoMapWidgetLayer"
         permission = "cmf.ManagePortal"
         />
 
@@ -78,13 +78,13 @@
     <browser:resource
         name="collectivegeo.png"
         file="collectivegeo.png"
-        layer="collective.geo.mapwidget.interfaces.IGeoMapWidgetLayer"
+        layer=".interfaces.IGeoMapWidgetLayer"
         />
 
     <browser:resource
         name="collectivegeo.js"
         file="collectivegeo.js"
-        layer="collective.geo.mapwidget.interfaces.IGeoMapWidgetLayer"
+        layer=".interfaces.IGeoMapWidgetLayer"
         />
 
 </configure>

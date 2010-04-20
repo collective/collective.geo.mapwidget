@@ -1,13 +1,14 @@
 
 from zope.interface import implements
-from zope.component import getMultiAdapter, getUtility
+from zope.component import getMultiAdapter #, getUtility
 from zope.publisher.interfaces.browser import IBrowserView
 
 from Products.Five import BrowserView
 
-from collective.geo.mapwidget.interfaces import (IMaps, IMapWidget,
-                                                IGeoSettings, IMapLayer,
+from collective.geo.mapwidget.interfaces import (IMaps, IMapWidget, IMapLayer,
                                                 IMapLayers, IMapView)
+
+from collective.geo.mapwidget.maplayers import defaultlayers
 
 
 class MapView(BrowserView):
@@ -163,8 +164,7 @@ class MapLayers(dict):
         layers = []
         useDefaultLayers = getattr(self.widget, 'usedefault', True)
         if useDefaultLayers:
-            geosettings = getUtility(IGeoSettings)
-            layers.extend(geosettings.layers)
+            layers.extend(defaultlayers())
         maplayers = getattr(self.widget, '_layers', None)
         if maplayers:
             for layerid in maplayers:
@@ -182,22 +182,3 @@ class MapLayers(dict):
         return "cgmap.extendconfig({layers: [" +\
                ",\n".join([l.jsfactory for l in layers]) + \
                "]}, '%s');" % (self.widget.mapid)
-
-
-class MapLayer(object):
-    '''
-    An empty IMapLayer implementation, useful as base class.
-
-    MapLayers are named components specific for
-    (view, request, context, widget).
-    '''
-
-    def __init__(self, view, request, context, widget):
-        self.view = view
-        self.request = request
-        self.context = context
-        self.widget = widget
-
-    implements(IMapLayer)
-
-    jsfactory = ""

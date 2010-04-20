@@ -3,8 +3,27 @@ This module contains IMapLayer implementations for commonly available
 base maps. These layers can be configured in the geo-settings control panel
 or may be re-used in manually configured map-widgets.
 """
+from zope.interface import implements
+from collective.geo.mapwidget.interfaces import IMapLayer
 
-from collective.geo.mapwidget.browser.widget import MapLayer
+
+class MapLayer(object):
+    '''
+    An empty IMapLayer implementation, useful as base class.
+
+    MapLayers are named components specific for
+    (view, request, context, widget).
+    '''
+
+    def __init__(self, view, request, context, widget):
+        self.view = view
+        self.request = request
+        self.context = context
+        self.widget = widget
+
+    implements(IMapLayer)
+
+    jsfactory = ""
 
 
 class OSMMapLayer(MapLayer):
@@ -157,3 +176,31 @@ class YahooHybridMapLayer(MapLayer):
     jsfactory = """
     function() { return new OpenLayers.Layer.Yahoo('Yahoo Hybrid',
         {'type': YAHOO_MAP_HYB, 'sphericalMercator': true});}"""
+
+
+from zope.component import getUtility
+from plone.registry.interfaces import IRegistry
+from collective.geo.settings.interfaces import IGeoSettings
+def defaultlayers():
+    layers = []
+    settings = getUtility(IRegistry).forInterface(IGeoSettings)
+    # TODO: turn this into a Folder (or some sort of btree/dict storage), and manage layers as content objects in this folder
+    # TODO: basically this tool imlpements the IMapLayers interface....
+    #       shall we mark this out and make it really conform/adaptable to
+    #       IMapLayers?
+    layers = [OSMMapLayer()]
+    if settings.googlemaps:
+        layers.append(GoogleStreetMapLayer())
+        layers.append(GoogleSatelliteMapLayer())
+        layers.append(GoogleHybridMapLayer())
+        layers.append(GoogleTerrainMapLayer())
+    if settings.yahoomaps:
+        layers.append(YahooStreetMapLayer())
+        layers.append(YahooSatelliteMapLayer())
+        layers.append(YahooHybridMapLayer())
+    if settings.bingmaps:
+        layers.append(BingStreetMapLayer())
+        layers.append(BingRoadsMapLayer())
+        layers.append(BingAerialMapLayer())
+        layers.append(BingHybridMapLayer())
+    return layers

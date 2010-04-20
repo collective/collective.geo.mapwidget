@@ -13,15 +13,9 @@
   <include package=".browser" />
   <include file="profiles.zcml" />
 
-  <utility
-      provides=".interfaces.IGeoConfig"
-      factory=".geoconfig.GeoConfig"
-      name="collective.geo.geoconfig"
-      />
-
   <adapter
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-      provides=".interfaces.IGeoSettings"
+      provides="collective.geo.settings.interfaces.IGeoSettings"
       factory=".browser.controlpanel.geo_settings"
       />
 
