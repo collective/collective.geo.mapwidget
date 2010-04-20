@@ -29,6 +29,7 @@ setup(name='collective.geo.mapwidget',
           'collective.geo.openlayers',
           'collective.geo.settings',
           'plone.app.z3cform',
+          'collective.z3cform.colorpicker',
       ],
       entry_points="""
       # -*- Entry points: -*-

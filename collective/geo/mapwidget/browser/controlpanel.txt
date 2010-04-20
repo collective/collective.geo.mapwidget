@@ -24,8 +24,10 @@ we log in as manager and verify the functionality of collective.geo.mapwidget co
     >>> browser.getControl(name = 'form.widgets.zoom').value
     '10.0'
 
-we set 'use google maps' property to 'No' and save data
+we set 'use google maps' property to 'No', we change the latitude and longitude coordinates and save data
     >>> browser.getControl(name = 'form.widgets.googlemaps:list').value = ['false']
+    >>> browser.getControl(name = 'form.widgets.longitude').value = "-2.582259177802396"
+    >>> browser.getControl(name = 'form.widgets.latitude').value = "51.4289424155664"
     >>> browser.getControl('Apply').click()
 
 Check that there weren't any errors
@@ -38,6 +40,13 @@ and check the modifications in the configuration utility
     >>> registry = getUtility(IRegistry)
     >>> registry['collective.geo.settings.interfaces.IGeoSettings.googlemaps']
     False
+
+    >>> registry['collective.geo.settings.interfaces.IGeoSettings.longitude']
+    Decimal('-2.582259177802396')
+
+    >>> registry['collective.geo.settings.interfaces.IGeoSettings.latitude']
+    Decimal('51.4289424155664')
+
 
 check error handling in main form:
     >>> browser.getControl(name = 'form.widgets.zoom').value = 'aa'
@@ -60,4 +69,4 @@ zoom and longitude should be unchanged
     >>> registry['collective.geo.settings.interfaces.IGeoSettings.zoom']
     Decimal('10.0')
     >>> registry['collective.geo.settings.interfaces.IGeoSettings.longitude']
-    Decimal('0.0')
+    Decimal('-2.582259177802396')

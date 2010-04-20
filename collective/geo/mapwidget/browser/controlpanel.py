@@ -12,11 +12,11 @@ from Products.CMFPlone.utils import getToolByName
 from z3c.form import field, form, subform, button
 from z3c.form.interfaces import IFormLayer
 from plone.z3cform import z2
-from plone.z3cform.fieldsets import extensible
+from plone.z3cform.fieldsets import extensible, group
 
 from plone.registry.interfaces import IRegistry
 
-from collective.geo.settings.interfaces import IGeoSettings
+from collective.geo.settings.interfaces import IGeoSettings, IGeoFeatureStyle
 from collective.geo.mapwidget.interfaces import IMapView
 from collective.geo.mapwidget import GeoMapwidgetMessageFactory as _
 from collective.geo.mapwidget.browser.widget import MapWidget
@@ -27,6 +27,10 @@ def geo_settings(context):
     return getUtility(IRegistry).forInterface(IGeoSettings)
 
 
+def geo_styles(context):
+    return getUtility(IRegistry).forInterface(IGeoFeatureStyle)
+
+
 def back_to_controlpanel(self):
     root = getSite()
     return dict(url=root.absolute_url() + '/plone_control_panel')
@@ -34,15 +38,22 @@ def back_to_controlpanel(self):
 
 class GeopointForm(subform.EditSubForm):
     template = viewpagetemplatefile.ViewPageTemplateFile('geopointform.pt')
-
     implements(IMapView)
-
     fields = field.Fields(IGeoSettings).select('longitude', 'latitude')
-
     mapfields = ['geosettings-cgmap']
 
     def update(self):
         self.updateWidgets()
+
+    def applyChanges(self, data):
+        content = self.getContent()
+        return form.applyChanges(self, content, data)
+
+
+class GeoStylesGroup(group.Group):
+    fields = field.Fields(IGeoFeatureStyle)
+    label = _(u"Style")
+    description = _(u"Set default styles for geografical shapes")
 
 
 class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
@@ -60,6 +71,7 @@ class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
     default_fieldset_label = _(u"Base settings")
 
     heading = _(u'Configure Collective Geo Settings')
+    groups = (GeoStylesGroup, )
 
     @property
     def css_class(self):
@@ -91,19 +103,17 @@ class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
     def handle_apply(self, action):
         subdata, suberrors = self.subforms[0].extractData()
         data, errors = self.extractData()
+
         if errors or suberrors:
             self.status = self.formErrorsMessage
             return
 
-        settings = getUtility(IRegistry).forInterface(IGeoSettings)
-
-        for key, val in data.items():
-            setattr(settings, key, val)
-
-        for key, val in subdata.items():
-            setattr(settings, key, val)
-
-        self.status = self.successMessage
+        changes = self.applyChanges(data)
+        coordinate_changes = self.subforms[0].applyChanges(subdata)
+        if changes or coordinate_changes:
+            self.status = self.successMessage
+        else:
+            self.status = self.noChangesMessage
 
     @button.buttonAndHandler(_(u'Cancel'), name='cancel')
     def handle_cancel(self, action):
