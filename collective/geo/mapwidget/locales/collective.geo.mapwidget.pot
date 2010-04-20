@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-04-20 01:50+0000\n"
+"POT-Creation-Date: 2010-04-20 12:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,15 +29,15 @@ msgstr ""
 msgid "Additional Javascript code inserted after the map widget."
 msgstr ""
 
-#: ./browser/controlpanel.py:90
+#: ./browser/controlpanel.py:107
 msgid "Apply"
 msgstr ""
 
-#: ./browser/controlpanel.py:60
+#: ./browser/controlpanel.py:76
 msgid "Base settings"
 msgstr ""
 
-#: ./browser/controlpanel.py:108
+#: ./browser/controlpanel.py:123
 msgid "Cancel"
 msgstr ""
 
@@ -45,11 +45,11 @@ msgstr ""
 msgid "Class attribute"
 msgstr ""
 
-#: ./browser/controlpanel.py:123
+#: ./browser/controlpanel.py:138
 msgid "Collective Geo Default Settings"
 msgstr ""
 
-#: ./browser/controlpanel.py:62
+#: ./browser/controlpanel.py:78
 msgid "Configure Collective Geo Settings"
 msgstr ""
 
@@ -57,7 +57,7 @@ msgstr ""
 msgid "Enable default layers."
 msgstr ""
 
-#: ./browser/controlpanel.py:122
+#: ./browser/controlpanel.py:137
 msgid "Geo Settings"
 msgstr ""
 
@@ -95,6 +95,14 @@ msgstr ""
 
 #: ./interfaces.py:25
 msgid "Returns some js-code to set up available layers."
+msgstr ""
+
+#: ./browser/controlpanel.py:61
+msgid "Set default styles for geografical shapes"
+msgstr ""
+
+#: ./browser/controlpanel.py:60
+msgid "Style"
 msgstr ""
 
 #: ./interfaces.py:47

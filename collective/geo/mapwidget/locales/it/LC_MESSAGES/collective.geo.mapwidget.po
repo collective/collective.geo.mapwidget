@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2010-04-20 01:50+0000\n"
+"POT-Creation-Date: 2010-04-20 12:36+0000\n"
 "PO-Revision-Date: 2009-06-12  21:28+0000\n"
 "Last-Translator: Giorgio Borelli <giorgio@giorgioborelli.it>\n"
 "Language-Team: Giorgio Borelli <giorgio@giorgioborelli.it>\n"
@@ -29,15 +29,15 @@ msgstr ""
 msgid "Additional Javascript code inserted after the map widget."
 msgstr ""
 
-#: ./browser/controlpanel.py:90
+#: ./browser/controlpanel.py:107
 msgid "Apply"
 msgstr "Applica"
 
-#: ./browser/controlpanel.py:60
+#: ./browser/controlpanel.py:76
 msgid "Base settings"
 msgstr "Impostazioni di base"
 
-#: ./browser/controlpanel.py:108
+#: ./browser/controlpanel.py:123
 msgid "Cancel"
 msgstr "Annulla"
 
@@ -45,11 +45,11 @@ msgstr "Annulla"
 msgid "Class attribute"
 msgstr ""
 
-#: ./browser/controlpanel.py:123
+#: ./browser/controlpanel.py:138
 msgid "Collective Geo Default Settings"
 msgstr "Impostazioni di default di Collective Geo"
 
-#: ./browser/controlpanel.py:62
+#: ./browser/controlpanel.py:78
 msgid "Configure Collective Geo Settings"
 msgstr "Configura Collective Geo"
 
@@ -57,7 +57,7 @@ msgstr "Configura Collective Geo"
 msgid "Enable default layers."
 msgstr ""
 
-#: ./browser/controlpanel.py:122
+#: ./browser/controlpanel.py:137
 msgid "Geo Settings"
 msgstr "Impostazioni"
 
@@ -96,6 +96,14 @@ msgstr ""
 #: ./interfaces.py:25
 msgid "Returns some js-code to set up available layers."
 msgstr ""
+
+#: ./browser/controlpanel.py:61
+msgid "Set default styles for geografical shapes"
+msgstr "Imposta gli stili di default per la visualizzazione dei dati sulla mappa"
+
+#: ./browser/controlpanel.py:60
+msgid "Style"
+msgstr "Stili"
 
 #: ./interfaces.py:47
 msgid "Style attribute"
