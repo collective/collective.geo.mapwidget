@@ -321,28 +321,28 @@ OpenLayers.Control.MarkerEditingToolbar = OpenLayers.Class(
 
             this.defaultControl = this.controls[0];
 
-            // TODO: don't replace... rather override
-            var defaultstyle = OpenLayers.Util.applyDefaults({
-                // Set the external graphic and background graphic images.
-                externalGraphic: "img/marker.png",
-                backgroundGraphic: "img/marker_shadow.png",
-
-                // Makes sure the background graphic is placed correctly relative
-                // to the external graphic.
-                backgroundXOffset: 0,
-                backgroundYOffset: -7,
-                fillOpacity: 1,
-
-                // Set the z-indexes of both graphics to make sure the background
-                // graphics stay in the background (shadows on top of markers looks
-                // odd; let's not do that).
-                graphicZIndex: 11, //MARKER_Z_INDEX,
-                backgroundGraphicZIndex: 10, //SHADOW_Z_INDEX,
-
-                pointRadius: 10
-            }, OpenLayers.Feature.Vector.style['default']);
-            layer.styleMap = new OpenLayers.StyleMap({"default": defaultstyle,
-                                                      "select": {externalGraphic: "img/marker-gold.png"}});
+            // // TODO: don't replace... rather override
+            // var defaultstyle = OpenLayers.Util.applyDefaults({
+            //     // Set the external graphic and background graphic images.
+            //     externalGraphic: "img/marker.png",
+            //     backgroundGraphic: "img/marker_shadow.png",
+            // 
+            //     // Makes sure the background graphic is placed correctly relative
+            //     // to the external graphic.
+            //     backgroundXOffset: 0,
+            //     backgroundYOffset: -7,
+            //     fillOpacity: 1,
+            // 
+            //     // Set the z-indexes of both graphics to make sure the background
+            //     // graphics stay in the background (shadows on top of markers looks
+            //     // odd; let's not do that).
+            //     graphicZIndex: 11, //MARKER_Z_INDEX,
+            //     backgroundGraphicZIndex: 10, //SHADOW_Z_INDEX,
+            // 
+            //     pointRadius: 10
+            // }, OpenLayers.Feature.Vector.style['default']);
+            // layer.styleMap = new OpenLayers.StyleMap({"default": defaultstyle,
+            //                                           "select": {externalGraphic: "img/marker-gold.png"}});
 
             // setup form events
             if (this.lonid && this.latid)
