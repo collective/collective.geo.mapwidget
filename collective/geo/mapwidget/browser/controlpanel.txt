@@ -11,9 +11,6 @@ we start the tests with the usual boilerplate
     >>> portal_url = self.portal.absolute_url()
     >>> self.portal.error_log._ignored_exceptions = ()
 
-    >>> from Products.PloneTestCase.setup import portal_owner, default_password
-    >>> browser.open(portal_url)
-
 we log in as manager and verify the functionality of collective.geo.mapwidget control panel form;
     >>> from Products.PloneTestCase.setup import portal_owner
     >>> from Products.PloneTestCase.setup import default_password
