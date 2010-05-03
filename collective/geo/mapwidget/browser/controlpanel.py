@@ -155,6 +155,11 @@ class GeoControlpanel(BrowserView):
         self.form_instance.update()
         return self.form_instance.render()
 
+    def update(self):
+        # see: Module plone.app.z3cform.kss.validation, line 47, in validate_input
+        #      AttributeError: 'GeoControlpanel' object has no attribute 'update'
+        self.form_instance.update()
+
 
 class ControlPanelMapWidget(MapWidget):
 
