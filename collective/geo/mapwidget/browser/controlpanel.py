@@ -16,7 +16,8 @@ from plone.z3cform.fieldsets import extensible, group
 
 from plone.registry.interfaces import IRegistry
 
-from collective.z3cform.colorpicker.colorpicker import ColorpickerFieldWidget
+# from collective.z3cform.colorpicker.colorpicker import ColorpickerFieldWidget
+from collective.z3cform.colorpicker.colorpickeralpha import ColorpickerAlphaFieldWidget
 
 from collective.geo.settings.interfaces import IGeoSettings, IGeoFeatureStyle
 from collective.geo.mapwidget.interfaces import IMapView
@@ -54,8 +55,8 @@ class GeopointForm(subform.EditSubForm):
 
 class GeoStylesGroup(group.Group):
     fields = field.Fields(IGeoFeatureStyle)
-    fields['linecolor'].widgetFactory = ColorpickerFieldWidget
-    fields['polygoncolor'].widgetFactory = ColorpickerFieldWidget
+    fields['linecolor'].widgetFactory = ColorpickerAlphaFieldWidget
+    fields['polygoncolor'].widgetFactory = ColorpickerAlphaFieldWidget
 
     label = _(u"Style")
     description = _(u"Set default styles for geografical shapes")
