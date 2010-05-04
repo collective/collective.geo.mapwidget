@@ -165,7 +165,7 @@ class GeoControlpanel(BrowserView):
 class ControlPanelMapWidget(MapWidget):
 
     mapid = 'geosettings-cgmap'
-    style = "height:450px; width:450px;"
+    style = "height:450px"
 
     _layers = ['markeredit']
 
