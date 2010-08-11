@@ -121,6 +121,10 @@ class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
         else:
             self.status = self.noChangesMessage
 
+        self.ptool.addPortalMessage(self.status, 'info')
+        self.request.response.redirect(self.back_link)
+
+
     @button.buttonAndHandler(_(u'Cancel'), name='cancel')
     def handle_cancel(self, action):
         self.ptool.addPortalMessage(self.noChangesMessage, 'info')
@@ -132,7 +136,6 @@ class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
 
 
 class GeoControlpanel(BrowserView):
-
     __call__ = ViewPageTemplateFile('controlpanel.pt')
 
     label = _(u'Geo Settings')
@@ -160,6 +163,14 @@ class GeoControlpanel(BrowserView):
         # see: Module plone.app.z3cform.kss.validation, line 47, in validate_input
         #      AttributeError: 'GeoControlpanel' object has no attribute 'update'
         self.form_instance.update()
+        self.prefix = self.form_instance.prefix
+        self.widgets = self.form_instance.widgets
+        self.groups = self.form_instance.groups
+
+    def extractData(self):
+        """Stupid fix for plone.app.z3cform v. 0.5.0 - kss validation
+        """
+        return self.form_instance.extractData()
 
 
 class ControlPanelMapWidget(MapWidget):

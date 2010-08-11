@@ -31,6 +31,10 @@ Check that there weren't any errors
     >>> 'Data successfully updated.' in browser.contents
     True
 
+after submit the form we are redirect to plone control panel
+    >>> 'plone_control_panel' in browser.url
+    True
+
 and check the modifications in the configuration utility
     >>> from plone.registry.interfaces import IRegistry
     >>> from zope.component import getUtility
@@ -45,7 +49,8 @@ and check the modifications in the configuration utility
     51.4289424155664
 
 
-check error handling in main form:
+Now we check error handling in main form:
+    >>> browser.open('%s/@@collectivegeo-controlpanel' % portal_url)
     >>> browser.getControl(name = 'form.widgets.zoom').value = 'aa'
     >>> browser.getControl('Apply').click()
     >>> '<div class="error">' in browser.contents
