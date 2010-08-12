@@ -15,6 +15,10 @@ var cgmap = function($)
      * is fully intstantiated
      */
     $(document).ready( function() {
+
+        // set images path
+        if (cgmap.imgpath) {OpenLayers.ImgPath = cgmap.imgpath}
+
         $.each($('div.widget-cgmap'), function(i, map) {
             var mapid = map.id;
             if (mapid != 'default')
@@ -262,6 +266,7 @@ var cgmap = function($)
 
         createDefaultOptions: function() {
             return {
+                theme: null, // disable default theme
                 projection: new OpenLayers.Projection("EPSG:900913"),
                 displayProjection: new OpenLayers.Projection("EPSG:4326"),
                 units: "m",
@@ -269,12 +274,14 @@ var cgmap = function($)
                 maxResolution: 156543.0339,
                 maxExtent: new OpenLayers.Bounds( -20037508, -20037508,
                                                   20037508, 20037508.34),
+
                 controls: [
                     new OpenLayers.Control.ArgParser(),
                     //new OpenLayers.Control.PanZoomBar(),
                     new OpenLayers.Control.Attribution(),
-                    new OpenLayers.Control.LayerSwitcher(),
+                    new OpenLayers.Control.LayerSwitcher({roundedCorner:false}),
                     new OpenLayers.Control.MousePosition(),
+                    // new OpenLayers.Control.ScaleLine(),
                     new OpenLayers.Control.Navigation({zoomWheelEnabled: false}),
                     new OpenLayers.Control.KeyboardDefaults(),
                     new OpenLayers.Control.PanZoom()

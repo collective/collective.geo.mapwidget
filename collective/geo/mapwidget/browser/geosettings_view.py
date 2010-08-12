@@ -1,4 +1,7 @@
 from zope.component import getUtility
+
+from Products.CMFCore.Expression import Expression, getExprContext
+
 from plone.registry.interfaces import IRegistry
 from collective.geo.settings.interfaces import IGeoSettings
 
@@ -20,6 +23,10 @@ class GeoSettingsView(object):
         return self.geosettings.longitude, self.geosettings.latitude
 
     @property
+    def imgpath(self):
+        return  self.geosettings.imgpath
+
+    @property
     def googlemaps(self):
         return  self.geosettings.googlemaps
 
@@ -30,6 +37,8 @@ class GeoSettingsView(object):
     @property
     def google_maps_js(self):
         if self.googlemaps:
+            #  google maps 3 api -- needs dev openlayer version...
+            # return 'http://maps.google.com/maps/api/js?sensor=false'
             return 'http://maps.google.com/maps?file=api&v=2&key=%s' % self.googleapi
         else:
             return None
@@ -77,4 +86,12 @@ class GeoSettingsView(object):
                 val = map_state.get(param, None)
                 state[param] = (val is not None) and ("'%s'" % val) or 'undefined'
             ret.append("cgmap.state['%(mapid)s'] = {lon: %(lon)s, lat: %(lat)s, zoom: %(zoom)s, activebaselayer: %(activebaselayer)s, activelayers: %(activelayers)s };" % state)
+
+        # image path for change OpenLayers default images
+        try:
+            imgpath = Expression(str(self.imgpath))(getExprContext(self.context))
+        except:
+            imgpath = ''
+
+        ret.append("cgmap.imgpath = '%s';" % imgpath)
         return '\n'.join(ret)

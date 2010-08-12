@@ -62,6 +62,14 @@ class GeoStylesGroup(group.Group):
     description = _(u"Set default styles for geografical shapes")
 
 
+class GeoAdvancedConfGroup(group.Group):
+    fields = field.Fields(IGeoSettings).select('imgpath',)
+
+    label = _(u"Advanced")
+    description = _(u"Advanced OpenLayers configuration")
+
+
+
 class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
     template = viewpagetemplatefile.ViewPageTemplateFile(
                                             'form-with-subforms.pt')
@@ -77,7 +85,7 @@ class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
     default_fieldset_label = _(u"Base settings")
 
     heading = _(u'Configure Collective Geo Settings')
-    groups = (GeoStylesGroup, )
+    groups = (GeoStylesGroup, GeoAdvancedConfGroup)
 
     @property
     def css_class(self):

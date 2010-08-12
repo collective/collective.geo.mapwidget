@@ -70,7 +70,8 @@ class TestSetup(base.TestCase):
     def test_property_geosettingjs(self):
         self.geosettings.googlemaps = True
         self.assertEquals(self.settings.geo_setting_js,
-                          "cgmap.state = {'default': {lon: 0.000000, lat: 0.000000, zoom: 10 }};")
+                          "cgmap.state = {'default': {lon: 0.000000, lat: 0.000000, zoom: 10 }};\n"
+                          "cgmap.imgpath = '%s/img/';" % self.portal.absolute_url())
 
 
 def test_suite():

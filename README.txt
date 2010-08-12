@@ -21,8 +21,8 @@ Alternatively, buildout users can install collective.geo.mapwidget as part of a 
         [buildout]
         ...
         eggs = 
-            zope.i18n>=3.4
-            z3c.form==1.9
+            zope.i18n >= 3.4
+            z3c.form >= 1.9
             collective.geo.mapwidget
         ...
         [instance]

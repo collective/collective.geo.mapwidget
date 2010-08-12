@@ -21,6 +21,9 @@ we log in as manager and verify the functionality of collective.geo.mapwidget co
     >>> browser.getControl(name = 'form.widgets.zoom').value
     '10.0'
 
+    >>> browser.getControl(name = 'form.widgets.imgpath').value
+    'string:${portal_url}/img/'
+
 we set 'use google maps' property to 'No', we change the latitude and longitude coordinates and save data
     >>> browser.getControl(name = 'form.widgets.googlemaps:list').value = None
     >>> browser.getControl(name = 'form.widgets.longitude').value = "-2.582259177802396"
