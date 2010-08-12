@@ -96,3 +96,7 @@ class IMapLayer(Interface):
         description=_(u"Javascript code which returns a new instance of this "\
                       u"layer and does not expect any parameters"),
         required=True)
+
+class IDefaultMapLayers(Interface):
+    """Utility to provide a list of default map layers
+    """

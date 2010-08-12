@@ -4,7 +4,13 @@ base maps. These layers can be configured in the geo-settings control panel
 or may be re-used in manually configured map-widgets.
 """
 from zope.interface import implements
+from zope.component import getUtility
+
+from plone.registry.interfaces import IRegistry
+
+from collective.geo.settings.interfaces import IGeoSettings
 from collective.geo.mapwidget.interfaces import IMapLayer
+from collective.geo.mapwidget.interfaces import IDefaultMapLayers
 
 
 class MapLayer(object):
@@ -178,9 +184,35 @@ class YahooHybridMapLayer(MapLayer):
         {'type': YAHOO_MAP_HYB, 'sphericalMercator': true});}"""
 
 
-from zope.component import getUtility
-from plone.registry.interfaces import IRegistry
-from collective.geo.settings.interfaces import IGeoSettings
+class DefaultMapLayers(object):
+    """Utility to store default map layers
+    """
+
+    implements(IDefaultMapLayers)
+
+    @property
+    def geo_settings(self):
+        return getUtility(IRegistry).forInterface(IGeoSettings)
+
+    def layers(self):
+        layers = [OSMMapLayer()]
+        if self.geo_settings.googlemaps:
+            layers.append(GoogleStreetMapLayer())
+            layers.append(GoogleSatelliteMapLayer())
+            layers.append(GoogleHybridMapLayer())
+            layers.append(GoogleTerrainMapLayer())
+        if self.geo_settings.yahoomaps:
+            layers.append(YahooStreetMapLayer())
+            layers.append(YahooSatelliteMapLayer())
+            layers.append(YahooHybridMapLayer())
+        if self.geo_settings.bingmaps:
+            layers.append(BingStreetMapLayer())
+            layers.append(BingRoadsMapLayer())
+            layers.append(BingAerialMapLayer())
+            layers.append(BingHybridMapLayer())
+        return layers
+
+
 def defaultlayers():
     layers = []
     settings = getUtility(IRegistry).forInterface(IGeoSettings)

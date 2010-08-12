@@ -1,14 +1,15 @@
 
 from zope.interface import implements
-from zope.component import getMultiAdapter #, getUtility
+from zope.component import getMultiAdapter, getUtility
 from zope.publisher.interfaces.browser import IBrowserView
 
 from Products.Five import BrowserView
 
 from collective.geo.mapwidget.interfaces import (IMaps, IMapWidget, IMapLayer,
-                                                IMapLayers, IMapView)
+                                                IMapLayers, IMapView,
+                                                IDefaultMapLayers)
 
-from collective.geo.mapwidget.maplayers import defaultlayers
+# from collective.geo.mapwidget.maplayers import defaultlayers
 
 
 class MapView(BrowserView):
@@ -164,7 +165,9 @@ class MapLayers(dict):
         layers = []
         useDefaultLayers = getattr(self.widget, 'usedefault', True)
         if useDefaultLayers:
-            layers.extend(defaultlayers())
+            default_layers = getUtility(IDefaultMapLayers)
+            layers.extend(default_layers.layers())
+
         maplayers = getattr(self.widget, '_layers', None)
         if maplayers:
             for layerid in maplayers:
