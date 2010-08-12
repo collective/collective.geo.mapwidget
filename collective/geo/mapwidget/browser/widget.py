@@ -171,6 +171,10 @@ class MapLayers(dict):
         maplayers = getattr(self.widget, '_layers', None)
         if maplayers:
             for layerid in maplayers:
+                from zope.interface import Interface
+                from zope.publisher.interfaces.http import IHTTPRequest
+                from collective.geo.mapwidget.interfaces import IMapWidget
+
                 if IMapLayer.providedBy(layerid):
                     layers.append(layerid)
                 elif isinstance(layerid, basestring):

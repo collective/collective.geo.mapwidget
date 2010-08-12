@@ -13,6 +13,7 @@
 
   <include package=".browser" />
   <include file="profiles.zcml" />
+  <include file="maplayers.zcml" />
 
   <adapter
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"

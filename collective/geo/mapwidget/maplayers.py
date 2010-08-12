@@ -4,13 +4,19 @@ base maps. These layers can be configured in the geo-settings control panel
 or may be re-used in manually configured map-widgets.
 """
 from zope.interface import implements
-from zope.component import getUtility
+from zope.component import getUtility, getAdapters
 
 from plone.registry.interfaces import IRegistry
 
 from collective.geo.settings.interfaces import IGeoSettings
 from collective.geo.mapwidget.interfaces import IMapLayer
 from collective.geo.mapwidget.interfaces import IDefaultMapLayers
+
+from zope.interface import Interface
+from zope.publisher.interfaces.http import IHTTPRequest
+from collective.geo.mapwidget.interfaces import IMapWidget
+
+from collective.geo.mapwidget import GeoMapwidgetMessageFactory as _
 
 
 class MapLayer(object):
@@ -21,167 +27,143 @@ class MapLayer(object):
     (view, request, context, widget).
     '''
 
-    def __init__(self, view, request, context, widget):
+    implements(IMapLayer)
+    jsfactory = ""
+    title = u""
+
+    def __init__(self, view=None, request=None, context=None, widget=None):
         self.view = view
         self.request = request
         self.context = context
         self.widget = widget
 
-    implements(IMapLayer)
-
-    jsfactory = ""
-
 
 class OSMMapLayer(MapLayer):
 
-    def __init__(self, view=None, request=None, context=None, widget=None):
-        pass
-
     name = "osm"
+    title = _(u"OpenStreetMap")
 
     jsfactory = """
-    function() { return new OpenLayers.Layer.TMS( 'OpenStreetMap',
+    function() { return new OpenLayers.Layer.TMS( '%s',
         'http://tile.openstreetmap.org/',
         { 'type' : 'png',
           getURL: cgmap.osm_getTileURL,
           displayOutsideMaxExtent: true,
-          attribution: '<a href="http://www.openstreetmap.org/">OpenStreetMap</a>'});}"""
+          attribution: '<a href="http://www.openstreetmap.org/">OpenStreetMap</a>'});}""" % title
 
 
 class BingStreetMapLayer(MapLayer):
 
-    def __init__(self, view=None, request=None, context=None, widget=None):
-        pass
-
     name = "bmap"
+    title = _(u"Bing Streets")
 
     jsfactory = """
-    function() { return new OpenLayers.Layer.VirtualEarth('Bing Streets',
+    function() { return new OpenLayers.Layer.VirtualEarth('%s',
         { 'type': VEMapStyle.Shaded,
-          'sphericalMercator': true });}"""
+          'sphericalMercator': true });}""" % title
 
 
 class BingRoadsMapLayer(MapLayer):
 
-    def __init__(self, view=None, request=None, context=None, widget=None):
-        pass
-
     name = "brod"
+    title = _(u"Bing Roads")
 
     jsfactory = """
-    function() { return new OpenLayers.Layer.VirtualEarth('Bing Roads',
+    function() { return new OpenLayers.Layer.VirtualEarth('%s',
         { 'type': VEMapStyle.Road,
-          'sphericalMercator': true });}"""
+          'sphericalMercator': true });}""" % title
 
 
 class BingAerialMapLayer(MapLayer):
 
-    def __init__(self, view=None, request=None, context=None, widget=None):
-        pass
-
     name = "baer"
+    title = _(u"Bing Aerial")
 
     jsfactory = """
-    function() { return new OpenLayers.Layer.VirtualEarth('Bing Aerial',
+    function() { return new OpenLayers.Layer.VirtualEarth('%s',
         { 'type': VEMapStyle.Aerial,
-          'sphericalMercator': true });}"""
+          'sphericalMercator': true });}""" % title
 
 
 class BingHybridMapLayer(MapLayer):
 
-    def __init__(self, view=None, request=None, context=None, widget=None):
-        pass
-
     name = "bhyb"
+    title = _(u"Bing Hybrid")
 
     jsfactory = """
-    function() { return new OpenLayers.Layer.VirtualEarth('Bing Hybrid',
+    function() { return new OpenLayers.Layer.VirtualEarth('%s',
         { 'type': VEMapStyle.Hybrid,
-          'sphericalMercator': true });}"""
+          'sphericalMercator': true });}""" % title
 
 
 class GoogleStreetMapLayer(MapLayer):
 
-    def __init__(self, view=None, request=None, context=None, widget=None):
-        pass
-
     name = "gmap"
+    title = _(u"Google")
 
     jsfactory = """
-    function() { return new OpenLayers.Layer.Google('Google',
-        {'sphericalMercator': true});}"""
+    function() { return new OpenLayers.Layer.Google('%s',
+        {'sphericalMercator': true});}""" % title
 
 
 class GoogleSatelliteMapLayer(MapLayer):
 
-    def __init__(self, view=None, request=None, context=None, widget=None):
-        pass
-
     name = "gsat"
+    title = _(u"Satellite (Google)")
 
     jsfactory = """
-    function() { return new OpenLayers.Layer.Google('Satellite (Google)' ,
-        {'type': G_SATELLITE_MAP, 'sphericalMercator': true});}"""
+    function() { return new OpenLayers.Layer.Google('%s' ,
+        {'type': G_SATELLITE_MAP, 'sphericalMercator': true});}""" % title
 
 
 class GoogleHybridMapLayer(MapLayer):
 
-    def __init__(self, view=None, request=None, context=None, widget=None):
-        pass
-
     name = "ghyb"
+    title = _(u"Hybrid (Google)")
 
     jsfactory = """
-    function() { return new OpenLayers.Layer.Google('Hybrid (Google)' ,
-        {'type': G_HYBRID_MAP, 'sphericalMercator': true});}"""
+    function() { return new OpenLayers.Layer.Google('%s' ,
+        {'type': G_HYBRID_MAP, 'sphericalMercator': true});}""" % title
 
 
 class GoogleTerrainMapLayer(MapLayer):
 
-    def __init__(self, view=None, request=None, context=None, widget=None):
-        pass
-
     name = "gter"
+    title = _(u"Terrain (Google)")
 
     jsfactory = """
-    function() { return new OpenLayers.Layer.Google('Terrain (Google)' ,
-        {'type': G_PHYSICAL_MAP, 'sphericalMercator': true});}"""
+    function() { return new OpenLayers.Layer.Google('%s' ,
+        {'type': G_PHYSICAL_MAP, 'sphericalMercator': true});}""" % title
 
 
 class YahooStreetMapLayer(MapLayer):
 
-    def __init__(self, view=None, request=None, context=None, widget=None):
-        pass
-
     name = "ymap"
+    title = _(u"Yahoo Street")
 
     jsfactory = """
-    function() { return new OpenLayers.Layer.Yahoo('Yahoo Street',
-        {'type': YAHOO_MAP_REG, 'sphericalMercator': true});}"""
+    function() { return new OpenLayers.Layer.Yahoo('%s',
+        {'type': YAHOO_MAP_REG, 'sphericalMercator': true});}""" % title
 
 
 class YahooSatelliteMapLayer(MapLayer):
 
-    def __init__(self, view=None, request=None, context=None, widget=None):
-        pass
-
     name = "ysat"
-
+    title = _(u"Yahoo Satellite")
+    
     jsfactory = """
-    function() { return new OpenLayers.Layer.Yahoo('Yahoo Satellite',
-        {'type': YAHOO_MAP_SAT, 'sphericalMercator': true});}"""
+    function() { return new OpenLayers.Layer.Yahoo('%s',
+        {'type': YAHOO_MAP_SAT, 'sphericalMercator': true});}""" % title
 
 
 class YahooHybridMapLayer(MapLayer):
 
-    def __init__(self, view=None, request=None, context=None, widget=None):
-        pass
-
     name = "yhyb"
+    title = _(u"Yahoo Hybrid")
 
     jsfactory = """
-    function() { return new OpenLayers.Layer.Yahoo('Yahoo Hybrid',
-        {'type': YAHOO_MAP_HYB, 'sphericalMercator': true});}"""
+    function() { return new OpenLayers.Layer.Yahoo('%s',
+        {'type': YAHOO_MAP_HYB, 'sphericalMercator': true});}""" % title
 
 
 class DefaultMapLayers(object):
@@ -195,6 +177,11 @@ class DefaultMapLayers(object):
         return getUtility(IRegistry).forInterface(IGeoSettings)
 
     def layers(self):
+        # getAdapters((Interface, IHTTPRequest, Interface, IMapWidget), IMapLayer)
+        # from zope.component import getMultiAdapter
+        # getMultiAdapter((self.view, self.request, self.context, self.widget), IMapLayer, name=layerid)
+        # pippo = [k for k, v in getAdapters((Interface, IHTTPRequest, Interface, IMapWidget), IMapLayer)
+
         layers = [OSMMapLayer()]
         if self.geo_settings.googlemaps:
             layers.append(GoogleStreetMapLayer())
@@ -211,28 +198,3 @@ class DefaultMapLayers(object):
             layers.append(BingAerialMapLayer())
             layers.append(BingHybridMapLayer())
         return layers
-
-
-def defaultlayers():
-    layers = []
-    settings = getUtility(IRegistry).forInterface(IGeoSettings)
-    # TODO: turn this into a Folder (or some sort of btree/dict storage), and manage layers as content objects in this folder
-    # TODO: basically this tool imlpements the IMapLayers interface....
-    #       shall we mark this out and make it really conform/adaptable to
-    #       IMapLayers?
-    layers = [OSMMapLayer()]
-    if settings.googlemaps:
-        layers.append(GoogleStreetMapLayer())
-        layers.append(GoogleSatelliteMapLayer())
-        layers.append(GoogleHybridMapLayer())
-        layers.append(GoogleTerrainMapLayer())
-    if settings.yahoomaps:
-        layers.append(YahooStreetMapLayer())
-        layers.append(YahooSatelliteMapLayer())
-        layers.append(YahooHybridMapLayer())
-    if settings.bingmaps:
-        layers.append(BingStreetMapLayer())
-        layers.append(BingRoadsMapLayer())
-        layers.append(BingAerialMapLayer())
-        layers.append(BingHybridMapLayer())
-    return layers
