@@ -17,13 +17,13 @@
   <adapter
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       provides="collective.geo.settings.interfaces.IGeoSettings"
-      factory=".browser.controlpanel.geo_settings"
+      factory="collective.geo.settings.utils.geo_settings"
       />
 
   <adapter
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       provides="collective.geo.settings.interfaces.IGeoFeatureStyle"
-      factory=".browser.controlpanel.geo_styles"
+      factory="collective.geo.settings.utils.geo_styles"
       />
 
 </configure>

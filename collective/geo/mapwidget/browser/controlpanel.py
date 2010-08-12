@@ -1,9 +1,9 @@
 from Acquisition import aq_inner
 
 from zope.interface import implements
-from zope.component import getUtility
 from zope.app.pagetemplate import viewpagetemplatefile
 from zope.app.component.hooks import getSite
+from zope.event import notify
 
 from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
@@ -14,24 +14,14 @@ from z3c.form.interfaces import IFormLayer
 from plone.z3cform import z2
 from plone.z3cform.fieldsets import extensible, group
 
-from plone.registry.interfaces import IRegistry
-
-# from collective.z3cform.colorpicker.colorpicker import ColorpickerFieldWidget
 from collective.z3cform.colorpicker.colorpickeralpha import ColorpickerAlphaFieldWidget
 
 from collective.geo.settings.interfaces import IGeoSettings, IGeoFeatureStyle
+from collective.geo.settings.events import GeoSettingsEvent
 from collective.geo.mapwidget.interfaces import IMapView
 from collective.geo.mapwidget import GeoMapwidgetMessageFactory as _
 from collective.geo.mapwidget.browser.widget import MapWidget
 from collective.geo.mapwidget.maplayers import MapLayer
-
-
-def geo_settings(context):
-    return getUtility(IRegistry).forInterface(IGeoSettings)
-
-
-def geo_styles(context):
-    return getUtility(IRegistry).forInterface(IGeoFeatureStyle)
 
 
 def back_to_controlpanel(self):
@@ -63,7 +53,7 @@ class GeoStylesGroup(group.Group):
 
 
 class GeoAdvancedConfGroup(group.Group):
-    fields = field.Fields(IGeoSettings).select('imgpath',)
+    fields = field.Fields(IGeoSettings).select('imgpath')
 
     label = _(u"Advanced")
     description = _(u"Advanced OpenLayers configuration")
@@ -126,6 +116,7 @@ class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
         coordinate_changes = self.subforms[0].applyChanges(subdata)
         if changes or coordinate_changes:
             self.status = self.successMessage
+            notify(GeoSettingsEvent(self.context, data))
         else:
             self.status = self.noChangesMessage
 
