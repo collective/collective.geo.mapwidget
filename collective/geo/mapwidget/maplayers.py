@@ -4,17 +4,13 @@ base maps. These layers can be configured in the geo-settings control panel
 or may be re-used in manually configured map-widgets.
 """
 from zope.interface import implements
-from zope.component import getUtility, queryMultiAdapter #, getAdapters
+from zope.component import getUtility, queryMultiAdapter
 
 from plone.registry.interfaces import IRegistry
 
 from collective.geo.settings.interfaces import IGeoSettings
 from collective.geo.mapwidget.interfaces import IMapLayer
 from collective.geo.mapwidget.interfaces import IDefaultMapLayers
-
-# from zope.interface import Interface
-# from zope.publisher.interfaces.http import IHTTPRequest
-# from collective.geo.mapwidget.interfaces import IMapWidget
 
 from collective.geo.mapwidget import GeoMapwidgetMessageFactory as _
 
@@ -30,8 +26,8 @@ class MapLayer(object):
     implements(IMapLayer)
     jsfactory = ""
     Title = u""
-    # we need a property to evaluate if the layer map is google, bing or yahoo 
-    # to include a external javascrpt
+    # we need a property to evaluate if the layer map is based on google, bing or yahoo
+    # maps to include a external javascrpt
     type = 'base'
 
     def __init__(self, view=None, request=None, context=None, widget=None):
@@ -193,18 +189,9 @@ class DefaultMapLayers(object):
 
     @property
     def default_layers(self):
-        return (u'osm',
-                u'google_ter', u'google_hyb', u'google_sat', u'google_map',
-                u'yahoo_hyb', u'yahoo_sat', u'yahoo_map',
-                u'bing_hyb', u'bing_aer', u'bing_rod', u'bing_map')
+        return (u'osm', )
 
     def layers(self, view, request, context, widget):
-        # getAdapters((Interface, IHTTPRequest, Interface, IMapWidget), IMapLayer)
-        # from zope.component import getMultiAdapter
-        # getMultiAdapter((self.view, self.request, self.context, self.widget), IMapLayer, name=layerid)
-        # pippo = [k for k, v in getAdapters((Interface, IHTTPRequest, Interface, IMapWidget), IMapLayer)
-
-        #TODO: remove this and put in control_panel
         default_layers = self.geo_settings.default_layers
         if not default_layers:
             default_layers = self.default_layers
