@@ -71,7 +71,7 @@ class GeoAdvancedConfGroup(group.Group):
     fields = advanced_group_fields()
 
     label = _(u"Advanced")
-    description = _(u"Advanced OpenLayers configuration")
+    description = _(u"Advanced configurations")
 
     def updateWidgets(self):
         super(GeoAdvancedConfGroup, self).updateWidgets()
