@@ -9,8 +9,6 @@ from collective.geo.mapwidget.interfaces import (IMaps, IMapWidget, IMapLayer,
                                                 IMapLayers, IMapView,
                                                 IDefaultMapLayers)
 
-# from collective.geo.mapwidget.maplayers import defaultlayers
-
 
 class MapView(BrowserView):
     '''
@@ -89,7 +87,8 @@ class MapWidgets(list):
                                                   IMapWidget,
                                                   name=mapid))
                 else:
-                    raise ValueError("Can't create IMapWidget for %s" % repr(mapid))
+                    raise ValueError("Can't create IMapWidget for %s"\
+                                                               % repr(mapid))
         else:
             # there are no mapfields let's look up the default widget
             self.__append('default-cgmap',
@@ -166,7 +165,8 @@ class MapLayers(dict):
         useDefaultLayers = getattr(self.widget, 'usedefault', True)
         if useDefaultLayers:
             default_layers = getUtility(IDefaultMapLayers)
-            layers.extend(default_layers.layers())
+            layers.extend(default_layers.layers(self.view, self.request,
+                                                self.context, self.widget))
 
         maplayers = getattr(self.widget, '_layers', None)
         if maplayers:
@@ -178,9 +178,14 @@ class MapLayers(dict):
                 if IMapLayer.providedBy(layerid):
                     layers.append(layerid)
                 elif isinstance(layerid, basestring):
-                    layers.append(getMultiAdapter((self.view, self.request, self.context, self.widget), IMapLayer, name=layerid))
+                    layers.append(getMultiAdapter((self.view,
+                                                   self.request,
+                                                   self.context,
+                                                   self.widget), IMapLayer,
+                                                                name=layerid))
                 else:
-                    raise ValueError("Can't create IMapLayer for %s" % repr(layerid))
+                    raise ValueError("Can't create IMapLayer for %s" % \
+                                                                repr(layerid))
         return layers
 
     @property

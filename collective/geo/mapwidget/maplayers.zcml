@@ -22,7 +22,7 @@
                zope.interface.Interface"
         provides = "collective.geo.mapwidget.interfaces.IMapLayer"
         factory = "collective.geo.mapwidget.maplayers.BingStreetMapLayer"
-        name = 'bmap'
+        name = 'bing_map'
         />
 
     <adapter
@@ -32,7 +32,7 @@
                zope.interface.Interface"
         provides = "collective.geo.mapwidget.interfaces.IMapLayer"
         factory = "collective.geo.mapwidget.maplayers.BingRoadsMapLayer"
-        name = 'brod'
+        name = 'bing_rod'
         />
 
     <adapter
@@ -42,7 +42,7 @@
                zope.interface.Interface"
         provides = "collective.geo.mapwidget.interfaces.IMapLayer"
         factory = "collective.geo.mapwidget.maplayers.BingAerialMapLayer"
-        name = 'baer'
+        name = 'bing_aer'
         />
 
     <adapter
@@ -52,7 +52,7 @@
                zope.interface.Interface"
         provides = "collective.geo.mapwidget.interfaces.IMapLayer"
         factory = "collective.geo.mapwidget.maplayers.BingHybridMapLayer"
-        name = 'bhyb'
+        name = 'bing_hyb'
         />
 
     <!-- google maps -->
@@ -63,7 +63,7 @@
                zope.interface.Interface"
         provides = "collective.geo.mapwidget.interfaces.IMapLayer"
         factory = "collective.geo.mapwidget.maplayers.GoogleStreetMapLayer"
-        name = 'gmap'
+        name = 'google_map'
         />
 
     <adapter
@@ -73,7 +73,7 @@
                zope.interface.Interface"
         provides = "collective.geo.mapwidget.interfaces.IMapLayer"
         factory = "collective.geo.mapwidget.maplayers.GoogleSatelliteMapLayer"
-        name = 'gsat'
+        name = 'google_sat'
     />
 
     <adapter
@@ -83,7 +83,7 @@
                zope.interface.Interface"
         provides = "collective.geo.mapwidget.interfaces.IMapLayer"
         factory = "collective.geo.mapwidget.maplayers.GoogleHybridMapLayer"
-        name = 'ghyb'
+        name = 'google_hyb'
         />
 
     <adapter
@@ -93,7 +93,7 @@
                zope.interface.Interface"
         provides = "collective.geo.mapwidget.interfaces.IMapLayer"
         factory = "collective.geo.mapwidget.maplayers.GoogleTerrainMapLayer"
-        name = 'gter'
+        name = 'google_ter'
     />
 
     <!-- yahoo maps -->
@@ -104,7 +104,7 @@
                zope.interface.Interface"
         provides = "collective.geo.mapwidget.interfaces.IMapLayer"
         factory = "collective.geo.mapwidget.maplayers.YahooStreetMapLayer"
-        name = 'ymap'
+        name = 'yahoo_map'
         />
 
     <adapter
@@ -114,7 +114,7 @@
                zope.interface.Interface"
         provides = "collective.geo.mapwidget.interfaces.IMapLayer"
         factory = "collective.geo.mapwidget.maplayers.YahooSatelliteMapLayer"
-        name = 'ysat'
+        name = 'yahoo_sat'
         />
 
     <adapter
@@ -124,6 +124,6 @@
                zope.interface.Interface"
         provides = "collective.geo.mapwidget.interfaces.IMapLayer"
         factory = "collective.geo.mapwidget.maplayers.YahooHybridMapLayer"
-        name = 'yhyb'
+        name = 'yahoo_hyb'
         />
 </configure>

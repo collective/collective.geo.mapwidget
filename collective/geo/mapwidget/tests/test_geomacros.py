@@ -17,61 +17,49 @@ class TestSetup(base.TestCase):
         self.assertEquals(self.settings.zoom, Decimal("10.0"))
 
     def test_property_map_center(self):
-        self.assertEquals(self.settings.map_center, (Decimal("0.00"), Decimal("0.0")))
-
-    def test_property_googlemaps(self):
-        self.assertEquals(self.settings.googlemaps, True)
+        self.assertEquals(self.settings.map_center,
+                            (Decimal("0.00"), Decimal("0.0")))
 
     def test_property_googleapi(self):
         self.assertEquals(self.settings.googleapi,
-                          u'ABQIAAAAaKes6QWqobpCx2AOamo-shTwM0brOpm-All5BF6PoaKBxRWWERSUWbHs4SIAMkeC1KV98E2EdJKuJw')
+              u'ABQIAAAAaKes6QWqobpCx2AOamo-shTwM0brOpm-All5BF6PoaKBxRWWERSUWbHs4SIAMkeC1KV98E2EdJKuJw')
 
     def test_property_jsgooglemaps(self):
+        # when a layer is yahoo_map we should include external javascript
+        self.geosettings.default_layers = [u'google_map']
         self.assertEquals(self.settings.google_maps_js,
-                          'http://maps.google.com/maps?file=api&v=2&key=ABQIAAAAaKes6QWqobpCx2AOamo-shTwM0brOpm-All5BF6PoaKBxRWWERSUWbHs4SIAMkeC1KV98E2EdJKuJw')
+              'http://maps.google.com/maps?file=api&v=2&key=ABQIAAAAaKes6QWqobpCx2AOamo-shTwM0brOpm-All5BF6PoaKBxRWWERSUWbHs4SIAMkeC1KV98E2EdJKuJw')
 
-        # when IGeoSettings.googlemaps equals False self.settings.googleapi must be ''
-        self.geosettings.googlemaps = False
-        self.assertEquals(self.settings.google_maps_js,
-                          None)
 
-    def test_property_yahoomaps(self):
-        self.assertEquals(self.settings.yahoomaps, False)
+        self.geosettings.default_layers = [u'osm']
+        self.assertEquals(self.settings.google_maps_js, None)
 
     def test_property_yahooapi(self):
         self.assertEquals(self.settings.yahooapi,
                           u'YOUR_API_KEY')
 
     def test_property_jsyahoomaps(self):
-        # IGeoSettings yahoomaps == True
-        self.geosettings.yahoomaps = True
+        # when a layer is yahoo_map we should include external javascript
+        self.geosettings.default_layers = [u'yahoo_map']
         self.assertEquals(self.settings.yahoo_maps_js,
-                          'http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=YOUR_API_KEY')
+              'http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=YOUR_API_KEY')
 
-        # when IGeoSettings.yahoomaps equals False self.settings.yahooapi must be ''
-        self.geosettings.yahoomaps = False
-        self.assertEquals(self.settings.yahoo_maps_js,
-                          None)
-
-    def test_property_bingmaps(self):
-        self.assertEquals(self.settings.bingmaps, False)
+        self.geosettings.default_layers = [u'osm']
+        self.assertEquals(self.settings.yahoo_maps_js, None)
 
     def test_property_jsbingmaps(self):
-        # IGeoSettings bingmaps == True
-        self.geosettings.bingmaps = True
+        # when a layer is bing_map we should include external javascript
+        self.geosettings.default_layers = [u'bing_map']
         self.assertEquals(self.settings.bing_maps_js,
-                          'http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6')
+              'http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6')
 
-        # when IGeoSettings.yahoomaps equals False self.settings.yahooapi must be ''
-        self.geosettings.bingmaps = False
-        self.assertEquals(self.settings.bing_maps_js,
-                          None)
+        self.geosettings.default_layers = [u'osm']
+        self.assertEquals(self.settings.bing_maps_js, None)
 
     def test_property_geosettingjs(self):
-        self.geosettings.googlemaps = True
         self.assertEquals(self.settings.geo_setting_js,
-                          "cgmap.state = {'default': {lon: 0.000000, lat: 0.000000, zoom: 10 }};\n"
-                          "cgmap.imgpath = '%s/img/';" % self.portal.absolute_url())
+            "cgmap.state = {'default': {lon: 0.000000, lat: 0.000000, zoom: 10 }};\n"
+            "cgmap.imgpath = '%s/img/';" % self.portal.absolute_url())
 
 
 def test_suite():

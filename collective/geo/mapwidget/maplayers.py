@@ -4,7 +4,7 @@ base maps. These layers can be configured in the geo-settings control panel
 or may be re-used in manually configured map-widgets.
 """
 from zope.interface import implements
-from zope.component import getUtility, getAdapters
+from zope.component import getUtility, queryMultiAdapter #, getAdapters
 
 from plone.registry.interfaces import IRegistry
 
@@ -12,9 +12,9 @@ from collective.geo.settings.interfaces import IGeoSettings
 from collective.geo.mapwidget.interfaces import IMapLayer
 from collective.geo.mapwidget.interfaces import IDefaultMapLayers
 
-from zope.interface import Interface
-from zope.publisher.interfaces.http import IHTTPRequest
-from collective.geo.mapwidget.interfaces import IMapWidget
+# from zope.interface import Interface
+# from zope.publisher.interfaces.http import IHTTPRequest
+# from collective.geo.mapwidget.interfaces import IMapWidget
 
 from collective.geo.mapwidget import GeoMapwidgetMessageFactory as _
 
@@ -29,7 +29,10 @@ class MapLayer(object):
 
     implements(IMapLayer)
     jsfactory = ""
-    title = u""
+    Title = u""
+    # we need a property to evaluate if the layer map is google, bing or yahoo 
+    # to include a external javascrpt
+    type = 'base'
 
     def __init__(self, view=None, request=None, context=None, widget=None):
         self.view = view
@@ -40,8 +43,8 @@ class MapLayer(object):
 
 class OSMMapLayer(MapLayer):
 
-    name = "osm"
-    title = _(u"OpenStreetMap")
+    name = u"osm"
+    Title = _(u"OpenStreetMap")
 
     jsfactory = """
     function() { return new OpenLayers.Layer.TMS( '%s',
@@ -49,121 +52,133 @@ class OSMMapLayer(MapLayer):
         { 'type' : 'png',
           getURL: cgmap.osm_getTileURL,
           displayOutsideMaxExtent: true,
-          attribution: '<a href="http://www.openstreetmap.org/">OpenStreetMap</a>'});}""" % title
+          attribution: '<a href="http://www.openstreetmap.org/">OpenStreetMap</a>'});}""" % Title
 
 
 class BingStreetMapLayer(MapLayer):
 
-    name = "bmap"
-    title = _(u"Bing Streets")
+    name = u"bing_map"
+    Title = _(u"Bing Streets")
+    type = 'bing'
 
     jsfactory = """
     function() { return new OpenLayers.Layer.VirtualEarth('%s',
         { 'type': VEMapStyle.Shaded,
-          'sphericalMercator': true });}""" % title
+          'sphericalMercator': true });}""" % Title
 
 
 class BingRoadsMapLayer(MapLayer):
 
-    name = "brod"
-    title = _(u"Bing Roads")
+    name = u"bing_rod"
+    Title = _(u"Bing Roads")
+    type = 'bing'
+
 
     jsfactory = """
     function() { return new OpenLayers.Layer.VirtualEarth('%s',
         { 'type': VEMapStyle.Road,
-          'sphericalMercator': true });}""" % title
+          'sphericalMercator': true });}""" % Title
 
 
 class BingAerialMapLayer(MapLayer):
 
-    name = "baer"
-    title = _(u"Bing Aerial")
+    name = u"bing_aer"
+    Title = _(u"Bing Aerial")
+    type = 'bing'
 
     jsfactory = """
     function() { return new OpenLayers.Layer.VirtualEarth('%s',
         { 'type': VEMapStyle.Aerial,
-          'sphericalMercator': true });}""" % title
+          'sphericalMercator': true });}""" % Title
 
 
 class BingHybridMapLayer(MapLayer):
 
-    name = "bhyb"
-    title = _(u"Bing Hybrid")
+    name = u"bing_hyb"
+    Title = _(u"Bing Hybrid")
+    type = 'bing'
 
     jsfactory = """
     function() { return new OpenLayers.Layer.VirtualEarth('%s',
         { 'type': VEMapStyle.Hybrid,
-          'sphericalMercator': true });}""" % title
+          'sphericalMercator': true });}""" % Title
 
 
 class GoogleStreetMapLayer(MapLayer):
 
-    name = "gmap"
-    title = _(u"Google")
+    name = u"google_map"
+    Title = _(u"Google")
+    type = 'google'
 
     jsfactory = """
     function() { return new OpenLayers.Layer.Google('%s',
-        {'sphericalMercator': true});}""" % title
+        {'sphericalMercator': true});}""" % Title
 
 
 class GoogleSatelliteMapLayer(MapLayer):
 
-    name = "gsat"
-    title = _(u"Satellite (Google)")
+    name = u"google_sat"
+    Title = _(u"Satellite (Google)")
+    type = 'google'
 
     jsfactory = """
     function() { return new OpenLayers.Layer.Google('%s' ,
-        {'type': G_SATELLITE_MAP, 'sphericalMercator': true});}""" % title
+        {'type': G_SATELLITE_MAP, 'sphericalMercator': true});}""" % Title
 
 
 class GoogleHybridMapLayer(MapLayer):
 
-    name = "ghyb"
-    title = _(u"Hybrid (Google)")
+    name = u"google_hyb"
+    Title = _(u"Hybrid (Google)")
+    type = 'google'
 
     jsfactory = """
     function() { return new OpenLayers.Layer.Google('%s' ,
-        {'type': G_HYBRID_MAP, 'sphericalMercator': true});}""" % title
+        {'type': G_HYBRID_MAP, 'sphericalMercator': true});}""" % Title
 
 
 class GoogleTerrainMapLayer(MapLayer):
 
-    name = "gter"
-    title = _(u"Terrain (Google)")
+    name = u"google_ter"
+    Title = _(u"Terrain (Google)")
+    type = 'google'
 
     jsfactory = """
     function() { return new OpenLayers.Layer.Google('%s' ,
-        {'type': G_PHYSICAL_MAP, 'sphericalMercator': true});}""" % title
+        {'type': G_PHYSICAL_MAP, 'sphericalMercator': true});}""" % Title
 
 
 class YahooStreetMapLayer(MapLayer):
 
-    name = "ymap"
-    title = _(u"Yahoo Street")
+    name = u"yahoo_map"
+    Title = _(u"Yahoo Street")
+    type = 'yahoo'
 
     jsfactory = """
     function() { return new OpenLayers.Layer.Yahoo('%s',
-        {'type': YAHOO_MAP_REG, 'sphericalMercator': true});}""" % title
+        {'type': YAHOO_MAP_REG, 'sphericalMercator': true});}""" % Title
 
 
 class YahooSatelliteMapLayer(MapLayer):
 
-    name = "ysat"
-    title = _(u"Yahoo Satellite")
-    
+    name = u"yahoo_sat"
+    Title = _(u"Yahoo Satellite")
+    type = 'yahoo'
+
     jsfactory = """
     function() { return new OpenLayers.Layer.Yahoo('%s',
-        {'type': YAHOO_MAP_SAT, 'sphericalMercator': true});}""" % title
+        {'type': YAHOO_MAP_SAT, 'sphericalMercator': true});}""" % Title
 
 
 class YahooHybridMapLayer(MapLayer):
 
-    name = "yhyb"
-    title = _(u"Yahoo Hybrid")
+    name = u"yahoo_hyb"
+    Title = _(u"Yahoo Hybrid")
+    type = 'yahoo'
 
     jsfactory = """
     function() { return new OpenLayers.Layer.Yahoo('%s',
-        {'type': YAHOO_MAP_HYB, 'sphericalMercator': true});}""" % title
+        {'type': YAHOO_MAP_HYB, 'sphericalMercator': true});}""" % Title
 
 
 class DefaultMapLayers(object):
@@ -176,25 +191,29 @@ class DefaultMapLayers(object):
     def geo_settings(self):
         return getUtility(IRegistry).forInterface(IGeoSettings)
 
-    def layers(self):
+    @property
+    def default_layers(self):
+        return (u'osm',
+                u'google_ter', u'google_hyb', u'google_sat', u'google_map',
+                u'yahoo_hyb', u'yahoo_sat', u'yahoo_map',
+                u'bing_hyb', u'bing_aer', u'bing_rod', u'bing_map')
+
+    def layers(self, view, request, context, widget):
         # getAdapters((Interface, IHTTPRequest, Interface, IMapWidget), IMapLayer)
         # from zope.component import getMultiAdapter
         # getMultiAdapter((self.view, self.request, self.context, self.widget), IMapLayer, name=layerid)
         # pippo = [k for k, v in getAdapters((Interface, IHTTPRequest, Interface, IMapWidget), IMapLayer)
 
-        layers = [OSMMapLayer()]
-        if self.geo_settings.googlemaps:
-            layers.append(GoogleStreetMapLayer())
-            layers.append(GoogleSatelliteMapLayer())
-            layers.append(GoogleHybridMapLayer())
-            layers.append(GoogleTerrainMapLayer())
-        if self.geo_settings.yahoomaps:
-            layers.append(YahooStreetMapLayer())
-            layers.append(YahooSatelliteMapLayer())
-            layers.append(YahooHybridMapLayer())
-        if self.geo_settings.bingmaps:
-            layers.append(BingStreetMapLayer())
-            layers.append(BingRoadsMapLayer())
-            layers.append(BingAerialMapLayer())
-            layers.append(BingHybridMapLayer())
+        #TODO: remove this and put in control_panel
+        default_layers = self.geo_settings.default_layers
+        if not default_layers:
+            default_layers = self.default_layers
+
+        layers = []
+        for layerid in default_layers:
+            layer = queryMultiAdapter((None, None, None, None),
+                                                    IMapLayer, name=layerid)
+            if layer:
+                layers.append(layer)
+
         return layers

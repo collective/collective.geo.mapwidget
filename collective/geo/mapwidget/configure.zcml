@@ -27,4 +27,9 @@
       factory="collective.geo.settings.utils.geo_styles"
       />
 
+  <utility
+      factory=".vocabularies.maplayersVocab"
+      name="maplayersVocab"
+      provides="zope.app.schema.vocabulary.IVocabularyFactory" />
+
 </configure>

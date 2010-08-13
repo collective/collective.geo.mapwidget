@@ -15,6 +15,10 @@ class GeoSettingsView(object):
         self.geosettings = getUtility(IRegistry).forInterface(IGeoSettings)
 
     @property
+    def default_layers(self):
+        return self.geosettings.default_layers
+
+    @property
     def zoom(self):
         return  self.geosettings.zoom
 
@@ -28,7 +32,10 @@ class GeoSettingsView(object):
 
     @property
     def googlemaps(self):
-        return  self.geosettings.googlemaps
+        for layer_id in self.default_layers:
+            if layer_id.startswith('google'):
+                return True
+        return False
 
     @property
     def googleapi(self):
@@ -45,7 +52,10 @@ class GeoSettingsView(object):
 
     @property
     def yahoomaps(self):
-        return self.geosettings.yahoomaps
+        for layer_id in self.default_layers:
+            if layer_id.startswith('yahoo'):
+                return True
+        return False
 
     @property
     def yahooapi(self):
@@ -60,7 +70,10 @@ class GeoSettingsView(object):
 
     @property
     def bingmaps(self):
-        return self.geosettings.bingmaps
+        for layer_id in self.default_layers:
+            if layer_id.startswith('bing'):
+                return True
+        return False
 
     @property
     def bing_maps_js(self):

@@ -1,5 +1,6 @@
 from Acquisition import aq_inner
 
+from zope.schema import Choice
 from zope.interface import implements
 from zope.app.pagetemplate import viewpagetemplatefile
 from zope.app.component.hooks import getSite
@@ -18,10 +19,12 @@ from collective.z3cform.colorpicker.colorpickeralpha import ColorpickerAlphaFiel
 
 from collective.geo.settings.interfaces import IGeoSettings, IGeoFeatureStyle
 from collective.geo.settings.events import GeoSettingsEvent
+
 from collective.geo.mapwidget.interfaces import IMapView
-from collective.geo.mapwidget import GeoMapwidgetMessageFactory as _
 from collective.geo.mapwidget.browser.widget import MapWidget
 from collective.geo.mapwidget.maplayers import MapLayer
+
+from collective.geo.mapwidget import GeoMapwidgetMessageFactory as _
 
 
 def back_to_controlpanel(self):
@@ -52,12 +55,31 @@ class GeoStylesGroup(group.Group):
     description = _(u"Set default styles for geografical shapes")
 
 
+def advanced_group_fields():
+    form_fields = field.Fields(IGeoSettings).select('googleapi',
+                                               'yahooapi',
+                                               'default_layers',
+                                               'imgpath')
+
+    default_layer_field = form_fields['default_layers']
+    default_layer_field.field.value_type = Choice(title=_(u"Layers"),
+                                                  source="maplayersVocab")
+    return form_fields
+
+
 class GeoAdvancedConfGroup(group.Group):
-    fields = field.Fields(IGeoSettings).select('imgpath')
+    fields = advanced_group_fields()
 
     label = _(u"Advanced")
     description = _(u"Advanced OpenLayers configuration")
 
+    def updateWidgets(self):
+        super(GeoAdvancedConfGroup, self).updateWidgets()
+        widgets = ('googleapi', 'yahooapi')
+        for w in self.widgets:
+            if w in widgets:
+                self.widgets[w].size = 80
+                self.widgets[w].update()
 
 
 class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
@@ -65,12 +87,7 @@ class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
                                             'form-with-subforms.pt')
     form.extends(form.EditForm, ignoreButtons=True)
 
-    fields = field.Fields(IGeoSettings).select('zoom',
-                                               'googlemaps',
-                                               'googleapi',
-                                               'yahoomaps',
-                                               'yahooapi',
-                                               'bingmaps')
+    fields = field.Fields(IGeoSettings).select('zoom')
 
     default_fieldset_label = _(u"Base settings")
 
@@ -98,11 +115,6 @@ class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
             subform.update()
         super(GeoControlpanelForm, self).update()
 
-    def updateWidgets(self):
-        super(GeoControlpanelForm, self).updateWidgets()
-        self.widgets['googleapi'].size = 80
-        self.widgets['yahooapi'].size = 80
-
     @button.buttonAndHandler(_(u'Apply'), name='apply')
     def handle_apply(self, action):
         subdata, suberrors = self.subforms[0].extractData()
@@ -122,7 +134,6 @@ class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
 
         self.ptool.addPortalMessage(self.status, 'info')
         self.request.response.redirect(self.back_link)
-
 
     @button.buttonAndHandler(_(u'Cancel'), name='cancel')
     def handle_cancel(self, action):
@@ -159,8 +170,9 @@ class GeoControlpanel(BrowserView):
         return self.form_instance.render()
 
     def update(self):
-        # see: Module plone.app.z3cform.kss.validation, line 47, in validate_input
-        #      AttributeError: 'GeoControlpanel' object has no attribute 'update'
+        # see:
+        # Module plone.app.z3cform.kss.validation, line 47, in validate_input
+        # AttributeError: 'GeoControlpanel' object has no attribute 'update'
         self.form_instance.update()
         self.prefix = self.form_instance.prefix
         self.widgets = self.form_instance.widgets
