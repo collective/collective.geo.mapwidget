@@ -187,8 +187,6 @@ class GeoControlpanel(BrowserView):
 class ControlPanelMapWidget(MapWidget):
 
     mapid = 'geosettings-cgmap'
-    style = "height:450px"
-
     _layers = ['markeredit']
 
     def __init__(self, view, request, context):

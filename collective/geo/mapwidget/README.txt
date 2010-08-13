@@ -67,7 +67,7 @@ cgmap.state and cgmap.config to initialise OpenLayers on these elements.
           <script type="text/javascript">cgmap.state = {'default': {lon: 0.000000, lat: 0.000000, zoom: 10 }};
           cgmap.imgpath = 'http://nohost/plone/img/';</script>
     ...
-          <div id="default-cgmap" class="widget-cgmap"
+          <div id="default-cgmap" class="widget-cgmap">
     ...
           <script type="text/javascript">cgmap.extendconfig({layers: [
         function() { return new OpenLayers.Layer.TMS( 'OpenStreetMap',
@@ -91,8 +91,7 @@ Let's examine the result:
     >>> print view()
     <html xmlns="http://www.w3.org/1999/xhtml">
     ...
-          <div id="mymap1" class="mymapclass1 widget-cgmap"
-               style="witdh:100%;height:450px;">
+          <div id="mymap1" class="mymapclass1 widget-cgmap">
             <!--   openlayers map     -->
           </div>
           <script type="text/javascript">cgmap.extendconfig({layers: [
@@ -113,8 +112,7 @@ Let's examine the result with an unchanged template:
     >>> print view()
     <html xmlns="http://www.w3.org/1999/xhtml">
     ...
-          <div id="mymap1" class="mymapclass1 widget-cgmap"
-               style="witdh:100%;height:450px;">
+          <div id="mymap1" class="mymapclass1 widget-cgmap">
             <!--   openlayers map     -->
           </div>
           <script type="text/javascript">cgmap.extendconfig({layers: [
@@ -150,16 +148,14 @@ Let's see what happens:
     >>> print view()
     <html xmlns="http://www.w3.org/1999/xhtml">
     ...
-          <div id="mymap1" class="mymapclass1 widget-cgmap"
-               style="witdh:100%;height:450px;">
+          <div id="mymap1" class="mymapclass1 widget-cgmap">
             <!--   openlayers map     -->
           </div>
           <script type="text/javascript">cgmap.extendconfig({layers: [
         function() { return new OpenLayers.Layer.TMS( 'OpenStreetMap',
             'http://tile.openstreetmap.org/',
     ...
-          <div id="mymap2" class="mymapclass2 widget-cgmap"
-               style="witdh:100%;height:450px;">
+          <div id="mymap2" class="mymapclass2 widget-cgmap">
             <!--   openlayers map     -->
           </div>
           <script type="text/javascript">cgmap.extendconfig({layers: [
@@ -189,16 +185,14 @@ result:
     >>> print view()
     <html xmlns="http://www.w3.org/1999/xhtml">
     ...
-          <div id="mymap1" class="mymapclass1 widget-cgmap"
-               style="witdh:100%;height:450px;">
+          <div id="mymap1" class="mymapclass1 widget-cgmap">
             <!--   openlayers map     -->
           </div>
           <script type="text/javascript">cgmap.extendconfig({layers: [
         function() { return new OpenLayers.Layer.TMS( 'OpenStreetMap',
             'http://tile.openstreetmap.org/',
     ...
-          <div id="mymap2" class="mymapclass2 widget-cgmap"
-               style="witdh:100%;height:450px;">
+          <div id="mymap2" class="mymapclass2 widget-cgmap">
             <!--   openlayers map     -->
           </div>
           <script type="text/javascript">cgmap.extendconfig({layers: [
@@ -226,16 +220,14 @@ name). So let's update our configuraion and fields:
     >>> print view()
     <html xmlns="http://www.w3.org/1999/xhtml">
     ...
-          <div id="mymap1" class="mymapclass1 widget-cgmap"
-               style="witdh:100%;height:450px;">
+          <div id="mymap1" class="mymapclass1 widget-cgmap">
             <!--   openlayers map     -->
           </div>
           <script type="text/javascript">cgmap.extendconfig({layers: [
         function() { return new OpenLayers.Layer.TMS( 'OpenStreetMap',
             'http://tile.openstreetmap.org/',
     ...
-          <div id="mymap2" class="mymapclass2 widget-cgmap"
-               style="witdh:100%;height:450px;">
+          <div id="mymap2" class="mymapclass2 widget-cgmap">
             <!--   openlayers map     -->
           </div>
           <script type="text/javascript">cgmap.extendconfig({layers: [
@@ -278,8 +270,7 @@ should get an additional layer.
     >>> print view()
     <html xmlns="http://www.w3.org/1999/xhtml">
     ...
-          <div id="mymap1" class="mymapclass1 widget-cgmap"
-               style="witdh:100%;height:450px;">
+          <div id="mymap1" class="mymapclass1 widget-cgmap">
             <!--   openlayers map     -->
           </div>
           <script type="text/javascript">cgmap.extendconfig({layers: [
@@ -301,8 +292,7 @@ request, context, widget), name):
     >>> print view()
     <html xmlns="http://www.w3.org/1999/xhtml">
     ...
-          <div id="mymap1" class="mymapclass1 widget-cgmap"
-               style="witdh:100%;height:450px;">
+          <div id="mymap1" class="mymapclass1 widget-cgmap">
             <!--   openlayers map     -->
           </div>
           <script type="text/javascript">cgmap.extendconfig({layers: [
@@ -350,8 +340,7 @@ As this becomes an unprojected base layer we don't want the default base layers
     >>> print view()
     <html xmlns="http://www.w3.org/1999/xhtml">
     ...
-          <div id="mymap1" class="mymapclass1 widget-cgmap"
-               style="witdh:100%;height:450px;">
+          <div id="mymap1" class="mymapclass1 widget-cgmap">
             <!--   openlayers map     -->
           </div>
           <script type="text/javascript">cgmap.extendconfig({layers: [

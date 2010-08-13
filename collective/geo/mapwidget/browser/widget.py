@@ -116,7 +116,6 @@ class MapWidget(object):
 
     mapid = 'default-cgmap'
     klass = 'widget-cgmap'
-    style = "witdh:100%;height:450px;"
     js = "// default"
     _layers = []
 

@@ -37,10 +37,8 @@
                   tal:define="cgmap nocall:cgmap | nothing;
                               mapwidgets view/@@collectivegeo-maps/mapwidgets;
                               cgmap python:cgmap or mapwidgets[0]">
-      <div id="map" class="widget-cgmap" style=""
-           tal:attributes="id cgmap/mapid | string:map;
-                           class cgmap/klass | string:widget-cgmap;
-                           style cgmap/style | default;">
+      <div id="map" class="widget-cgmap" tal:attributes="id cgmap/mapid | string:map;
+                           class cgmap/klass | string:widget-cgmap">
         <!--   openlayers map     -->
       </div>
       <script type="text/javascript"
