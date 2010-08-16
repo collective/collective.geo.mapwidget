@@ -409,12 +409,12 @@ OpenLayers.Control.WKTEditingToolbar = OpenLayers.Class(
             var controls = [
                 new OpenLayers.Control.DrawFeature(layer, OpenLayers.Handler.Point, {'displayClass': 'olControlDrawFeaturePoint'}),
                 new OpenLayers.Control.DrawFeature(layer, OpenLayers.Handler.Path, {'displayClass': 'olControlDrawFeaturePath'}),
- 	        new OpenLayers.Control.DrawFeature(layer, OpenLayers.Handler.Polygon, {'displayClass': 'olControlDrawFeaturePolygon'}),
+                new OpenLayers.Control.DrawFeature(layer, OpenLayers.Handler.Polygon, {'displayClass': 'olControlDrawFeaturePolygon'}),
                 new OpenLayers.Control.ModifyFeature(layer)
             ];
             this.addControls(controls);
 
-            this.defaultControl = this.controls[0];
+            this.defaultControl = this.controls[4];
 
             // init edit layer features
             if (this.wktid)
