@@ -17,7 +17,7 @@ var cgmap = function($)
     $(document).ready( function() {
 
         // set images path
-        if (cgmap.imgpath) {OpenLayers.ImgPath = cgmap.imgpath}
+        if (cgmap.imgpath) {OpenLayers.ImgPath = cgmap.imgpath;}
 
         $.each($('div.widget-cgmap'), function(i, map) {
             var mapid = map.id;
@@ -47,10 +47,10 @@ var cgmap = function($)
     {
         var iname = 'cgmap_state.' + id + "." + name + ":record";
         var inputs = forms.find("[name='" + iname + "']");
-        if (inputs.length == 0)
+        if (inputs.length === 0)
         {
             var keyelems = forms.find("[name='cgmap_state_mapids']");
-            if (keyelems.length == 0)
+            if (keyelems.length === 0)
             {
                 forms.append("<input type='hidden' name='cgmap_state_mapids' value='" + id + "' />");
             }
@@ -103,15 +103,67 @@ var cgmap = function($)
             for (var i=0; i < this.layers.length; i++)
             {
                 var layer = this.layers[i];
-                if ((!layer.visibility) || layer.isBaseLayer) continue;
+                if ((!layer.visibility) || layer.isBaseLayer) {continue;}
                 layeridxs.push(i);
             }
             set_input(forms, this.div.id, 'activelayers', layeridxs.join(' '));
         }
     }
 
-
     return $.extend(cgmap, {
+        geocoding: function(map_id, layer_name, geocoderview_url){
+            var address = $('input[name=geocoding-address]').val();
+            var container = $('#location-options');
+            var list = container.children('ul');
+            /* clear container */
+            container.hide();
+            list.empty();
+            $('#geocoder-loader').show();
+
+            $.getJSON(geocoderview_url, {'address': address}, function(data) {
+                if (data === null) {
+                    $('#geocodre-error').show();
+                    $('.geocoder-wrapper').addClass('error');
+                } else {
+                    $('#geocodre-error').hide();
+                    $('.geocoder-wrapper').removeClass('error');
+
+                    var i = 0;
+                    for (i = 0; i < data.length; i++){
+                      var link = $(document.createElement('a')).append(data[i][0]); //.attr('href','');
+                      link.bind('click', {idx: i}, function(event){
+                        var idx = event.data.idx;
+                        cgmap.set_coordinates(map_id, layer_name, data[idx][1][1], data[idx][1][0]);
+                        list.children().removeClass('selected');
+                        $(this).parent().addClass('selected');
+                        return false;
+                      });
+
+                      var li = $(document.createElement('li'));
+                      li.append(link);
+                      list.append(li);
+                    }
+                    container.show();
+                }
+                $('#geocoder-loader').hide();
+            });
+        },
+
+        set_coordinates: function(map_id, layer_name, lon, lat) {
+            $('#form-widgets-wkt').val('POINT (' + lon + " " + lat +")");
+            var map = cgmap.config[map_id].map;
+            lonlat = new OpenLayers.LonLat(lon, lat);
+            var point = new OpenLayers.Geometry.Point(lon, lat);
+
+            if (map.displayProjection) {
+              lonlat.transform(map.displayProjection, map.getProjectionObject());
+              point.transform(map.displayProjection, map.getProjectionObject());
+            }
+
+            var layer = map.getLayersBy('name', layer_name);
+            layer[0].addFeatures([new OpenLayers.Feature.Vector(point)]);
+            cgmap.config.geoshapemap.map.setCenter(lonlat, 10);
+        },
 
         osm_getTileURL: function(bounds)
         {
@@ -194,17 +246,17 @@ var cgmap = function($)
              */
             var forms = $('form');
             var state = cgmap.state[mapid];
-            if (state.lon != undefined)
+            if (state.lon !== undefined)
             {
                 pos.lon = state.lon;
                 set_input(forms, mapid, 'lon', pos.lon);
             }
-            if (state.lat != undefined)
+            if (state.lat !== undefined)
             {
                 pos.lat = state.lat;
                 set_input(forms, mapid, 'lat', pos.lat);
             }
-            if (state.zoom  != undefined)
+            if (state.zoom  !== undefined)
             {
                 pos.zoom = state.zoom;
                 set_input(forms, mapid, 'zoom', pos.zoom);
@@ -225,7 +277,7 @@ var cgmap = function($)
             }
             /* apply active layers */
             // TODO: need to use layer name.. but may contain spaces
-            if (state.activebaselayer != undefined)
+            if (state.activebaselayer !== undefined)
             {
                 var baseLayer = map.getLayersByName(state.activebaselayer)[0];
                 if (baseLayer)
@@ -234,7 +286,7 @@ var cgmap = function($)
                 }
                 set_input(forms, mapid, 'activebaselayer', state.activebaselayer);
             }
-            if (state.activelayers != undefined)
+            if (state.activelayers !== undefined)
             {
                 var activelayers = state.activelayers.split(' ');
                 for (i=0; i< map.layers.length; i++)
@@ -270,7 +322,7 @@ var cgmap = function($)
                 projection: new OpenLayers.Projection("EPSG:900913"),
                 displayProjection: new OpenLayers.Projection("EPSG:4326"),
                 units: "m",
-                //numZoomLevels: 22, // 19
+                numZoomLevels: 19,
                 maxResolution: 156543.0339,
                 maxExtent: new OpenLayers.Bounds( -20037508, -20037508,
                                                   20037508, 20037508.34),

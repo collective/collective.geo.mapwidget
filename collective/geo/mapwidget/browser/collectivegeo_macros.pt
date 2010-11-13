@@ -2,7 +2,7 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      i18n:domain="collective.geo.openlayers"
+      i18n:domain="collective.geo.mapwidget"
       tal:omit-tag="">
   <head>
   </head>
@@ -47,6 +47,37 @@
               tal:content="structure cgmap/js | nothing"><!-- additional javascript --></script>
     </metal:define>
 
+    <tal:comment>macro for geocoding stuff</tal:comment>
+    <metal:define define-macro="geocoding">
+      <div class="field geocoder-wrapper"
+            tal:define="portal_state context/@@plone_portal_state;
+                        portal_url portal_state/portal_url;">
+        <label for="geocoding-address"
+          i18n:translate="">Find places</label>
+        <img id="geocoder-loader" 
+              style="display: none"
+          tal:attributes="src string:$portal_url/++resource++collectivegeo-loader.gif" 
+              width="16px" height="11px"/>
+        <br/>
+        <div class="fieldErrorBox" id="geocodre-error"
+              style="display: none"
+              i18n:translate="">No corresponding geographic location could be found for the
+                     specified location, possibly because the address is relatively
+                     new, or because it may be incorrect.</div>
+        <input type="text" name="geocoding-address" value=""
+                tal:attributes="value context/getLocation | nothing"/>
+        <input type="button"
+          i18n:attributes="value" value="Search" id="cgeo-get-location" />
+
+        <div id="location-options" style="display: none">
+          <div class="formHelp"
+              i18n:translate="">Select a location from the list below to set the coordinates.</div>
+          <ul></ul>
+        </div>
+      </div>
+
+      <div class="visualClear" ><!-- clear floats --></div>    
+    </metal:define>
   </body>
 
 </html>

@@ -7,7 +7,8 @@ from collective.geo.settings.interfaces import IGeoSettings
 
 
 class GeoSettingsView(object):
-    """ Geo Settings macros """
+    """Geo Settings macros
+    """
 
     def __init__(self, context, request):
         self.context = context
@@ -44,9 +45,9 @@ class GeoSettingsView(object):
     @property
     def google_maps_js(self):
         if self.googlemaps:
-            #  google maps 3 api -- needs dev openlayer version...
-            # return 'http://maps.google.com/maps/api/js?sensor=false'
-            return 'http://maps.google.com/maps?file=api&v=2&key=%s' % self.googleapi
+            #  google maps 3 api -- needs openlayer 2.10 version...
+            return 'http://maps.google.com/maps/api/js?sensor=false'
+            # return 'http://maps.google.com/maps?file=api&v=2&key=%s' % self.googleapi
         else:
             return None
 
@@ -105,6 +106,10 @@ class GeoSettingsView(object):
             imgpath = Expression(str(self.imgpath))(getExprContext(self.context))
         except:
             imgpath = ''
+        
+        #we portal_url to get geocoder view 
+        portal_url = self.context.restrictedTraverse('plone_portal_state').portal_url()
+        ret.append("cgmap.portal_url = '%s';" % portal_url)
 
         ret.append("cgmap.imgpath = '%s';" % imgpath)
         return '\n'.join(ret)

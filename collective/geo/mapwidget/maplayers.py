@@ -26,8 +26,8 @@ class MapLayer(object):
     implements(IMapLayer)
     jsfactory = ""
     Title = u""
-    # we need a property to evaluate if the layer map is based on google, bing or yahoo
-    # maps to include a external javascrpt
+    # we need a property to evaluate if the layer map is based on google,
+    # bing or yahoo maps to include a external javascrpt
     type = 'base'
 
     def __init__(self, view=None, request=None, context=None, widget=None):
@@ -48,6 +48,7 @@ class OSMMapLayer(MapLayer):
         { 'type' : 'png',
           getURL: cgmap.osm_getTileURL,
           displayOutsideMaxExtent: true,
+          numZoomLevels: 19,
           attribution: '<a href="http://www.openstreetmap.org/">OpenStreetMap</a>'});}""" % Title
 
 
@@ -108,7 +109,7 @@ class GoogleStreetMapLayer(MapLayer):
 
     jsfactory = """
     function() { return new OpenLayers.Layer.Google('%s',
-        {'sphericalMercator': true});}""" % Title
+        {'sphericalMercator': true, numZoomLevels: 20});}""" % Title
 
 
 class GoogleSatelliteMapLayer(MapLayer):
@@ -119,7 +120,8 @@ class GoogleSatelliteMapLayer(MapLayer):
 
     jsfactory = """
     function() { return new OpenLayers.Layer.Google('%s' ,
-        {'type': G_SATELLITE_MAP, 'sphericalMercator': true});}""" % Title
+        {'type': google.maps.MapTypeId.SATELLITE, numZoomLevels: 22,
+         'sphericalMercator': true});}""" % Title
 
 
 class GoogleHybridMapLayer(MapLayer):
@@ -130,7 +132,8 @@ class GoogleHybridMapLayer(MapLayer):
 
     jsfactory = """
     function() { return new OpenLayers.Layer.Google('%s' ,
-        {'type': G_HYBRID_MAP, 'sphericalMercator': true});}""" % Title
+        {'type': google.maps.MapTypeId.HYBRID, numZoomLevels: 20,
+         'sphericalMercator': true});}""" % Title
 
 
 class GoogleTerrainMapLayer(MapLayer):
@@ -141,7 +144,8 @@ class GoogleTerrainMapLayer(MapLayer):
 
     jsfactory = """
     function() { return new OpenLayers.Layer.Google('%s' ,
-        {'type': G_PHYSICAL_MAP, 'sphericalMercator': true});}""" % Title
+        {'type': google.maps.MapTypeId.TERRAIN,  numZoomLevels: 20,
+         'sphericalMercator': true});}""" % Title
 
 
 class YahooStreetMapLayer(MapLayer):

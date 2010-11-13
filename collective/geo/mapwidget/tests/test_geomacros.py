@@ -25,10 +25,10 @@ class TestSetup(base.TestCase):
               u'ABQIAAAAaKes6QWqobpCx2AOamo-shTwM0brOpm-All5BF6PoaKBxRWWERSUWbHs4SIAMkeC1KV98E2EdJKuJw')
 
     def test_property_jsgooglemaps(self):
-        # when a layer is yahoo_map we should include external javascript
+        # when a layer is google_map we should include external javascript
         self.geosettings.default_layers = [u'google_map']
         self.assertEquals(self.settings.google_maps_js,
-              'http://maps.google.com/maps?file=api&v=2&key=ABQIAAAAaKes6QWqobpCx2AOamo-shTwM0brOpm-All5BF6PoaKBxRWWERSUWbHs4SIAMkeC1KV98E2EdJKuJw')
+              'http://maps.google.com/maps/api/js?sensor=false')
 
 
         self.geosettings.default_layers = [u'osm']
@@ -59,6 +59,7 @@ class TestSetup(base.TestCase):
     def test_property_geosettingjs(self):
         self.assertEquals(self.settings.geo_setting_js,
             "cgmap.state = {'default': {lon: 0.000000, lat: 0.000000, zoom: 10 }};\n"
+            "cgmap.portal_url = 'http://nohost/plone';\n"
             "cgmap.imgpath = '%s/img/';" % self.portal.absolute_url())
 
 

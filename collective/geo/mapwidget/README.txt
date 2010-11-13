@@ -65,6 +65,7 @@ cgmap.state and cgmap.config to initialise OpenLayers on these elements.
           <script type="text/javascript" src="http://nohost/plone/++resource++collectivegeo.js"></script>
     ...
           <script type="text/javascript">cgmap.state = {'default': {lon: 0.000000, lat: 0.000000, zoom: 10 }};
+          cgmap.portal_url = 'http://nohost/plone';
           cgmap.imgpath = 'http://nohost/plone/img/';</script>
     ...
           <div id="default-cgmap" class="widget-cgmap">
@@ -427,6 +428,7 @@ the default center lon/lat.
     ...
           <script type="text/javascript">cgmap.state = {'default': {lon: 0.000000, lat: 0.000000, zoom: 10 }};
     cgmap.state['mymap1'] = {lon: '33.33', lat: '66.66', zoom: undefined, activebaselayer: undefined, activelayers: undefined };
+    cgmap.portal_url = 'http://nohost/plone';
     cgmap.imgpath = '';</script>
     ...
 
