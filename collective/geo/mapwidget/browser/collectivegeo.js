@@ -162,7 +162,7 @@ var cgmap = function($)
 
             var layer = map.getLayersBy('name', layer_name);
             layer[0].addFeatures([new OpenLayers.Feature.Vector(point)]);
-            cgmap.config.geoshapemap.map.setCenter(lonlat, 10);
+            map.setCenter(lonlat, 10);
         },
 
         osm_getTileURL: function(bounds)

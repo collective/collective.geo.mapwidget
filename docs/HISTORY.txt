@@ -4,7 +4,7 @@ Changelog
 0.1.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- fixed set_coordinates js 
 
 
 0.1.1 (2010-11-13)
