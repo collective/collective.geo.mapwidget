@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<layers>
+    <layer name="collective.geo.mapwidget"
+           interface="collective.geo.mapwidget.browser.interfaces.IGeoMapWidgetLayer" />
+</layers>

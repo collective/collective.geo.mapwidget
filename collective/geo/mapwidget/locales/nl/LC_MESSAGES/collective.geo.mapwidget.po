@@ -1,0 +1,197 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1\n"
+"POT-Creation-Date: 2010-06-22 07:44+0000\n"
+"PO-Revision-Date: 2009-09-20 13:24+0100\n"
+"Last-Translator: Rob Gietema <rob@fourdigits.nl>\n"
+"Language-Team: Rob Gietema <rob@fourdigits.nl>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: nl\n"
+"Language-Name: Dutch\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.geo.mapwidget\n"
+
+
+#: ./interfaces.py:59
+msgid "A mapping from layerids to ILayers"
+msgstr "Een mapping van layerids naar ILayers"
+
+#: ./interfaces.py:85
+msgid "A mapping from mapids to IMapWidgets"
+msgstr "Een mapping van mapids naar IMapWidgets"
+
+#: ./interfaces.py:53
+msgid "Additional Javascript code inserted after the map widget."
+msgstr "Extra Javascript code welke ingevoegd wordt na de map widget."
+
+#: ./browser/controlpanel.py:72
+msgid "Advanced"
+msgstr "Geavanceerd"
+
+#: ./browser/controlpanel.py:73
+msgid "Advanced configurations"
+msgstr "Geavanceerde configuraties"
+
+#: ./browser/controlpanel.py:117
+msgid "Apply"
+msgstr "Toepassen"
+
+#: ./browser/controlpanel.py:91
+msgid "Base settings"
+msgstr "Basis instellingen"
+
+#: ./maplayers.py:83
+msgid "Bing Aerial"
+msgstr "Bing Aerial"
+
+#: ./maplayers.py:95
+msgid "Bing Hybrid"
+msgstr "Bing Hybrid"
+
+#: ./maplayers.py:70
+msgid "Bing Roads"
+msgstr "Bing Roads"
+
+#: ./maplayers.py:58
+msgid "Bing Streets"
+msgstr "Bing Streets"
+
+#: ./browser/controlpanel.py:137
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: ./interfaces.py:41
+msgid "Class attribute"
+msgstr "Klasse attribuut"
+
+#: ./browser/controlpanel.py:151
+msgid "Collective Geo Default Settings"
+msgstr "Collective Geo Standaard Instellingen"
+
+#: ./browser/controlpanel.py:93
+msgid "Configure Collective Geo Settings"
+msgstr "Set Collective Geo Instellingen in"
+
+#: ./interfaces.py:63
+msgid "Enable default layers."
+msgstr "Schakel standaard lagen in."
+
+#. Default: "Find places"
+#: ./browser/collectivegeo_macros.pt:55
+msgid "Find places"
+msgstr "Zoek locaties"
+
+#: ./browser/controlpanel.py:150
+msgid "Geo Settings"
+msgstr "Geo Instellingen"
+
+#: ./maplayers.py:107
+msgid "Google"
+msgstr "Google"
+
+#: ./maplayers.py:130
+msgid "Hybrid (Google)"
+msgstr "Hybrid (Google)"
+
+#: ./interfaces.py:64
+msgid "If set to true, the default IMapLayers implementation adds all enabled default layers from the geo settings tool."
+msgstr "Wanneer dit ingeschakeld is zal de standaard IMapLayers implementatie alle ingeschakelde stanaard lagen toevoegen uit de geo instellingen tool."
+
+#: ./interfaces.py:96
+msgid "Javascript code which returns a new instance of this layer and does not expect any parameters"
+msgstr "Javascript code die een nieuwe instantie van deze laag teruggeeft welke geen parameters verwacht"
+
+#: ./interfaces.py:52
+msgid "Javascript extras"
+msgstr "Javascript extras"
+
+#: ./interfaces.py:95
+msgid "Javascript factory"
+msgstr "Javascript factory"
+
+#: ./interfaces.py:24
+msgid "Javascript to configure layers."
+msgstr "Javascript om de lagen te configureren."
+
+#: ./browser/controlpanel.py:64
+msgid "Layers"
+msgstr "Lagen"
+
+#: ./interfaces.py:84
+msgid "Map Widgets"
+msgstr "Map Widgets"
+
+#: ./interfaces.py:34
+msgid "Map id"
+msgstr "Map id"
+
+#. Default: "No corresponding geographic location could be found for the specified location, possibly because the address is relatively new, or because it may be incorrect."
+#: ./browser/collectivegeo_macros.pt:62
+msgid "No corresponding geographic location could be found for the specified location, possibly because the address is relatively new, or because it may be incorrect."
+msgstr "Er is geen corresponderende geografische locatie gevonden voor de gespecificeerde locatie, waarschijnlijk omdat het adres relatief nieuw of niet correct is."
+
+#: ./maplayers.py:43
+msgid "OpenStreetMap"
+msgstr "OpenStreetMap"
+
+#: ./interfaces.py:25
+msgid "Returns some js-code to set up available layers."
+msgstr "Geeft wat js-code terug om de beschikbare layers op te zetten."
+
+#: ./maplayers.py:118
+msgid "Satellite (Google)"
+msgstr "Satellite (Google)"
+
+#. Default: "Search"
+#: ./browser/collectivegeo_macros.pt:69
+msgid "Search"
+msgstr "Zoek"
+
+#. Default: "Select a location from the list below to set the coordinates."
+#: ./browser/collectivegeo_macros.pt:73
+msgid "Select a location from the list below to set the coordinates."
+msgstr "Select een locatie uit de lijst hier beneden om de coordinaten te selecteren."
+
+#: ./browser/controlpanel.py:55
+msgid "Set default styles for geografical shapes"
+msgstr "Zet de standaard stijl voor geografische vormen"
+
+#: ./browser/controlpanel.py:54
+msgid "Style"
+msgstr "Stijl"
+
+#: ./interfaces.py:47
+msgid "Style attribute"
+msgstr "Stijl attribuut"
+
+#: ./maplayers.py:142
+msgid "Terrain (Google)"
+msgstr "Terrain (Google)"
+
+#: ./interfaces.py:42
+msgid "The html element class attribute."
+msgstr "het html element klasse attribute."
+
+#: ./interfaces.py:48
+msgid "The html element style attribute."
+msgstr "Het html element stijl attribuut."
+
+#: ./interfaces.py:35
+msgid "Used to identify the map in the dom-tree and to lookup an IMapWidget component if necessary."
+msgstr "Gebruikt om de kaart te vinden in de dom-tree en een IMapWidget component indien noodzakelijk."
+
+#: ./maplayers.py:176
+msgid "Yahoo Hybrid"
+msgstr "Yahoo Hybrid"
+
+#: ./maplayers.py:165
+msgid "Yahoo Satellite"
+msgstr "Yahoo Satellite"
+
+#: ./maplayers.py:154
+msgid "Yahoo Street"
+msgstr "Yahoo Street"
+

@@ -1,0 +1,74 @@
+collective.geo.mapwidget controlpanel
+=====================================
+
+This package provides a graphical user interface to store settings for collective.geo applications.
+
+Tests
+-----
+we start the tests with the usual boilerplate
+    >>> from Products.Five.testbrowser import Browser
+    >>> browser = Browser()
+    >>> portal_url = self.portal.absolute_url()
+    >>> self.portal.error_log._ignored_exceptions = ()
+
+we log in as manager and verify the functionality of collective.geo.mapwidget control panel form;
+    >>> from Products.PloneTestCase.setup import portal_owner
+    >>> from Products.PloneTestCase.setup import default_password
+    >>> browser.addHeader('Authorization',
+    ...                   'Basic %s:%s' % (portal_owner, default_password))
+
+    >>> browser.open('%s/@@collectivegeo-controlpanel' % portal_url)
+    >>> browser.getControl(name = 'form.widgets.zoom').value
+    '10.0'
+
+    >>> browser.getControl(name = 'form.widgets.imgpath').value
+    'string:${portal_url}/img/'
+
+wechange the latitude and longitude coordinates and save data
+    >>> browser.getControl(name = 'form.widgets.longitude').value = "-2.582259177802396"
+    >>> browser.getControl(name = 'form.widgets.latitude').value = "51.4289424155664"
+    >>> browser.getControl('Apply').click()
+
+Check that there weren't any errors
+    >>> 'Data successfully updated.' in browser.contents
+    True
+
+after submit the form we are redirect to plone control panel
+    >>> 'plone_control_panel' in browser.url
+    True
+
+and check the modifications in the configuration utility
+    >>> from plone.registry.interfaces import IRegistry
+    >>> from zope.component import getUtility
+    >>> registry = getUtility(IRegistry)
+
+    >>> print registry['collective.geo.settings.interfaces.IGeoSettings.longitude']
+    -2.582259177802396
+
+    >>> print registry['collective.geo.settings.interfaces.IGeoSettings.latitude']
+    51.4289424155664
+
+
+Now we check error handling in main form:
+    >>> browser.open('%s/@@collectivegeo-controlpanel' % portal_url)
+    >>> browser.getControl(name = 'form.widgets.zoom').value = 'aa'
+    >>> browser.getControl('Apply').click()
+    >>> '<div class="error">' in browser.contents
+    True
+
+zoom should be unchanged
+    >>> print registry['collective.geo.settings.interfaces.IGeoSettings.zoom']
+    10.0
+
+try it for subforms:
+    >>> browser.getControl(name = 'form.widgets.zoom').value = '5.0'
+    >>> browser.getControl(name = 'form.widgets.longitude').value = 'aa'
+    >>> browser.getControl('Apply').click()
+    >>> 'There were some errors.' in browser.contents
+    True
+
+zoom and longitude should be unchanged
+    >>> print registry['collective.geo.settings.interfaces.IGeoSettings.zoom']
+    10.0
+    >>> print registry['collective.geo.settings.interfaces.IGeoSettings.longitude']
+    -2.582259177802396

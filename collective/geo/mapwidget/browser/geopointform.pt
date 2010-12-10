@@ -1,0 +1,18 @@
+<div tal:attributes="class view/css_class|nothing" >
+  <h3 tal:replace="structure view/heading|nothing" />
+  <div tal:replace="structure view/contents_top|nothing" />
+  <metal:use use-macro="context/@@ploneform-macros/fields" />
+  <metal:use use-macro="context/@@ploneform-macros/actions" />
+  <div tal:replace="structure view/contents_bottom|nothing" />
+</div>
+<div class="visualClear"><!-- clear floats --></div>
+<script type="text/javascript">
+  $(document).ready( function() {
+      $('#cgeo-get-location').click(function(){
+        cgmap.geocoding('geosettings-cgmap',
+        'Marker',
+        cgmap.portal_url + '/geocoderview')});
+  });
+</script>
+<metal:use use-macro="context/@@collectivegeo-macros/geocoding"/>
+<metal:map use-macro="context/@@collectivegeo-macros/map-widget" />

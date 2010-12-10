@@ -1,0 +1,83 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="collective.geo.mapwidget"
+      tal:omit-tag="">
+  <head>
+  </head>
+
+  <body>
+
+    <tal:comment>A macro to include all necessary javascript files</tal:comment>
+    <metal:define define-macro="openlayers"
+                  tal:define="geosettings python:context.restrictedTraverse('@@geosettings-view');
+                              google_maps_js python:geosettings.google_maps_js;
+                              yahoo_maps_js python:geosettings.yahoo_maps_js;
+                              portal_state context/@@plone_portal_state;
+                              portal_url portal_state/portal_url;">
+      <script type="text/javascript" tal:attributes="src string:$portal_url/OpenLayers.js"></script>
+      <script type="text/javascript" tal:attributes="src string:$portal_url/proj4js-compressed.js"></script>
+      <script type="text/javascript" tal:attributes="src string:$portal_url/++resource++collectivegeo.js"></script>
+      <script type="text/javascript"
+              tal:condition="google_maps_js"
+              tal:attributes="src google_maps_js"></script>
+      <script type="text/javascript"
+              tal:condition="yahoo_maps_js"
+              tal:attributes="src yahoo_maps_js"></script>
+      <script type="text/javascript"
+              tal:condition="geosettings/bingmaps"
+              tal:attributes="src geosettings/bing_maps_js"></script>
+      <script type="text/javascript"
+              tal:content="structure geosettings/geo_setting_js"></script>
+    </metal:define>
+
+    <tal:comment>This macro needs a variable 'cgmap' in the namespace</tal:comment>
+    <metal:define define-macro="map-widget"
+                  tal:define="cgmap nocall:cgmap | nothing;
+                              mapwidgets view/@@collectivegeo-maps/mapwidgets;
+                              cgmap python:cgmap or mapwidgets[0]">
+      <div id="map" class="widget-cgmap" tal:attributes="id cgmap/mapid | string:map;
+                           class cgmap/klass | string:widget-cgmap">
+        <!--   openlayers map     -->
+      </div>
+      <script type="text/javascript"
+              tal:content="structure cgmap/layers/js | nothing"></script>
+      <script type="text/javascript"
+              tal:content="structure cgmap/js | nothing"><!-- additional javascript --></script>
+    </metal:define>
+
+    <tal:comment>macro for geocoding stuff</tal:comment>
+    <metal:define define-macro="geocoding">
+      <div class="field geocoder-wrapper"
+            tal:define="portal_state context/@@plone_portal_state;
+                        portal_url portal_state/portal_url;">
+        <label for="geocoding-address"
+          i18n:translate="">Find places</label>
+        <img id="geocoder-loader" 
+              style="display: none"
+          tal:attributes="src string:$portal_url/++resource++collectivegeo-loader.gif" 
+              width="16px" height="11px"/>
+        <br/>
+        <div class="fieldErrorBox" id="geocodre-error"
+              style="display: none"
+              i18n:translate="">No corresponding geographic location could be found for the
+                     specified location, possibly because the address is relatively
+                     new, or because it may be incorrect.</div>
+        <input type="text" name="geocoding-address" value=""
+                tal:attributes="value context/getLocation | nothing"/>
+        <input type="button"
+          i18n:attributes="value" value="Search" id="cgeo-get-location" />
+
+        <div id="location-options" style="display: none">
+          <div class="formHelp"
+              i18n:translate="">Select a location from the list below to set the coordinates.</div>
+          <ul></ul>
+        </div>
+      </div>
+
+      <div class="visualClear" ><!-- clear floats --></div>    
+    </metal:define>
+  </body>
+
+</html>

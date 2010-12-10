@@ -1,0 +1,129 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="collective.geo.mapwidget">
+
+  <!-- MapLayer adapts 
+    view, context, request, mapwidget -->
+
+    <adapter
+        for = "zope.interface.Interface
+               zope.interface.Interface
+               zope.interface.Interface
+               zope.interface.Interface"
+        provides = "collective.geo.mapwidget.interfaces.IMapLayer"
+        factory = "collective.geo.mapwidget.maplayers.OSMMapLayer"
+        name = 'osm'
+        />
+    <!-- bing maps -->
+    <adapter
+        for = "zope.interface.Interface
+               zope.interface.Interface
+               zope.interface.Interface
+               zope.interface.Interface"
+        provides = "collective.geo.mapwidget.interfaces.IMapLayer"
+        factory = "collective.geo.mapwidget.maplayers.BingStreetMapLayer"
+        name = 'bing_map'
+        />
+
+    <adapter
+        for = "zope.interface.Interface
+               zope.interface.Interface
+               zope.interface.Interface
+               zope.interface.Interface"
+        provides = "collective.geo.mapwidget.interfaces.IMapLayer"
+        factory = "collective.geo.mapwidget.maplayers.BingRoadsMapLayer"
+        name = 'bing_rod'
+        />
+
+    <adapter
+        for = "zope.interface.Interface
+               zope.interface.Interface
+               zope.interface.Interface
+               zope.interface.Interface"
+        provides = "collective.geo.mapwidget.interfaces.IMapLayer"
+        factory = "collective.geo.mapwidget.maplayers.BingAerialMapLayer"
+        name = 'bing_aer'
+        />
+
+    <adapter
+        for = "zope.interface.Interface
+               zope.interface.Interface
+               zope.interface.Interface
+               zope.interface.Interface"
+        provides = "collective.geo.mapwidget.interfaces.IMapLayer"
+        factory = "collective.geo.mapwidget.maplayers.BingHybridMapLayer"
+        name = 'bing_hyb'
+        />
+
+    <!-- google maps -->
+    <adapter
+        for = "zope.interface.Interface
+               zope.interface.Interface
+               zope.interface.Interface
+               zope.interface.Interface"
+        provides = "collective.geo.mapwidget.interfaces.IMapLayer"
+        factory = "collective.geo.mapwidget.maplayers.GoogleStreetMapLayer"
+        name = 'google_map'
+        />
+
+    <adapter
+        for = "zope.interface.Interface
+               zope.interface.Interface
+               zope.interface.Interface
+               zope.interface.Interface"
+        provides = "collective.geo.mapwidget.interfaces.IMapLayer"
+        factory = "collective.geo.mapwidget.maplayers.GoogleSatelliteMapLayer"
+        name = 'google_sat'
+    />
+
+    <adapter
+        for = "zope.interface.Interface
+               zope.interface.Interface
+               zope.interface.Interface
+               zope.interface.Interface"
+        provides = "collective.geo.mapwidget.interfaces.IMapLayer"
+        factory = "collective.geo.mapwidget.maplayers.GoogleHybridMapLayer"
+        name = 'google_hyb'
+        />
+
+    <adapter
+        for = "zope.interface.Interface
+               zope.interface.Interface
+               zope.interface.Interface
+               zope.interface.Interface"
+        provides = "collective.geo.mapwidget.interfaces.IMapLayer"
+        factory = "collective.geo.mapwidget.maplayers.GoogleTerrainMapLayer"
+        name = 'google_ter'
+    />
+
+    <!-- yahoo maps -->
+    <adapter
+        for = "zope.interface.Interface
+               zope.interface.Interface
+               zope.interface.Interface
+               zope.interface.Interface"
+        provides = "collective.geo.mapwidget.interfaces.IMapLayer"
+        factory = "collective.geo.mapwidget.maplayers.YahooStreetMapLayer"
+        name = 'yahoo_map'
+        />
+
+    <adapter
+        for = "zope.interface.Interface
+               zope.interface.Interface
+               zope.interface.Interface
+               zope.interface.Interface"
+        provides = "collective.geo.mapwidget.interfaces.IMapLayer"
+        factory = "collective.geo.mapwidget.maplayers.YahooSatelliteMapLayer"
+        name = 'yahoo_sat'
+        />
+
+    <adapter
+        for = "zope.interface.Interface
+               zope.interface.Interface
+               zope.interface.Interface
+               zope.interface.Interface"
+        provides = "collective.geo.mapwidget.interfaces.IMapLayer"
+        factory = "collective.geo.mapwidget.maplayers.YahooHybridMapLayer"
+        name = 'yahoo_hyb'
+        />
+</configure>

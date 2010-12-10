@@ -1,0 +1,90 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+          xmlns:browser="http://namespaces.zope.org/browser"
+          xmlns:zope="http://namespaces.zope.org/zope"
+          xmlns:five="http://namespaces.zope.org/five">
+
+    <browser:page
+        name="collectivegeo-controlpanel"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".controlpanel.GeoControlpanel"
+        layer=".interfaces.IGeoMapWidgetLayer"
+        permission = "cmf.ManagePortal"
+        />
+
+    <browser:page
+        name="geosettings-view"
+        for="*"
+        class=".geosettings_view.GeoSettingsView"
+        permission = "zope2.View"
+        />
+
+    <browser:page
+        name="collectivegeo-macros"
+        for="*"
+        class=".collectivegeo_macros.CollectiveGeoMacros"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        name="collectivegeo-maps"
+        for="*"
+        class=".widget.MapView"
+        permission="zope2.View"
+        allowed_attributes="mapwidgets"
+        />
+
+    <!-- ..interfaces.IMapView -->
+    <adapter
+        for="zope.interface.Interface
+             zope.interface.Interface
+             zope.interface.Interface"
+        factory=".widget.MapWidgets"
+        />
+
+    <!-- ..interfaces.IMapView -->
+    <adapter
+        for="zope.interface.Interface
+             zope.interface.Interface
+             zope.interface.Interface"
+        factory=".widget.MapWidget"
+        name="default-cgmap"
+        />
+
+    <adapter
+        for="..interfaces.IMapView
+             zope.interface.Interface
+             zope.interface.Interface"
+        factory=".controlpanel.ControlPanelMapWidget"
+        name="geosettings-cgmap"
+        />
+
+    <!-- ..interfaces.IMapView -->
+    <adapter
+        for="zope.interface.Interface
+             zope.interface.Interface
+             zope.interface.Interface
+             ..interfaces.IMapWidget"
+        factory=".widget.MapLayers" />
+
+    <adapter
+        for="..interfaces.IMapView
+             zope.interface.Interface
+             zope.interface.Interface
+             ..interfaces.IMapWidget"
+        factory=".controlpanel.MarkerEditLayer"
+        name="markeredit"
+        />
+
+    <browser:resource
+        name="collectivegeo.png"
+        file="collectivegeo.png"
+        layer=".interfaces.IGeoMapWidgetLayer"
+        />
+
+    <browser:resource
+        name="collectivegeo.js"
+        file="collectivegeo.js"
+        layer=".interfaces.IGeoMapWidgetLayer"
+        />
+
+</configure>
