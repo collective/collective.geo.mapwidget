@@ -50,7 +50,6 @@ class GeoStylesGroup(group.Group):
     fields = field.Fields(IGeoFeatureStyle)
     fields['linecolor'].widgetFactory = ColorpickerAlphaFieldWidget
     fields['polygoncolor'].widgetFactory = ColorpickerAlphaFieldWidget
-    fields = fields.omit('map_display_manager')
 
     label = _(u"Style")
     description = _(u"Set default styles for geografical shapes")
@@ -59,9 +58,7 @@ class GeoStylesGroup(group.Group):
 def advanced_group_fields():
     form_fields = field.Fields(IGeoSettings).select('yahooapi',
                                             'default_layers',
-                                            'imgpath',
-                                            'default_manager',
-                                            'map_display_manager_types')
+                                            'imgpath',)
 
     default_layer_field = form_fields['default_layers']
     default_layer_field.field.value_type = Choice(title=_(u"Layers"),
