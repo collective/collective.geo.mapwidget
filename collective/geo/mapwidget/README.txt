@@ -39,7 +39,8 @@ We also need a page template to render
     ... ''')
     >>> setTemplate(view, template)
 
-Render the view:
+Render the view
+---------------
 
 We should find the OpenLayers.js, our current default map state with center and
 zoom set in the control panel, the map widget with class 'widget-cgmap' and
@@ -241,8 +242,8 @@ Now we have covered the most important things about map midgets. Set us try
 some things with map layers.
 
 
-Layers:
--------
+Layers
+------
 
 Map widgets can have lyars associated with them. These association is handled
 similar to the IMapWidget - View associaton above. An IMapWidget instance has
@@ -353,8 +354,8 @@ way it is possible to return only those layers of current interest. It is also
 possible to register a different IMapLayers instance, which uses some other
 algorithm to find all default and custom layers.
 
-Javascript Notes:
------------------
+Javascript Notes
+----------------
 
 The Javascript in this package uses jquery to initialise all maps on the
 page. This means, that the actual map initalisation is deffered by
