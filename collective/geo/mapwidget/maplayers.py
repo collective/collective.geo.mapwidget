@@ -24,7 +24,7 @@ class MapLayer(object):
     '''
 
     implements(IMapLayer)
-    jsfactory = ""
+    jsfactory = u""
     Title = u""
     # we need a property to evaluate if the layer map is based on google,
     # bing or yahoo maps to include a external javascrpt
@@ -42,7 +42,7 @@ class OSMMapLayer(MapLayer):
     name = u"osm"
     Title = _(u"OpenStreetMap")
 
-    jsfactory = """
+    jsfactory = u"""
     function() { return new OpenLayers.Layer.TMS( '%s',
         'http://tile.openstreetmap.org/',
         { 'type' : 'png',
@@ -58,7 +58,7 @@ class BingStreetMapLayer(MapLayer):
     Title = _(u"Bing Streets")
     type = 'bing'
 
-    jsfactory = """
+    jsfactory = u"""
     function() { return new OpenLayers.Layer.VirtualEarth('%s',
         { 'type': VEMapStyle.Shaded,
           'sphericalMercator': true });}""" % Title
@@ -70,8 +70,7 @@ class BingRoadsMapLayer(MapLayer):
     Title = _(u"Bing Roads")
     type = 'bing'
 
-
-    jsfactory = """
+    jsfactory = u"""
     function() { return new OpenLayers.Layer.VirtualEarth('%s',
         { 'type': VEMapStyle.Road,
           'sphericalMercator': true });}""" % Title
@@ -83,7 +82,7 @@ class BingAerialMapLayer(MapLayer):
     Title = _(u"Bing Aerial")
     type = 'bing'
 
-    jsfactory = """
+    jsfactory = u"""
     function() { return new OpenLayers.Layer.VirtualEarth('%s',
         { 'type': VEMapStyle.Aerial,
           'sphericalMercator': true });}""" % Title
@@ -95,7 +94,7 @@ class BingHybridMapLayer(MapLayer):
     Title = _(u"Bing Hybrid")
     type = 'bing'
 
-    jsfactory = """
+    jsfactory = u"""
     function() { return new OpenLayers.Layer.VirtualEarth('%s',
         { 'type': VEMapStyle.Hybrid,
           'sphericalMercator': true });}""" % Title
@@ -107,7 +106,7 @@ class GoogleStreetMapLayer(MapLayer):
     Title = _(u"Google")
     type = 'google'
 
-    jsfactory = """
+    jsfactory = u"""
     function() { return new OpenLayers.Layer.Google('%s',
         {'sphericalMercator': true, numZoomLevels: 20});}""" % Title
 
@@ -118,7 +117,7 @@ class GoogleSatelliteMapLayer(MapLayer):
     Title = _(u"Satellite (Google)")
     type = 'google'
 
-    jsfactory = """
+    jsfactory = u"""
     function() { return new OpenLayers.Layer.Google('%s' ,
         {'type': google.maps.MapTypeId.SATELLITE, numZoomLevels: 22,
          'sphericalMercator': true});}""" % Title
@@ -130,7 +129,7 @@ class GoogleHybridMapLayer(MapLayer):
     Title = _(u"Hybrid (Google)")
     type = 'google'
 
-    jsfactory = """
+    jsfactory = u"""
     function() { return new OpenLayers.Layer.Google('%s' ,
         {'type': google.maps.MapTypeId.HYBRID, numZoomLevels: 20,
          'sphericalMercator': true});}""" % Title
@@ -142,7 +141,7 @@ class GoogleTerrainMapLayer(MapLayer):
     Title = _(u"Terrain (Google)")
     type = 'google'
 
-    jsfactory = """
+    jsfactory = u"""
     function() { return new OpenLayers.Layer.Google('%s' ,
         {'type': google.maps.MapTypeId.TERRAIN,  numZoomLevels: 20,
          'sphericalMercator': true});}""" % Title
@@ -154,7 +153,7 @@ class YahooStreetMapLayer(MapLayer):
     Title = _(u"Yahoo Street")
     type = 'yahoo'
 
-    jsfactory = """
+    jsfactory = u"""
     function() { return new OpenLayers.Layer.Yahoo('%s',
         {'type': YAHOO_MAP_REG, 'sphericalMercator': true});}""" % Title
 
@@ -165,7 +164,7 @@ class YahooSatelliteMapLayer(MapLayer):
     Title = _(u"Yahoo Satellite")
     type = 'yahoo'
 
-    jsfactory = """
+    jsfactory = u"""
     function() { return new OpenLayers.Layer.Yahoo('%s',
         {'type': YAHOO_MAP_SAT, 'sphericalMercator': true});}""" % Title
 
@@ -176,7 +175,7 @@ class YahooHybridMapLayer(MapLayer):
     Title = _(u"Yahoo Hybrid")
     type = 'yahoo'
 
-    jsfactory = """
+    jsfactory = u"""
     function() { return new OpenLayers.Layer.Yahoo('%s',
         {'type': YAHOO_MAP_HYB, 'sphericalMercator': true});}""" % Title
 

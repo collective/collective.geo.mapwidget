@@ -4,7 +4,8 @@ Changelog
 0.1.2 (unreleased)
 ------------------
 
-- fixed set_coordinates js 
+- fixed UnicodeDecodeError in maplayers [gborelli]
+- fixed set_coordinates js [gborelli]
 - Added dutch translations [robgietema]
 
 

@@ -212,7 +212,7 @@ class MarkerEditLayer(MapLayer):
 
     name = "markeredit"
 
-    jsfactory = """
+    jsfactory = u"""
     function() { return new OpenLayers.Layer.Vector('Marker',
                                     {renderOptions: {yOrdering: true}});}
     """
