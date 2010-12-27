@@ -1,14 +1,5 @@
-collective.geo.mapwidget
-=======================
-
-Overview
---------
-
-This package provides some handy page macros and adapters to easily manage
-multiple maps on one page.
-
-Tests
------
+How it Work
+-----------
 
 let's create a view which should display a map.
     >>> from Products.Five import BrowserView
@@ -82,6 +73,7 @@ IMapWidget in the adapter registry.
 
 Let's add an attribute to the view. We also need to adapt the template
 slightly.
+
     >>> from collective.geo.mapwidget.browser.widget import MapWidget
     >>> mw1 = MapWidget(view, request, self.portal)
     >>> mw1.mapid = 'mymap1'
@@ -126,24 +118,24 @@ Adapt the template to get both maps. We can do this in various ways.
 To render each map individually we have to iterate the list manually. There is
 a small helper view which makes things easier later, so let's use it.
 
->>> open(template, 'w').write('''<html xmlns="http://www.w3.org/1999/xhtml"
-...       xmlns:metal="http://xml.zope.org/namespaces/metal">
-...     <head>
-...         <metal:use use-macro="context/@@collectivegeo-macros/openlayers" />
-...     </head>
-...     <body>
-...         <tal:omit tal:define="maps view/@@collectivegeo-maps/mapwidgets" tal:omit-tag="">
-...             <tal:omit tal:define="cgmap maps/mymap1" tal:omit-tag="">
-...                 <metal:use use-macro="context/@@collectivegeo-macros/map-widget" />
-...             </tal:omit>
-...             <tal:omit tal:define="cgmap maps/mymap2" tal:omit-tag="">
-...                 <metal:use use-macro="context/@@collectivegeo-macros/map-widget" />
-...             </tal:omit>
-...         </tal:omit>
-...     </body>
-... </html>
-... ''')
->>> setTemplate(view, template)
+    >>> open(template, 'w').write('''<html xmlns="http://www.w3.org/1999/xhtml"
+    ...       xmlns:metal="http://xml.zope.org/namespaces/metal">
+    ...     <head>
+    ...         <metal:use use-macro="context/@@collectivegeo-macros/openlayers" />
+    ...     </head>
+    ...     <body>
+    ...         <tal:omit tal:define="maps view/@@collectivegeo-maps/mapwidgets" tal:omit-tag="">
+    ...             <tal:omit tal:define="cgmap maps/mymap1" tal:omit-tag="">
+    ...                 <metal:use use-macro="context/@@collectivegeo-macros/map-widget" />
+    ...             </tal:omit>
+    ...             <tal:omit tal:define="cgmap maps/mymap2" tal:omit-tag="">
+    ...                 <metal:use use-macro="context/@@collectivegeo-macros/map-widget" />
+    ...             </tal:omit>
+    ...         </tal:omit>
+    ...     </body>
+    ... </html>
+    ... ''')
+    >>> setTemplate(view, template)
 
 Let's see what happens:
     >>> print view()
@@ -181,8 +173,8 @@ We can also just iterate over the mapwidgets list:
     >>> setTemplate(view, template)
 
 
-As our first template was not very sophisticated, we should get the same
-result:
+As our first template was not very sophisticated, we should get the same result:
+
     >>> print view()
     <html xmlns="http://www.w3.org/1999/xhtml">
     ...
@@ -265,6 +257,7 @@ a list of names and/or ILayer instances to be added.
 
 As a quick example we can just set the '_layers' attribute for mw1 and we
 should get an additional layer.
+
     >>> from collective.geo.mapwidget.maplayers import BingStreetMapLayer
     >>> mw1._layers = [BingStreetMapLayer()]
     >>> view.mapfields = [mw1]
@@ -305,6 +298,7 @@ request, context, widget), name):
 
 If _layers contains somethin which can't be converted into an IMapLayer
 instance, me get an exception:
+
     >>> mw1._layers = ['bsm', None]
     >>> print view()
     Traceback (most recent call last):
@@ -330,11 +324,13 @@ additional java-script if necessary.
 
 An 'Image Layer' is a rather generic component, so it might be useful to
 register it as an adapter. (Probably just for IATImage context objects?)
+
     >>> provideAdapter(ImageLayer,
     ...                (Interface, Interface, Interface, Interface),
     ...                IMapLayer, name='image')
 
 As this becomes an unprojected base layer we don't want the default base layers
+
     >>> mw1.usedefault = False
     >>> mw1._layers = ['image']
     >>> mw1.js = "\n// a place to add additional js\n"

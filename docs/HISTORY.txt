@@ -5,6 +5,7 @@ Changelog
 ------------------
 
 - fixed set_coordinates js 
+- Added dutch translations [robgietema]
 
 
 0.1.1 (2010-11-13)

@@ -1,5 +1,12 @@
+collective.geo.mapwidget
+========================
+
+.. contents:: Summary
+   :local:
+
+
 Introduction
-============
+------------
 
 collective.geo.mapwidget provides some handy page macros and adapters to easily manage
 multiple maps on one page.
@@ -14,7 +21,7 @@ Requirements
 * collective.geo.settings
 
 Installation
-============
+------------
 You can install collective.geo.mapwidget as part of a specific project's buildout, by having a buildout configuration such as: ::
 
         [buildout]
@@ -31,7 +38,7 @@ Install this product from the Plone control panel.
 
 
 Contributors
-============
+------------
 
 * Gerhard Weis - gweis
 * Giorgio Borelli - gborelli
