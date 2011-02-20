@@ -46,7 +46,7 @@ class GeoSettingsView(object):
     def google_maps_js(self):
         if self.googlemaps:
             #  google maps 3 api -- needs openlayer 2.10 version...
-            return 'http://maps.google.com/maps/api/js?sensor=false'
+			return 'http://maps.google.com/maps/api/js?v=3.2&sensor=false'
             # return 'http://maps.google.com/maps?file=api&v=2&key=%s' % self.googleapi
         else:
             return None

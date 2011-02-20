@@ -28,8 +28,7 @@ class TestSetup(base.TestCase):
         # when a layer is google_map we should include external javascript
         self.geosettings.default_layers = [u'google_map']
         self.assertEquals(self.settings.google_maps_js,
-              'http://maps.google.com/maps/api/js?sensor=false')
-
+            'http://maps.google.com/maps/api/js?v=3.2&sensor=false')
 
         self.geosettings.default_layers = [u'osm']
         self.assertEquals(self.settings.google_maps_js, None)
