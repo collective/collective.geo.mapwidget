@@ -201,7 +201,7 @@ class DefaultMapLayers(object):
 
         layers = []
         for layerid in default_layers:
-            layer = queryMultiAdapter((None, None, None, None),
+            layer = queryMultiAdapter((view, request, context, widget),
                                                     IMapLayer, name=layerid)
             if layer:
                 layers.append(layer)
