@@ -29,10 +29,6 @@ You can install collective.geo.mapwidget as part of a specific project's buildou
         eggs = 
             collective.geo.mapwidget
         ...
-        [instance]
-        ...
-        zcml = 
-            collective.geo.mapwidget
 
 Install this product from the Plone control panel.
 
