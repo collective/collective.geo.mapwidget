@@ -63,9 +63,9 @@ cgmap.state and cgmap.config to initialise OpenLayers on these elements.
           <div id="default-cgmap" class="widget-cgmap">
     ...
           <script type="text/javascript">cgmap.extendconfig({layers: [
-        function() { return new OpenLayers.Layer.TMS( 'OpenStreetMap',
-            'http://tile.openstreetmap.org/',
+        function(){return new OpenLayers.Layer.TMS('OpenStreetMap'...
     ...
+
 
 Another way to render a map is to define an attribute named 'mapfields' on the
 view. This field must be a list or tuple and should contain IMapWidget
@@ -89,8 +89,7 @@ Let's examine the result:
             <!--   openlayers map     -->
           </div>
           <script type="text/javascript">cgmap.extendconfig({layers: [
-        function() { return new OpenLayers.Layer.TMS( 'OpenStreetMap',
-            'http://tile.openstreetmap.org/',
+        function(){return new OpenLayers.Layer.TMS('OpenStreetMap'...
     ...
 
 
@@ -110,8 +109,7 @@ Let's examine the result with an unchanged template:
             <!--   openlayers map     -->
           </div>
           <script type="text/javascript">cgmap.extendconfig({layers: [
-        function() { return new OpenLayers.Layer.TMS( 'OpenStreetMap',
-            'http://tile.openstreetmap.org/',
+        function(){return new OpenLayers.Layer.TMS('OpenStreetMap'...
     ...
 
 
@@ -146,15 +144,13 @@ Let's see what happens:
             <!--   openlayers map     -->
           </div>
           <script type="text/javascript">cgmap.extendconfig({layers: [
-        function() { return new OpenLayers.Layer.TMS( 'OpenStreetMap',
-            'http://tile.openstreetmap.org/',
+        function(){return new OpenLayers.Layer.TMS('OpenStreetMap'...
     ...
           <div id="mymap2" class="mymapclass2 widget-cgmap">
             <!--   openlayers map     -->
           </div>
           <script type="text/javascript">cgmap.extendconfig({layers: [
-        function() { return new OpenLayers.Layer.TMS( 'OpenStreetMap',
-            'http://tile.openstreetmap.org/',
+        function(){return new OpenLayers.Layer.TMS('OpenStreetMap'...
     ...
 
 
@@ -183,15 +179,13 @@ As our first template was not very sophisticated, we should get the same result:
             <!--   openlayers map     -->
           </div>
           <script type="text/javascript">cgmap.extendconfig({layers: [
-        function() { return new OpenLayers.Layer.TMS( 'OpenStreetMap',
-            'http://tile.openstreetmap.org/',
+        function(){return new OpenLayers.Layer.TMS('OpenStreetMap'...
     ...
           <div id="mymap2" class="mymapclass2 widget-cgmap">
             <!--   openlayers map     -->
           </div>
           <script type="text/javascript">cgmap.extendconfig({layers: [
-        function() { return new OpenLayers.Layer.TMS( 'OpenStreetMap',
-            'http://tile.openstreetmap.org/',
+        function(){return new OpenLayers.Layer.TMS('OpenStreetMap'...
     ...
 
 
@@ -218,15 +212,13 @@ name). So let's update our configuraion and fields:
             <!--   openlayers map     -->
           </div>
           <script type="text/javascript">cgmap.extendconfig({layers: [
-        function() { return new OpenLayers.Layer.TMS( 'OpenStreetMap',
-            'http://tile.openstreetmap.org/',
+        function(){return new OpenLayers.Layer.TMS('OpenStreetMap'...
     ...
           <div id="mymap2" class="mymapclass2 widget-cgmap">
             <!--   openlayers map     -->
           </div>
           <script type="text/javascript">cgmap.extendconfig({layers: [
-        function() { return new OpenLayers.Layer.TMS( 'OpenStreetMap',
-            'http://tile.openstreetmap.org/',
+        function(){return new OpenLayers.Layer.TMS('OpenStreetMap'...
     ...
 
 The defaul IMaps implementation complains if an element in mapfields is nat a
@@ -260,7 +252,8 @@ As a quick example we can just set the '_layers' attribute for mw1 and we
 should get an additional layer.
 
     >>> from collective.geo.mapwidget.maplayers import BingStreetMapLayer
-    >>> mw1._layers = [BingStreetMapLayer()]
+    >>> mw1._layers = [BingStreetMapLayer(context=self.portal)]
+
     >>> view.mapfields = [mw1]
     >>> print view()
     <html xmlns="http://www.w3.org/1999/xhtml">
@@ -269,10 +262,9 @@ should get an additional layer.
             <!--   openlayers map     -->
           </div>
           <script type="text/javascript">cgmap.extendconfig({layers: [
-        function() { return new OpenLayers.Layer.TMS( 'OpenStreetMap',
-            'http://tile.openstreetmap.org/',
+        function(){return new OpenLayers.Layer.TMS('OpenStreetMap'...
     ...
-        function() { return new OpenLayers.Layer.VirtualEarth('Bing Streets',
+        function(){return new OpenLayers.Layer.VirtualEarth('Bing Streets'...
     ...
 
 Me can register the BingStreetMapLayer as an adapter which allows us to use
@@ -291,10 +283,9 @@ request, context, widget), name):
             <!--   openlayers map     -->
           </div>
           <script type="text/javascript">cgmap.extendconfig({layers: [
-        function() { return new OpenLayers.Layer.TMS( 'OpenStreetMap',
-            'http://tile.openstreetmap.org/',
+        function(){return new OpenLayers.Layer.TMS('OpenStreetMap'...
     ...
-        function() { return new OpenLayers.Layer.VirtualEarth('Bing Streets',
+        function(){return new OpenLayers.Layer.VirtualEarth('Bing Streets'...
     ...
 
 If _layers contains somethin which can't be converted into an IMapLayer

@@ -87,4 +87,89 @@
         layer=".interfaces.IGeoMapWidgetLayer"
         />
 
+    <!-- layers views -->
+    <browser:page
+        name="osm-layer"
+        for="*"
+        template="layers_templates/osm_layer.pt"
+        permission="zope.Public"
+        />
+
+    <browser:page
+        name="bing_aer-layer"
+        for="*"
+        template="layers_templates/bing_aer_layer.pt"
+        permission="zope.Public"
+        />
+
+    <browser:page
+        name="bing_hyb-layer"
+        for="*"
+        template="layers_templates/bing_hyb_layer.pt"
+        permission="zope.Public"
+        />
+
+    <browser:page
+        name="bing_map-layer"
+        for="*"
+        template="layers_templates/bing_map_layer.pt"
+        permission="zope.Public"
+        />
+
+    <browser:page
+        name="bing_rod-layer"
+        for="*"
+        template="layers_templates/bing_rod_layer.pt"
+        permission="zope.Public"
+        />
+
+    <browser:page
+        name="google_hyb-layer"
+        for="*"
+        template="layers_templates/google_hyb_layer.pt"
+        permission="zope.Public"
+        />
+
+    <browser:page
+        name="google_map-layer"
+        for="*"
+        template="layers_templates/google_map_layer.pt"
+        permission="zope.Public"
+        />
+
+    <browser:page
+        name="google_sat-layer"
+        for="*"
+        template="layers_templates/google_sat_layer.pt"
+        permission="zope.Public"
+        />
+
+    <browser:page
+        name="google_ter-layer"
+        for="*"
+        template="layers_templates/google_ter_layer.pt"
+        permission="zope.Public"
+    />
+
+    <browser:page
+        name="yahoo_hyb-layer"
+        for="*"
+        template="layers_templates/yahoo_hyb_layer.pt"
+        permission="zope.Public"
+        />
+
+    <browser:page
+        name="yahoo_map-layer"
+        for="*"
+        template="layers_templates/yahoo_map_layer.pt"
+        permission="zope.Public"
+        />
+
+    <browser:page
+        name="yahoo_sat-layer"
+        for="*"
+        template="layers_templates/yahoo_sat_layer.pt"
+        permission="zope.Public"
+        />
+
 </configure>

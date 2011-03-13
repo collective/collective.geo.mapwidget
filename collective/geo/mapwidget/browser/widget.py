@@ -186,6 +186,6 @@ class MapLayers(dict):
     @property
     def js(self):
         layers = self.layers()
-        return "cgmap.extendconfig({layers: [" +\
+        return "cgmap.extendconfig({layers: [\n" +\
                ",\n".join([l.jsfactory for l in layers]) + \
                "]}, '%s');" % (self.widget.mapid)

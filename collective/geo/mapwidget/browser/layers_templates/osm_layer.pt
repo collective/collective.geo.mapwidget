@@ -1,0 +1,1 @@
+function(){return new OpenLayers.Layer.TMS('%s','http://tile.openstreetmap.org/',{'type':'png',getURL: cgmap.osm_getTileURL,displayOutsideMaxExtent:true,numZoomLevels:19,attribution:'<a href="http://www.openstreetmap.org/">OpenStreetMap</a>'});}

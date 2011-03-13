@@ -1,0 +1,1 @@
+function(){return new OpenLayers.Layer.VirtualEarth('%s',{'type': VEMapStyle.Aerial,'sphericalMercator':true});}

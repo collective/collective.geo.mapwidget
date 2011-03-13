@@ -1,0 +1,1 @@
+function(){return new OpenLayers.Layer.Google('%s',{'sphericalMercator':true,numZoomLevels:20});}
