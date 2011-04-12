@@ -462,7 +462,9 @@ OpenLayers.Control.WKTEditingToolbar = OpenLayers.Class(
                 new OpenLayers.Control.DrawFeature(layer, OpenLayers.Handler.Point, {'displayClass': 'olControlDrawFeaturePoint'}),
                 new OpenLayers.Control.DrawFeature(layer, OpenLayers.Handler.Path, {'displayClass': 'olControlDrawFeaturePath'}),
                 new OpenLayers.Control.DrawFeature(layer, OpenLayers.Handler.Polygon, {'displayClass': 'olControlDrawFeaturePolygon'}),
-                new OpenLayers.Control.ModifyFeature(layer)
+                new OpenLayers.Control.ModifyFeature(layer, {
+                    mode: OpenLayers.Control.ModifyFeature.RESHAPE | OpenLayers.Control.ModifyFeature.DRAG
+                })
             ];
             this.addControls(controls);
 
