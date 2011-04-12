@@ -156,7 +156,7 @@ msgid "Select a location from the list below to set the coordinates."
 msgstr "Select een locatie uit de lijst hier beneden om de coordinaten te selecteren."
 
 #: ./browser/controlpanel.py:55
-msgid "Set default styles for geografical shapes"
+msgid "Set default styles for geographical shapes"
 msgstr "Zet de standaard stijl voor geografische vormen"
 
 #: ./browser/controlpanel.py:54

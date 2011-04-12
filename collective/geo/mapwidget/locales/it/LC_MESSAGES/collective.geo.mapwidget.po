@@ -158,7 +158,7 @@ msgid "Select a location from the list below to set the coordinates."
 msgstr "Seleziona un luogo dalla lista per impostare le coordinate sulla mappa."
 
 #: ./browser/controlpanel.py:55
-msgid "Set default styles for geografical shapes"
+msgid "Set default styles for geographical shapes"
 msgstr "Imposta gli stili di default per la visualizzazione dei dati sulla mappa"
 
 #: ./browser/controlpanel.py:54

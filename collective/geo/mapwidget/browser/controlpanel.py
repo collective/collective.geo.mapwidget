@@ -52,7 +52,7 @@ class GeoStylesGroup(group.Group):
     fields['polygoncolor'].widgetFactory = ColorpickerAlphaFieldWidget
 
     label = _(u"Style")
-    description = _(u"Set default styles for geografical shapes")
+    description = _(u"Set default styles for geographical shapes")
 
 
 def advanced_group_fields():
