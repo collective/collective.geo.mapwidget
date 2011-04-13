@@ -29,8 +29,7 @@
 
   <utility
       factory=".vocabularies.maplayersVocab"
-      name="maplayersVocab" />
-      <!-- plone 4.1 robert@redcor.ch 
-      provides="zope.app.schema.vocabulary.IVocabularyFactory" /-->
+      name="maplayersVocab"
+      provides="zope.schema.interfaces.IVocabularyFactory" />
 
 </configure>

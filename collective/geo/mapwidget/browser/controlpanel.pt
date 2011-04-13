@@ -16,7 +16,7 @@
          class="link-parent"
          tal:define="link view/back_link | nothing"
          tal:condition="link"
-         tal:attributes="href link/url"
+         tal:attributes="href link"
          i18n:domain="plone"
          i18n:translate="label_up_to_plone_setup">
         Up to Site Setup

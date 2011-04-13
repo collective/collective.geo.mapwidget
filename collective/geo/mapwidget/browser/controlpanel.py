@@ -3,7 +3,6 @@ from Acquisition import aq_inner
 from zope.schema import Choice
 from zope.interface import implements
 from zope.app.pagetemplate import viewpagetemplatefile
-from zope.app.component.hooks import getSite
 from zope.event import notify
 
 from Products.Five import BrowserView
@@ -15,7 +14,8 @@ from z3c.form.interfaces import IFormLayer
 from plone.z3cform import z2
 from plone.z3cform.fieldsets import extensible, group
 
-from collective.z3cform.colorpicker.colorpickeralpha import ColorpickerAlphaFieldWidget
+from collective.z3cform.colorpicker.colorpickeralpha import \
+                                        ColorpickerAlphaFieldWidget
 
 from collective.geo.settings.interfaces import IGeoSettings, IGeoFeatureStyle
 from collective.geo.settings.events import GeoSettingsEvent
@@ -27,9 +27,9 @@ from collective.geo.mapwidget.maplayers import MapLayer
 from collective.geo.mapwidget import GeoMapwidgetMessageFactory as _
 
 
-def back_to_controlpanel(self):
-    root = getSite()
-    return dict(url=root.absolute_url() + '/plone_control_panel')
+def back_to_controlpanel(context):
+    portal_url = context.restrictedTraverse('plone_portal_state').portal_url()
+    return dict(url='%s/plone_control_panel' % portal_url)
 
 
 class GeopointForm(subform.EditSubForm):
@@ -58,7 +58,7 @@ class GeoStylesGroup(group.Group):
 def advanced_group_fields():
     form_fields = field.Fields(IGeoSettings).select('yahooapi',
                                             'default_layers',
-                                            'imgpath',)
+                                            'imgpath')
 
     default_layer_field = form_fields['default_layers']
     default_layer_field.field.value_type = Choice(title=_(u"Layers"),
@@ -141,7 +141,7 @@ class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
 
     @property
     def back_link(self):
-        return back_to_controlpanel(self)['url']
+        return back_to_controlpanel(self.context)['url']
 
 
 class GeoControlpanel(BrowserView):
@@ -149,8 +149,6 @@ class GeoControlpanel(BrowserView):
 
     label = _(u'Geo Settings')
     description = _(u"Collective Geo Default Settings")
-    back_link = back_to_controlpanel
-
     request_layer = IFormLayer
     form = GeoControlpanelForm
 
@@ -162,6 +160,10 @@ class GeoControlpanel(BrowserView):
             self.form_instance = self.form(aq_inner(self.context),
                                                         self.request)
             self.form_instance.__name__ = self.__name__
+
+    @property
+    def back_link(self):
+        return back_to_controlpanel(self.context)['url']
 
     def contents(self):
         z2.switch_on(self)

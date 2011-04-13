@@ -2,7 +2,7 @@ import unittest
 
 from zope.component import getUtility, queryUtility, getAdapters
 from zope.interface import Interface
-from zope.app.schema.vocabulary import IVocabularyFactory
+from zope.schema.interfaces import IVocabularyFactory
 
 from collective.geo.mapwidget.tests import base
 from collective.geo.mapwidget.interfaces import IDefaultMapLayers, IMapLayer
