@@ -25,16 +25,13 @@ setup(name='collective.geo.mapwidget',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'Plone',
           # -*- Extra requirements: -*-
           'collective.geo.openlayers',
           'collective.geo.settings',
           'plone.app.z3cform',
           'collective.z3cform.colorpicker',
       ],
-      extras_require = {
-        'test': [
-            'Products.PloneTestCase']
-      },
       entry_points="""
       # -*- Entry points: -*-
       [z3c.autoinclude.plugin]
