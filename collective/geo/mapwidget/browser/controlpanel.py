@@ -58,7 +58,8 @@ class GeoStylesGroup(group.Group):
 def advanced_group_fields():
     form_fields = field.Fields(IGeoSettings).select('yahooapi',
                                             'default_layers',
-                                            'imgpath')
+                                            'imgpath',
+                                            'map_viewlet_managers')
 
     default_layer_field = form_fields['default_layers']
     default_layer_field.field.value_type = Choice(title=_(u"Layers"),
