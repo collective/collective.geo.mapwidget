@@ -3,10 +3,10 @@ Changelog
 
 0.1.4 (unreleased)
 ------------------
-
+- added map_viewlet_managers in control panel form [gborelli]
+- plone 4.1 fixes [gborelli]
 - changed Browser import from Testing.testbrowser [gborelli]
 - removed zope.app.component import [gborelli]
-- added extra_requires in setup.py for test [gborelli]
 - changed map widgets jsfactory to provide a simple way to customize it [gborelli]
 - added z3c.autoinclude entry point [gborelli]
 - fixed layers query in maplayers

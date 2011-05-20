@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2010-06-22 07:44+0000\n"
+"POT-Creation-Date: 2011-05-15 13:01+0000\n"
 "PO-Revision-Date: 2009-09-20 13:24+0100\n"
 "Last-Translator: Rob Gietema <rob@fourdigits.nl>\n"
 "Language-Team: Rob Gietema <rob@fourdigits.nl>\n"
@@ -13,7 +13,6 @@ msgstr ""
 "Language-Name: Dutch\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.geo.mapwidget\n"
-
 
 #: ./interfaces.py:59
 msgid "A mapping from layerids to ILayers"
@@ -27,39 +26,39 @@ msgstr "Een mapping van mapids naar IMapWidgets"
 msgid "Additional Javascript code inserted after the map widget."
 msgstr "Extra Javascript code welke ingevoegd wordt na de map widget."
 
-#: ./browser/controlpanel.py:72
+#: ./browser/controlpanel.py:73
 msgid "Advanced"
 msgstr "Geavanceerd"
 
-#: ./browser/controlpanel.py:73
+#: ./browser/controlpanel.py:74
 msgid "Advanced configurations"
 msgstr "Geavanceerde configuraties"
 
-#: ./browser/controlpanel.py:117
+#: ./browser/controlpanel.py:118
 msgid "Apply"
 msgstr "Toepassen"
 
-#: ./browser/controlpanel.py:91
+#: ./browser/controlpanel.py:92
 msgid "Base settings"
 msgstr "Basis instellingen"
 
-#: ./maplayers.py:83
+#: ./maplayers.py:69
 msgid "Bing Aerial"
 msgstr "Bing Aerial"
 
-#: ./maplayers.py:95
+#: ./maplayers.py:75
 msgid "Bing Hybrid"
 msgstr "Bing Hybrid"
 
-#: ./maplayers.py:70
+#: ./maplayers.py:63
 msgid "Bing Roads"
 msgstr "Bing Roads"
 
-#: ./maplayers.py:58
+#: ./maplayers.py:57
 msgid "Bing Streets"
 msgstr "Bing Streets"
 
-#: ./browser/controlpanel.py:137
+#: ./browser/controlpanel.py:138
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -67,11 +66,11 @@ msgstr "Annuleren"
 msgid "Class attribute"
 msgstr "Klasse attribuut"
 
-#: ./browser/controlpanel.py:151
+#: ./browser/controlpanel.py:152
 msgid "Collective Geo Default Settings"
 msgstr "Collective Geo Standaard Instellingen"
 
-#: ./browser/controlpanel.py:93
+#: ./browser/controlpanel.py:94
 msgid "Configure Collective Geo Settings"
 msgstr "Set Collective Geo Instellingen in"
 
@@ -84,15 +83,15 @@ msgstr "Schakel standaard lagen in."
 msgid "Find places"
 msgstr "Zoek locaties"
 
-#: ./browser/controlpanel.py:150
+#: ./browser/controlpanel.py:151
 msgid "Geo Settings"
 msgstr "Geo Instellingen"
 
-#: ./maplayers.py:107
+#: ./maplayers.py:81
 msgid "Google"
 msgstr "Google"
 
-#: ./maplayers.py:130
+#: ./maplayers.py:93
 msgid "Hybrid (Google)"
 msgstr "Hybrid (Google)"
 
@@ -116,7 +115,8 @@ msgstr "Javascript factory"
 msgid "Javascript to configure layers."
 msgstr "Javascript om de lagen te configureren."
 
-#: ./browser/controlpanel.py:64
+#: ./browser/controlpanel.py:65
+#: ./interfaces.py:58
 msgid "Layers"
 msgstr "Lagen"
 
@@ -133,7 +133,7 @@ msgstr "Map id"
 msgid "No corresponding geographic location could be found for the specified location, possibly because the address is relatively new, or because it may be incorrect."
 msgstr "Er is geen corresponderende geografische locatie gevonden voor de gespecificeerde locatie, waarschijnlijk omdat het adres relatief nieuw of niet correct is."
 
-#: ./maplayers.py:43
+#: ./maplayers.py:52
 msgid "OpenStreetMap"
 msgstr "OpenStreetMap"
 
@@ -141,7 +141,7 @@ msgstr "OpenStreetMap"
 msgid "Returns some js-code to set up available layers."
 msgstr "Geeft wat js-code terug om de beschikbare layers op te zetten."
 
-#: ./maplayers.py:118
+#: ./maplayers.py:87
 msgid "Satellite (Google)"
 msgstr "Satellite (Google)"
 
@@ -167,7 +167,7 @@ msgstr "Stijl"
 msgid "Style attribute"
 msgstr "Stijl attribuut"
 
-#: ./maplayers.py:142
+#: ./maplayers.py:99
 msgid "Terrain (Google)"
 msgstr "Terrain (Google)"
 
@@ -183,15 +183,15 @@ msgstr "Het html element stijl attribuut."
 msgid "Used to identify the map in the dom-tree and to lookup an IMapWidget component if necessary."
 msgstr "Gebruikt om de kaart te vinden in de dom-tree en een IMapWidget component indien noodzakelijk."
 
-#: ./maplayers.py:176
+#: ./maplayers.py:117
 msgid "Yahoo Hybrid"
 msgstr "Yahoo Hybrid"
 
-#: ./maplayers.py:165
+#: ./maplayers.py:111
 msgid "Yahoo Satellite"
 msgstr "Yahoo Satellite"
 
-#: ./maplayers.py:154
+#: ./maplayers.py:105
 msgid "Yahoo Street"
 msgstr "Yahoo Street"
 
