@@ -3,6 +3,10 @@ Changelog
 
 0.1.4 (unreleased)
 ------------------
+
+- Added ability to display custom-styled maps with inline CSS.  This is based
+  around width/height initially for either global or local custom settings
+  but is extensible by mapping more fields. [davidjb]
 - added map_viewlet_managers in control panel form [gborelli]
 - plone 4.1 fixes [gborelli]
 - changed Browser import from Testing.testbrowser [gborelli]

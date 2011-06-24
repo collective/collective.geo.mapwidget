@@ -66,6 +66,82 @@ cgmap.state and cgmap.config to initialise OpenLayers on these elements.
         function(){return new OpenLayers.Layer.TMS('OpenStreetMap'...
     ...
 
+Customising the display of map widgets
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Through collective.geo.settings, we have the ability to set certain options
+that cause our map widget to display differently.
+
+In particular, map width and map height are two of these such options
+and changing these should result in the style being set on the given map.
+These options were introduced for two reasons: one, being that they are useful
+and two, being that OpenLayers has issues if it is being loaded whilst not
+being 'visible' on a page (for instance, within a jQuery tab, etc) and 
+explicit sizes are not set (straight CSS against the map does not work).
+
+By default, these settings aren't set, thus no special inline CSS or even 
+the style="" attribute appears on the page.  Let's check this.
+
+    >>> print view()
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    ...
+          <div id="default-cgmap" class="widget-cgmap">
+    ...
+
+That said, we can set these options and see the change reflected on our
+widget.  Let's go!
+
+    >>> from zope.component import getUtility, queryAdapter
+    >>> from plone.registry.interfaces import IRegistry
+    >>> from collective.geo.settings.interfaces import IGeoCustomFeatureStyle,\
+    ...    IGeoFeatureStyle
+
+Let's get our site-wide settings and set them.
+
+    >>> geofeaturestyle = getUtility(IRegistry).forInterface(IGeoFeatureStyle)
+    >>> geofeaturestyle
+    <RecordsProxy for collective.geo.settings.interfaces.IGeoFeatureStyle>
+
+We shouldn't have anything set yet.
+
+    >>> geofeaturestyle.map_width == None
+    True
+    >>> geofeaturestyle.map_height == None
+    True
+
+Our properties are strings so we can set them to anything we want/need.
+
+    >>> geofeaturestyle.map_width = u'50.1234em'
+    >>> geofeaturestyle.map_height = u'49.9876%'
+
+Now let's check our map widget.
+
+    >>> print view()
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    ...
+          <div id="default-cgmap" class="widget-cgmap" style="width:50.1234em;height:49.9876%;">
+    ...
+  
+We can just set one of these options to see the result.
+
+    >>> geofeaturestyle.map_width = None
+    >>> geofeaturestyle.map_height = u'12.3456%'
+
+    >>> print view()
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    ...
+          <div id="default-cgmap" class="widget-cgmap" style="height:12.3456%;">
+    ...
+
+So, we can see that if we don't specify options, then we end up with no inline
+styles set, and thus our browser will fallback to using CSS (or otherwise).
+
+Clean up our settings for other upcoming tests.
+
+    >>> geofeaturestyle.map_width = geofeaturestyle.map_height = None
+
+Map fields
+^^^^^^^^^^
 
 Another way to render a map is to define an attribute named 'mapfields' on the
 view. This field must be a list or tuple and should contain IMapWidget
@@ -230,7 +306,7 @@ string or IMapWidget:
     ...
     ValueError: Can't create IMapWidget for None
 
-Now we have covered the most important things about map midgets. Set us try
+Now we have covered the most important things about map widgets. Set us try
 some things with map layers.
 
 

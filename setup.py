@@ -32,6 +32,11 @@ setup(name='collective.geo.mapwidget',
           'plone.app.z3cform',
           'collective.z3cform.colorpicker',
       ],
+      extras_require = {
+          'test': [
+              'plone.testing',
+          ]
+      },
       entry_points="""
       # -*- Entry points: -*-
       [z3c.autoinclude.plugin]

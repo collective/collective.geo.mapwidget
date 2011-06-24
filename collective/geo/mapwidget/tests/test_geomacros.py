@@ -6,7 +6,6 @@ from plone.registry.interfaces import IRegistry
 from collective.geo.mapwidget.tests import base
 from collective.geo.settings.interfaces import IGeoSettings
 
-
 class TestSetup(base.TestCase):
 
     def afterSetUp(self):
