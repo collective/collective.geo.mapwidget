@@ -3,7 +3,8 @@ Changelog
 
 0.1.4 (unreleased)
 ------------------
-
+- added improvements about the Internationalization [macagua]
+- added support for Spanish localization for collective.geo.mapwidget domain [macagua]
 - Make our mapwidget automatically zoom to see a loaded WKT feature. [davidjb]
 - Show our default fieldset first on our form in accordance with changes in 
   plone.app.z3cform 0.5.0+. [davidjb]
