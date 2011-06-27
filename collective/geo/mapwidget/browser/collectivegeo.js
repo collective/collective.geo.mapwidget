@@ -482,6 +482,7 @@ OpenLayers.Control.WKTEditingToolbar = OpenLayers.Class(
                 if (feat)
                 {
                     layer.addFeatures([feat]);
+		    layer.map.zoomToExtent(layer.getDataExtent());
                 }
             }
 
