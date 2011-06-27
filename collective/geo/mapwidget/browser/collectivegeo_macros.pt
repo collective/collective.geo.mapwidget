@@ -9,7 +9,7 @@
 
   <body>
 
-    <tal:comment>A macro to include all necessary javascript files</tal:comment>
+    <tal:comment replace="nothing">A macro to include all necessary javascript files</tal:comment>
     <metal:define define-macro="openlayers"
                   tal:define="geosettings python:context.restrictedTraverse('@@geosettings-view');
                               google_maps_js python:geosettings.google_maps_js;
@@ -32,7 +32,7 @@
               tal:content="structure geosettings/geo_setting_js"></script>
     </metal:define>
 
-    <tal:comment>This macro needs a variable 'cgmap' in the namespace</tal:comment>
+    <tal:comment replace="nothing">This macro needs a variable 'cgmap' in the namespace</tal:comment>
     <metal:define define-macro="map-widget"
                   tal:define="cgmap nocall:cgmap | nothing;
                               mapwidgets view/@@collectivegeo-maps/mapwidgets;
@@ -49,7 +49,7 @@
               tal:content="structure cgmap/js | nothing"><!-- additional javascript --></script>
     </metal:define>
 
-    <tal:comment>macro for geocoding stuff</tal:comment>
+    <tal:comment replace="nothing">macro for geocoding stuff</tal:comment>
     <metal:define define-macro="geocoding">
       <div class="field geocoder-wrapper"
             tal:define="portal_state context/@@plone_portal_state;

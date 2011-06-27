@@ -10,7 +10,7 @@
     <div metal:fill-slot="prefs_configlet_main"
           tal:define="contents view/contents">
       <metal:use use-macro="context/@@collectivegeo-macros/openlayers"/>
-      <h1 tal:content="view/label">Configuration</h1>
+      <h1 tal:content="view/label"><tal:comment replace="nothing">Configuration</tal:comment></h1>
 
       <a href="#"
          class="link-parent"
