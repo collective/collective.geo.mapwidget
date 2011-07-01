@@ -39,4 +39,4 @@ Contributors
 * Gerhard Weis - gweis
 * Giorgio Borelli - gborelli
 * Silvio Tomatis - silviot
-* David Breitkreutz - davidjb/rockdj
+* David Beitey (Breitkreutz) - davidjb/rockdj

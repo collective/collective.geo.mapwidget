@@ -3,6 +3,8 @@ Changelog
 
 0.1.4 (unreleased)
 ------------------
+- Added fix to reload OL map layers when the map is made visible after
+  being loaded within a non-default Plone fieldset [davidjb]
 - added improvements about the Internationalization [macagua]
 - added support for Spanish localization for collective.geo.mapwidget domain [macagua]
 - Make our mapwidget automatically zoom to see a loaded WKT feature. [davidjb]
