@@ -10,8 +10,8 @@
 <metal:map use-macro="context/@@collectivegeo-macros/map-widget" />
 <!-- c.geo controlpanel script -->
 <script type="text/javascript">
-  $(window).bind("load", function() {
-      $('#cgeo-get-location').click(function(){
+  jq(window).bind("load", function() {
+      jq('#cgeo-get-location').click(function(){
         cgmap.geocoding('geosettings-cgmap',
         'Marker',
         cgmap.portal_url + '/geocoderview')});
