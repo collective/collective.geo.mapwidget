@@ -3,6 +3,7 @@ Changelog
 
 0.1.4 (unreleased)
 ------------------
+- Changed javascript to bind window load event to create map. It fixes #29 [gborelli]
 - Added fix to reload OL map layers when the map is made visible after
   being loaded within a non-default Plone fieldset [davidjb]
 - added improvements about the Internationalization [macagua]

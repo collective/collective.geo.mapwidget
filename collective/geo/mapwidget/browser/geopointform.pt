@@ -6,13 +6,14 @@
   <div tal:replace="structure view/contents_bottom|nothing" />
 </div>
 <div class="visualClear"><!-- clear floats --></div>
+<metal:use use-macro="context/@@collectivegeo-macros/geocoding"/>
+<metal:map use-macro="context/@@collectivegeo-macros/map-widget" />
+<!-- c.geo controlpanel script -->
 <script type="text/javascript">
-  $(document).ready( function() {
+  $(window).bind("load", function() {
       $('#cgeo-get-location').click(function(){
         cgmap.geocoding('geosettings-cgmap',
         'Marker',
         cgmap.portal_url + '/geocoderview')});
   });
 </script>
-<metal:use use-macro="context/@@collectivegeo-macros/geocoding"/>
-<metal:map use-macro="context/@@collectivegeo-macros/map-widget" />

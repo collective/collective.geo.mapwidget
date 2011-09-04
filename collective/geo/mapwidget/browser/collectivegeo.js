@@ -14,8 +14,7 @@ var cgmap = function($)
     /* initalise all maps after page has been loaded and the dom tree
      * is fully intstantiated
      */
-    $(document).ready( function() {
-
+    $(window).bind("load", function() {
         // set images path
         if (cgmap.imgpath) {OpenLayers.ImgPath = cgmap.imgpath;}
 
