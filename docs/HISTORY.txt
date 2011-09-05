@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.1.5 (unreleased)
+------------------
+
+- Nothing changed yet.
+
+
 0.1.4 (2011-09-05)
 ------------------
 - Changed javascript to bind window load event to create map. It fixes #29 [gborelli]
