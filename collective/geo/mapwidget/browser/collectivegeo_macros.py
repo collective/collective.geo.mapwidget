@@ -24,3 +24,11 @@ class CollectiveGeoMacros(BrowserView):
 
         return inline_css or None
 
+    @property
+    def location(self):
+        try:
+            location = self.context.getLocation()
+        except AttributeError:
+            return u''
+        if isinstance(location, str):
+            return location.decode('utf8')

@@ -67,7 +67,7 @@
                      specified location, possibly because the address is relatively
                      new, or because it may be incorrect.</div>
         <input type="text" name="geocoding-address" value=""
-                tal:attributes="value context/getLocation | nothing"/>
+                tal:attributes="value context/@@collectivegeo-macros/location"/>
         <input type="button"
           i18n:attributes="value" value="Search" id="cgeo-get-location" />
 
