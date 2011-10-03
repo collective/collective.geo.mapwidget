@@ -68,5 +68,5 @@ class TestDefaultMapLayers(base.FunctionalTestCase):
 
 def test_suite():
     suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(TestDefaulMapLayers))
+    suite.addTest(unittest.makeSuite(TestDefaultMapLayers))
     return suite
