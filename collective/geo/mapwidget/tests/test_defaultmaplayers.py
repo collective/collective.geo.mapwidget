@@ -8,7 +8,7 @@ from collective.geo.mapwidget.tests import base
 from collective.geo.mapwidget.interfaces import IDefaultMapLayers, IMapLayer
 
 
-class TestDefaulMapLayers(base.FunctionalTestCase):
+class TestDefaultMapLayers(base.FunctionalTestCase):
 
     def test_utility(self):
         self.failUnless(queryUtility(IDefaultMapLayers))
