@@ -20,7 +20,10 @@ def setup_product():
 
 
 setup_product()
-ptc.setupPloneSite(products=['collective.geo.mapwidget'])
+ptc.setupPloneSite(
+    products=['collective.geo.mapwidget'],
+    extension_profiles=('collective.geo.settings:default',)
+)
 
 
 class TestCase(ptc.PloneTestCase):
@@ -28,8 +31,13 @@ class TestCase(ptc.PloneTestCase):
 
 
 class FunctionalTestCase(ptc.FunctionalTestCase):
-    
+
     def afterSetUp(self):
+
         from collective.geo.settings.utils import geo_settings
-        geo_settings(self.portal).default_layers = [u'osm', u'google_ter', u'google_hyb', 
-                                         u'google_sat', u'google_map']
+        geo_settings(self.portal).default_layers = [u'osm',
+                                                    u'google_ter',
+                                                    u'google_hyb',
+                                                    u'google_sat',
+                                                    u'google_map']
+

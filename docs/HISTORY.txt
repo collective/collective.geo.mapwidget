@@ -4,7 +4,9 @@ Changelog
 0.1.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Make tests install the collective.geo.settings extension profile so
+  plone.app.registry knows about settings.
+  [davidjb]
 
 
 0.1.4 (2011-09-05)
