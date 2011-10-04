@@ -14,6 +14,7 @@ from collective.geo.mapwidget.interfaces import IMapLayer
 from collective.geo.mapwidget.interfaces import IDefaultMapLayers
 
 from collective.geo.mapwidget import GeoMapwidgetMessageFactory as _
+from collective.geo.mapwidget import utils
 
 
 class MapLayer(object):
@@ -34,6 +35,7 @@ class MapLayer(object):
     def __init__(self, view=None, request=None, context=None, widget=None):
         self.view = view
         self.request = request
+        self.protocol = utils.getProtocolFromRequest(self.request)
         self.context = context
         self.widget = widget
 
@@ -44,7 +46,7 @@ class MapLayer(object):
                                     str('%s-layer' % self.name))
         except AttributeError:
             return u""
-        return template() % self.Title
+        return template() % dict(title=self.Title, protocol=self.protocol)
 
 
 class OSMMapLayer(MapLayer):

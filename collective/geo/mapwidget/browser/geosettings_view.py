@@ -1,9 +1,12 @@
+import urllib
+
 from zope.component import getUtility
 
 from Products.CMFCore.Expression import Expression, getExprContext
 
 from plone.registry.interfaces import IRegistry
 from collective.geo.settings.interfaces import IGeoSettings
+from collective.geo.mapwidget import utils
 
 
 class GeoSettingsView(object):
@@ -13,6 +16,7 @@ class GeoSettingsView(object):
     def __init__(self, context, request):
         self.context = context
         self.request = request
+        self.layer_protocol = utils.getProtocolFromRequest(self.request)
         self.geosettings = getUtility(IRegistry).forInterface(IGeoSettings)
 
     @property
@@ -46,7 +50,8 @@ class GeoSettingsView(object):
     def google_maps_js(self):
         if self.googlemaps:
             #  google maps 3 api -- needs openlayer 2.10 version...
-			return 'http://maps.google.com/maps/api/js?v=3.2&sensor=false'
+            return '%s://maps.google.com/maps/api/js?v=3.2&sensor=false' \
+                    % self.layer_protocol
             # return 'http://maps.google.com/maps?file=api&v=2&key=%s' % self.googleapi
         else:
             return None
@@ -65,6 +70,7 @@ class GeoSettingsView(object):
     @property
     def yahoo_maps_js(self):
         if self.yahoomaps:
+            #This API does not support SSL
             return 'http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=%s' % self.yahooapi
         else:
             return None
@@ -79,7 +85,8 @@ class GeoSettingsView(object):
     @property
     def bing_maps_js(self):
         if self.bingmaps:
-            return 'http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6'
+            return '%s://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6' \
+                    % self.layer_protocol
         else:
             return None
 
@@ -106,8 +113,8 @@ class GeoSettingsView(object):
             imgpath = Expression(str(self.imgpath))(getExprContext(self.context))
         except:
             imgpath = ''
-        
-        #we portal_url to get geocoder view 
+
+        #we portal_url to get geocoder view
         portal_url = self.context.restrictedTraverse('plone_portal_state').portal_url()
         ret.append("cgmap.portal_url = '%s';" % portal_url)
 

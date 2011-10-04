@@ -1,5 +1,5 @@
-How it Work
------------
+How it Works
+------------
 
 let's create a view which should display a map.
     >>> from Products.Five import BrowserView

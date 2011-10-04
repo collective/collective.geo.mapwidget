@@ -4,6 +4,14 @@ Changelog
 0.1.5 (unreleased)
 ------------------
 
+- Allow mapwidget to utilise HTTPS mapping resources, where possible, to 
+  attempt to avoid issues of loading insecure resources like map tiles. Only
+  Google and Bing support HTTPS for their APIs at present - Yahoo and OSM do
+  not. To avoid security errors, avoid the use of the latter two map APIs 
+  when on HTTPS.
+  [davidjb]
+- Provide request protocol to layer templates
+  [davidjb]
 - Make tests install the collective.geo.settings extension profile so
   plone.app.registry knows about settings.
   [davidjb]

@@ -3,6 +3,7 @@ import unittest
 from zope.component import getUtility, queryUtility, getAdapters
 from zope.interface import Interface
 from zope.schema.interfaces import IVocabularyFactory
+from zope.publisher.browser import TestRequest
 
 from collective.geo.mapwidget.tests import base
 from collective.geo.mapwidget.interfaces import IDefaultMapLayers, IMapLayer
@@ -64,6 +65,20 @@ class TestDefaultMapLayers(base.FunctionalTestCase):
         for layer in layers:
             self.assertTrue(layer.name in layer_ids,
                             "%s not in map layers" % layer.name)
+
+    def test_layer_protocols(self):
+        """Test layers know what protocol is being used - HTTP or HTTPS."""
+        layers_utility = self._get_utility()
+
+        for protocol in ['https', 'http']:
+            request = TestRequest(environ={'SERVER_URL':
+                                           '%s://nohost' % protocol})
+
+            self.assertEquals(request['SERVER_URL'], '%s://nohost' % protocol)
+
+            layers = layers_utility.layers(None, request, None, None)
+            for layer in layers:
+                self.assertEquals(layer.protocol, protocol)
 
 
 def test_suite():
