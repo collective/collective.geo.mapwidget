@@ -4,6 +4,8 @@ Changelog
 0.1.5 (unreleased)
 ------------------
 
+- Replace deprecated usage of ``jq`` with ``$`` (using ``jQuery`` function)
+  [davidjb]
 - Allow mapwidget to utilise HTTPS mapping resources, where possible, to 
   attempt to avoid issues of loading insecure resources like map tiles. Only
   Google and Bing support HTTPS for their APIs at present - Yahoo and OSM do

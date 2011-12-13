@@ -200,7 +200,8 @@ class ControlPanelMapWidget(MapWidget):
     @property
     def js(self):
         return """
-    jq(window).load(function() {
+(function($) {
+    $(window).load(function() {
       var map = cgmap.config['geosettings-cgmap'].map;
       var layer = map.getLayersByName('Marker')[0];
       var elctl = new OpenLayers.Control.MarkerEditingToolbar(layer,
@@ -208,6 +209,7 @@ class ControlPanelMapWidget(MapWidget):
       map.addControl(elctl);
       elctl.activate();
     });
+})(jQuery);
 """ % (self.lonid, self.latid, self.zoomid)
 
 

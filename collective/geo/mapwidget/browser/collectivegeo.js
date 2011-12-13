@@ -387,6 +387,8 @@ var cgmap = function($)
  * - a Remove'Draw'Feature
  */
 
+(function($) {
+
 OpenLayers.Control.MarkerEditingToolbar = OpenLayers.Class(
     OpenLayers.Control.Panel, {
 
@@ -430,8 +432,8 @@ OpenLayers.Control.MarkerEditingToolbar = OpenLayers.Class(
             // setup form events
             if (this.lonid && this.latid)
             {
-                var point = new OpenLayers.Geometry.Point(jq('#' + this.lonid).val(),
-                                                          jq('#' + this.latid).val());
+                var point = new OpenLayers.Geometry.Point($('#' + this.lonid).val(),
+                                                          $('#' + this.latid).val());
                 if (layer.map.displayProjection)
                 {
                     point.transform(layer.map.displayProjection, layer.map.getProjectionObject());
@@ -453,7 +455,7 @@ OpenLayers.Control.MarkerEditingToolbar = OpenLayers.Class(
 
         updateZoom: function(evt)
         {
-            jq('#' + this.zoomid).val(evt.object.getZoom());
+            $('#' + this.zoomid).val(evt.object.getZoom());
         },
 
         updateForm: function(evt)
@@ -463,8 +465,8 @@ OpenLayers.Control.MarkerEditingToolbar = OpenLayers.Class(
             {
                 lonlat.transform(evt.object.map.getProjectionObject(), evt.object.map.displayProjection);
             }
-            jq('#' + this.lonid).val(lonlat.lon);
-            jq('#' + this.latid).val(lonlat.lat);
+            $('#' + this.lonid).val(lonlat.lon);
+            $('#' + this.latid).val(lonlat.lat);
         },
 
         CLASS_NAME: 'OpenLayers.Control.EditingToolbar'
@@ -532,3 +534,5 @@ OpenLayers.Control.WKTEditingToolbar = OpenLayers.Class(
 
     }
 );
+
+})(jQuery);
