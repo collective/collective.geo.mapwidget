@@ -146,10 +146,10 @@ var cgmap = function($)
 
             $.getJSON(geocoderview_url, {'address': address}, function(data) {
                 if (data === null) {
-                    $('#geocodre-error').show();
+                    $('#geocoder-error').show();
                     $('.geocoder-wrapper').addClass('error');
                 } else {
-                    $('#geocodre-error').hide();
+                    $('#geocoder-error').hide();
                     $('.geocoder-wrapper').removeClass('error');
 
                     var i = 0;

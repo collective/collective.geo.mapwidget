@@ -61,7 +61,7 @@
           tal:attributes="src string:$portal_url/++resource++collectivegeo-loader.gif" 
               width="16px" height="11px"/>
         <br/>
-        <div class="fieldErrorBox" id="geocodre-error"
+        <div class="fieldErrorBox" id="geocoder-error"
               style="display: none"
               i18n:translate="">No corresponding geographic location could be found for the
                      specified location, possibly because the address is relatively

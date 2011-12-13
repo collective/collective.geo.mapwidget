@@ -4,6 +4,8 @@ Changelog
 0.1.5 (unreleased)
 ------------------
 
+- Fix minor typo on geocoder error div
+  [davidjb]
 - Replace deprecated usage of ``jq`` with ``$`` (using ``jQuery`` function)
   [davidjb]
 - Allow mapwidget to utilise HTTPS mapping resources, where possible, to 
