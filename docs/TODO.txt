@@ -1,0 +1,7 @@
+
+TODO
+====
+
+* Geocoder elements use specific IDs - this needs to be changed if multiple
+  map widgets can be used on a given page.
+
