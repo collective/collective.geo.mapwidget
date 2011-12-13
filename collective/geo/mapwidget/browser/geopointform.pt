@@ -16,6 +16,14 @@
         cgmap.geocoding('geosettings-cgmap',
         'Marker',
         cgmap.portal_url + '/geocoderview')});
+      $('.geocoder-wrapper input[name=geocoding-address]').keydown(
+        function(evt){
+          if (evt.keyCode == 13) { 
+            evt.preventDefault();
+            $(this).siblings('input[value=Search]').click();
+          }
+        }
+      );
     });
   })(jQuery);
 </script>

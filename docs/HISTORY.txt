@@ -4,6 +4,9 @@ Changelog
 0.1.5 (unreleased)
 ------------------
 
+- Added ability to hit enter key within geocoder input and search. Previously,
+  hitting enter submitted the parent form.
+  [davidjb]
 - Fix minor typo on geocoder error div
   [davidjb]
 - Replace deprecated usage of ``jq`` with ``$`` (using ``jQuery`` function)
