@@ -22,6 +22,7 @@ Changelog
 - Make tests install the collective.geo.settings extension profile so
   plone.app.registry knows about settings.
   [davidjb]
+- Added Danish translation [stonor]
 
 
 0.1.4 (2011-09-05)
