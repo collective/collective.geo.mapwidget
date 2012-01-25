@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2011-05-15 13:01+0000\n"
+"POT-Creation-Date: 2012-01-25 08:19+0000\n"
 "PO-Revision-Date: 2009-06-12  21:28+0000\n"
 "Last-Translator: Giorgio Borelli <giorgio@giorgioborelli.it>\n"
 "Language-Team: Giorgio Borelli <giorgio@giorgioborelli.it>\n"
@@ -17,184 +17,184 @@ msgstr ""
 "Domain: collective.geo.mapwidget\n"
 "X-Is-Fallback-For: it-it it-ch it-sm it-hr it-si\n"
 
-#: ./interfaces.py:59
+#: ../interfaces.py:59
 msgid "A mapping from layerids to ILayers"
 msgstr ""
 
-#: ./interfaces.py:85
+#: ../interfaces.py:85
 msgid "A mapping from mapids to IMapWidgets"
 msgstr ""
 
-#: ./interfaces.py:53
+#: ../interfaces.py:53
 msgid "Additional Javascript code inserted after the map widget."
 msgstr ""
 
-#: ./browser/controlpanel.py:73
+#: ../browser/controlpanel.py:73
 msgid "Advanced"
 msgstr "Avanzate"
 
-#: ./browser/controlpanel.py:74
+#: ../browser/controlpanel.py:74
 msgid "Advanced configurations"
 msgstr "Configurazioni avanzate"
 
-#: ./browser/controlpanel.py:118
+#: ../browser/controlpanel.py:118
 msgid "Apply"
 msgstr "Applica"
 
-#: ./browser/controlpanel.py:92
+#: ../browser/controlpanel.py:92
 msgid "Base settings"
 msgstr "Impostazioni di base"
 
-#: ./maplayers.py:69
+#: ../maplayers.py:71
 msgid "Bing Aerial"
 msgstr ""
 
-#: ./maplayers.py:75
+#: ../maplayers.py:77
 msgid "Bing Hybrid"
 msgstr ""
 
-#: ./maplayers.py:63
+#: ../maplayers.py:65
 msgid "Bing Roads"
 msgstr ""
 
-#: ./maplayers.py:57
+#: ../maplayers.py:59
 msgid "Bing Streets"
 msgstr ""
 
-#: ./browser/controlpanel.py:138
+#: ../browser/controlpanel.py:138
 msgid "Cancel"
 msgstr "Annulla"
 
-#: ./interfaces.py:41
+#: ../interfaces.py:41
 msgid "Class attribute"
 msgstr ""
 
-#: ./browser/controlpanel.py:152
+#: ../browser/controlpanel.py:152
 msgid "Collective Geo Default Settings"
 msgstr "Impostazioni di default di Collective Geo"
 
-#: ./browser/controlpanel.py:94
+#: ../browser/controlpanel.py:94
 msgid "Configure Collective Geo Settings"
 msgstr "Configura Collective Geo"
 
-#: ./interfaces.py:63
+#: ../interfaces.py:63
 msgid "Enable default layers."
 msgstr ""
 
 #. Default: "Find places"
-#: ./browser/collectivegeo_macros.pt:55
+#: ../browser/collectivegeo_macros.pt:57
 msgid "Find places"
 msgstr "Ricerca luoghi"
 
-#: ./browser/controlpanel.py:151
+#: ../browser/controlpanel.py:151
 msgid "Geo Settings"
 msgstr "Impostazioni"
 
-#: ./maplayers.py:81
+#: ../maplayers.py:83
 msgid "Google"
 msgstr ""
 
-#: ./maplayers.py:93
+#: ../maplayers.py:95
 msgid "Hybrid (Google)"
 msgstr ""
 
-#: ./interfaces.py:64
+#: ../interfaces.py:64
 msgid "If set to true, the default IMapLayers implementation adds all enabled default layers from the geo settings tool."
 msgstr ""
 
-#: ./interfaces.py:96
+#: ../interfaces.py:96
 msgid "Javascript code which returns a new instance of this layer and does not expect any parameters"
 msgstr ""
 
-#: ./interfaces.py:52
+#: ../interfaces.py:52
 msgid "Javascript extras"
 msgstr ""
 
-#: ./interfaces.py:95
+#: ../interfaces.py:95
 msgid "Javascript factory"
 msgstr ""
 
-#: ./interfaces.py:24
+#: ../interfaces.py:24
 msgid "Javascript to configure layers."
 msgstr ""
 
-#: ./browser/controlpanel.py:65
-#: ./interfaces.py:58
+#: ../browser/controlpanel.py:65
+#: ../interfaces.py:58
 msgid "Layers"
 msgstr "Layer"
 
-#: ./interfaces.py:84
+#: ../interfaces.py:84
 msgid "Map Widgets"
 msgstr ""
 
-#: ./interfaces.py:34
+#: ../interfaces.py:34
 msgid "Map id"
 msgstr ""
 
 #. Default: "No corresponding geographic location could be found for the specified location, possibly because the address is relatively new, or because it may be incorrect."
-#: ./browser/collectivegeo_macros.pt:62
+#: ../browser/collectivegeo_macros.pt:64
 msgid "No corresponding geographic location could be found for the specified location, possibly because the address is relatively new, or because it may be incorrect."
 msgstr "Nessun luogo è stato trovato per l'indirizzo specificato, probabilmente l'indirizzo è relativamente nuovo o non corretto."
 
-#: ./maplayers.py:52
+#: ../maplayers.py:54
 msgid "OpenStreetMap"
 msgstr ""
 
-#: ./interfaces.py:25
+#: ../interfaces.py:25
 msgid "Returns some js-code to set up available layers."
 msgstr ""
 
-#: ./maplayers.py:87
+#: ../maplayers.py:89
 msgid "Satellite (Google)"
 msgstr ""
 
 #. Default: "Search"
-#: ./browser/collectivegeo_macros.pt:69
+#: ../browser/collectivegeo_macros.pt:71
 msgid "Search"
 msgstr "Cerca"
 
 #. Default: "Select a location from the list below to set the coordinates."
-#: ./browser/collectivegeo_macros.pt:73
+#: ../browser/collectivegeo_macros.pt:75
 msgid "Select a location from the list below to set the coordinates."
 msgstr "Seleziona un luogo dalla lista per impostare le coordinate sulla mappa."
 
-#: ./browser/controlpanel.py:55
+#: ../browser/controlpanel.py:55
 msgid "Set default styles for geographical shapes"
 msgstr "Imposta gli stili di default per la visualizzazione dei dati sulla mappa"
 
-#: ./browser/controlpanel.py:54
+#: ../browser/controlpanel.py:54
 msgid "Style"
 msgstr "Stili"
 
-#: ./interfaces.py:47
+#: ../interfaces.py:47
 msgid "Style attribute"
 msgstr ""
 
-#: ./maplayers.py:99
+#: ../maplayers.py:101
 msgid "Terrain (Google)"
 msgstr ""
 
-#: ./interfaces.py:42
+#: ../interfaces.py:42
 msgid "The html element class attribute."
 msgstr ""
 
-#: ./interfaces.py:48
+#: ../interfaces.py:48
 msgid "The html element style attribute."
 msgstr ""
 
-#: ./interfaces.py:35
+#: ../interfaces.py:35
 msgid "Used to identify the map in the dom-tree and to lookup an IMapWidget component if necessary."
 msgstr ""
 
-#: ./maplayers.py:117
+#: ../maplayers.py:119
 msgid "Yahoo Hybrid"
 msgstr ""
 
-#: ./maplayers.py:111
+#: ../maplayers.py:113
 msgid "Yahoo Satellite"
 msgstr ""
 
-#: ./maplayers.py:105
+#: ../maplayers.py:107
 msgid "Yahoo Street"
 msgstr ""
 

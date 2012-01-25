@@ -4,6 +4,7 @@ Changelog
 0.1.5 (unreleased)
 ------------------
 
+- Added French translation [Fabien Moret]
 - Added ability to hit enter key within geocoder input and search. Previously,
   hitting enter submitted the parent form.
   [davidjb]
@@ -11,10 +12,10 @@ Changelog
   [davidjb]
 - Replace deprecated usage of ``jq`` with ``$`` (using ``jQuery`` function)
   [davidjb]
-- Allow mapwidget to utilise HTTPS mapping resources, where possible, to 
+- Allow mapwidget to utilise HTTPS mapping resources, where possible, to
   attempt to avoid issues of loading insecure resources like map tiles. Only
   Google and Bing support HTTPS for their APIs at present - Yahoo and OSM do
-  not. To avoid security errors, avoid the use of the latter two map APIs 
+  not. To avoid security errors, avoid the use of the latter two map APIs
   when on HTTPS.
   [davidjb]
 - Provide request protocol to layer templates
@@ -33,7 +34,7 @@ Changelog
 - added improvements about the Internationalization [macagua]
 - added support for Spanish localization for collective.geo.mapwidget domain [macagua]
 - Make our mapwidget automatically zoom to see a loaded WKT feature. [davidjb]
-- Show our default fieldset first on our form in accordance with changes in 
+- Show our default fieldset first on our form in accordance with changes in
   plone.app.z3cform 0.5.0+. [davidjb]
 - Added ability to display custom-styled maps with inline CSS.  This is based
   around width/height initially for either global or local custom settings
@@ -69,7 +70,7 @@ Changelog
 - added geocoding to controlpanel
 - added cgmap.portal_url in collective.geo javascript
 - Removed unused googleapi configuration from controlpanel
-- Changed numZoomLevels in default mapwidget 
+- Changed numZoomLevels in default mapwidget
 - Updated Google map layers to Googlemaps v3
 - fixed italian translation
 
