@@ -20,8 +20,8 @@ def setup_product():
 
 setup_product()
 ptc.setupPloneSite(
-    products=['collective.geo.mapwidget'],
-    extension_profiles=('collective.geo.settings:default',
+    extension_profiles=('collective.geo.mapwidget:default',
+                        'collective.geo.settings:default',
                         'collective.geo.mapwidget:default',)
 )
 
