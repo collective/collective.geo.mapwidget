@@ -7,6 +7,7 @@ from plone.registry.interfaces import IRegistry
 from collective.geo.mapwidget.tests import base
 from collective.geo.settings.interfaces import IGeoSettings
 
+
 class TestSetupHTTP(base.TestCase):
 
     _protocol = 'http'
@@ -29,8 +30,9 @@ class TestSetupHTTP(base.TestCase):
                             (Decimal("0.00"), Decimal("0.0")))
 
     def test_property_googleapi(self):
-        self.assertEquals(self.settings.googleapi,
-              u'ABQIAAAAaKes6QWqobpCx2AOamo-shTwM0brOpm-All5BF6PoaKBxRWWERSUWbHs4SIAMkeC1KV98E2EdJKuJw')
+        key = u'ABQIAAAAaKes6QWqobpCx2AOamo-shTwM0brOpm-'\
+              'All5BF6PoaKBxRWWERSUWbHs4SIAMkeC1KV98E2EdJKuJw'
+        self.assertEquals(self.settings.googleapi, key)
 
     def test_property_jsgooglemaps(self):
         # when a layer is google_map we should include external javascript
@@ -68,7 +70,8 @@ class TestSetupHTTP(base.TestCase):
 
     def test_property_geosettingjs(self):
         self.assertEquals(self.settings.geo_setting_js,
-            "cgmap.state = {'default': {lon: 0.000000, lat: 0.000000, zoom: 10 }};\n"
+            "cgmap.state = {'default': {lon: 0.000000, "\
+                                "lat: 0.000000, zoom: 10 }};\n"
             "cgmap.portal_url = '%(protocol)s://nohost/plone';\n"
             "cgmap.imgpath = '%(portal_url)s/img/';" % \
                           dict(portal_url=self.portal.absolute_url(),

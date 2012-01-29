@@ -25,43 +25,42 @@ class MapView(BrowserView):
 
 
 class MapWidgets(list):
+    '''IMaps adapter which initialises IMapWidgets
+    for current view ad context.
     '''
-    IMaps adapter which initialises IMapWidgets for current view ad context.
-    '''
-
 # TODO: ensure all these methods are available
 #    def __getitem__(key):
 #         """Get a value for a key
-
+#
 #         A KeyError is raised if there is no value for the key.
 #         """
-
+#
 #     def get(key, default=None):
 #         """Get a value for a key
-
+#
 #         The default is returned if there is no value for the key.
 #         """
-
+#
 #     def __contains__(key):
 #         """Tell if a key exists in the mapping."""
-
+#
 # def keys():
 #         """Return the keys of the mapping object.
 #         """
-
-
+#
+#
 #     def __iter__():
 #         """Return an iterator for the keys of the mapping object.
 #         """
-
+#
 #     def values():
 #         """Return the values of the mapping object.
 #         """
-
+#
 #     def items():
 #         """Return the items of the mapping object.
 #         """
-
+#
 #     def __len__():
 #         """Return the number of items.
 #         """
@@ -108,8 +107,7 @@ class MapWidgets(list):
 
 
 class MapWidget(object):
-    '''
-    The default IMapWidget, which also can serve as handy base class.
+    '''The default IMapWidget, which also can serve as handy base class.
     '''
 
     implements(IMapWidget)

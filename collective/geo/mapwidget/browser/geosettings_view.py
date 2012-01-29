@@ -1,5 +1,3 @@
-import urllib
-
 from zope.component import getUtility
 
 from Products.CMFCore.Expression import Expression, getExprContext
@@ -7,6 +5,11 @@ from Products.CMFCore.Expression import Expression, getExprContext
 from plone.registry.interfaces import IRegistry
 from collective.geo.settings.interfaces import IGeoSettings
 from collective.geo.mapwidget import utils
+
+
+_YAHOOURL = 'http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=%s'
+_BINGURL = '%s://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6'
+_GOOGLEURL = '%s://maps.google.com/maps/api/js?v=3.2&sensor=false'
 
 
 class GeoSettingsView(object):
@@ -50,9 +53,7 @@ class GeoSettingsView(object):
     def google_maps_js(self):
         if self.googlemaps:
             #  google maps 3 api -- needs openlayer 2.10 version...
-            return '%s://maps.google.com/maps/api/js?v=3.2&sensor=false' \
-                    % self.layer_protocol
-            # return 'http://maps.google.com/maps?file=api&v=2&key=%s' % self.googleapi
+            return _GOOGLEURL % self.layer_protocol
         else:
             return None
 
@@ -71,7 +72,7 @@ class GeoSettingsView(object):
     def yahoo_maps_js(self):
         if self.yahoomaps:
             #This API does not support SSL
-            return 'http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=%s' % self.yahooapi
+            return _YAHOOURL % self.yahooapi
         else:
             return None
 
@@ -85,8 +86,7 @@ class GeoSettingsView(object):
     @property
     def bing_maps_js(self):
         if self.bingmaps:
-            return '%s://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6' \
-                    % self.layer_protocol
+            return _BINGURL % self.layer_protocol
         else:
             return None
 
@@ -97,25 +97,33 @@ class GeoSettingsView(object):
                  'lat': lat,
                  'zoom': self.zoom}
         # set default configuration
-        ret = ["cgmap.state = {'default': {lon: %(lon)7f, lat: %(lat)7f, zoom: %(zoom)d }};" % state]
+        ret = ["cgmap.state = {'default': " \
+            "{lon: %(lon)7f, lat: %(lat)7f, zoom: %(zoom)d }};" % state]
         # go through all maps in request and extract their state
         # to update map_state
         for mapid in self.request.get('cgmap_state_mapids', '').split():
             map_state = self.request.get('cgmap_state.%s' % mapid)
             state = {'mapid': mapid}
-            for param in ('lon', 'lat', 'zoom', 'activebaselayer', 'activelayers'):
+            for param in ('lon', 'lat', 'zoom',
+                          'activebaselayer', 'activelayers'):
                 val = map_state.get(param, None)
-                state[param] = (val is not None) and ("'%s'" % val) or 'undefined'
-            ret.append("cgmap.state['%(mapid)s'] = {lon: %(lon)s, lat: %(lat)s, zoom: %(zoom)s, activebaselayer: %(activebaselayer)s, activelayers: %(activelayers)s };" % state)
+                state[param] = (val is not None) and ("'%s'" % val) or \
+                                                                    'undefined'
+            ret.append("cgmap.state['%(mapid)s'] = " \
+                    "{lon: %(lon)s, lat: %(lat)s, zoom: %(zoom)s, " \
+                    "activebaselayer: %(activebaselayer)s, activelayers: " \
+                    "%(activelayers)s };" % state)
 
         # image path for change OpenLayers default images
         try:
-            imgpath = Expression(str(self.imgpath))(getExprContext(self.context))
+            expr = Expression(str(self.imgpath))
+            imgpath = expr(getExprContext(self.context))
         except:
             imgpath = ''
 
         #we portal_url to get geocoder view
-        portal_url = self.context.restrictedTraverse('plone_portal_state').portal_url()
+        pstate = self.context.restrictedTraverse('plone_portal_state')
+        portal_url = pstate.portal_url()
         ret.append("cgmap.portal_url = '%s';" % portal_url)
 
         ret.append("cgmap.imgpath = '%s';" % imgpath)

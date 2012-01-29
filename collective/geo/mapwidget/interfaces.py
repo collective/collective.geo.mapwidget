@@ -97,6 +97,7 @@ class IMapLayer(Interface):
                       u"layer and does not expect any parameters"),
         required=True)
 
+
 class IDefaultMapLayers(Interface):
     """Utility to provide a list of default map layers
     """

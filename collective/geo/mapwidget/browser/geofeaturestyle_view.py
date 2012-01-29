@@ -1,10 +1,11 @@
 from zope.component import getUtility, queryAdapter
 
 from plone.registry.interfaces import IRegistry
-from collective.geo.settings.interfaces import IGeoCustomFeatureStyle, \
-        IGeoFeatureStyle
+from collective.geo.settings.interfaces import IGeoCustomFeatureStyle
+from collective.geo.settings.interfaces import IGeoFeatureStyle
 
 MAP_STYLE_FIELDS = ['map_width', 'map_height']
+
 
 class GeoFeatureStyleView(object):
     """Supporting Geo Feature Style settings used for maps
@@ -39,6 +40,3 @@ class GeoFeatureStyleView(object):
             return getattr(self.geofeaturestyle, name, None)
         else:
             return super(GeoFeatureStyleView, self).__getattribute__(name)
-
-
-

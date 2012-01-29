@@ -8,8 +8,7 @@ from Products.PloneTestCase.layer import onsetup
 
 @onsetup
 def setup_product():
-    """
-       Set up the package and its dependencies.
+    """Set up the package and its dependencies.
     """
 
     fiveconfigure.debug_mode = True
@@ -41,4 +40,3 @@ class FunctionalTestCase(ptc.FunctionalTestCase):
                                                     u'google_hyb',
                                                     u'google_sat',
                                                     u'google_map']
-

@@ -1,5 +1,6 @@
 import urllib
 
+
 def getProtocolFromRequest(request):
     """Determine which protocol layers should use for this request.
 
