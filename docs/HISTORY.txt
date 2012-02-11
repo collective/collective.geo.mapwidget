@@ -1,8 +1,8 @@
 Changelog
 =========
 
-0.1.5 (unreleased)
-------------------
+1.5 (2012-02-11)
+----------------
 
 - Added French translation [Fabien Moret]
 - Added ability to hit enter key within geocoder input and search. Previously,

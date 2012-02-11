@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.geo.mapwidget\n"
-"POT-Creation-Date: 2012-01-25 08:19+0000\n"
+"POT-Creation-Date: 2012-02-11 19:43+0000\n"
 "PO-Revision-Date: 2011-06-27 11:05-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language-Team: Spanish <plone-conosur@lists.plone.org>\n"
