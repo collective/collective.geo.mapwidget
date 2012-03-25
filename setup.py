@@ -6,7 +6,7 @@ version = '1.6.dev0'
 setup(name='collective.geo.mapwidget',
       version=version,
       description="collective.geo mapwidget",
-      long_description=open("README.txt").read() + "\n" +
+      long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       classifiers=["Framework :: Plone",
         "Topic :: Internet",
