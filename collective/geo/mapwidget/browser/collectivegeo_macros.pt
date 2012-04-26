@@ -52,8 +52,9 @@
     <tal:comment replace="nothing">macro for geocoding stuff</tal:comment>
     <metal:define define-macro="geocoding">
       <div class="field geocoder-wrapper"
-            tal:define="portal_state context/@@plone_portal_state;
-                        portal_url portal_state/portal_url;">
+           i18n:domain="collective.geo.mapwidget"
+           tal:define="portal_state context/@@plone_portal_state;
+                       portal_url portal_state/portal_url;">
         <label for="geocoding-address"
           i18n:translate="">Find places</label>
         <img id="geocoder-loader" 
