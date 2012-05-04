@@ -1,29 +1,43 @@
+<h3 tal:replace="structure view/heading|nothing" />
+<div class="formHelp" tal:content="structure view/contents_top|nothing" />
 <div tal:attributes="class view/css_class|nothing" >
-  <h3 tal:replace="structure view/heading|nothing" />
-  <div tal:replace="structure view/contents_top|nothing" />
-  <metal:use use-macro="context/@@ploneform-macros/fields" />
-  <metal:use use-macro="context/@@ploneform-macros/actions" />
-  <div tal:replace="structure view/contents_bottom|nothing" />
+  <dl class="enableFormTabbing">
+    <dt id="fieldsetlegend-map"
+        i18n:translate="">
+      Map
+    </dt>
+    <dd id="fieldset-map">
+      <metal:use use-macro="context/@@collectivegeo-macros/geocoding"/>
+      <metal:map use-macro="context/@@collectivegeo-macros/map-widget" />
+      <!-- c.geo controlpanel script -->
+      <script type="text/javascript">
+        (function($) {
+            $(window).bind("load", function() {
+                $('#cgeo-get-location').click(function(){
+                    cgmap.geocoding('geosettings-cgmap',
+                        'Marker',
+                        cgmap.portal_url + '/geocoderview')});
+                    $('.geocoder-wrapper input[name=geocoding-address]').keydown(
+                        function(evt){
+                        if (evt.keyCode == 13) {
+                            evt.preventDefault();
+                            $(this).siblings('input[value=Search]').click();
+                        }
+                    }
+                );
+            });
+        })(jQuery);
+      </script>
+    </dd>
+    <dt id="fieldsetlegend-advanced"
+        i18n:translate="">
+      Manual settings
+    </dt>
+    <dd id="fieldset-advanced">
+      <metal:use use-macro="context/@@ploneform-macros/fields" />
+    </dd>
+  </dl>
 </div>
-<div class="visualClear"><!-- clear floats --></div>
-<metal:use use-macro="context/@@collectivegeo-macros/geocoding"/>
-<metal:map use-macro="context/@@collectivegeo-macros/map-widget" />
-<!-- c.geo controlpanel script -->
-<script type="text/javascript">
-  (function($) {
-    $(window).bind("load", function() {
-      $('#cgeo-get-location').click(function(){
-        cgmap.geocoding('geosettings-cgmap',
-        'Marker',
-        cgmap.portal_url + '/geocoderview')});
-      $('.geocoder-wrapper input[name=geocoding-address]').keydown(
-        function(evt){
-          if (evt.keyCode == 13) { 
-            evt.preventDefault();
-            $(this).siblings('input[value=Search]').click();
-          }
-        }
-      );
-    });
-  })(jQuery);
-</script>
+<div class="visualClear"><!-- The buttons *should* be shown --></div>
+<metal:use use-macro="context/@@ploneform-macros/actions" />
+<div tal:replace="structure view/contents_bottom|nothing" />

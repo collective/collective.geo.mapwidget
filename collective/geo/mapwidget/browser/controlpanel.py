@@ -33,9 +33,16 @@ def back_to_controlpanel(context):
 
 
 class GeopointForm(subform.EditSubForm):
+    heading = _(u"Default map position")
+    contents_top = _(
+        u"Set the centre point and the zoom level of the map "
+        u"used when the system cannot use any other point to center the map "
+        u"(e.g. when displaying the map "
+        u"to georeference an item for the first time)")
     template = viewpagetemplatefile.ViewPageTemplateFile('geopointform.pt')
     implements(IMapView)
-    fields = field.Fields(IGeoSettings).select('longitude', 'latitude')
+    fields = field.Fields(IGeoSettings).select('longitude', 'latitude',
+                                               'zoom')
     mapfields = ['geosettings-cgmap']
 
     def update(self):
@@ -47,31 +54,25 @@ class GeopointForm(subform.EditSubForm):
 
 
 class GeoStylesGroup(group.Group):
-    fields = field.Fields(IGeoFeatureStyle)
-    fields['linecolor'].widgetFactory = ColorpickerAlphaFieldWidget
-    fields['polygoncolor'].widgetFactory = ColorpickerAlphaFieldWidget
 
     label = _(u"Style")
     description = _(u"Set default styles for geographical shapes")
 
-
-def advanced_group_fields():
-    form_fields = field.Fields(IGeoSettings).select('yahooapi',
-                                            'default_layers',
-                                            'imgpath',
-                                            'map_viewlet_managers')
-
-    default_layer_field = form_fields['default_layers']
-    default_layer_field.field.value_type = Choice(title=_(u"Layers"),
-                                                  source="maplayersVocab")
-    return form_fields
+    @property
+    def fields(self):
+        fields = field.Fields(IGeoSettings).select('imgpath')
+        fields += field.Fields(IGeoFeatureStyle).omit('map_viewlet_position')
+        fields['linecolor'].widgetFactory = ColorpickerAlphaFieldWidget
+        fields['polygoncolor'].widgetFactory = ColorpickerAlphaFieldWidget
+        return fields
 
 
 class GeoAdvancedConfGroup(group.Group):
-    fields = advanced_group_fields()
 
     label = _(u"Advanced")
     description = _(u"Advanced configurations")
+
+    fields = field.Fields(IGeoSettings).select('map_viewlet_managers')
 
     def updateWidgets(self):
         super(GeoAdvancedConfGroup, self).updateWidgets()
@@ -87,12 +88,20 @@ class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
                                             'form-with-subforms.pt')
     form.extends(form.EditForm, ignoreButtons=True)
 
-    fields = field.Fields(IGeoSettings).select('zoom')
-
     default_fieldset_label = _(u"Base settings")
 
     heading = _(u'Configure Collective Geo Settings')
     groups = (GeoStylesGroup, GeoAdvancedConfGroup)
+
+    @property
+    def fields(self):
+        form_fields = field.Fields(IGeoSettings).select('default_layers')
+        form_fields += field.Fields(IGeoFeatureStyle).select(
+            'map_viewlet_position')
+        default_layer_field = form_fields['default_layers']
+        default_layer_field.field.value_type = Choice(title=_(u"Layers"),
+                                                      source="maplayersVocab")
+        return form_fields
 
     @property
     def css_class(self):
@@ -195,7 +204,7 @@ class ControlPanelMapWidget(MapWidget):
         super(ControlPanelMapWidget, self).__init__(view, request, context)
         self.lonid = view.widgets['longitude'].id
         self.latid = view.widgets['latitude'].id
-        self.zoomid = view.__parent__.widgets['zoom'].id
+        self.zoomid = view.widgets['zoom'].id
 
     @property
     def js(self):
