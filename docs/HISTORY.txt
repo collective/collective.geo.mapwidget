@@ -4,6 +4,7 @@ Changelog
 1.6 (unreleased)
 ----------------
 
+- Changed control panel form in order to make it more user friendly [gborelli]
 - Fixed translation domain in the collectivegeo_macros [rnd0101]
 
 

@@ -113,7 +113,7 @@
             </tal:widgets>
         </metal:define>
 
-        <div class="subform-wrapper" 
+        <div class="row horizontal subform-wrapper"
              tal:repeat="form view/subforms"
              tal:content="structure form/render">
         </div>
@@ -148,7 +148,7 @@
         </fieldset>
     </tal:block>
   </metal:define>
-  
+
   <metal:define define-macro="actions">
 
     <div class="formFields" tal:condition="view/actions/values|nothing">

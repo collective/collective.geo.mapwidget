@@ -60,8 +60,17 @@ class GeoStylesGroup(group.Group):
 
     @property
     def fields(self):
-        fields = field.Fields(IGeoSettings).select('imgpath')
-        fields += field.Fields(IGeoFeatureStyle).omit('map_viewlet_position')
+        fields = field.Fields(IGeoFeatureStyle).select('marker_image')
+        fields += field.Fields(IGeoSettings).select('imgpath')
+        fields += field.Fields(IGeoFeatureStyle).select(
+            'marker_image_size',
+            'map_width',
+            'linecolor',
+            'map_height',
+            'polygoncolor',
+            'display_properties',
+            'linewidth',
+        )
         fields['linecolor'].widgetFactory = ColorpickerAlphaFieldWidget
         fields['polygoncolor'].widgetFactory = ColorpickerAlphaFieldWidget
         return fields
@@ -83,6 +92,16 @@ class GeoAdvancedConfGroup(group.Group):
                 self.widgets[w].update()
 
 
+def control_panel_fields():
+    form_fields = field.Fields(IGeoSettings).select('default_layers')
+    form_fields += field.Fields(IGeoFeatureStyle).select(
+        'map_viewlet_position')
+    default_layer_field = form_fields['default_layers']
+    default_layer_field.field.value_type = Choice(title=_(u"Layers"),
+                                                  source="maplayersVocab")
+    return form_fields
+
+
 class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
     template = viewpagetemplatefile.ViewPageTemplateFile(
                                             'form-with-subforms.pt')
@@ -91,37 +110,28 @@ class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
     default_fieldset_label = _(u"Base settings")
 
     heading = _(u'Configure Collective Geo Settings')
+    fields = control_panel_fields()
     groups = (GeoStylesGroup, GeoAdvancedConfGroup)
 
-    @property
-    def fields(self):
-        form_fields = field.Fields(IGeoSettings).select('default_layers')
-        form_fields += field.Fields(IGeoFeatureStyle).select(
-            'map_viewlet_position')
-        default_layer_field = form_fields['default_layers']
-        default_layer_field.field.value_type = Choice(title=_(u"Layers"),
-                                                      source="maplayersVocab")
-        return form_fields
+    level = 1
 
     @property
     def css_class(self):
         return "subform openlayers-level-%s" % self.level
 
-    level = 1
-
     def __init__(self, context, request):
         super(GeoControlpanelForm, self).__init__(context, request)
-        subform = GeopointForm(self.context, self.request, self)
+        _subform = GeopointForm(self.context, self.request, self)
         self.ptool = getToolByName(self.context, 'plone_utils')
-        subform.level = self.level + 1
+        _subform.level = self.level + 1
 
-        self.subforms = [subform, ]
+        self.subforms = [_subform, ]
 
     def update(self):
         # update subforms first, else the values won't
         # be available in button handler
-        for subform in self.subforms:
-            subform.update()
+        for _subform in self.subforms:
+            _subform.update()
         super(GeoControlpanelForm, self).update()
 
     @button.buttonAndHandler(_(u'Apply'), name='apply')

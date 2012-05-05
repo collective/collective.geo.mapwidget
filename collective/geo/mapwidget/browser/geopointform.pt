@@ -1,7 +1,7 @@
-<h3 tal:replace="structure view/heading|nothing" />
+<h3 tal:content="structure view/heading|nothing" />
 <div class="formHelp" tal:content="structure view/contents_top|nothing" />
 <div tal:attributes="class view/css_class|nothing" >
-  <dl class="enableFormTabbing">
+  <dl id="map-form-wrapper" class="enableFormTabbing">
     <dt id="fieldsetlegend-map"
         i18n:translate="">
       Map
