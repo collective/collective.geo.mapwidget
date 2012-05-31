@@ -348,8 +348,8 @@ var cgmap = function($)
                 units: "m",
                 numZoomLevels: 19,
                 maxResolution: 156543.0339,
-                maxExtent: new OpenLayers.Bounds( -20037508, -20037508,
-                                                  20037508, 20037508.34),
+                maxExtent: new OpenLayers.Bounds(-20037508.34, -20037508.34,
+                                                  20037508.34, 20037508.34),
 
                 controls: [
                     new OpenLayers.Control.ArgParser(),

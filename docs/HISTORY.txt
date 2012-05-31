@@ -9,6 +9,8 @@ Changelog
 - Allowed OSM and overlay URL helper functions to take into account
   zoomOffset.
   [davidjb]
+- Ensuring that the maxExtent for spherical mercator covers all coordinates.
+  [davidjb]
 
 
 1.5 (2012-02-11)
