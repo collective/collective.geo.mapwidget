@@ -196,7 +196,7 @@ var cgmap = function($)
                                (res * this.tileSize.w));
             var y = Math.round((this.maxExtent.top - bounds.top) /
                                (res * this.tileSize.h));
-            var z = this.map.getZoom();
+            var z = this.map.getZoom() + this.zoomOffset;
             var limit = Math.pow(2, z);
 
             if (y < 0 || y >= limit)
@@ -215,7 +215,7 @@ var cgmap = function($)
             var res = this.map.getResolution();
             var x = Math.round((bounds.left - this.maxExtent.left) / (res * this.tileSize.w));
             var y = Math.round((bounds.bottom - this.maxExtent.bottom) / (res * this.tileSize.h));
-            var z = this.map.getZoom();
+            var z = this.map.getZoom() + this.zoomOffset;
 
             if (0) {
                 if (x >= 0 && y >= 0)

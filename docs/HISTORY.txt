@@ -6,6 +6,9 @@ Changelog
 
 - Changed control panel form in order to make it more user friendly [gborelli]
 - Fixed translation domain in the collectivegeo_macros [rnd0101]
+- Allowed OSM and overlay URL helper functions to take into account
+  zoomOffset.
+  [davidjb]
 
 
 1.5 (2012-02-11)
