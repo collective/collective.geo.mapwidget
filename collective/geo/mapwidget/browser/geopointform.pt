@@ -1,6 +1,6 @@
 <h3 tal:content="structure view/heading|nothing" />
 <div class="formHelp" tal:content="structure view/contents_top|nothing" />
-<div tal:attributes="class view/css_class|nothing" >
+<div tal:attributes="class view/css_class|nothing" i18n:domain="collective.geo.mapwidget">
   <dl id="map-form-wrapper" class="enableFormTabbing">
     <dt id="fieldsetlegend-map"
         i18n:translate="">

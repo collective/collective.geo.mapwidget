@@ -11,7 +11,7 @@ Changelog
   [davidjb]
 - Ensuring that the maxExtent for spherical mercator covers all coordinates.
   [davidjb]
-
+- Added German translation [Denis Krienbühl]
 
 1.5 (2012-02-11)
 ----------------
