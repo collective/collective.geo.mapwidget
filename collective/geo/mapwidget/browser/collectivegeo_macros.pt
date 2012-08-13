@@ -30,6 +30,11 @@
               tal:attributes="src geosettings/bing_maps_js"></script>
       <script type="text/javascript"
               tal:content="structure geosettings/geo_setting_js"></script>
+      <tal:block condition="context/@@collectivegeo-macros/localize">
+        <script type="text/javascript"
+                tal:attributes="src context/@@collectivegeo-macros/language_file"></script>
+        <script type="text/javascript" tal:content="context/@@collectivegeo-macros/language_script"></script>
+      </tal:block>
     </metal:define>
 
     <tal:comment replace="nothing">This macro needs a variable 'cgmap' in the namespace</tal:comment>

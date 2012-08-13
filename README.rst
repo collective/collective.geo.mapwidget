@@ -42,3 +42,4 @@ Contributors
 * David Beitey - davidjb
 * Rob Gietema - robgietema
 * Leonardo J. Caballero G - macagua
+* Denis Krienbühl - href

@@ -11,7 +11,9 @@ Changelog
   [davidjb]
 - Ensuring that the maxExtent for spherical mercator covers all coordinates.
   [davidjb]
-- Added German translation [Denis Krienbühl]
+- Automatically include OpenLayers language files if the language is
+  supported by OpenLayers [href]
+- Added German translation [href]
 
 1.5 (2012-02-11)
 ----------------

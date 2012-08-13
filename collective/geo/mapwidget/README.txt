@@ -66,6 +66,52 @@ cgmap.state and cgmap.config to initialise OpenLayers on these elements.
         function(){return new OpenLayers.Layer.TMS('OpenStreetMap'...
     ...
 
+OpenLayers Language Files
+-------------------------
+
+collective.geo.openlayers includes language files which are automatically
+included by the openlayers macro introduced earlier:
+'<metal:use use-macro="context/@@collectivegeo-macros/openlayers" />'
+
+This method helps with the language switching in this doctest (not something
+you would use in other contexts):
+
+    >>> from zope.annotation.interfaces import IAnnotations
+    >>> def set_language(code):
+    ...     del IAnnotations(request)['plone.memoize'] # clear cache
+    ...     portal.language = code
+
+No language file should be included if the current language is English as
+OpenLayers itself is written in English.
+
+    >>> set_language('en')
+    >>> 'lang/' in view()
+    False
+
+Once we switch to a language supported by OpenLayers we should get a
+translated version of OpenLayers
+
+    >>> set_language('de')
+    >>> 'lang/de.js' in view()
+    True
+
+Switching to an unsupported language should yield English again (no file)
+
+    >>> set_language('ji')
+    >>> 'lang/' in view()
+    False
+
+A list of supported languages may be acquired through the utils
+
+    >>> from collective.geo.mapwidget import utils
+    >>> languages = utils.list_language_files()
+    
+    >>> languages['de'] == 'lang/de.js'
+    True
+
+    >>> languages['es'] == 'lang/es.js'
+    True
+
 Customising the display of map widgets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
