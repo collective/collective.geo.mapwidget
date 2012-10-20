@@ -19,50 +19,42 @@ var cgmap = function($)
         if (cgmap.imgpath) {OpenLayers.ImgPath = cgmap.imgpath;}
 
         $.each($('div.widget-cgmap'), function(i, map) {
-            var mapid = map.id;
-            if (mapid != 'default')
-            {
-                /* can not deep copy OL objects because they have
-                   circular references */
-                var mapoptions = $.extend({}, cgmap.createDefaultOptions());
-                /* merge in map specific settings */
-                if (cgmap.config[mapid])
-                {
-                    $.extend(mapoptions, cgmap.config[mapid].options);
-                }
-                cgmap.initmap(mapid, mapoptions);
-
-                $(map).parents().bind("scroll", mapid, function(evt) {
-                    cgmap.config[evt.data].map.events.clearMouseCache();
-                });
-            }
-	    /* Provide a fix to presenting OpenLayers maps that are 
-	     * on hidden form panels, such as tabs, by invoking layer
-	     * redraw functionality when our map comes into view. Once this
-	     * redraw has taken place, we unbind our click method.
-	     */
-	    var fieldset = $(map).parents('.formPanel:hidden');
-	    if (fieldset.length === 1) {
-	        var legend_id = fieldset[0].id.replace(/fieldset-/g, "a#fieldsetlegend-");
-		$(legend_id).parent().click(function (evt) {
- 		    var ol_map = cgmap.config[mapid].map;
-		    // Make base layer tiles load correctly.
-		    ol_map.baseLayer.onMapResize();
-		    ol_map.baseLayer.redraw();
-		    ol_map.updateSize();
-		    /* Zoom to correctly re-position the map. Having layers
-		     * loaded whilst the map was hidden cause positioning
-		     * issues, and this solves them.
-		     */
-		    var feature_layer = ol_map.getLayersByClass('OpenLayers.Layer.Vector');
-		    if (feature_layer.length === 1) {
-		        ol_map.zoomToExtent(feature_layer[0].getDataExtent());
-		    }
-		    $(this).unbind(evt);
-		}); 
-	    }
+           load_map(map);
         });
     });
+
+    function load_map(map, force) {
+        var mapid = map.id;
+        var fieldset = $(map).parents('.formPanel:hidden');
+
+        if (fieldset.length === 1 && !force) {
+            var legend_id = fieldset[0].id.replace(/fieldset-/g, "a#fieldsetlegend-");
+            $(legend_id).parent().click(function (e) {
+                load_map(map, true);
+                $(legend_id).parent().unbind(e);
+            });
+            return;
+        }
+
+        if (mapid != 'default')
+        {
+            /* can not deep copy OL objects because they have
+               circular references */
+            var mapoptions = $.extend({}, cgmap.createDefaultOptions());
+            /* merge in map specific settings */
+            if (cgmap.config[mapid])
+            {
+                $.extend(mapoptions, cgmap.config[mapid].options);
+            }
+            cgmap.initmap(mapid, mapoptions);
+
+            $(map).parents().bind("scroll", mapid, function(evt) {
+                cgmap.config[evt.data].map.events.clearMouseCache();
+            });
+
+            $(window).trigger('map-load', cgmap.config[mapid].map);
+        }
+    }
 
     /* adds/sets hidden input field in forms
      *
