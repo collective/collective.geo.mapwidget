@@ -14,6 +14,11 @@ Changelog
 - Automatically include OpenLayers language files if the language is
   supported by OpenLayers [href]
 - Added German translation [href]
+- Changed javascript to indicate map loading through the custom 'map-load' event,
+  ensuring that invisible maps on tabbed forms are loaded only when made visible.
+  Javascript code relying on collectivegeo.js must now implement 
+  $(window).bind('map-load', function(e, map) { }); which will be called once 
+  the map is ready. [href]
 
 1.5 (2012-02-11)
 ----------------
