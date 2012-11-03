@@ -24,13 +24,13 @@ setup(name='collective.geo.mapwidget',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'Plone',
-          # -*- Extra requirements: -*-
+          'Products.CMFCore',
           'collective.geo.openlayers',
           'collective.geo.settings',
           'plone.app.z3cform',
           'collective.z3cform.colorpicker',
       ],
+
       extras_require={
           'test': [
               'plone.testing',
