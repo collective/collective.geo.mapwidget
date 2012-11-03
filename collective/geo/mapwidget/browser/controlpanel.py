@@ -1,7 +1,10 @@
 from Acquisition import aq_inner
 
 from zope.schema import Choice
+from zope.schema.interfaces import IVocabularyFactory
 from zope.interface import implements
+from zope.component import queryUtility
+
 from zope.app.pagetemplate import viewpagetemplatefile
 from zope.event import notify
 
@@ -97,8 +100,13 @@ def control_panel_fields():
     form_fields += field.Fields(IGeoFeatureStyle).select(
         'map_viewlet_position')
     default_layer_field = form_fields['default_layers']
-    default_layer_field.field.value_type = Choice(title=_(u"Layers"),
-                                                  source="maplayersVocab")
+
+    # XXX: in some tests something strange happen
+    if queryUtility(IVocabularyFactory, name='maplayersVocab'):
+        default_layer_field.field.value_type = Choice(
+            title=_(u"Layers"),
+            source="maplayersVocab"
+        )
     return form_fields
 
 
