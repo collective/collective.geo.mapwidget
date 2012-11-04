@@ -1,22 +1,30 @@
 import urllib
-import unittest
+import unittest2 as unittest
 from decimal import Decimal
+
 from zope.component import getUtility
 from plone.registry.interfaces import IRegistry
 
-from collective.geo.mapwidget.tests import base
 from collective.geo.settings.interfaces import IGeoSettings
 
+from ..testing import CGEO_MAPWIDGET_INTEGRATION
 
-class TestSetupHTTP(base.TestCase):
+
+class TestSetupHTTP(unittest.TestCase):
+    layer = CGEO_MAPWIDGET_INTEGRATION
 
     _protocol = 'http'
 
-    def afterSetUp(self):
+    def setUp(self):
+        self.portal = self.layer['portal']
         self._old_request_url = self.portal.REQUEST.getURL()
         self.portal.REQUEST.setServerURL(self._protocol, 'nohost')
         self.settings = self.portal.restrictedTraverse('@@geosettings-view')
         self.geosettings = getUtility(IRegistry).forInterface(IGeoSettings)
+
+        # # restore IGeoSettings
+        # self.geosettings.longitude = Decimal('0.0')
+        # self.geosettings.latitude = Decimal('0.0')
 
     def beforeTearDown(self):
         url_parts = urllib.splittype(self._old_request_url)

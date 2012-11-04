@@ -3,20 +3,21 @@ collective.geo.mapwidget controlpanel
 
 This package provides a graphical user interface to store settings for collective.geo applications.
 
-Tests
------
+Control panel tests
+-------------------
+
 we start the tests with the usual boilerplate
-    >>> from Testing.testbrowser import Browser
-    >>> browser = Browser()
-    >>> portal_url = self.portal.absolute_url()
-    >>> self.portal.error_log._ignored_exceptions = ()
+    >>> from plone.testing.z2 import Browser
+    >>> browser = Browser(layer['app'])
+    >>> portal = layer['portal']
+    >>> portal_url = portal.absolute_url()
+    >>> portal.error_log._ignored_exceptions = ()
 
-we log in as manager and verify the functionality of collective.geo.mapwidget control panel form;
-    >>> from Products.PloneTestCase.setup import portal_owner
-    >>> from Products.PloneTestCase.setup import default_password
+we log in as manager and verify the functionality of collective.geo.mapwidget control panel form
+    >>> from plone.app.testing import SITE_OWNER_NAME
+    >>> from plone.app.testing import SITE_OWNER_PASSWORD
     >>> browser.addHeader('Authorization',
-    ...                   'Basic %s:%s' % (portal_owner, default_password))
-
+    ...     'Basic %s:%s' % (SITE_OWNER_NAME, SITE_OWNER_PASSWORD))
     >>> browser.open('%s/@@collectivegeo-controlpanel' % portal_url)
     >>> browser.getControl(name = 'form.widgets.zoom').value
     '10.0'
@@ -72,3 +73,12 @@ zoom and longitude should be unchanged
     10.0
     >>> print registry['collective.geo.settings.interfaces.IGeoSettings.longitude']
     -2.582259177802396
+
+
+and now we restore the default settings
+    >>> browser.getControl(name = 'form.widgets.longitude').value = "0.0"
+    >>> browser.getControl(name = 'form.widgets.latitude').value = "0.0"
+    >>> browser.getControl(name = 'form.widgets.zoom').value = "10"
+    >>> browser.getControl('Apply').click()
+    >>> 'Data successfully updated.' in browser.contents
+    True

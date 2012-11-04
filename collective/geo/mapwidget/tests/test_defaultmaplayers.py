@@ -1,22 +1,30 @@
-import unittest
+import unittest2 as unittest
 
-from zope.component import getUtility, queryUtility, getAdapters
 from zope.interface import Interface
 from zope.schema.interfaces import IVocabularyFactory
+
+from zope.component import getUtility
+from zope.component import queryUtility
+from zope.component import getAdapters
+
 from zope.publisher.browser import TestRequest
 
-from collective.geo.mapwidget.tests import base
-from collective.geo.mapwidget.interfaces import IDefaultMapLayers, IMapLayer
+from ..interfaces import IDefaultMapLayers, IMapLayer
+from ..testing import CGEO_MAPWIDGET_INTEGRATION
 
 
-class TestDefaultMapLayers(base.FunctionalTestCase):
+class TestDefaultMapLayers(unittest.TestCase):
+    layer = CGEO_MAPWIDGET_INTEGRATION
+
+    def setUp(self):
+        self.portal = self.layer['portal']
 
     def test_utility(self):
         self.failUnless(queryUtility(IDefaultMapLayers))
 
     def _get_utility(self):
         utility = getUtility(IDefaultMapLayers)
-        default_layers = [k for k, i in self._get_registered_layers()]
+        default_layers = [i[0] for i in self._get_registered_layers()]
         utility.geo_settings.default_layers = default_layers
         return utility
 
@@ -27,8 +35,7 @@ class TestDefaultMapLayers(base.FunctionalTestCase):
                             Interface), IMapLayer)
 
     def test_layers_vocabulary(self):
-        default_layers = self._get_registered_layers()
-        layer_ids = [k for k, i in default_layers]
+        layer_ids = [i[0] for i in self._get_registered_layers()]
         vocab_util = queryUtility(IVocabularyFactory,
                         name='maplayersVocab')
 
@@ -36,8 +43,10 @@ class TestDefaultMapLayers(base.FunctionalTestCase):
 
         vocab = vocab_util(self.portal)
         for item in vocab:
-            self.assertTrue(item.value in layer_ids,
-                            "term %s not in map layers" % item.value)
+            self.assertIn(
+                item.value,
+                layer_ids,
+                "term %s not in map layers" % item.value)
 
     def test_default_settings(self):
         layers = [u'osm', u'google_ter', u'google_hyb',
@@ -47,15 +56,13 @@ class TestDefaultMapLayers(base.FunctionalTestCase):
         self.assertEquals(utility.geo_settings.default_layers, layers)
 
     def test_default_layers(self):
-        default_layers = self._get_registered_layers()
-        layer_ids = [k for k, i in default_layers]
+        layer_ids = [i[0] for i in self._get_registered_layers()]
         layers_utility = self._get_utility()
         layers = layers_utility.layers(None, None, None, None)
         self.assertEquals(len(layers), len(layer_ids))
 
     def test_select_layers_by_name(self):
-        default_layers = self._get_registered_layers()
-        layer_ids = [k for k, i in default_layers][:3]
+        layer_ids = [i[0] for i in self._get_registered_layers()]
         layers_utility = self._get_utility()
         layers_utility.geo_settings.default_layers = layer_ids
         layers = layers_utility.layers(None, None, None, None)
@@ -63,8 +70,11 @@ class TestDefaultMapLayers(base.FunctionalTestCase):
         self.assertEquals(len(layers), len(layer_ids))
 
         for layer in layers:
-            self.assertTrue(layer.name in layer_ids,
-                            "%s not in map layers" % layer.name)
+            self.assertIn(
+                layer.name,
+                layer_ids,
+                "%s not in map layers" % layer.name
+            )
 
     def test_layer_protocols(self):
         """Test layers know what protocol is being used - HTTP or HTTPS."""

@@ -11,14 +11,15 @@ We need a request to instantiate the view
     >>> from zope.publisher.browser import TestRequest
     >>> from zope.annotation.interfaces import IAttributeAnnotatable
     >>> from zope.interface import alsoProvides
+    >>> portal = layer['portal']
     >>> request = TestRequest()
     >>> alsoProvides(request, IAttributeAnnotatable)
-    >>> view = TestView(self.portal, request)
+    >>> view = TestView(portal, request)
 
 A small helper method to set the template for a view:
     >>> import os
-    >>> from zope.app.pagetemplate import ViewPageTemplateFile
-    >>> from zope.app.pagetemplate.viewpagetemplatefile import BoundPageTemplate
+    >>> from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+    >>> from Products.Five.browser.pagetemplatefile import BoundPageTemplate
     >>> from collective.geo.mapwidget import tests
     >>> def setTemplate(view, filename):
     ...     view.template = BoundPageTemplate(ViewPageTemplateFile(
@@ -66,6 +67,7 @@ cgmap.state and cgmap.config to initialise OpenLayers on these elements.
         function(){return new OpenLayers.Layer.TMS('OpenStreetMap'...
     ...
 
+
 OpenLayers Language Files
 -------------------------
 
@@ -78,8 +80,10 @@ you would use in other contexts):
 
     >>> from zope.annotation.interfaces import IAnnotations
     >>> def set_language(code):
-    ...     del IAnnotations(request)['plone.memoize'] # clear cache
-    ...     portal.language = code
+    ...    if getattr(portal.REQUEST, '__annotations__', None):
+    ...        del portal.REQUEST.__annotations__  # clear cache
+    ...    portal.setLanguage(code)
+
 
 No language file should be included if the current language is English as
 OpenLayers itself is written in English.
@@ -105,12 +109,13 @@ A list of supported languages may be acquired through the utils
 
     >>> from collective.geo.mapwidget import utils
     >>> languages = utils.list_language_files()
-    
+
     >>> languages['de'] == 'lang/de.js'
     True
 
     >>> languages['es'] == 'lang/es.js'
     True
+
 
 Customising the display of map widgets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -198,7 +203,7 @@ Let's add an attribute to the view. We also need to adapt the template
 slightly.
 
     >>> from collective.geo.mapwidget.browser.widget import MapWidget
-    >>> mw1 = MapWidget(view, request, self.portal)
+    >>> mw1 = MapWidget(view, request, portal)
     >>> mw1.mapid = 'mymap1'
     >>> mw1.addClass('mymapclass1')
     >>> view.mapfields = [mw1]
@@ -218,7 +223,7 @@ Let's examine the result:
 If there is more than one entry in mapfields, then only the first one will be
 rendered unless we change the template slightly.
 
-    >>> mw2 = MapWidget(view, request, self.portal)
+    >>> mw2 = MapWidget(view, request, portal)
     >>> mw2.mapid = 'mymap2'
     >>> mw2.addClass('mymapclass2')
     >>> view.mapfields.append(mw2)
@@ -374,8 +379,9 @@ As a quick example we can just set the '_layers' attribute for mw1 and we
 should get an additional layer.
 
     >>> from collective.geo.mapwidget.maplayers import BingStreetMapLayer
-    >>> mw1._layers = [BingStreetMapLayer(context=self.portal)]
-
+    >>> mw1._layers = [BingStreetMapLayer(context=portal)]
+    >>> view = TestView(portal, request)
+    >>> setTemplate(view, template)
     >>> view.mapfields = [mw1]
     >>> print view()
     <html xmlns="http://www.w3.org/1999/xhtml">
@@ -472,7 +478,7 @@ Javascript Notes
 
 The Javascript in this package uses jquery to initialise all maps on the
 page. This means, that the actual map initalisation is deffered by
-jquery(decument).ready calls.
+jquery(document).ready calls.
 
 The steps to initialise a map are the following:
 
@@ -538,8 +544,6 @@ the default center lon/lat.
     ...
           <script type="text/javascript">cgmap.state = {'default': {lon: 0.000000, lat: 0.000000, zoom: 10 }};
     cgmap.state['mymap1'] = {lon: '33.33', lat: '66.66', zoom: undefined, activebaselayer: undefined, activelayers: undefined };
-    cgmap.portal_url = 'http://nohost/plone';
-    cgmap.imgpath = '';</script>
     ...
 
 And another small test to get a 100% test coverage report:
