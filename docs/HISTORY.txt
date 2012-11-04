@@ -4,6 +4,9 @@ Changelog
 1.6 (unreleased)
 ----------------
 
+- refactored tests with plone.app.testing [gborelli]
+- removed tests.base module [gborelli]
+- removed imports from zope.app [gborelli]
 - Changed control panel form in order to make it more user friendly [gborelli]
 - Fixed translation domain in the collectivegeo_macros [rnd0101]
 - Allowed OSM and overlay URL helper functions to take into account
@@ -16,8 +19,8 @@ Changelog
 - Added German translation [href]
 - Changed javascript to indicate map loading through the custom 'map-load' event,
   ensuring that invisible maps on tabbed forms are loaded only when made visible.
-  Javascript code relying on collectivegeo.js must now implement 
-  $(window).bind('map-load', function(e, map) { }); which will be called once 
+  Javascript code relying on collectivegeo.js must now implement
+  $(window).bind('map-load', function(e, map) { }); which will be called once
   the map is ready. [href]
 
 1.5 (2012-02-11)

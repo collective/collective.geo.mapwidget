@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<configure xmlns="http://namespaces.zope.org/zope"
-          xmlns:browser="http://namespaces.zope.org/browser"
-          xmlns:zope="http://namespaces.zope.org/zope"
-          xmlns:five="http://namespaces.zope.org/five">
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:five="http://namespaces.zope.org/five">
 
     <include package="Products.CMFCore" file="configure.zcml" />
 
@@ -11,14 +11,14 @@
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
         class=".controlpanel.GeoControlpanel"
         layer=".interfaces.IGeoMapWidgetLayer"
-        permission = "cmf.ManagePortal"
+        permission="cmf.ManagePortal"
         />
 
     <browser:page
         name="geosettings-view"
         for="*"
         class=".geosettings_view.GeoSettingsView"
-        permission = "zope2.View"
+        permission="zope2.View"
         />
 
     <browser:page

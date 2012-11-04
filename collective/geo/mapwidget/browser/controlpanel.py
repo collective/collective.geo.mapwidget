@@ -4,18 +4,17 @@ from zope.schema import Choice
 from zope.schema.interfaces import IVocabularyFactory
 from zope.interface import implements
 from zope.component import queryUtility
-
-from zope.app.pagetemplate import viewpagetemplatefile
 from zope.event import notify
+
+from z3c.form import field, form, subform, button
+from z3c.form.interfaces import IFormLayer
+
+from plone.z3cform import z2
+from plone.z3cform.fieldsets import extensible, group
 
 from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone.utils import getToolByName
-
-from z3c.form import field, form, subform, button
-from z3c.form.interfaces import IFormLayer
-from plone.z3cform import z2
-from plone.z3cform.fieldsets import extensible, group
 
 from collective.z3cform.colorpicker.colorpickeralpha import \
                                         ColorpickerAlphaFieldWidget
@@ -42,7 +41,7 @@ class GeopointForm(subform.EditSubForm):
         u"used when the system cannot use any other point to center the map "
         u"(e.g. when displaying the map "
         u"to georeference an item for the first time)")
-    template = viewpagetemplatefile.ViewPageTemplateFile('geopointform.pt')
+    template = ViewPageTemplateFile('geopointform.pt')
     implements(IMapView)
     fields = field.Fields(IGeoSettings).select('longitude', 'latitude',
                                                'zoom')
@@ -111,7 +110,7 @@ def control_panel_fields():
 
 
 class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
-    template = viewpagetemplatefile.ViewPageTemplateFile(
+    template = ViewPageTemplateFile(
                                             'form-with-subforms.pt')
     form.extends(form.EditForm, ignoreButtons=True)
 

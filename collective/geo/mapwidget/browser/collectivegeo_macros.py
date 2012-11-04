@@ -1,9 +1,10 @@
 from Acquisition import aq_inner
 
-from zope.app.pagetemplate.viewpagetemplatefile import ViewPageTemplateFile
 from zope.publisher.browser import BrowserView
 
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.memoize import instance, view
+
 from collective.geo.mapwidget import utils
 
 INLINE_STYLES = {'width': 'map_width',
@@ -60,13 +61,13 @@ class CollectiveGeoMacros(BrowserView):
     @property
     @instance.memoize
     def language_files(self):
-        """ Get, cache and return a list of openlayers language files. 
+        """ Get, cache and return a list of openlayers language files.
         """
         return utils.list_language_files()
 
     @property
     def language_file(self, language=None):
-        """ Returns the path to the openlayers language file of the 
+        """ Returns the path to the openlayers language file of the
         given or the current language.
         """
         return self.language_files[language or self.language]
