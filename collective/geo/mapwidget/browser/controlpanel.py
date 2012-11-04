@@ -99,13 +99,10 @@ def control_panel_fields():
     form_fields += field.Fields(IGeoFeatureStyle).select(
         'map_viewlet_position')
     default_layer_field = form_fields['default_layers']
-
-    # XXX: in some tests something strange happen
-    if queryUtility(IVocabularyFactory, name='maplayersVocab'):
-        default_layer_field.field.value_type = Choice(
-            title=_(u"Layers"),
-            source="maplayersVocab"
-        )
+    default_layer_field.field.value_type = Choice(
+        title=_(u"Layers"),
+        source="maplayersVocab"
+    )
     return form_fields
 
 
