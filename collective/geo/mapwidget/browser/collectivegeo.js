@@ -351,7 +351,7 @@ var cgmap = function($)
                     new OpenLayers.Control.MousePosition(),
                     // new OpenLayers.Control.ScaleLine(),
                     new OpenLayers.Control.Navigation({zoomWheelEnabled: false}),
-                    new OpenLayers.Control.KeyboardDefaults(),
+                    // new OpenLayers.Control.KeyboardDefaults(),
                     new OpenLayers.Control.PanZoom()
                 ]
             };
