@@ -22,6 +22,8 @@ Changelog
   Javascript code relying on collectivegeo.js must now implement
   $(window).bind('map-load', function(e, map) { }); which will be called once
   the map is ready. [href]
+- Disabled OpenLayer's KeyboardDefaults since they lead to the complete consumption
+  of all + / - and arrow-key presses in input fields. [href]
 
 1.5 (2012-02-11)
 ----------------
