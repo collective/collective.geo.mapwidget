@@ -33,7 +33,7 @@ setup(name='collective.geo.mapwidget',
 
       extras_require={
           'test': [
-              'plone.testing',
+              'plone.app.testing',
           ]
       },
       entry_points="""

@@ -4,6 +4,7 @@ Changelog
 1.6 (unreleased)
 ----------------
 
+- added travs-ci configuration [gborelli]
 - refactored tests with plone.app.testing [gborelli]
 - removed tests.base module [gborelli]
 - removed imports from zope.app [gborelli]
