@@ -1,1 +1,1 @@
-function(){return new OpenLayers.Layer.Yahoo('%(title)s',{'type':YAHOO_MAP_REG,'sphericalMercator': true});}
+function(){return new OpenLayers.Layer.Yahoo('%(title)s',{'type':YAHOO_MAP_REG,'sphericalMercator': true,transitionEffect:'resize'});}

@@ -1,1 +1,1 @@
-function(){return new OpenLayers.Layer.VirtualEarth('%(title)s',{'type': VEMapStyle.Aerial,'sphericalMercator':true});}
+function(){return new OpenLayers.Layer.VirtualEarth('%(title)s',{'type': VEMapStyle.Aerial,'sphericalMercator':true,transitionEffect:'resize'});}
