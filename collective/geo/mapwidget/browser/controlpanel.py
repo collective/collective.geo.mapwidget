@@ -83,11 +83,11 @@ class GeoAdvancedConfGroup(group.Group):
     label = _(u"Advanced")
     description = _(u"Advanced configurations")
 
-    fields = field.Fields(IGeoSettings).select('map_viewlet_managers')
+    fields = field.Fields(IGeoSettings).select('map_viewlet_managers','bingapi')
 
     def updateWidgets(self):
         super(GeoAdvancedConfGroup, self).updateWidgets()
-        widgets = ('googleapi', 'yahooapi')
+        widgets = ('googleapi', 'yahooapi','bingapi')
         for w in self.widgets:
             if w in widgets:
                 self.widgets[w].size = 80

@@ -76,6 +76,11 @@ class GeoSettingsView(object):
         else:
             return None
 
+
+    @property
+    def bingapi(self):
+        return  self.geosettings.bingapi
+
     @property
     def bingmaps(self):
         for layer_id in self.default_layers:
