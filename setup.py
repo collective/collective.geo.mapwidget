@@ -1,18 +1,20 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.6.dev0'
+version = '1.7.dev0'
 
 setup(name='collective.geo.mapwidget',
       version=version,
       description="collective.geo mapwidget",
-      long_description=open("README.rst").read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
-      classifiers=["Framework :: Plone",
-        "Topic :: Internet",
-        "Topic :: Scientific/Engineering :: GIS",
-        "Programming Language :: Python",
-        ],
+      long_description=open(
+          "README.rst").read() + "\n" + open(
+              os.path.join("docs", "HISTORY.txt")).read(),
+      classifiers=[
+          "Framework :: Plone",
+          "Topic :: Internet",
+          "Topic :: Scientific/Engineering :: GIS",
+          "Programming Language :: Python",
+      ],
       keywords='Zope Plone GIS KML Google Maps Bing Yahoo OpenLayers',
       author='Giorgio Borelli',
       author_email='giorgio@giorgioborelli.it',
@@ -30,7 +32,6 @@ setup(name='collective.geo.mapwidget',
           'plone.app.z3cform',
           'collective.z3cform.colorpicker',
       ],
-
       extras_require={
           'test': [
               'plone.app.testing',
