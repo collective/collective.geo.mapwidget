@@ -350,8 +350,9 @@ var cgmap = function($)
                     new OpenLayers.Control.LayerSwitcher({roundedCorner:false}),
                     new OpenLayers.Control.MousePosition(),
                     // new OpenLayers.Control.ScaleLine(),
-                    new OpenLayers.Control.Navigation({zoomWheelEnabled: false}),
+                    new OpenLayers.Control.Navigation({zoomWheelEnabled: false, dragPanOptions: {enableKinetic: true}}),
                     // new OpenLayers.Control.KeyboardDefaults(),
+                    //new OpenLayers.Control.TouchNavigation({dragPanOptions: {enableKinetic: true}})
                     new OpenLayers.Control.PanZoom()
                 ]
             };
@@ -388,10 +389,10 @@ OpenLayers.Control.MarkerEditingToolbar = OpenLayers.Class(
             OpenLayers.Control.Panel.prototype.initialize.apply(this, [options]);
 
             this.addControls(
-	        [ new OpenLayers.Control.Navigation() ]
+                [ new OpenLayers.Control.Navigation() ]
             );
             var controls = [
-	        new OpenLayers.Control.DrawFeature(layer, OpenLayers.Handler.Point, {'displayClass': 'olControlDrawFeaturePoint'}),
+                new OpenLayers.Control.DrawFeature(layer, OpenLayers.Handler.Point, {'displayClass': 'olControlDrawFeaturePoint'}),
                 new OpenLayers.Control.ModifyFeature(layer)
             ];
             this.addControls(controls);
@@ -403,19 +404,19 @@ OpenLayers.Control.MarkerEditingToolbar = OpenLayers.Class(
             //     // Set the external graphic and background graphic images.
             //     externalGraphic: "img/marker.png",
             //     backgroundGraphic: "img/marker_shadow.png",
-            // 
+            //
             //     // Makes sure the background graphic is placed correctly relative
             //     // to the external graphic.
             //     backgroundXOffset: 0,
             //     backgroundYOffset: -7,
             //     fillOpacity: 1,
-            // 
+            //
             //     // Set the z-indexes of both graphics to make sure the background
             //     // graphics stay in the background (shadows on top of markers looks
             //     // odd; let's not do that).
             //     graphicZIndex: 11, //MARKER_Z_INDEX,
             //     backgroundGraphicZIndex: 10, //SHADOW_Z_INDEX,
-            // 
+            //
             //     pointRadius: 10
             // }, OpenLayers.Feature.Vector.style['default']);
             // layer.styleMap = new OpenLayers.StyleMap({"default": defaultstyle,
@@ -474,7 +475,7 @@ OpenLayers.Control.WKTEditingToolbar = OpenLayers.Class(
             OpenLayers.Control.Panel.prototype.initialize.apply(this, [options]);
 
             this.addControls(
-	        [ new OpenLayers.Control.Navigation() ]
+                [ new OpenLayers.Control.Navigation() ]
             );
             var controls = [
                 new OpenLayers.Control.DrawFeature(layer, OpenLayers.Handler.Point, {'displayClass': 'olControlDrawFeaturePoint'}),
@@ -500,7 +501,7 @@ OpenLayers.Control.WKTEditingToolbar = OpenLayers.Class(
                 if (feat)
                 {
                     layer.addFeatures([feat]);
-		    layer.map.zoomToExtent(layer.getDataExtent());
+                    layer.map.zoomToExtent(layer.getDataExtent());
                 }
             }
 
