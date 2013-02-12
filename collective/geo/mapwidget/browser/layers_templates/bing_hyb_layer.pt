@@ -1,1 +1,6 @@
-function(){return new OpenLayers.Layer.VirtualEarth('%(title)s',{'type':VEMapStyle.Hybrid,'sphericalMercator':true,transitionEffect:'resize'});}
+function(){return new OpenLayers.Layer.Bing({
+    name: '%(title)s',
+    key: '%(apiKey)s',
+    type: 'AerialWithLabels',
+    transitionEffect:'resize'
+});}

@@ -54,28 +54,42 @@ class OSMMapLayer(MapLayer):
     Title = _(u"OpenStreetMap")
 
 
-class BingStreetMapLayer(MapLayer):
+class BingMapLayer(MapLayer):
+
+    @memoizedproperty
+    def jsfactory(self):
+        settings=getUtility(IRegistry).forInterface(IGeoSettings)
+        api_key = settings.bingapi
+        try:
+            template = self.context.restrictedTraverse(
+                                    str('%s-layer' % self.name))
+        except AttributeError:
+            return u""
+        return template() % dict(title=self.Title, protocol=self.protocol,
+                apiKey=api_key)
+
+class BingStreetMapLayer(BingMapLayer):
     name = u"bing_map"
     Title = _(u"Bing Streets")
-    type = 'bing'
+    #type = 'bing'
 
 
-class BingRoadsMapLayer(MapLayer):
+class BingRoadsMapLayer(BingMapLayer):
     name = u"bing_rod"
     Title = _(u"Bing Roads")
-    type = 'bing'
+    #type = 'bing'
 
 
-class BingAerialMapLayer(MapLayer):
+class BingAerialMapLayer(BingMapLayer):
     name = u"bing_aer"
     Title = _(u"Bing Aerial")
-    type = 'bing'
+    #type = 'bing'
 
 
-class BingHybridMapLayer(MapLayer):
+class BingHybridMapLayer(BingMapLayer):
     name = u"bing_hyb"
     Title = _(u"Bing Hybrid")
-    type = 'bing'
+    #type = 'bing'
 
 
 class GoogleStreetMapLayer(MapLayer):
@@ -105,19 +119,19 @@ class GoogleTerrainMapLayer(MapLayer):
 class YahooStreetMapLayer(MapLayer):
     name = u"yahoo_map"
     Title = _(u"Yahoo Street")
-    type = 'yahoo'
+    #type = 'yahoo'
 
 
 class YahooSatelliteMapLayer(MapLayer):
     name = u"yahoo_sat"
     Title = _(u"Yahoo Satellite")
-    type = 'yahoo'
+    #type = 'yahoo'
 
 
 class YahooHybridMapLayer(MapLayer):
     name = u"yahoo_hyb"
     Title = _(u"Yahoo Hybrid")
-    type = 'yahoo'
+    #type = 'yahoo'
 
 
 class DefaultMapLayers(object):

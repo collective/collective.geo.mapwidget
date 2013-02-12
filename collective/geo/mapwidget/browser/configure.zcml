@@ -119,12 +119,12 @@
         permission="zope.Public"
         />
 
-    <browser:page
+    <!--browser:page
         name="bing_map-layer"
         for="*"
         template="layers_templates/bing_map_layer.pt"
         permission="zope.Public"
-        />
+        /-->
 
     <browser:page
         name="bing_rod-layer"
@@ -161,7 +161,7 @@
         permission="zope.Public"
     />
 
-    <browser:page
+    <!--browser:page
         name="yahoo_hyb-layer"
         for="*"
         template="layers_templates/yahoo_hyb_layer.pt"
@@ -180,6 +180,6 @@
         for="*"
         template="layers_templates/yahoo_sat_layer.pt"
         permission="zope.Public"
-        />
+        /-->
 
 </configure>
