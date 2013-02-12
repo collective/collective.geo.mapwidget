@@ -378,8 +378,8 @@ a list of names and/or ILayer instances to be added.
 As a quick example we can just set the '_layers' attribute for mw1 and we
 should get an additional layer.
 
-    >>> from collective.geo.mapwidget.maplayers import BingStreetMapLayer
-    >>> mw1._layers = [BingStreetMapLayer(context=portal)]
+    >>> from collective.geo.mapwidget.maplayers import BingRoadsMapLayer
+    >>> mw1._layers = [BingRoadsMapLayer(context=portal)]
     >>> view = TestView(portal, request)
     >>> setTemplate(view, template)
     >>> view.mapfields = [mw1]
@@ -392,7 +392,7 @@ should get an additional layer.
           <script type="text/javascript">cgmap.extendconfig({layers: [
         function(){return new OpenLayers.Layer.TMS('OpenStreetMap'...
     ...
-        function(){return new OpenLayers.Layer.VirtualEarth('Bing Streets'...
+        function(){return new OpenLayers.Layer.Bing({...
     ...
 
 Me can register the BingStreetMapLayer as an adapter which allows us to use
@@ -400,7 +400,7 @@ just the name to get the same result. ILayers are looked up for ((view,
 request, context, widget), name):
 
     >>> from collective.geo.mapwidget.interfaces import IMapLayer
-    >>> provideAdapter(BingStreetMapLayer,
+    >>> provideAdapter(BingRoadsMapLayer,
     ...                (Interface, Interface, Interface, Interface),
     ...                IMapLayer, name='bsm')
     >>> mw1._layers = ['bsm']
@@ -413,7 +413,7 @@ request, context, widget), name):
           <script type="text/javascript">cgmap.extendconfig({layers: [
         function(){return new OpenLayers.Layer.TMS('OpenStreetMap'...
     ...
-        function(){return new OpenLayers.Layer.VirtualEarth('Bing Streets'...
+        function(){return new OpenLayers.Layer.Bing({...
     ...
 
 If _layers contains somethin which can't be converted into an IMapLayer
