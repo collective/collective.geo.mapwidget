@@ -28,7 +28,7 @@ var cgmap = function($)
         var fieldset = $(map).parents('.formPanel:hidden');
 
         if (fieldset.length === 1 && !force) {
-            var legend_id = fieldset[0].id.replace(/fieldset-/g, "a#fieldsetlegend-");
+            var legend_id = fieldset[0].id.replace(/fieldset-/g, "#fieldsetlegend-");
             $(legend_id).parent().click(function (e) {
                 load_map(map, true);
                 $(legend_id).parent().unbind(e);
