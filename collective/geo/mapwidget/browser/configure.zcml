@@ -76,6 +76,7 @@
              ..interfaces.IMapWidget"
         factory=".widget.MapLayers" />
 
+    <!-- Control panel edit mapwidget -->
     <adapter
         for="..interfaces.IMapView
              zope.interface.Interface
@@ -84,6 +85,24 @@
         factory=".controlpanel.MarkerEditLayer"
         name="markeredit"
         />
+
+    <!-- Shape edit mapwidget -->
+    <adapter
+        for="collective.geo.mapwidget.interfaces.IMapView
+           zope.interface.Interface
+           zope.interface.Interface"
+        factory=".shapewidget.ShapeMapWidget"
+        name="geoshapemap" />
+
+    <adapter
+        for="collective.geo.mapwidget.interfaces.IMapView
+             zope.interface.Interface
+             zope.interface.Interface
+             collective.geo.mapwidget.interfaces.IMapWidget"
+        factory=".shapewidget.ShapeEditLayer"
+        name="shapeedit"
+        />
+
 
     <browser:resource
         name="collectivegeo.png"
