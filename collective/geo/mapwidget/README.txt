@@ -53,8 +53,6 @@ cgmap.state and cgmap.config to initialise OpenLayers on these elements.
     >>> print view()
     <html xmlns="http://www.w3.org/1999/xhtml">
     ...
-          <script type="text/javascript" src="http://nohost/plone/OpenLayers.js"></script>
-          <script type="text/javascript" src="http://nohost/plone/proj4js-compressed.js"></script>
           <script type="text/javascript" src="http://nohost/plone/++resource++collectivegeo.js"></script>
     ...
           <script type="text/javascript">cgmap.state = {'default': {lon: 0.000000, lat: 0.000000, zoom: 10 }};

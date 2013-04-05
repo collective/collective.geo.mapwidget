@@ -47,7 +47,7 @@ var cgmap = function($)
                         }
                     });
                 }
-            }       
+            }
             return;
         }
 
