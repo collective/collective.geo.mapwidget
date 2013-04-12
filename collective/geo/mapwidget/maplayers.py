@@ -43,7 +43,7 @@ class MapLayer(object):
     def jsfactory(self):
         try:
             template = self.context.restrictedTraverse(
-                                    str('%s-layer' % self.name))
+                str('%s-layer' % self.name))
         except AttributeError:
             return u""
         return template() % dict(title=self.Title, protocol=self.protocol)
@@ -58,15 +58,19 @@ class BingMapLayer(MapLayer):
 
     @memoizedproperty
     def jsfactory(self):
-        settings=getUtility(IRegistry).forInterface(IGeoSettings)
+        settings = getUtility(IRegistry).forInterface(IGeoSettings)
         api_key = settings.bingapi
         try:
             template = self.context.restrictedTraverse(
-                                    str('%s-layer' % self.name))
+                str('%s-layer' % self.name))
         except AttributeError:
             return u""
-        return template() % dict(title=self.Title, protocol=self.protocol,
-                apiKey=api_key)
+        return template() % {
+            'title': self.Title,
+            'protocol': self.protocol,
+            'apiKey': api_key
+        }
+
 
 class BingStreetMapLayer(BingMapLayer):
     name = u"bing_map"
@@ -155,8 +159,11 @@ class DefaultMapLayers(object):
 
         layers = []
         for layerid in default_layers:
-            layer = queryMultiAdapter((view, request, context, widget),
-                                                    IMapLayer, name=layerid)
+            layer = queryMultiAdapter(
+                (view, request, context, widget),
+                IMapLayer,
+                name=layerid
+            )
             if layer:
                 layers.append(layer)
 
