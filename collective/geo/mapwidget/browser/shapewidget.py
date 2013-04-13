@@ -25,7 +25,7 @@ class ShapeMapWidget(MapWidget):
     def js(self):
         wkt_field_id = None
         if IWidget.providedBy(self.view):
-            wkt_field_id = self.view.map_id
+            wkt_field_id = self.view.id
         elif getattr(self.view, 'widgets', None):
             wkt_field = self.view.widgets.get('wkt')
             if wkt_field:
