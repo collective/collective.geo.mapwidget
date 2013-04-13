@@ -30,7 +30,7 @@ setup(name='collective.geo.mapwidget',
           'collective.geo.openlayers',
           'collective.geo.settings',
           'plone.app.z3cform',
-          'collective.z3cform.colorpicker',
+          'collective.z3cform.colorpicker>0.2',
       ],
       extras_require={
           'test': [
