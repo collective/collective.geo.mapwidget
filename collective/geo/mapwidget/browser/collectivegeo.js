@@ -28,26 +28,7 @@ var cgmap = function($)
         var fieldset = $(map).parents('.formPanel:hidden');
 
         if (fieldset.length === 1 && !force) {
-            // normal field tabs
-            var legend_id = fieldset[0].id.replace(/fieldset-/g, "a#fieldsetlegend-");
-            if ( $(legend_id).length > 0) {
-                $(legend_id).parent().click(function (e) {
-                    load_map(map, true);
-                    $(legend_id).parent().unbind(e);
-                });
-            } else {
-                // check if formtabbing generated a select widget instead of ul tabs
-                legend_id = fieldset[0].id.replace(/fieldset-/g, "option#fieldsetlegend-");
-                var legend_val = fieldset[0].id.replace(/fieldset-/g, "fieldsetlegend-");
-                if ( $(legend_id).length > 0) {
-                    $(legend_id).parent().change(function (e) {
-                        if ( $(this).val() == legend_val ) {
-                            load_map(map, true);
-                            $(legend_id).unbind(e);
-                        }
-                    });
-                }
-            }
+            defer_load_map(map, fieldset);
             return;
         }
 
@@ -69,6 +50,18 @@ var cgmap = function($)
 
             $(window).trigger('map-load', cgmap.config[mapid].map);
         }
+    }
+
+    function defer_load_map(map, fieldset) {
+        var tabs = $('select.formTabs, ul.formTabs');
+        // assume we have jquerytools tabs
+        tabs.bind("onClick", function(e, index) { 
+            var curpanel = $(this).data('tabs').getCurrentPane();
+            if ($(map).parents().is(curpanel))  {
+                load_map(map, true);
+                tabs.unbind(e);
+            }
+        });
     }
 
     /* adds/sets hidden input field in forms
