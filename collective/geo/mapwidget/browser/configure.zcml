@@ -116,6 +116,12 @@
         layer=".interfaces.IGeoMapWidgetLayer"
         />
 
+    <browser:resource
+        name="collectivegeo_init.js"
+        file="collectivegeo_init.js"
+        layer=".interfaces.IGeoMapWidgetLayer"
+        />
+
     <!-- layers views -->
     <browser:page
         name="osm-layer"
