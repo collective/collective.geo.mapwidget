@@ -14,11 +14,20 @@
      * is fully intstantiated
      */
     $(window).bind("load", function () {
-        var map = $('div.widget-cgmap').collectivegeomap({
-            // center: new OpenLayers.LonLat('45.00', '7.3'),
-            // zoom: 3
+        var els = $('div.widget-cgmap').collectivegeo({
+            center: new OpenLayers.LonLat('45.00', '7.3'),
+            zoom: 3
         });
 
+        // $(els[0]).collectivegeo(
+        //     'add_edit_layer',
+        //     'form-widgets-wkt'
+        // );
+
+        // $(els[1]).collectivegeo(
+        //     'add_markeredit_layer'
+        // );
+        // alert($('#geoshapemap').is(":visible"));
     });
 
 }(jQuery));
