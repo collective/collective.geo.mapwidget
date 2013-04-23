@@ -1,4 +1,4 @@
-/*global window, jQuery, document */
+/*global window, jQuery, document, OpenLayers*/
 
 /* cgmap is a namespace object, holding all relevant javascript
  * variables and methods used within collective.geo.*
@@ -25,7 +25,8 @@
         // );
 
         // $(els[1]).collectivegeo(
-        //     'add_markeredit_layer'
+        //     'add_markeredit_layer',
+        //      'lon','lat','zoom'
         // );
         // alert($('#geoshapemap').is(":visible"));
     });

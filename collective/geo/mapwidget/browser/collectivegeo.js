@@ -108,100 +108,6 @@
         }
     };
 
-
-    methods = {
-        init : function (options) {
-
-            return this.each(function () {
-                var settings = $.extend(true, {
-                    imgpath: '/',
-                    center: null,
-                    zoom: null
-                }, options),
-                    $this = $(this),
-                    data = $this.data('collectivegeo'),
-                    mapwidget;
-
-                // If the plugin hasn't been initialized yet
-                if (!data) {
-                    mapwidget = new collectivegeo.MapWidget(this, settings);
-                    $(this).data('collectivegeo', {
-                        target: $this,
-                        mapwidget: mapwidget
-                    });
-                }
-            });
-
-        },
-
-        destroy : function () {
-            return this.each(function () {
-                var $this = $(this),
-                    data = $this.data('collectivegeo');
-
-                data.collectivegeo.remove();
-                $this.removeData('collectivegeo');
-            });
-        },
-
-        refresh : function (content) {
-          // TODO: refersh map
-        },
-
-        add_edit_layer: function (wkt_input_id) {
-            var $this = $(this),
-                data = $this.data('collectivegeo'),
-                map = data.mapwidget.map,
-                edit_layer,
-                elctl;
-
-            edit_layer = new OpenLayers.Layer.Vector('Edit');
-            map.addLayer(edit_layer);
-
-            elctl = new OpenLayers.Control.WKTEditingToolbar(
-                edit_layer,
-                {wktid: wkt_input_id}
-            );
-
-            map.addControl(elctl);
-            elctl.activate();
-        },
-
-        add_markeredit_layer: function () {
-            var $this = $(this),
-                data = $this.data('collectivegeo'),
-                map = data.mapwidget.map,
-                edit_layer,
-                elctl;
-
-            edit_layer =  new OpenLayers.Layer.Vector(
-                'Marker',
-                {renderOptions: {yOrdering: true}}
-            );
-            map.addLayer(edit_layer);
-
-            elctl = new OpenLayers.Control.MarkerEditingToolbar(
-                edit_layer,
-                {
-                    lonid: 'lon',
-                    latid: 'lat',
-                    zoomid: 'zoom'
-                }
-            );
-            map.addControl(elctl);
-            elctl.activate();
-
-            data.mapwidget.setCenter(
-                new OpenLayers.LonLat(
-                    $('#lon').val(),
-                    $('#lat').val()
-                ),
-                $('#zoom').val()
-            );
-
-        }
-    };
-
     OpenLayers.Control.WKTEditingToolbar = OpenLayers.Class(
         OpenLayers.Control.Panel,
         {
@@ -331,6 +237,101 @@
             CLASS_NAME: 'OpenLayers.Control.EditingToolbar'
         }
     );
+
+
+    methods = {
+        init : function (options) {
+
+            return this.each(function () {
+                var settings = $.extend(true, {
+                    imgpath: '/',
+                    center: null,
+                    zoom: null
+                }, options),
+                    $this = $(this),
+                    data = $this.data('collectivegeo'),
+                    mapwidget;
+
+                // If the plugin hasn't been initialized yet
+                if (!data) {
+                    mapwidget = new collectivegeo.MapWidget(this, settings);
+                    $(this).data('collectivegeo', {
+                        target: $this,
+                        mapwidget: mapwidget
+                    });
+                }
+            });
+
+        },
+
+        destroy : function () {
+            return this.each(function () {
+                var $this = $(this),
+                    data = $this.data('collectivegeo');
+
+                data.collectivegeo.remove();
+                $this.removeData('collectivegeo');
+            });
+        },
+
+        // refresh : function (content) {
+        //   // TODO: refersh map
+        // },
+
+        add_edit_layer: function (wkt_input_id) {
+            var $this = $(this),
+                data = $this.data('collectivegeo'),
+                map = data.mapwidget.map,
+                edit_layer,
+                elctl;
+
+            edit_layer = new OpenLayers.Layer.Vector('Edit');
+            map.addLayer(edit_layer);
+
+            elctl = new OpenLayers.Control.WKTEditingToolbar(
+                edit_layer,
+                {wktid: wkt_input_id}
+            );
+
+            map.addControl(elctl);
+            elctl.activate();
+        },
+
+        add_markeredit_layer: function (lonid, latid, zoomid) {
+            var $this = $(this),
+                data = $this.data('collectivegeo'),
+                map = data.mapwidget.map,
+                edit_layer,
+                elctl;
+
+            edit_layer =  new OpenLayers.Layer.Vector(
+                'Marker',
+                {renderOptions: {yOrdering: true}}
+            );
+            map.addLayer(edit_layer);
+
+            elctl = new OpenLayers.Control.MarkerEditingToolbar(
+                edit_layer,
+                {
+                    lonid: lonid,
+                    latid: latid,
+                    zoomid: zoomid
+                }
+            );
+            map.addControl(elctl);
+            elctl.activate();
+
+            data.mapwidget.setCenter(
+                new OpenLayers.LonLat(
+                    $('#' + lonid).val(),
+                    $('#' + latid).val()
+                ),
+                $('#' + zoomid).val()
+            );
+
+        }
+    };
+
 
     $.fn.extend({
         collectivegeo: function (method) {
