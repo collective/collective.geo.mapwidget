@@ -2,7 +2,7 @@
     xmlns="http://namespaces.zope.org/zope"
     i18n_domain="collective.geo.mapwidget">
 
-  <!-- MapLayer adapts 
+  <!-- MapLayer adapts
     view, context, request, mapwidget -->
 
     <adapter
@@ -96,34 +96,4 @@
         name = 'google_ter'
     />
 
-    <!-- yahoo maps -->
-    <adapter
-        for = "zope.interface.Interface
-               zope.interface.Interface
-               zope.interface.Interface
-               zope.interface.Interface"
-        provides = "collective.geo.mapwidget.interfaces.IMapLayer"
-        factory = "collective.geo.mapwidget.maplayers.YahooStreetMapLayer"
-        name = 'yahoo_map'
-        />
-
-    <adapter
-        for = "zope.interface.Interface
-               zope.interface.Interface
-               zope.interface.Interface
-               zope.interface.Interface"
-        provides = "collective.geo.mapwidget.interfaces.IMapLayer"
-        factory = "collective.geo.mapwidget.maplayers.YahooSatelliteMapLayer"
-        name = 'yahoo_sat'
-        />
-
-    <adapter
-        for = "zope.interface.Interface
-               zope.interface.Interface
-               zope.interface.Interface
-               zope.interface.Interface"
-        provides = "collective.geo.mapwidget.interfaces.IMapLayer"
-        factory = "collective.geo.mapwidget.maplayers.YahooHybridMapLayer"
-        name = 'yahoo_hyb'
-        />
 </configure>

@@ -180,25 +180,4 @@
         permission="zope.Public"
     />
 
-    <!--browser:page
-        name="yahoo_hyb-layer"
-        for="*"
-        template="layers_templates/yahoo_hyb_layer.pt"
-        permission="zope.Public"
-        />
-
-    <browser:page
-        name="yahoo_map-layer"
-        for="*"
-        template="layers_templates/yahoo_map_layer.pt"
-        permission="zope.Public"
-        />
-
-    <browser:page
-        name="yahoo_sat-layer"
-        for="*"
-        template="layers_templates/yahoo_sat_layer.pt"
-        permission="zope.Public"
-        /-->
-
 </configure>
