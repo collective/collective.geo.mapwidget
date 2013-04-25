@@ -102,34 +102,35 @@ class GeoSettingsView(object):
                  'lat': lat,
                  'zoom': self.zoom}
         # set default configuration
-        ret = ["cgmap.state = {'default': " \
-            "{lon: %(lon)7f, lat: %(lat)7f, zoom: %(zoom)d }};" % state]
-        # go through all maps in request and extract their state
-        # to update map_state
-        for mapid in self.request.get('cgmap_state_mapids', '').split():
-            map_state = self.request.get('cgmap_state.%s' % mapid)
-            state = {'mapid': mapid}
-            for param in ('lon', 'lat', 'zoom',
-                          'activebaselayer', 'activelayers'):
-                val = map_state.get(param, None)
-                state[param] = (val is not None) and ("'%s'" % val) or \
-                                                                    'undefined'
-            ret.append("cgmap.state['%(mapid)s'] = " \
-                    "{lon: %(lon)s, lat: %(lat)s, zoom: %(zoom)s, " \
-                    "activebaselayer: %(activebaselayer)s, activelayers: " \
-                    "%(activelayers)s };" % state)
+        # ret = ["cgmap.state = {'default': " \
+        #     "{lon: %(lon)7f, lat: %(lat)7f, zoom: %(zoom)d }};" % state]
+        # # go through all maps in request and extract their state
+        # # to update map_state
+        # for mapid in self.request.get('cgmap_state_mapids', '').split():
+        #     map_state = self.request.get('cgmap_state.%s' % mapid)
+        #     state = {'mapid': mapid}
+        #     for param in ('lon', 'lat', 'zoom',
+        #                   'activebaselayer', 'activelayers'):
+        #         val = map_state.get(param, None)
+        #         state[param] = (val is not None) and ("'%s'" % val) or \
+        #                                                             'undefined'
+        #     ret.append("cgmap.state['%(mapid)s'] = " \
+        #             "{lon: %(lon)s, lat: %(lat)s, zoom: %(zoom)s, " \
+        #             "activebaselayer: %(activebaselayer)s, activelayers: " \
+        #             "%(activelayers)s };" % state)
 
-        # image path for change OpenLayers default images
-        try:
-            expr = Expression(str(self.imgpath))
-            imgpath = expr(getExprContext(self.context))
-        except:
-            imgpath = ''
+        # # image path for change OpenLayers default images
+        # try:
+        #     expr = Expression(str(self.imgpath))
+        #     imgpath = expr(getExprContext(self.context))
+        # except:
+        #     imgpath = ''
 
-        #we portal_url to get geocoder view
-        pstate = self.context.restrictedTraverse('plone_portal_state')
-        portal_url = pstate.portal_url()
-        ret.append("cgmap.portal_url = '%s';" % portal_url)
+        # #we portal_url to get geocoder view
+        # pstate = self.context.restrictedTraverse('plone_portal_state')
+        # portal_url = pstate.portal_url()
+        # ret.append("cgmap.portal_url = '%s';" % portal_url)
 
-        ret.append("cgmap.imgpath = '%s';" % imgpath)
-        return '\n'.join(ret)
+        # ret.append("cgmap.imgpath = '%s';" % imgpath)
+        # return '\n'.join(ret)
+        return ''

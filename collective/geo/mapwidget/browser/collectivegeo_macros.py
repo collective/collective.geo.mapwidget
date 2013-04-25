@@ -21,8 +21,9 @@ class CollectiveGeoMacros(BrowserView):
         """Return inline CSS for our map according to style settings.
         """
         inline_css = ''
-        geofeaturestyle = \
-                self.context.restrictedTraverse('@@geofeaturestyle-view')
+        geofeaturestyle = self.context.restrictedTraverse(
+            '@@geofeaturestyle-view'
+        )
         for style in INLINE_STYLES:
             value = getattr(geofeaturestyle, INLINE_STYLES[style], None)
             if value:
@@ -53,8 +54,11 @@ class CollectiveGeoMacros(BrowserView):
     def language(self):
         """ Return the languagecode of the current context.
         """
-        portal_state = self.context.unrestrictedTraverse("@@plone_portal_state")
-        lang = aq_inner(self.context).Language() or portal_state.default_language()
+        portal_state = self.context.unrestrictedTraverse(
+            "@@plone_portal_state"
+        )
+        lang = aq_inner(self.context).Language() or \
+            portal_state.default_language()
 
         return lang.lower()
 
@@ -74,6 +78,6 @@ class CollectiveGeoMacros(BrowserView):
 
     @property
     def language_script(self):
-        """ Returns the javscript call that sets the Openlayer langauge.
+        """ Returns the javscript call that sets the Openlayer language.
         """
         return "OpenLayers.Lang.setCode('%s');" % self.language

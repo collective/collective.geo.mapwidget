@@ -1,1 +1,1 @@
-function(){return new OpenLayers.Layer.TMS('%(title)s','http://tile.openstreetmap.org/',{'type':'png',getURL: cgmap.osm_getTileURL,transitionEffect:'resize',displayOutsideMaxExtent:true,numZoomLevels:19,attribution:'<a href="http://www.openstreetmap.org/">OpenStreetMap</a>'});}
+function(){return new OpenLayers.Layer.TMS('%(title)s','http://tile.openstreetmap.org/',{'type':'png',getURL: widget.osmGetTileURL,transitionEffect:'resize',displayOutsideMaxExtent:true,numZoomLevels:19,attribution:'<a href="http://www.openstreetmap.org/">OpenStreetMap</a>'});}

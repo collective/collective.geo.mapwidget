@@ -212,35 +212,27 @@ class GeoControlpanel(BrowserView):
 class ControlPanelMapWidget(MapWidget):
 
     mapid = 'geosettings-cgmap'
-    _layers = ['markeredit']
 
     def __init__(self, view, request, context):
         super(ControlPanelMapWidget, self).__init__(view, request, context)
-        self.lonid = view.widgets['longitude'].id
-        self.latid = view.widgets['latitude'].id
-        self.zoomid = view.widgets['zoom'].id
+        self.params = {
+            'lon_input_id': view.widgets['longitude'].id,
+            'lat_input_id': view.widgets['latitude'].id,
+            'zoom_input_id': view.widgets['zoom'].id
+        }
 
     @property
     def js(self):
         return """
-(function($) {
+(function ($) {
     $(window).load(function() {
-      var map = cgmap.config['geosettings-cgmap'].map;
-      var layer = map.getLayersByName('Marker')[0];
-      var elctl = new OpenLayers.Control.MarkerEditingToolbar(layer,
-                                {lonid: '%s', latid: '%s', zoomid: '%s'});
-      map.addControl(elctl);
-      elctl.activate();
+        // collective geo control panel map
+        $('#geosettings-cgmap').collectivegeo(
+            'add_markeredit_layer',
+            '%(lon_input_id)s',
+            '%(lat_input_id)s',
+            '%(zoom_input_id)s'
+        );
     });
-})(jQuery);
-""" % (self.lonid, self.latid, self.zoomid)
-
-
-class MarkerEditLayer(MapLayer):
-
-    name = "markeredit"
-
-    jsfactory = u"""
-    function() { return new OpenLayers.Layer.Vector('Marker',
-                                    {renderOptions: {yOrdering: true}});}
-    """
+}(jQuery));
+""" % self.params

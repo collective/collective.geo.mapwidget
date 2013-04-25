@@ -2,35 +2,63 @@
 
 (function ($) {
     "use strict";
-
-
+    // = Collective Geo =
+    //
+    // This is the application that provides Openlayers map
+    // infrastructure to collective.geo
+    //
+    // It lives in {{{window.collectivegeo}}} where it can be fetched
+    // to apply customizations.
     if ((typeof window.collectivegeo) === 'undefined') {
         window.collectivegeo = {};
     }
-    var collectivegeo = window.collectivegeo, methods;
+    var App = window.collectivegeo, methods;
 
-    collectivegeo.MapWidget = function (trigger, settings) {
+
+    // == MapWidget ==
+    //
+    // This class contains all method and utilities
+    // to manage collective.geo maps
+    App.MapWidget = function (trigger, settings) {
         var self = this;
 
         self.mapid = $(trigger).attr('id');
         self.map = null;
         self.trigger = trigger;
         self.settings = settings;
+
+        // initialize map
         self.initMap();
-        return self;
     };
 
-    collectivegeo.MapWidget.prototype = {
+    // === MapWidget prototype ===
+    //
+    // extends MapWidget class with some methods
+    App.MapWidget.prototype = {
 
+        // === MapWidget.initMap ===
+        //
+        // Init a map with default options and set default center and zoom
         initMap: function () {
             var self = this,
                 legend_id;
+
             self.map = new OpenLayers.Map(
                 self.mapid,
                 self.getDefaultOptions()
             );
 
-            self.addLayers();
+            // setup language
+            if (self.settings.lang) {
+                OpenLayers.Lang.setCode(self.settings.lang);
+            }
+
+            $(window).trigger('mapload', self);
+
+            // setup a default layers
+            if (self.map.layers.length === 0) {
+                self.addLayers(self.getDefaultLayers());
+            }
 
             if (self.settings.center && self.settings.zoom) {
                 self.setCenter(self.settings.center, self.settings.zoom);
@@ -43,7 +71,7 @@
 
         },
 
-
+        // === MapWidget.setCenter(center, zoom) ===
         setCenter: function (center, zoom) {
             var self = this,
                 displayProjection = self.map.displayProjection;
@@ -59,10 +87,14 @@
 
         },
 
-        addLayers: function () {
+        // === MapWidget.addLayers(layers) ===
+        addLayers: function (layers, mapid) {
             var self = this,
-                layers = self.getDefaultLayers(),
                 i;
+
+            if (mapid && self.mapid !== mapid) {
+                return null;
+            }
 
             for (i = 0; i < layers.length; i += 1) {
                 self.map.addLayer(layers[i]());
@@ -70,6 +102,8 @@
 
         },
 
+        // === MapWidget.getDefaultLayers ===
+        // return {{list}} of Openlayers layers
         getDefaultLayers: function () {
             var self = this,
                 layers = [];
@@ -83,6 +117,7 @@
             return layers;
         },
 
+        // === MapWidget.getDefaultOptions ===
         getDefaultOptions: function () {
             return $.extend({
                 theme: null, // disable default theme
@@ -105,9 +140,33 @@
                     new OpenLayers.Control.Zoom()
                 ]
             }, this.settings.map_defaults);
+        },
+
+        osmGetTileURL: function (bounds) {
+            var res = this.map.getResolution(),
+                x = Math.round((bounds.left - this.maxExtent.left) /
+                               (res * this.tileSize.w)),
+                y = Math.round((this.maxExtent.top - bounds.top) /
+                               (res * this.tileSize.h)),
+                z = this.map.getZoom() + this.zoomOffset,
+                limit = Math.pow(2, z);
+
+            if (y < 0 || y >= limit) {
+                return OpenLayers.Util.getImagesLocation() + "404.png";
+            } else {
+                x = ((x % limit) + limit) % limit;
+                return this.url + z + "/" + x + "/" + y + "." + this.type;
+            }
         }
+
     };
 
+    // == WKTEditingToolbar ==
+    //
+    // This Openlayers control creates a toolbar to draw features
+    // on a map.
+    // It can draw points, lines, and polygons
+    // and store it in WKT format
     OpenLayers.Control.WKTEditingToolbar = OpenLayers.Class(
         OpenLayers.Control.Panel,
         {
@@ -115,9 +174,27 @@
             initialize: function (layer, options) {
                 var controls = [
                         new OpenLayers.Control.Navigation(),
-                        new OpenLayers.Control.DrawFeature(layer, OpenLayers.Handler.Point, {'displayClass': 'olControlDrawFeaturePoint'}),
-                        new OpenLayers.Control.DrawFeature(layer, OpenLayers.Handler.Path, {'displayClass': 'olControlDrawFeaturePath'}),
-                        new OpenLayers.Control.DrawFeature(layer, OpenLayers.Handler.Polygon, {'displayClass': 'olControlDrawFeaturePolygon'}),
+                        new OpenLayers.Control.DrawFeature(
+                            layer,
+                            OpenLayers.Handler.Point,
+                            {
+                                'displayClass': 'olControlDrawFeaturePoint'
+                            }
+                        ),
+                        new OpenLayers.Control.DrawFeature(
+                            layer,
+                            OpenLayers.Handler.Path,
+                            {
+                                'displayClass': 'olControlDrawFeaturePath'
+                            }
+                        ),
+                        new OpenLayers.Control.DrawFeature(
+                            layer,
+                            OpenLayers.Handler.Polygon,
+                            {
+                                'displayClass': 'olControlDrawFeaturePolygon'
+                            }
+                        ),
                         new OpenLayers.Control.ModifyFeature(layer, {
                             mode: OpenLayers.Control.ModifyFeature.RESHAPE || OpenLayers.Control.ModifyFeature.DRAG
                         })
@@ -127,7 +204,10 @@
                     format,
                     feat;
 
-                OpenLayers.Control.Panel.prototype.initialize.apply(this, [options]);
+                OpenLayers.Control.Panel.prototype.initialize.apply(
+                    this,
+                    [options]
+                );
 
                 this.addControls(controls);
                 this.defaultControl = this.controls[5];
@@ -148,13 +228,25 @@
                     }
                 }
 
-                layer.events.register("featureadded", this, this.updateWKTWidget);
-                layer.events.register("featuremodified", this, this.updateWKTWidget);
+                layer.events.register(
+                    "featureadded",
+                    this,
+                    this.updateWKTWidget
+                );
+                layer.events.register(
+                    "featuremodified",
+                    this,
+                    this.updateWKTWidget
+                );
 
                 // ensure only one feature is on the map
-                layer.events.register("beforefeaturesadded", this, function (evt) {
-                    evt.object.destroyFeatures();
-                });
+                layer.events.register(
+                    "beforefeaturesadded",
+                    this,
+                    function (evt) {
+                        evt.object.destroyFeatures();
+                    }
+                );
             },
 
             updateWKTWidget: function (evt) {
@@ -163,7 +255,7 @@
                         externalProjection: evt.object.map.displayProjection
                     },
                     format = new OpenLayers.Format.WKT(out_options);
-                document.getElementById(this.wktid).value = format.write(evt.feature);
+                $('#' + this.wktid).val(format.write(evt.feature));
                 format.destroy();
             },
 
@@ -172,16 +264,28 @@
         }
     );
 
+    // == MarkerEditingToolbar ==
+    //
+    // This Openlayers control creates a toolbar to draw points on a map.
     OpenLayers.Control.MarkerEditingToolbar = OpenLayers.Class(
         OpenLayers.Control.Panel,
         {
 
             initialize: function (layer, options) {
-                OpenLayers.Control.Panel.prototype.initialize.apply(this, [options]);
+                OpenLayers.Control.Panel.prototype.initialize.apply(
+                    this,
+                    [options]
+                );
 
                 var controls = [
                         new OpenLayers.Control.Navigation(),
-                        new OpenLayers.Control.DrawFeature(layer, OpenLayers.Handler.Point, {'displayClass': 'olControlDrawFeaturePoint'}),
+                        new OpenLayers.Control.DrawFeature(
+                            layer,
+                            OpenLayers.Handler.Point,
+                            {
+                                'displayClass': 'olControlDrawFeaturePoint'
+                            }
+                        ),
                         new OpenLayers.Control.ModifyFeature(layer)
                     ],
                     point;
@@ -202,13 +306,27 @@
                         );
                     }
 
-                    layer.addFeatures([new OpenLayers.Feature.Vector(point)]);
-                    layer.events.register("featureadded", this, this.updateForm);
-                    layer.events.register("featuremodified", this, this.updateForm);
+                    layer.addFeatures(
+                        [new OpenLayers.Feature.Vector(point)]
+                    );
+                    layer.events.register(
+                        "featureadded",
+                        this,
+                        this.updateForm
+                    );
+                    layer.events.register(
+                        "featuremodified",
+                        this,
+                        this.updateForm
+                    );
                 }
 
                 if (this.zoomid) {
-                    layer.map.events.register("zoomend", this, this.updateZoom);
+                    layer.map.events.register(
+                        "zoomend",
+                        this,
+                        this.updateZoom
+                    );
                 }
 
                 // ensure only one feature is on the map
@@ -226,9 +344,15 @@
             },
 
             updateForm: function (evt) {
-                var lonlat = new OpenLayers.LonLat(evt.feature.geometry.x, evt.feature.geometry.y);
+                var lonlat = new OpenLayers.LonLat(
+                    evt.feature.geometry.x,
+                    evt.feature.geometry.y
+                );
                 if (evt.object.map.displayProjection) {
-                    lonlat.transform(evt.object.map.getProjectionObject(), evt.object.map.displayProjection);
+                    lonlat.transform(
+                        evt.object.map.getProjectionObject(),
+                        evt.object.map.displayProjection
+                    );
                 }
                 $('#' + this.lonid).val(lonlat.lon);
                 $('#' + this.latid).val(lonlat.lat);
@@ -238,8 +362,12 @@
         }
     );
 
-
+    // == JQuery plugin's methods ==
+    //
+    // this object contains all jQuery's plugin methods.
     methods = {
+        // === init ===
+        // initialize the map
         init : function (options) {
 
             return this.each(function () {
@@ -254,7 +382,7 @@
 
                 // If the plugin hasn't been initialized yet
                 if (!data) {
-                    mapwidget = new collectivegeo.MapWidget(this, settings);
+                    mapwidget = new App.MapWidget(this, settings);
                     $(this).data('collectivegeo', {
                         target: $this,
                         mapwidget: mapwidget
@@ -264,6 +392,9 @@
 
         },
 
+        // === destroy ===
+        //
+        // this method remove all references to collectivegeo plugin
         destroy : function () {
             return this.each(function () {
                 var $this = $(this),
@@ -274,75 +405,150 @@
             });
         },
 
-        // refresh : function (content) {
-        //   // TODO: refersh map
-        // },
-
-        add_edit_layer: function (wkt_input_id) {
-            var $this = $(this),
-                data = $this.data('collectivegeo'),
-                map = data.mapwidget.map,
-                edit_layer,
-                elctl;
-
-            edit_layer = new OpenLayers.Layer.Vector('Edit');
-            map.addLayer(edit_layer);
-
-            elctl = new OpenLayers.Control.WKTEditingToolbar(
-                edit_layer,
-                {wktid: wkt_input_id}
-            );
-
-            map.addControl(elctl);
-            elctl.activate();
+        add_layers: function (layers) {
+            return this.each(function () {
+                var $this = $(this),
+                    data = $this.data('collectivegeo');
+                data.mapwidget.addLayers(layers);
+            });
         },
 
+        refresh: function (layers) {
+            return this.each(function () {
+                var $this = $(this),
+                    data = $this.data('collectivegeo');
+                data.mapwidget.map.updateSize();
+
+            });
+        },
+
+        // === add_edit_layer ===
+        //
+        // This method add an edit layer to the map
+        // that can store values to a textarea element in WKT format.
+        //
+        // Usage:
+        // {{{
+        // $(window).bind("load", function () {
+        //   var maps = $('div.widget-cgmap').collectivegeo({
+        //      center: new OpenLayers.LonLat('45.00', '7.3'),
+        //      zoom: 3
+        // });
+        //
+        // $(maps[0]).collectivegeo('add_edit_layer','textarea-id');
+        //
+        // }}}
+        add_edit_layer: function (wkt_input_id) {
+            return this.each(function () {
+                var $this = $(this),
+                    data = $this.data('collectivegeo'),
+                    map = data.mapwidget.map,
+                    edit_layer,
+                    elctl;
+
+                edit_layer = new OpenLayers.Layer.Vector('Edit');
+                map.addLayer(edit_layer);
+
+                elctl = new OpenLayers.Control.WKTEditingToolbar(
+                    edit_layer,
+                    {wktid: wkt_input_id}
+                );
+
+                map.addControl(elctl);
+                elctl.activate();
+            });
+        },
+
+        // === add_markeredit_layer ===
+        //
+        // This method add an edit layer to the map specific
+        // to register a point and a zoom level in specific text inputs
+        //
+        // Usage:
+        // {{{
+        // $(window).bind("load", function () {
+        //   var maps = $('div.widget-cgmap').collectivegeo({
+        //      center: new OpenLayers.LonLat('45.00', '7.3'),
+        //      zoom: 3
+        // });
+        //
+        // $(maps[0]).collectivegeo(
+        //    'add_edit_layer',
+        //    'longitude_input_id,
+        //    'latitude_input_id,
+        //    'zoom_input_id'
+        // );
+        //
+        // }}}
         add_markeredit_layer: function (lonid, latid, zoomid) {
-            var $this = $(this),
-                data = $this.data('collectivegeo'),
-                map = data.mapwidget.map,
-                edit_layer,
-                elctl;
+            return this.each(function () {
+                var $this = $(this),
+                    data = $this.data('collectivegeo'),
+                    map = data.mapwidget.map,
+                    edit_layer,
+                    elctl;
 
-            edit_layer =  new OpenLayers.Layer.Vector(
-                'Marker',
-                {renderOptions: {yOrdering: true}}
-            );
-            map.addLayer(edit_layer);
+                edit_layer =  new OpenLayers.Layer.Vector(
+                    'Marker',
+                    {renderOptions: {yOrdering: true}}
+                );
+                map.addLayer(edit_layer);
 
-            elctl = new OpenLayers.Control.MarkerEditingToolbar(
-                edit_layer,
-                {
-                    lonid: lonid,
-                    latid: latid,
-                    zoomid: zoomid
-                }
-            );
-            map.addControl(elctl);
-            elctl.activate();
+                elctl = new OpenLayers.Control.MarkerEditingToolbar(
+                    edit_layer,
+                    {
+                        lonid: lonid,
+                        latid: latid,
+                        zoomid: zoomid
+                    }
+                );
+                map.addControl(elctl);
+                elctl.activate();
 
-            data.mapwidget.setCenter(
-                new OpenLayers.LonLat(
-                    $('#' + lonid).val(),
-                    $('#' + latid).val()
-                ),
-                $('#' + zoomid).val()
-            );
+                data.mapwidget.setCenter(
+                    new OpenLayers.LonLat(
+                        $('#' + lonid).val(),
+                        $('#' + latid).val()
+                    ),
+                    $('#' + zoomid).val()
+                );
+            });
 
+        },
+
+        add_geocoding: function () {
         }
     };
 
 
+    // == collectivegeo JQuery plugin ==
+    //
+    // This JQuery plugin allows to create a collective.geo map
+    // for each element
+    //
+    // Usage:
+    // {{{
+    // $(window).bind("load", function () {
+    //   $('div.widget-cgmap').collectivegeo({
+    //      center: new OpenLayers.LonLat('45.00', '7.3'),
+    //      zoom: 3
+    // });
+    // }}}
     $.fn.extend({
         collectivegeo: function (method) {
 
             // Method calling logic
             if (methods[method]) {
-                return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+                return methods[method].apply(
+                    this,
+                    Array.prototype.slice.call(arguments, 1)
+                );
             } else if (typeof method === 'object' || !method) {
                 return methods.init.apply(this, arguments);
             } else {
-                $.error('Method ' +  method + ' does not exist on jQuery.collectivegeo');
+                $.error(
+                    'Method ' +  method + ' does not exist on jQuery.collectivegeo'
+                );
             }
 
         }

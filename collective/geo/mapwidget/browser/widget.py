@@ -198,6 +198,15 @@ class MapLayers(dict):
     @property
     def js(self):
         layers = self.layers()
-        return "cgmap.extendconfig({layers: [\n" +\
-               ",\n".join([l.jsfactory for l in layers]) + \
-               "]}, '%s');" % (self.widget.mapid)
+        return """
+$(window).bind('mapload', function (evt, widget) {
+    widget.addLayers(
+        [%(layers)s],
+        '%(mapid)s'
+    );
+});
+
+""" % {
+            'layers': ", ".join([l.jsfactory for l in layers]),
+            'mapid': self.widget.mapid
+        }

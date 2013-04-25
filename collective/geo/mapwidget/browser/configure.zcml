@@ -4,8 +4,6 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:five="http://namespaces.zope.org/five">
 
-    <include package="Products.CMFCore" file="configure.zcml" />
-
     <browser:page
         name="collectivegeo-controlpanel"
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
@@ -76,17 +74,8 @@
              ..interfaces.IMapWidget"
         factory=".widget.MapLayers" />
 
-    <!-- Control panel edit mapwidget -->
-    <adapter
-        for="..interfaces.IMapView
-             zope.interface.Interface
-             zope.interface.Interface
-             ..interfaces.IMapWidget"
-        factory=".controlpanel.MarkerEditLayer"
-        name="markeredit"
-        />
 
-    <!-- Shape edit mapwidget -->
+    <!-- Shape edit maplayers and mapwidget -->
     <adapter
         for="collective.geo.mapwidget.interfaces.IMapView
            zope.interface.Interface
@@ -94,16 +83,8 @@
         factory=".shapewidget.ShapeMapWidget"
         name="geoshapemap" />
 
-    <adapter
-        for="collective.geo.mapwidget.interfaces.IMapView
-             zope.interface.Interface
-             zope.interface.Interface
-             collective.geo.mapwidget.interfaces.IMapWidget"
-        factory=".shapewidget.ShapeEditLayer"
-        name="shapeedit"
-        />
 
-
+    <!-- static resources -->
     <browser:resource
         name="collectivegeo.png"
         file="collectivegeo.png"
