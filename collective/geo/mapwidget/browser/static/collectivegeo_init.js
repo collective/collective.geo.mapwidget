@@ -1,15 +1,16 @@
 /*global window, jQuery, document, OpenLayers, google*/
 
 
-// = Collective Geo init =
-//
-// This script initialize collective.geo maps for each .wiget-cgmap
-// collectivegeo.js for details
-
 
 (function ($) {
     "use strict";
 
+    // = Collective Geo init =
+    //
+    // This script initialize collective.geo maps for each .wiget-cgmap
+    // collectivegeo.js for details
+    //
+    //
     // == Load maps ==
     //
     // After page has been loaded and the dom tree is fully instantiated
@@ -33,6 +34,38 @@
     //     lang: 'it'
     // });
     // }}}
+    //
+    //
+    // == Add layers to specific map ==
+    //
+    // You can add layers to a map using {{{add_layer}}} method
+    //
+    // {{{
+    // $('#mymap').collectivegeo(
+    //     'add_layer',
+    //     function () {
+    //         return new OpenLayers.Layer...(
+    //         ...layer code...
+    //         );
+    //     }
+    // );
+    // }}}
+    //
+    // or by {{{mapload}}} event
+    //
+    // {{{
+    // $(window).bind('mapload', function (evt, widget) {
+    //     widget.addLayers(
+    //         [
+    //             function () {
+    //                 return new OpenLayers.Layer...(
+    //                 ... layer code...
+    //             }
+    //         ],
+    //         'mymapid'
+    //     );
+    // }}}
+
     $(window).bind("load", function () {
         var maps = $('.widget-cgmap'),
             fieldset = $(maps).parents('.formPanel'),
@@ -44,9 +77,9 @@
             // lang: 'it'
         });
 
-        // === map in tabs ==
+        // === Map in hidden tabs ==
         //
-        // when a map is displayed in a hidden tab or div
+        // When a map is displayed in a hidden tab or div
         // it has to be refreshed when the tab is show.
         //
         // This trick is working with jquerytools tabs in Plone forms
@@ -73,49 +106,6 @@
         }
 
     });
-
-
-    // $(els[0]).collectivegeo(
-    //     'add_layer',
-    //     function () {
-    //         return new OpenLayers.Layer.Google(
-    //             'Terrain (Google)',
-    //             {
-    //                 type: google.maps.MapTypeId.TERRAIN,
-    //                 numZoomLevels: 20,
-    //                 sphericalMercator: true,
-    //                 transitionEffect: 'resize'
-    //             }
-    //         );
-    //     }
-    // );
-
-    // $(els[1]).collectivegeo(
-    //     'add_markeredit_layer',
-    //      'lon','lat','zoom'
-    // );
-    // alert($('#geoshapemap').is(":visible"));
-
-    // $(window).bind('mapload', function (evt, widget) {
-    //     widget.addLayers(
-    //         [
-    //             function () {
-    //                 return new OpenLayers.Layer.Google(
-    //                     'Terrain (Google)',
-    //                     {
-    //                         type: google.maps.MapTypeId.TERRAIN,
-    //                         numZoomLevels: 20,
-    //                         sphericalMercator: true,
-    //                         transitionEffect: 'resize'
-    //                     }
-    //                 );
-    //             }
-    //         ],
-    //         'geoshapemap'
-    //     );
-
-    // });
-
 
 }(jQuery));
 

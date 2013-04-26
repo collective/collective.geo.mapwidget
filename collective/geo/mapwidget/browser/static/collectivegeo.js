@@ -18,7 +18,18 @@
     // == MapWidget ==
     //
     // This class contains all method and utilities
-    // to manage collective.geo maps
+    // to manage collective.geo maps.
+    //
+    // Each map can get extra options from its data attributes
+    // if they are not already set when collectivegeo plugin
+    // is instantiated.
+    //
+    // Supported data:
+    //   * cgeolatitude
+    //   * cgeolongitude
+    //   * cgeozoom
+    //   * cgeolang
+    //
     App.MapWidget = function (trigger, settings) {
         var self = this,
             extra_data = $(trigger).data();
@@ -28,12 +39,6 @@
         self.trigger = trigger;
         self.settings = settings;
 
-        // get extra options from data attributes
-        // if they are not already set
-        // supported data:
-        //  * center
-        //  * zoom
-        //  * lang
         if (!settings.center &&
                 extra_data.cgeolongitude !== undefined &&
                 extra_data.cgeolatitude !== undefined) {
@@ -401,7 +406,7 @@
         }
     );
 
-    // == JQuery plugin's methods ==
+    // == jQuery plugin's methods ==
     //
     // this object contains all jQuery's plugin methods.
     methods = {
@@ -438,9 +443,10 @@
             return this.each(function () {
                 var $this = $(this),
                     data = $this.data('collectivegeo');
-
-                data.collectivegeo.remove();
-                $this.removeData('collectivegeo');
+                if (data) {
+                    data.collectivegeo.remove();
+                    $this.removeData('collectivegeo');
+                }
             });
         },
 
@@ -472,7 +478,9 @@
             return this.each(function () {
                 var $this = $(this),
                     data = $this.data('collectivegeo');
-                data.mapwidget.addLayers(layers);
+                if (data) {
+                    data.mapwidget.addLayers(layers);
+                }
             });
         },
 
@@ -510,20 +518,23 @@
             return this.each(function () {
                 var $this = $(this),
                     data = $this.data('collectivegeo'),
-                    map = data.mapwidget.map,
+                    map,
                     edit_layer,
                     elctl;
 
-                edit_layer = new OpenLayers.Layer.Vector('Edit');
-                map.addLayer(edit_layer);
+                if (data) {
+                    map = data.mapwidget.map;
+                    edit_layer = new OpenLayers.Layer.Vector('Edit');
+                    map.addLayer(edit_layer);
 
-                elctl = new OpenLayers.Control.WKTEditingToolbar(
-                    edit_layer,
-                    {wktid: wkt_input_id}
-                );
+                    elctl = new OpenLayers.Control.WKTEditingToolbar(
+                        edit_layer,
+                        {wktid: wkt_input_id}
+                    );
 
-                map.addControl(elctl);
-                elctl.activate();
+                    map.addControl(elctl);
+                    elctl.activate();
+                }
             });
         },
 
@@ -552,46 +563,50 @@
             return this.each(function () {
                 var $this = $(this),
                     data = $this.data('collectivegeo'),
-                    map = data.mapwidget.map,
+                    map,
                     edit_layer,
                     elctl;
 
-                edit_layer =  new OpenLayers.Layer.Vector(
-                    'Marker',
-                    {renderOptions: {yOrdering: true}}
-                );
-                map.addLayer(edit_layer);
+                if (data) {
+                    map = data.mapwidget.map;
+                    edit_layer =  new OpenLayers.Layer.Vector(
+                        'Marker',
+                        {renderOptions: {yOrdering: true}}
+                    );
+                    map.addLayer(edit_layer);
 
-                elctl = new OpenLayers.Control.MarkerEditingToolbar(
-                    edit_layer,
-                    {
-                        lonid: lonid,
-                        latid: latid,
-                        zoomid: zoomid
-                    }
-                );
-                map.addControl(elctl);
-                elctl.activate();
+                    elctl = new OpenLayers.Control.MarkerEditingToolbar(
+                        edit_layer,
+                        {
+                            lonid: lonid,
+                            latid: latid,
+                            zoomid: zoomid
+                        }
+                    );
+                    map.addControl(elctl);
+                    elctl.activate();
 
-                data.mapwidget.setCenter(
-                    new OpenLayers.LonLat(
-                        $('#' + lonid).val(),
-                        $('#' + latid).val()
-                    ),
-                    $('#' + zoomid).val()
-                );
+                    data.mapwidget.setCenter(
+                        new OpenLayers.LonLat(
+                            $('#' + lonid).val(),
+                            $('#' + latid).val()
+                        ),
+                        $('#' + zoomid).val()
+                    );
+                }
             });
 
         },
 
         add_geocoding: function () {
+            // TODO: add geocoding feature
         }
     };
 
 
-    // == collectivegeo JQuery plugin ==
+    // == collectivegeo jQuery plugin ==
     //
-    // This JQuery plugin allows to create a collective.geo map
+    // This jQuery plugin allows to create a collective.geo map
     // for each element
     //
     // Usage:
