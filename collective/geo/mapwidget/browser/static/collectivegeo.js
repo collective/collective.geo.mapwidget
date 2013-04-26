@@ -20,12 +20,39 @@
     // This class contains all method and utilities
     // to manage collective.geo maps
     App.MapWidget = function (trigger, settings) {
-        var self = this;
+        var self = this,
+            extra_data = $(trigger).data();
 
         self.mapid = $(trigger).attr('id');
         self.map = null;
         self.trigger = trigger;
         self.settings = settings;
+
+        // get extra options from data attributes
+        // if they are not already set
+        // supported data:
+        //  * center
+        //  * zoom
+        //  * lang
+        if (!settings.center &&
+                extra_data.cgeolongitude !== undefined &&
+                extra_data.cgeolatitude !== undefined) {
+            settings.center = new OpenLayers.LonLat(
+                extra_data.cgeolongitude,
+                extra_data.cgeolatitude
+            );
+        }
+
+        if (!settings.zoom &&
+                extra_data.cgeozoom !== undefined) {
+            settings.zoom = extra_data.cgeozoom;
+        }
+
+        if (!settings.lang &&
+                extra_data.cgeolang !== undefined) {
+            settings.lang = extra_data.cgeolang;
+        }
+
 
         // initialize map
         self.initMap();
@@ -51,9 +78,9 @@
             // setup language
             if (self.settings.lang) {
                 OpenLayers.Lang.setCode(self.settings.lang);
-
             }
 
+            // fire mapload event to allow to
             $(window).trigger('mapload', self);
 
             // setup a default layers
@@ -62,6 +89,7 @@
 
             }
 
+            // TODO: set center doesn't work with map in hidden div
             if (self.settings.center && self.settings.zoom) {
                 self.setCenter(self.settings.center, self.settings.zoom);
             } else {
@@ -105,18 +133,27 @@
         },
 
         // === MapWidget.getDefaultLayers ===
-        // return {{list}} of Openlayers layers
+        // return a {{{list}}} of Openlayers layers
         getDefaultLayers: function () {
             var self = this,
                 layers = [];
-            layers.push(function () {
-                return new OpenLayers.Layer.WMS(
-                    "OpenLayers WMS",
-                    "http://vmap0.tiles.osgeo.org/wms/vmap0",
-                    {layers: "basic"}
-                );
-            });
-            return layers;
+            return [
+                function () {
+                    return new OpenLayers.Layer.TMS(
+                        'Base layer',
+                        'http://tile.openstreetmap.org/',
+                        {
+                            type: 'png',
+                            getURL: self.osmGetTileURL,
+                            transitionEffect: 'resize',
+                            displayOutsideMaxExtent: true,
+                            numZoomLevels: 19,
+                            attribution: '<a href="http://www.openstreetmap.org/">OpenStreetMap</a>'
+                        }
+                    );
+                }
+            ];
+
         },
 
         // === MapWidget.getDefaultOptions ===
@@ -206,7 +243,7 @@
                     format,
                     feat;
 
-                OpenLayers.Control.Panel.prototype.initialize.apply(
+                OpenLayers.Control.Panel.prototype.nitialize.apply(
                     this,
                     [options]
                 );
@@ -447,8 +484,9 @@
             return this.each(function () {
                 var $this = $(this),
                     data = $this.data('collectivegeo');
-                data.mapwidget.map.updateSize();
-
+                if (data) {
+                    data.mapwidget.map.updateSize();
+                }
             });
         },
 

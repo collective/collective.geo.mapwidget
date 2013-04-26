@@ -6,7 +6,7 @@
     cookable="True"
     enabled="True"
     expression=""
-    id="++resource++collectivegeo.js"
+    id="++resource++collective.geo.mapwidget/collectivegeo.js"
     inline="False" />
   <javascript
     cacheable="True"
@@ -14,6 +14,6 @@
     cookable="True"
     enabled="True"
     expression=""
-    id="++resource++collectivegeo_init.js"
+    id="++resource++collective.geo.mapwidget/collectivegeo_init.js"
     inline="False" />
 </object>

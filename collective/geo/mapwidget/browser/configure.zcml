@@ -85,7 +85,13 @@
 
 
     <!-- static resources -->
-    <browser:resource
+    <browser:resourceDirectory
+        name="collective.geo.mapwidget"
+        directory="static"
+        layer=".interfaces.IGeoMapWidgetLayer"
+    />
+
+<!--     <browser:resource
         name="collectivegeo.png"
         file="collectivegeo.png"
         layer=".interfaces.IGeoMapWidgetLayer"
@@ -102,7 +108,7 @@
         file="collectivegeo_init.js"
         layer=".interfaces.IGeoMapWidgetLayer"
         />
-
+ -->
     <!-- layers views -->
     <browser:page
         name="osm-layer"

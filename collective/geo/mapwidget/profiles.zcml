@@ -11,4 +11,12 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+  <genericsetup:upgradeStep
+      title="Upgrade to 1.7"
+      description=""
+      source="*"
+      destination="1.7"
+      handler=".upgrades.upgrade_to_17"
+      profile="collective.geo.mapwidget:default" />
+
 </configure>

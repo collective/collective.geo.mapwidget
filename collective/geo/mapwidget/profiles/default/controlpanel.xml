@@ -3,7 +3,7 @@
  <configlet title="Collective Geo" action_id="collective.geo.mapwidget"
             appId="collective.geo.mapwidget" category="Products" condition_expr=""
             url_expr="string:$portal_url/@@collectivegeo-controlpanel"
-            icon_expr="string:$portal_url/++resource++collectivegeo.png"
+            icon_expr="string:$portal_url/++resource++collective.geo.mapwidget/collectivegeo.png"
             visible="True">
      <permission>Manage portal</permission>
  </configlet>
