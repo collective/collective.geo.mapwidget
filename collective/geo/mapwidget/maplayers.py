@@ -28,8 +28,8 @@ class MapLayer(object):
     implements(IMapLayer)
     Title = u""
     name = u""
-    # we need a property to evaluate if the layer map is based on google,
-    # bing or yahoo maps to include a external javascrpt
+    # we need a property to evaluate if the layer map is based on google
+    # or bing maps to include a external javascrpt
     type = 'base'
 
     def __init__(self, view=None, request=None, context=None, widget=None):
@@ -118,24 +118,6 @@ class GoogleTerrainMapLayer(MapLayer):
     name = u"google_ter"
     Title = _(u"Terrain (Google)")
     type = 'google'
-
-
-class YahooStreetMapLayer(MapLayer):
-    name = u"yahoo_map"
-    Title = _(u"Yahoo Street")
-    #type = 'yahoo'
-
-
-class YahooSatelliteMapLayer(MapLayer):
-    name = u"yahoo_sat"
-    Title = _(u"Yahoo Satellite")
-    #type = 'yahoo'
-
-
-class YahooHybridMapLayer(MapLayer):
-    name = u"yahoo_hyb"
-    Title = _(u"Yahoo Hybrid")
-    #type = 'yahoo'
 
 
 class DefaultMapLayers(object):

@@ -51,6 +51,7 @@
             // setup language
             if (self.settings.lang) {
                 OpenLayers.Lang.setCode(self.settings.lang);
+
             }
 
             $(window).trigger('mapload', self);
@@ -58,6 +59,7 @@
             // setup a default layers
             if (self.map.layers.length === 0) {
                 self.addLayers(self.getDefaultLayers());
+
             }
 
             if (self.settings.center && self.settings.zoom) {
@@ -405,6 +407,30 @@
             });
         },
 
+        // === add_layers ===
+        //
+        // add layers to a map passing a list of layers incapsulated
+        // in a function:
+        //
+        // Usage:
+        // {{{
+        // $('#map').collectivegeo();
+        //
+        // $('#map').collectivegeo(
+        //     'add_layer',
+        //     function () {
+        //         return new OpenLayers.Layer.Google(
+        //             'Terrain (Google)',
+        //             {
+        //                 type: google.maps.MapTypeId.TERRAIN,
+        //                 numZoomLevels: 20,
+        //                 sphericalMercator: true,
+        //                 transitionEffect: 'resize'
+        //             }
+        //         );
+        //     }
+        // );
+        // }}}
         add_layers: function (layers) {
             return this.each(function () {
                 var $this = $(this),
@@ -413,6 +439,10 @@
             });
         },
 
+        // === refresh ===
+        //
+        // this method refresh the map using Openlayers
+        // {{{updateSize}}} method
         refresh: function (layers) {
             return this.each(function () {
                 var $this = $(this),

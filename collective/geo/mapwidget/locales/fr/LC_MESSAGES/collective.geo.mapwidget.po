@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2012-02-11 19:43+0000\n"
+"POT-Creation-Date: 2013-04-25 14:51+0000\n"
 "PO-Revision-Date: 2009-06-12  21:28+0000\n"
 "Last-Translator: Fabien Moret <martronic@martronic.ch>\n"
 "Language-Team: Giorgio Borelli <giorgio@giorgioborelli.it>\n"
@@ -29,39 +29,39 @@ msgstr "Un relation de mapids à IMapWidgets"
 msgid "Additional Javascript code inserted after the map widget."
 msgstr "Code javascript additionnel inséré après le widget de carte"
 
-#: ../browser/controlpanel.py:73
+#: ../browser/controlpanel.py:83
 msgid "Advanced"
 msgstr "Avancé"
 
-#: ../browser/controlpanel.py:74
+#: ../browser/controlpanel.py:84
 msgid "Advanced configurations"
 msgstr "Configuration avancée"
 
-#: ../browser/controlpanel.py:118
+#: ../browser/controlpanel.py:143
 msgid "Apply"
 msgstr "Appliquer"
 
-#: ../browser/controlpanel.py:92
+#: ../browser/controlpanel.py:116
 msgid "Base settings"
 msgstr "Paramètres de base"
 
-#: ../maplayers.py:71
+#: ../maplayers.py:89
 msgid "Bing Aerial"
 msgstr ""
 
-#: ../maplayers.py:77
+#: ../maplayers.py:95
 msgid "Bing Hybrid"
 msgstr ""
 
-#: ../maplayers.py:65
+#: ../maplayers.py:83
 msgid "Bing Roads"
 msgstr ""
 
-#: ../maplayers.py:59
+#: ../maplayers.py:77
 msgid "Bing Streets"
 msgstr ""
 
-#: ../browser/controlpanel.py:138
+#: ../browser/controlpanel.py:163
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -69,13 +69,17 @@ msgstr "Annuler"
 msgid "Class attribute"
 msgstr ""
 
-#: ../browser/controlpanel.py:152
+#: ../browser/controlpanel.py:177
 msgid "Collective Geo Default Settings"
 msgstr "Paramètres par défaut de Collective Geo"
 
-#: ../browser/controlpanel.py:94
+#: ../browser/controlpanel.py:118
 msgid "Configure Collective Geo Settings"
 msgstr "Configurer Collective Geo"
+
+#: ../browser/controlpanel.py:38
+msgid "Default map position"
+msgstr ""
 
 #: ../interfaces.py:63
 msgid "Enable default layers."
@@ -86,15 +90,15 @@ msgstr ""
 msgid "Find places"
 msgstr "Rechercher des lieux"
 
-#: ../browser/controlpanel.py:151
+#: ../browser/controlpanel.py:176
 msgid "Geo Settings"
 msgstr "Paramètres Geo"
 
-#: ../maplayers.py:83
+#: ../maplayers.py:101
 msgid "Google"
 msgstr ""
 
-#: ../maplayers.py:95
+#: ../maplayers.py:113
 msgid "Hybrid (Google)"
 msgstr ""
 
@@ -118,10 +122,18 @@ msgstr ""
 msgid "Javascript to configure layers."
 msgstr "Javascript pour configurer les calques"
 
-#: ../browser/controlpanel.py:65
+#: ../browser/controlpanel.py:105
 #: ../interfaces.py:58
 msgid "Layers"
 msgstr "Calques"
+
+#: ../browser/geopointform.pt:32
+msgid "Manual settings"
+msgstr ""
+
+#: ../browser/geopointform.pt:5
+msgid "Map"
+msgstr ""
 
 #: ../interfaces.py:84
 msgid "Map Widgets"
@@ -144,7 +156,7 @@ msgstr ""
 msgid "Returns some js-code to set up available layers."
 msgstr "Retourne du code javascript pour définir les calques disponibles."
 
-#: ../maplayers.py:89
+#: ../maplayers.py:107
 msgid "Satellite (Google)"
 msgstr ""
 
@@ -158,11 +170,15 @@ msgstr "Chercher"
 msgid "Select a location from the list below to set the coordinates."
 msgstr "Sélectionnez une adresse dans la liste ci-dessous pour définir les coordonnées."
 
-#: ../browser/controlpanel.py:55
+#: ../browser/controlpanel.py:61
 msgid "Set default styles for geographical shapes"
 msgstr "Définissez le style par défaut pour les formes géographiques"
 
-#: ../browser/controlpanel.py:54
+#: ../browser/controlpanel.py:39
+msgid "Set the centre point and the zoom level of the map used when the system cannot use any other point to center the map (e.g. when displaying the map to georeference an item for the first time)"
+msgstr ""
+
+#: ../browser/controlpanel.py:60
 msgid "Style"
 msgstr "Style"
 
@@ -170,7 +186,7 @@ msgstr "Style"
 msgid "Style attribute"
 msgstr "Attribut de style"
 
-#: ../maplayers.py:101
+#: ../maplayers.py:119
 msgid "Terrain (Google)"
 msgstr "Terrain (Google)"
 
@@ -185,16 +201,4 @@ msgstr "L'attribut style de l'élélment html"
 #: ../interfaces.py:35
 msgid "Used to identify the map in the dom-tree and to lookup an IMapWidget component if necessary."
 msgstr "Utilisé pour identifier une carte dans le dom-tree et rechercher un composant IMapWidget si nécessaire"
-
-#: ../maplayers.py:119
-msgid "Yahoo Hybrid"
-msgstr ""
-
-#: ../maplayers.py:113
-msgid "Yahoo Satellite"
-msgstr ""
-
-#: ../maplayers.py:107
-msgid "Yahoo Street"
-msgstr ""
 

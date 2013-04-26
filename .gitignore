@@ -24,3 +24,4 @@ include/
 lib/
 extras/
 .coverage*
+rebuild_i18n.log

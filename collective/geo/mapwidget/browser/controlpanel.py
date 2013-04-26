@@ -83,11 +83,11 @@ class GeoAdvancedConfGroup(group.Group):
     label = _(u"Advanced")
     description = _(u"Advanced configurations")
 
-    fields = field.Fields(IGeoSettings).select('map_viewlet_managers','bingapi')
+    fields = field.Fields(IGeoSettings).select('map_viewlet_managers')
 
     def updateWidgets(self):
         super(GeoAdvancedConfGroup, self).updateWidgets()
-        widgets = ('googleapi', 'yahooapi','bingapi')
+        widgets = ('googleapi', 'bingapi')
         for w in self.widgets:
             if w in widgets:
                 self.widgets[w].size = 80
@@ -95,7 +95,8 @@ class GeoAdvancedConfGroup(group.Group):
 
 
 def control_panel_fields():
-    form_fields = field.Fields(IGeoSettings).select('default_layers')
+    form_fields = field.Fields(IGeoSettings).select(
+        'default_layers', 'bingapi')
     form_fields += field.Fields(IGeoFeatureStyle).select(
         'map_viewlet_position')
     default_layer_field = form_fields['default_layers']
@@ -107,8 +108,7 @@ def control_panel_fields():
 
 
 class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
-    template = ViewPageTemplateFile(
-                                            'form-with-subforms.pt')
+    template = ViewPageTemplateFile('form-with-subforms.pt')
     form.extends(form.EditForm, ignoreButtons=True)
 
     default_fieldset_label = _(u"Base settings")

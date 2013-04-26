@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2012-02-11 19:43+0000\n"
+"POT-Creation-Date: 2013-04-25 14:51+0000\n"
 "PO-Revision-Date: 2009-09-20 13:24+0100\n"
 "Last-Translator: Anton Stonor <anton@headnet.dk>\n"
 "Language-Team: Anton Stonor <anton@headnet.dk>\n"
@@ -26,39 +26,39 @@ msgstr ""
 msgid "Additional Javascript code inserted after the map widget."
 msgstr "Ekstra javascript kan indsættes efter map widget'en."
 
-#: ../browser/controlpanel.py:73
+#: ../browser/controlpanel.py:83
 msgid "Advanced"
 msgstr "Avanceret"
 
-#: ../browser/controlpanel.py:74
+#: ../browser/controlpanel.py:84
 msgid "Advanced configurations"
 msgstr "Avancerede indstillinger"
 
-#: ../browser/controlpanel.py:118
+#: ../browser/controlpanel.py:143
 msgid "Apply"
 msgstr "Gem"
 
-#: ../browser/controlpanel.py:92
+#: ../browser/controlpanel.py:116
 msgid "Base settings"
 msgstr "Grundindstillinger"
 
-#: ../maplayers.py:71
+#: ../maplayers.py:89
 msgid "Bing Aerial"
 msgstr "Bing luftbilleder"
 
-#: ../maplayers.py:77
+#: ../maplayers.py:95
 msgid "Bing Hybrid"
 msgstr "Bing Hybrid"
 
-#: ../maplayers.py:65
+#: ../maplayers.py:83
 msgid "Bing Roads"
 msgstr "Bing veje"
 
-#: ../maplayers.py:59
+#: ../maplayers.py:77
 msgid "Bing Streets"
 msgstr "Bing gader"
 
-#: ../browser/controlpanel.py:138
+#: ../browser/controlpanel.py:163
 msgid "Cancel"
 msgstr "Fortryd"
 
@@ -66,13 +66,17 @@ msgstr "Fortryd"
 msgid "Class attribute"
 msgstr "Class attribut"
 
-#: ../browser/controlpanel.py:152
+#: ../browser/controlpanel.py:177
 msgid "Collective Geo Default Settings"
 msgstr "Plone Maps standardindstillinger"
 
-#: ../browser/controlpanel.py:94
+#: ../browser/controlpanel.py:118
 msgid "Configure Collective Geo Settings"
 msgstr "Indstil Plone Maps"
+
+#: ../browser/controlpanel.py:38
+msgid "Default map position"
+msgstr ""
 
 #: ../interfaces.py:63
 msgid "Enable default layers."
@@ -83,15 +87,15 @@ msgstr "Aktiver standard-lag"
 msgid "Find places"
 msgstr "Find stedet"
 
-#: ../browser/controlpanel.py:151
+#: ../browser/controlpanel.py:176
 msgid "Geo Settings"
 msgstr "Kort-indstillinger"
 
-#: ../maplayers.py:83
+#: ../maplayers.py:101
 msgid "Google"
 msgstr "Google"
 
-#: ../maplayers.py:95
+#: ../maplayers.py:113
 msgid "Hybrid (Google)"
 msgstr "Hybrid (Google)"
 
@@ -115,10 +119,18 @@ msgstr "Javascript factory"
 msgid "Javascript to configure layers."
 msgstr "Javascript til at indstille kortlag."
 
-#: ../browser/controlpanel.py:65
+#: ../browser/controlpanel.py:105
 #: ../interfaces.py:58
 msgid "Layers"
 msgstr "Kortlag"
+
+#: ../browser/geopointform.pt:32
+msgid "Manual settings"
+msgstr ""
+
+#: ../browser/geopointform.pt:5
+msgid "Map"
+msgstr ""
 
 #: ../interfaces.py:84
 msgid "Map Widgets"
@@ -141,7 +153,7 @@ msgstr "OpenStreetMap"
 msgid "Returns some js-code to set up available layers."
 msgstr ""
 
-#: ../maplayers.py:89
+#: ../maplayers.py:107
 msgid "Satellite (Google)"
 msgstr "Satellit (Google)"
 
@@ -155,11 +167,15 @@ msgstr "Søg"
 msgid "Select a location from the list below to set the coordinates."
 msgstr "Klik på et sted på listen herunder, hvorefter det bliver det et punkt på kortet."
 
-#: ../browser/controlpanel.py:55
+#: ../browser/controlpanel.py:61
 msgid "Set default styles for geographical shapes"
 msgstr "Sæt standardindstillinger for layout af elementer oven på kortet"
 
-#: ../browser/controlpanel.py:54
+#: ../browser/controlpanel.py:39
+msgid "Set the centre point and the zoom level of the map used when the system cannot use any other point to center the map (e.g. when displaying the map to georeference an item for the first time)"
+msgstr ""
+
+#: ../browser/controlpanel.py:60
 msgid "Style"
 msgstr "Layout"
 
@@ -167,7 +183,7 @@ msgstr "Layout"
 msgid "Style attribute"
 msgstr "Layout-attribut"
 
-#: ../maplayers.py:101
+#: ../maplayers.py:119
 msgid "Terrain (Google)"
 msgstr "Terrain (Google)"
 
@@ -182,16 +198,4 @@ msgstr "HTML-element style attribut."
 #: ../interfaces.py:35
 msgid "Used to identify the map in the dom-tree and to lookup an IMapWidget component if necessary."
 msgstr ""
-
-#: ../maplayers.py:119
-msgid "Yahoo Hybrid"
-msgstr "Yahoo Hybrid"
-
-#: ../maplayers.py:113
-msgid "Yahoo Satellite"
-msgstr "Yahoo Satellit"
-
-#: ../maplayers.py:107
-msgid "Yahoo Street"
-msgstr "Yahoo gade"
 

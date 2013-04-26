@@ -52,20 +52,6 @@ class TestSetupHTTP(unittest.TestCase):
         self.geosettings.default_layers = [u'osm']
         self.assertEquals(self.settings.google_maps_js, None)
 
-    def test_property_yahooapi(self):
-        self.assertEquals(self.settings.yahooapi,
-                          u'YOUR_API_KEY')
-
-    def test_property_jsyahoomaps(self):
-        # when a layer is yahoo_map we should include external javascript
-        self.geosettings.default_layers = [u'yahoo_map']
-        # Yahoo API does not support SSL so HTTP only
-        self.assertEquals(self.settings.yahoo_maps_js,
-              'http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=YOUR_API_KEY')
-
-        self.geosettings.default_layers = [u'osm']
-        self.assertEquals(self.settings.yahoo_maps_js, None)
-
     def test_property_jsbingmaps(self):
         # when a layer is bing_map we should include external javascript
         self.geosettings.default_layers = [u'bing_map']

@@ -7,7 +7,6 @@ from collective.geo.settings.interfaces import IGeoSettings
 from collective.geo.mapwidget import utils
 
 
-_YAHOOURL = 'http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=%s'
 _BINGURL = '%s://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6'
 _GOOGLEURL = '%s://maps.google.com/maps/api/js?v=3.2&sensor=false'
 
@@ -56,26 +55,6 @@ class GeoSettingsView(object):
             return _GOOGLEURL % self.layer_protocol
         else:
             return None
-
-    @property
-    def yahoomaps(self):
-        for layer_id in self.default_layers:
-            if layer_id.startswith('yahoo'):
-                return True
-        return False
-
-    @property
-    def yahooapi(self):
-        return  self.geosettings.yahooapi
-
-    @property
-    def yahoo_maps_js(self):
-        if self.yahoomaps:
-            #This API does not support SSL
-            return _YAHOOURL % self.yahooapi
-        else:
-            return None
-
 
     @property
     def bingapi(self):

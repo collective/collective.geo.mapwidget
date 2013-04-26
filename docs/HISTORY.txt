@@ -4,8 +4,20 @@ Changelog
 1.7 (unreleased)
 ----------------
 
+- Removed all Yahoo maps references. See: collective.geo.bundle #19
+  [gborelli]
+
+- Removed YahooStreetMapLayer, YahooSatelliteMapLayer, YahooHybridMapLayer
+  and relative templates
+  [gborelli]
+
+- Removed yahoomaps, yahooapi, yahoo_maps_js from collective geo macros
+  [gborelli]
+
 - Added c.z3cform.colorpicker profile in metadata.xml. Now we depend on
-  c.z3cform.colorpicker > 0.2 [gborelli]
+  c.z3cform.colorpicker > 0.2
+  [gborelli]
+
 - Added ShapeMapWidget and ShapeEditLayer and theirs respective adapters
   [gborelli]
 
