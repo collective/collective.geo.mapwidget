@@ -35,6 +35,22 @@ You can install collective.geo.mapwidget as part of a specific project's buildou
 
 Install this product from the Plone control panel.
 
+Upgrading
+=========
+
+Version 1.7
+-----------
+
+If you are upgrading from an older version to 1.7, you may need to run
+upgrade steps. To do this, follow these steps:
+
+#. Browse to ``portal_setup`` in the ZMI of your site
+#. Click onto the ``Upgrades`` tab
+#. Select ``collective.geo.mapwidget:default`` from the drop-down list and
+   click ``Choose Profile``
+#. Observe any available upgrades and click the ``Upgrade`` button if any
+   are present.
+
 
 Contributors
 ============
