@@ -4,6 +4,15 @@ Changelog
 1.7 (unreleased)
 ----------------
 
+- Documented javascript files with http://abstract-open-solutions.github.io/code-illuminated/
+  [gborelli]
+
+- Refactored collectivegeo javascript
+  [gborelli]
+
+- Moved static resource to static directory
+  [gborelli]
+
 - Removed all Yahoo maps references. See: collective.geo.bundle #19
   [gborelli]
 
