@@ -36,6 +36,7 @@
 
         self.mapid = $(trigger).attr('id');
         self.map = null;
+        self.edit_layer = null;
         self.trigger = trigger;
         self.settings = settings;
 
@@ -186,6 +187,8 @@
             }, this.settings.map_defaults);
         },
 
+        // === MapWidget.osmGetTileURL ===
+        //
         osmGetTileURL: function (bounds) {
             var res = this.map.getResolution(),
                 x = Math.round((bounds.left - this.maxExtent.left) /
@@ -201,8 +204,110 @@
                 x = ((x % limit) + limit) % limit;
                 return this.url + z + "/" + x + "/" + y + "." + this.type;
             }
-        }
+        },
 
+        // === MapWidget.addGeocoder ===
+        //
+        addGeocoder: function () {
+            var self = this,
+                geocoder = $('#' + self.mapid + "-geocoder");
+
+            geocoder.find('button').click(function (e) {
+                self.retrieveLocation(geocoder, geocoder.find('input').val());
+            });
+
+        },
+
+        // === MapWidget.retrieveLocation ===
+        //
+        retrieveLocation: function (geocoder, address) {
+            var self = this,
+                results = geocoder.find('.results'),
+                results_ul = results.find('ul'),
+                error = geocoder.find('.fieldErrorBox'),
+                input = geocoder.find('input'),
+                offset = input.offset(),
+                set_coordinates = function (e) {
+                    var lonlat = e.data.lonlat;
+                    // geocoder returns [latitude, longitude]
+                    self.setCoordinates(lonlat[1], lonlat[0]);
+                    e.data.results.hide();
+                    e.preventDefault();
+                },
+                link,
+                li,
+                i;
+
+            results_ul.empty();
+            // results.offset({
+            //     top: offset.top,
+            //     left: offset.left
+            // });
+
+            $.getJSON(
+                "http://localhost:8080/test/geocoderview",
+                {'address': address},
+                function (data) {
+                    if (data === null) {
+                        error.show();
+                        results.hide();
+                        geocoder.addClass('error');
+                    } else {
+                        geocoder.removeClass('error');
+                        error.hide();
+                        for (i = 0; i < data.length; i += 1) {
+                            link = $('<a>').append(data[i][0]);
+                            link.bind(
+                                'click',
+                                {
+                                    lonlat: data[i][1],
+                                    results: results
+                                },
+                                set_coordinates
+                            );
+                            li = $('<li>');
+                            li.append(link);
+                            results_ul.append(li);
+                        }
+                        results.show();
+                    }
+                }
+            );
+        },
+
+        // === MapWidget.setCoordinates ===
+        //
+        setCoordinates: function (longitude, latitude) {
+            var self = this,
+                point = new OpenLayers.Geometry.Point(longitude, latitude);
+
+            point.transform(
+                self.map.displayProjection,
+                self.map.getProjectionObject()
+            );
+
+            self.setCenter(
+                new OpenLayers.LonLat(longitude, latitude),
+                10
+            );
+
+            if (self.wkt_input_id) {
+                $('#' + self.wkt_input_id).val(point.toString());
+            }
+
+            if (self.lonid && self.latid && self.zoomid) {
+                $('#' + self.zoomid).val(10);
+                $('#' + self.lonid).val(longitude);
+                $('#' + self.latid).val(latitude);
+            }
+
+            if (self.edit_layer) {
+                self.edit_layer.addFeatures(
+                    [new OpenLayers.Feature.Vector(point)]
+                );
+            }
+
+        }
     };
 
     // == WKTEditingToolbar ==
@@ -248,7 +353,7 @@
                     format,
                     feat;
 
-                OpenLayers.Control.Panel.prototype.nitialize.apply(
+                OpenLayers.Control.Panel.prototype.initialize.apply(
                     this,
                     [options]
                 );
@@ -343,6 +448,7 @@
                         $('#' + this.lonid).val(),
                         $('#' + this.latid).val()
                     );
+
                     if (layer.map.displayProjection) {
                         point.transform(
                             layer.map.displayProjection,
@@ -523,9 +629,16 @@
                     elctl;
 
                 if (data) {
+                    if (!wkt_input_id) {
+                        wkt_input_id = data.mapwidget.mapid + '-wkt';
+                    }
+                    data.mapwidget.wkt_input_id = wkt_input_id;
+
                     map = data.mapwidget.map;
                     edit_layer = new OpenLayers.Layer.Vector('Edit');
                     map.addLayer(edit_layer);
+                    data.mapwidget.edit_layer = edit_layer;
+
 
                     elctl = new OpenLayers.Control.WKTEditingToolbar(
                         edit_layer,
@@ -564,25 +677,39 @@
                 var $this = $(this),
                     data = $this.data('collectivegeo'),
                     map,
+                    mapid,
                     edit_layer,
                     elctl;
 
                 if (data) {
+                    if (!(lonid && latid && zoomid)) {
+                        mapid = data.mapwidget.mapid;
+                        data.mapwidget.lonid = mapid + '-lon';
+                        data.mapwidget.latid = mapid + '-lat';
+                        data.mapwidget.zoomid = mapid + '-zoom';
+                    } else {
+                        data.mapwidget.lonid = lonid;
+                        data.mapwidget.latid = latid;
+                        data.mapwidget.zoomid = zoomid;
+                    }
+
                     map = data.mapwidget.map;
                     edit_layer =  new OpenLayers.Layer.Vector(
                         'Marker',
                         {renderOptions: {yOrdering: true}}
                     );
                     map.addLayer(edit_layer);
+                    data.mapwidget.edit_layer = edit_layer;
 
                     elctl = new OpenLayers.Control.MarkerEditingToolbar(
                         edit_layer,
                         {
-                            lonid: lonid,
-                            latid: latid,
-                            zoomid: zoomid
+                            lonid: data.mapwidget.lonid,
+                            latid: data.mapwidget.latid,
+                            zoomid: data.mapwidget.zoomid
                         }
                     );
+
                     map.addControl(elctl);
                     elctl.activate();
 
@@ -598,8 +725,21 @@
 
         },
 
+        // === add_geocoding ===
+        //
+        // ... it requires mapid-geocoder div
         add_geocoding: function () {
-            // TODO: add geocoding feature
+            return this.each(function () {
+                var $this = $(this),
+                    data = $this.data('collectivegeo'),
+                    widget,
+                    geocoder;
+
+                if (data) {
+                    data.mapwidget.addGeocoder();
+                }
+            });
+
         }
     };
 

@@ -105,6 +105,10 @@
             });
         }
 
+        // $(maps[0]).collectivegeo('add_edit_layer');
+        // $(maps[1]).collectivegeo('add_markeredit_layer');
+        // $(maps).collectivegeo('add_geocoding');
+
     });
 
 }(jQuery));
