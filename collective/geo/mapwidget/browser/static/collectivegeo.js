@@ -95,7 +95,7 @@
 
             }
 
-            // TODO: set center doesn't work with map in hidden div
+            // TODO: setCenter doesn't work with map in hidden div
             if (self.settings.center && self.settings.zoom) {
                 self.setCenter(self.settings.center, self.settings.zoom);
             } else {
@@ -210,12 +210,21 @@
         //
         addGeocoder: function () {
             var self = this,
-                geocoder = $('#' + self.mapid + "-geocoder");
+                geocoder = $('#' + self.mapid + "-geocoder"),
+                input = geocoder.find('input'),
+                search = geocoder.find('button');
 
-            geocoder.find('button').click(function (e) {
-                self.retrieveLocation(geocoder, geocoder.find('input').val());
+            search.click(function (e) {
+                self.retrieveLocation(geocoder, input.val());
             });
 
+            // perform search when return key is pressed on geocoder input
+            input.keypress(function (e) {
+                if (e.keyCode === 13) {
+                    e.preventDefault();
+                    search.click();
+                }
+            });
         },
 
         // === MapWidget.retrieveLocation ===
@@ -291,16 +300,18 @@
                 10
             );
 
-            if (self.wkt_input_id) {
-                $('#' + self.wkt_input_id).val(point.toString());
+            // set input values
+            if (self.wkt_input) {
+                self.wkt_input.val(point.toString());
             }
 
             if (self.lonid && self.latid && self.zoomid) {
-                $('#' + self.zoomid).val(10);
-                $('#' + self.lonid).val(longitude);
-                $('#' + self.latid).val(latitude);
+                self.zoomid.val(10);
+                self.lonid.val(longitude);
+                self.latid.val(latitude);
             }
 
+            // Add point to map
             if (self.edit_layer) {
                 self.edit_layer.addFeatures(
                     [new OpenLayers.Feature.Vector(point)]
@@ -362,8 +373,8 @@
                 this.defaultControl = this.controls[5];
 
                 // init edit layer features
-                if (this.wktid) {
-                    geomwkt = $('#' + this.wktid).val();
+                if (this.wkt_input.length > 0) {
+                    geomwkt = this.wkt_input.val();
                     in_options = {
                         internalProjection: layer.map.getProjectionObject(),
                         externalProjection: layer.map.displayProjection
@@ -404,7 +415,9 @@
                         externalProjection: evt.object.map.displayProjection
                     },
                     format = new OpenLayers.Format.WKT(out_options);
-                $('#' + this.wktid).val(format.write(evt.feature));
+                if (this.wkt_input.length > 0) {
+                    this.wkt_input.val(format.write(evt.feature));
+                }
                 format.destroy();
             },
 
@@ -443,10 +456,10 @@
                 this.defaultControl = this.controls[0];
 
                 // setup form events
-                if (this.lonid && this.latid) {
+                if (this.lonid.length > 0 && this.latid.length > 0) {
                     point = new OpenLayers.Geometry.Point(
-                        $('#' + this.lonid).val(),
-                        $('#' + this.latid).val()
+                        this.lonid.val(),
+                        this.latid.val()
                     );
 
                     if (layer.map.displayProjection) {
@@ -459,6 +472,7 @@
                     layer.addFeatures(
                         [new OpenLayers.Feature.Vector(point)]
                     );
+
                     layer.events.register(
                         "featureadded",
                         this,
@@ -471,7 +485,7 @@
                     );
                 }
 
-                if (this.zoomid) {
+                if (this.zoomid.length > 0) {
                     layer.map.events.register(
                         "zoomend",
                         this,
@@ -490,7 +504,7 @@
             },
 
             updateZoom: function (evt) {
-                $('#' + this.zoomid).val(evt.object.getZoom());
+                this.zoomid.val(evt.object.getZoom());
             },
 
             updateForm: function (evt) {
@@ -504,8 +518,8 @@
                         evt.object.map.displayProjection
                     );
                 }
-                $('#' + this.lonid).val(lonlat.lon);
-                $('#' + this.latid).val(lonlat.lat);
+                this.lonid.val(lonlat.lon);
+                this.latid.val(lonlat.lat);
             },
 
             CLASS_NAME: 'OpenLayers.Control.EditingToolbar'
@@ -632,7 +646,8 @@
                     if (!wkt_input_id) {
                         wkt_input_id = data.mapwidget.mapid + '-wkt';
                     }
-                    data.mapwidget.wkt_input_id = wkt_input_id;
+
+                    data.mapwidget.wkt_input = $('#' + wkt_input_id);
 
                     map = data.mapwidget.map;
                     edit_layer = new OpenLayers.Layer.Vector('Edit');
@@ -642,7 +657,7 @@
 
                     elctl = new OpenLayers.Control.WKTEditingToolbar(
                         edit_layer,
-                        {wktid: wkt_input_id}
+                        {wkt_input: data.mapwidget.wkt_input}
                     );
 
                     map.addControl(elctl);
@@ -684,14 +699,14 @@
                 if (data) {
                     if (!(lonid && latid && zoomid)) {
                         mapid = data.mapwidget.mapid;
-                        data.mapwidget.lonid = mapid + '-lon';
-                        data.mapwidget.latid = mapid + '-lat';
-                        data.mapwidget.zoomid = mapid + '-zoom';
-                    } else {
-                        data.mapwidget.lonid = lonid;
-                        data.mapwidget.latid = latid;
-                        data.mapwidget.zoomid = zoomid;
+                        lonid = mapid + '-lon';
+                        latid = mapid + '-lat';
+                        zoomid = mapid + '-zoom';
                     }
+
+                    data.mapwidget.lonid = $('#' + lonid);
+                    data.mapwidget.latid = $('#' + latid);
+                    data.mapwidget.zoomid = $('#' + zoomid);
 
                     map = data.mapwidget.map;
                     edit_layer =  new OpenLayers.Layer.Vector(
