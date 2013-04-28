@@ -22,10 +22,6 @@ class TestSetupHTTP(unittest.TestCase):
         self.settings = self.portal.restrictedTraverse('@@geosettings-view')
         self.geosettings = getUtility(IRegistry).forInterface(IGeoSettings)
 
-        # # restore IGeoSettings
-        # self.geosettings.longitude = Decimal('0.0')
-        # self.geosettings.latitude = Decimal('0.0')
-
     def beforeTearDown(self):
         url_parts = urllib.splittype(self._old_request_url)
         self.portal.REQUEST.setServerURL(*url_parts)
@@ -34,8 +30,10 @@ class TestSetupHTTP(unittest.TestCase):
         self.assertEquals(self.settings.zoom, Decimal("10.0"))
 
     def test_property_map_center(self):
-        self.assertEquals(self.settings.map_center,
-                            (Decimal("0.00"), Decimal("0.0")))
+        self.assertEquals(
+            self.settings.map_center,
+            (Decimal("0.00"), Decimal("0.0"))
+        )
 
     def test_property_googleapi(self):
         key = u'ABQIAAAAaKes6QWqobpCx2AOamo-shTwM0brOpm-'\
@@ -45,9 +43,11 @@ class TestSetupHTTP(unittest.TestCase):
     def test_property_jsgooglemaps(self):
         # when a layer is google_map we should include external javascript
         self.geosettings.default_layers = [u'google_map']
-        self.assertEquals(self.settings.google_maps_js,
-            '%s://maps.google.com/maps/api/js?v=3.2&sensor=false' % \
-                         self._protocol)
+        self.assertEquals(
+            self.settings.google_maps_js,
+            '%s://maps.google.com/maps/api/js?v=3.2&sensor=false' %
+            self._protocol
+        )
 
         self.geosettings.default_layers = [u'osm']
         self.assertEquals(self.settings.google_maps_js, None)
@@ -55,21 +55,30 @@ class TestSetupHTTP(unittest.TestCase):
     def test_property_jsbingmaps(self):
         # when a layer is bing_map we should include external javascript
         self.geosettings.default_layers = [u'bing_map']
-        self.assertEquals(self.settings.bing_maps_js,
-              '%s://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6' % \
-                         self._protocol)
+        self.assertEquals(
+            self.settings.bing_maps_js,
+            '%s://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6' %
+            self._protocol
+        )
 
         self.geosettings.default_layers = [u'osm']
         self.assertEquals(self.settings.bing_maps_js, None)
 
-    def test_property_geosettingjs(self):
-        self.assertEquals(self.settings.geo_setting_js,
-            "cgmap.state = {'default': {lon: 0.000000, "\
-                                "lat: 0.000000, zoom: 10 }};\n"
-            "cgmap.portal_url = '%(protocol)s://nohost/plone';\n"
-            "cgmap.imgpath = '%(portal_url)s/img/';" % \
-                          dict(portal_url=self.portal.absolute_url(),
-                               protocol=self._protocol))
+    def test_geosettings_properties(self):
+        self.assertEqual(
+            self.settings.zoom,
+            10
+        )
+
+        self.assertEqual(
+            self.settings.map_center,
+            (Decimal('0.0'), Decimal('0.0'))
+        )
+
+        self.assertEqual(
+            self.settings.imgpath,
+            "string:${portal_url}/img/"
+        )
 
 
 class TestSetupHTTPS(TestSetupHTTP):

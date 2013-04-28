@@ -6,28 +6,10 @@
         i18n:translate="">
       Map
     </dt>
-    <dd id="fieldset-map">
+    <dd id="fieldset-map"
+        tal:define="mapid string:geosettings-cgmap">
       <metal:use use-macro="context/@@collectivegeo-macros/geocoding"/>
       <metal:map use-macro="context/@@collectivegeo-macros/map-widget" />
-      <!-- c.geo controlpanel script -->
-      <script type="text/javascript">
-        (function($) {
-            $(window).bind("load", function() {
-                $('#cgeo-get-location').click(function(){
-                    cgmap.geocoding('geosettings-cgmap',
-                        'Marker',
-                        cgmap.portal_url + '/geocoderview')});
-                    $('.geocoder-wrapper input[name=geocoding-address]').keydown(
-                        function(evt){
-                        if (evt.keyCode == 13) {
-                            evt.preventDefault();
-                            $(this).siblings('input[value=Search]').click();
-                        }
-                    }
-                );
-            });
-        })(jQuery);
-      </script>
     </dd>
     <dt id="fieldsetlegend-advanced"
         i18n:translate="">

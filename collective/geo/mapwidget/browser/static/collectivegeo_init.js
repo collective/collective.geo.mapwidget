@@ -1,7 +1,6 @@
 /*global window, jQuery, document, OpenLayers, google*/
 
 
-
 (function ($) {
     "use strict";
 
@@ -68,6 +67,7 @@
 
     $(window).bind("load", function () {
         var maps = $('.widget-cgmap'),
+            geosetting_map = $('#geosettings-cgmap'),
             fieldset = $(maps).parents('.formPanel'),
             tabs;
 
@@ -105,9 +105,21 @@
             });
         }
 
+
         // $(maps[0]).collectivegeo('add_edit_layer');
         // $(maps[1]).collectivegeo('add_markeredit_layer');
-        // $(maps).collectivegeo('add_geocoding');
+        // $(maps).collectivegeo('add_geocoder');
+
+        // Set collective.geo control panel map with
+        // marker edit layer and geocoder
+        geosetting_map.collectivegeo(
+            'add_markeredit_layer',
+            'form-widgets-longitude',
+            'form-widgets-latitude',
+            'form-widgets-zoom'
+        );
+        geosetting_map.collectivegeo('add_geocoder');
+
 
     });
 

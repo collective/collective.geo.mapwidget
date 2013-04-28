@@ -146,6 +146,49 @@ class MapWidget(object):
             parts = self.klass.split() + [unicode(klass)]
             self.klass = u' '.join(frozenset(parts))
 
+    def map_defaults(self):
+        settings = self.context.restrictedTraverse('@@geosettings-view')
+        lon, lat = settings.map_center
+        pstate = self.context.restrictedTraverse('plone_portal_state')
+        portal_url = pstate.portal_url()
+
+        # Image path for changing OpenLayers default images.
+        # TODO: check if settings are overriden for this context
+        try:
+            expr = Expression(str(settings.imgpath))
+            imgpath = expr(getExprContext(self.context))
+        except:
+            imgpath = ''
+
+        return {
+            'longitude': lon,
+            'latitude': lat,
+            'zoom': settings.zoom,
+            'imgpath': imgpath,
+            'portal_url': portal_url
+        }
+
+
+        # set default configuration
+        # ret = ["cgmap.state = {'default': " \
+        #     "{lon: %(lon)7f, lat: %(lat)7f, zoom: %(zoom)d }};" % state]
+        # # go through all maps in request and extract their state
+        # # to update map_state
+        # for mapid in self.request.get('cgmap_state_mapids', '').split():
+        #     map_state = self.request.get('cgmap_state.%s' % mapid)
+        #     state = {'mapid': mapid}
+        #     for param in ('lon', 'lat', 'zoom',
+        #                   'activebaselayer', 'activelayers'):
+        #         val = map_state.get(param, None)
+        #         state[param] = (val is not None) and ("'%s'" % val) or \
+        #                                                             'undefined'
+        #     ret.append("cgmap.state['%(mapid)s'] = " \
+        #             "{lon: %(lon)s, lat: %(lat)s, zoom: %(zoom)s, " \
+        #             "activebaselayer: %(activebaselayer)s, activelayers: " \
+        #             "%(activelayers)s };" % state)
+
+        # import pdb; pdb.set_trace( )
+
 
 class MapLayers(dict):
     '''
@@ -200,13 +243,12 @@ class MapLayers(dict):
         layers = self.layers()
         return """
 $(window).bind('mapload', function (evt, widget) {
-    widget.addLayers(
-        [%(layers)s],
-        '%(mapid)s'
-    );
+    widget.addLayers([
+        %(layers)s
+    ], '%(mapid)s');
 });
 
 """ % {
-            'layers': ", ".join([l.jsfactory for l in layers]),
+            'layers': ",\n".join([l.jsfactory for l in layers]),
             'mapid': self.widget.mapid
         }

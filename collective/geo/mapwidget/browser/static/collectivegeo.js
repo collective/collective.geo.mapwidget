@@ -59,7 +59,6 @@
             settings.lang = extra_data.cgeolang;
         }
 
-
         // initialize map
         self.initMap();
     };
@@ -216,6 +215,7 @@
 
             search.click(function (e) {
                 self.retrieveLocation(geocoder, input.val());
+                e.preventDefault();
             });
 
             // perform search when return key is pressed on geocoder input
@@ -223,6 +223,7 @@
                 if (e.keyCode === 13) {
                     e.preventDefault();
                     search.click();
+                    return null;
                 }
             });
         },
@@ -740,10 +741,10 @@
 
         },
 
-        // === add_geocoding ===
+        // === add_geocoder ===
         //
         // ... it requires mapid-geocoder div
-        add_geocoding: function () {
+        add_geocoder: function () {
             return this.each(function () {
                 var $this = $(this),
                     data = $this.data('collectivegeo'),

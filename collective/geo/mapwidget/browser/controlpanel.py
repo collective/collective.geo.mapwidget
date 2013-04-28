@@ -16,8 +16,9 @@ from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone.utils import getToolByName
 
-from collective.z3cform.colorpicker.colorpickeralpha import \
-                                        ColorpickerAlphaFieldWidget
+from collective.z3cform.colorpicker.colorpickeralpha import (
+    ColorpickerAlphaFieldWidget
+)
 
 from collective.geo.settings.interfaces import IGeoSettings, IGeoFeatureStyle
 from collective.geo.settings.events import GeoSettingsEvent
@@ -168,6 +169,7 @@ class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
         return back_to_controlpanel(self.context)['url']
 
 
+# TODO: Extend plone.z3cform.FormWrapper
 class GeoControlpanel(BrowserView):
     __call__ = ViewPageTemplateFile('controlpanel.pt')
 
@@ -181,8 +183,10 @@ class GeoControlpanel(BrowserView):
     def __init__(self, context, request):
         super(GeoControlpanel, self).__init__(context, request)
         if self.form is not None:
-            self.form_instance = self.form(aq_inner(self.context),
-                                                        self.request)
+            self.form_instance = self.form(
+                aq_inner(self.context),
+                self.request
+            )
             self.form_instance.__name__ = self.__name__
 
     @property
@@ -213,26 +217,6 @@ class ControlPanelMapWidget(MapWidget):
 
     mapid = 'geosettings-cgmap'
 
-    def __init__(self, view, request, context):
-        super(ControlPanelMapWidget, self).__init__(view, request, context)
-        self.params = {
-            'lon_input_id': view.widgets['longitude'].id,
-            'lat_input_id': view.widgets['latitude'].id,
-            'zoom_input_id': view.widgets['zoom'].id
-        }
-
     @property
     def js(self):
-        return """
-(function ($) {
-    $(window).load(function() {
-        // collective geo control panel map
-        $('#geosettings-cgmap').collectivegeo(
-            'add_markeredit_layer',
-            '%(lon_input_id)s',
-            '%(lat_input_id)s',
-            '%(zoom_input_id)s'
-        );
-    });
-}(jQuery));
-""" % self.params
+        return None
