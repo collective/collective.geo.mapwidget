@@ -144,7 +144,7 @@ Let's check this:
     >>> print view()
     <html xmlns="http://www.w3.org/1999/xhtml">
     ...
-          <div id="default-cgmap" class="widget-cgmap" data-cgeolongitude="0.0" data-cgeolatitude="0.0" data-cgeozoom="10.0">
+        <div id="default-cgmap" class="widget-cgmap" data-cgeolongitude="0.0" data-cgeolatitude="0.0" data-geocoderurl="http://nohost/plone/geocoderview" data-cgeozoom="10.0">
     ...
 
 That said, we can set these options and see the change reflected on our
