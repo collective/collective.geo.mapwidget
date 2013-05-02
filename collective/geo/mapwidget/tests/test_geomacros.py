@@ -50,7 +50,7 @@ class TestSetupHTTP(unittest.TestCase):
         )
 
         self.geosettings.default_layers = [u'osm']
-        self.assertEquals(self.settings.google_maps_js, None)
+        self.assertFalse(self.settings.googlemaps)
 
     def test_property_jsbingmaps(self):
         # when a layer is bing_map we should include external javascript
@@ -62,7 +62,7 @@ class TestSetupHTTP(unittest.TestCase):
         )
 
         self.geosettings.default_layers = [u'osm']
-        self.assertEquals(self.settings.bing_maps_js, None)
+        self.assertFalse(self.settings.bingmaps)
 
     def test_geosettings_properties(self):
         self.assertEqual(
