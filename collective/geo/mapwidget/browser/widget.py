@@ -165,7 +165,7 @@ class MapWidget(object):
             'latitude': lat,
             'zoom': settings.zoom,
             'imgpath': imgpath,
-            'portal_url': portal_url
+            'geocoderurl': "%s/geocoderview" % portal_url
         }
 
 

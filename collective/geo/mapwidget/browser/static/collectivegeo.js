@@ -230,9 +230,10 @@
         },
 
         // === MapWidget.retrieveLocation ===
-        //
+        // it needs data-geocoderurl to work properly
         retrieveLocation: function (geocoder, address) {
             var self = this,
+                geocoder_url = $(self.trigger).data('geocoderurl'),
                 results = geocoder.find('.results'),
                 results_ul = results.find('ul'),
                 error = geocoder.find('.fieldErrorBox'),
@@ -256,7 +257,7 @@
             // });
 
             $.getJSON(
-                "http://localhost:8080/test/geocoderview",
+                geocoder_url,
                 {'address': address},
                 function (data) {
                     if (data === null) {
@@ -754,6 +755,7 @@
                     geocoder;
 
                 if (data) {
+                    // data-geocoderurl
                     data.mapwidget.addGeocoder();
                 }
             });
