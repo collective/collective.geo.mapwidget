@@ -1,8 +1,10 @@
+from Acquisition import aq_inner
 from zope.component import getUtility
-
 from Products.CMFCore.Expression import Expression, getExprContext
 
+from plone.memoize import instance, view
 from plone.registry.interfaces import IRegistry
+
 from collective.geo.settings.interfaces import IGeoSettings
 from collective.geo.mapwidget import utils
 
@@ -39,9 +41,15 @@ class GeoSettingsView(object):
 
     @property
     def googlemaps(self):
-        for layer_id in self.default_layers:
-            if layer_id.startswith('google'):
-                return True
+        """Include google javascript only whether c.geo
+        uses a google map layer and it isn't already
+        included in the page
+        """
+        if not self.request.get('googlemaps_js'):
+            for layer_id in self.default_layers:
+                if layer_id.startswith('google'):
+                    self.request.set('googlemaps_js', True)
+                    return True
         return False
 
     @property
@@ -50,11 +58,9 @@ class GeoSettingsView(object):
 
     @property
     def google_maps_js(self):
-        if self.googlemaps:
-            #  google maps 3 api -- needs openlayer 2.10 version...
-            return _GOOGLEURL % self.layer_protocol
-        else:
-            return None
+        """return google maps 3 api javascript url
+        """
+        return _GOOGLEURL % self.layer_protocol
 
     @property
     def bingapi(self):
@@ -62,17 +68,68 @@ class GeoSettingsView(object):
 
     @property
     def bingmaps(self):
-        for layer_id in self.default_layers:
-            if layer_id.startswith('bing'):
-                return True
+        """Include bing javascript only whether c.geo
+        uses a bing map layer and it isn't already
+        included in the page
+        """
+        if not self.request.get('bingmaps_js'):
+            for layer_id in self.default_layers:
+                if layer_id.startswith('bing'):
+                    self.request.set('bingmaps_js', True)
+                    return True
         return False
 
     @property
     def bing_maps_js(self):
-        if self.bingmaps:
-            return _BINGURL % self.layer_protocol
-        else:
-            return None
+        """return Bing maps javascript url
+        """
+        return _BINGURL % self.layer_protocol
+
+    @property
+    def location(self):
+        try:
+            location = self.context.getLocation()
+        except AttributeError:
+            return u''
+        if isinstance(location, str):
+            return location.decode('utf8')
+
+    @property
+    def localize(self):
+        """ Returns True if the widget should be localized.
+        """
+        if self.request.get('openlayers_js') or self.language == 'en':
+            return False
+
+        self.request.set('openlayers_js', True)
+        return self.language in self.language_files
+
+    @property
+    @view.memoize
+    def language(self):
+        """ Return the languagecode of the current context.
+        """
+        portal_state = self.context.unrestrictedTraverse(
+            "@@plone_portal_state"
+        )
+        lang = aq_inner(self.context).Language() or \
+            portal_state.default_language()
+
+        return lang.lower()
+
+    @property
+    @instance.memoize
+    def language_files(self):
+        """Get, cache and return a list of openlayers language files.
+        """
+        return utils.list_language_files()
+
+    @property
+    def language_file(self, language=None):
+        """ Returns the path to the openlayers language file of the
+        given or the current language.
+        """
+        return self.language_files[language or self.language]
 
     @property
     def geo_setting_js(self):

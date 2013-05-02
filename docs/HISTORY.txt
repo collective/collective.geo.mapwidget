@@ -4,6 +4,12 @@ Changelog
 1.7 (unreleased)
 ----------------
 
+- Prevent multiple inclusions of google maps and bing javascript
+  [gborelli]
+
+- Moved Openlayers localization to geosettings_view
+  [gborelli]
+
 - Added ShapeDisplayLayer
   [gborelli]
 
