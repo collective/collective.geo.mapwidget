@@ -101,6 +101,7 @@
                 self.map.zoomToExtent();
             }
 
+            $(window).trigger('maploadend', self);
             // TODO: call this method to resize maps on hidden divs
             // self.map.updateSize();
 
@@ -645,10 +646,11 @@
 
                 if (data) {
                     if (!wkt_input_id) {
-                        wkt_input_id = data.mapwidget.mapid + '-wkt';
+                        data.mapwidget.wkt_input = $(data.mapwidget.trigger).parent().find('textarea');
+                    } else {
+                        data.mapwidget.wkt_input = $('#' + wkt_input_id);
                     }
 
-                    data.mapwidget.wkt_input = $('#' + wkt_input_id);
 
                     map = data.mapwidget.map;
                     edit_layer = new OpenLayers.Layer.Vector('Edit');

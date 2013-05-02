@@ -67,6 +67,7 @@
 
     $(window).bind("load", function () {
         var maps = $('.widget-cgmap'),
+            map_widgets = $('.map-widget .widget-cgmap'),
             geosetting_map = $('#geosettings-cgmap'),
             fieldset = $(maps).parents('.formPanel'),
             tabs;
@@ -98,17 +99,11 @@
         // }}}
         if (fieldset.length > 0) {
             tabs = $('select.formTabs, ul.formTabs');
-
             tabs.bind("onClick", function (e, index) {
                 var curpanel = $(this).data('tabs').getCurrentPane();
                 curpanel.find('.widget-cgmap').collectivegeo('refresh');
             });
         }
-
-
-        // $(maps[0]).collectivegeo('add_edit_layer');
-        // $(maps[1]).collectivegeo('add_markeredit_layer');
-        // $(maps).collectivegeo('add_geocoder');
 
         // Set collective.geo control panel map with
         // marker edit layer and geocoder
@@ -120,8 +115,9 @@
         );
         geosetting_map.collectivegeo('add_geocoder');
 
-
+        // Initialize all maps for collective.z3cform.mapwidget
+        map_widgets.collectivegeo('add_edit_layer');
+        map_widgets.collectivegeo('add_geocoder');
     });
 
 }(jQuery));
-
