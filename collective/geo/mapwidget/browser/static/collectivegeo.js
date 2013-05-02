@@ -199,7 +199,7 @@
                 limit = Math.pow(2, z);
 
             if (y < 0 || y >= limit) {
-                return OpenLayers.Util.getImagesLocation() + "404.png";
+                return OpenLayers.Util.getImagesLocation() + "blank.gif";
             } else {
                 x = ((x % limit) + limit) % limit;
                 return this.url + z + "/" + x + "/" + y + "." + this.type;
