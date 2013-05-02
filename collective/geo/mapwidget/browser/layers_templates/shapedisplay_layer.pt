@@ -1,0 +1,22 @@
+function() {
+    var wkt = new OpenLayers.Format.WKT({
+        internalProjection: widget.map.projection,
+        externalProjection: widget.map.displayProjection
+    }),
+    layer = new OpenLayers.Layer.Vector('%(title)s'),
+    features = wkt.read('%(coords)s') || [];
+
+    wkt.destroy();
+    if(features.constructor != Array) {
+        features = [features];
+    }
+
+    layer.addFeatures(features);
+    $(window).bind('maploadend', function (evt, widget) {
+        var map = widget.map;
+        map.zoomToExtent(layer.getDataExtent());
+        map.zoomTo(map.getZoom() - 4);
+    });
+
+    return layer;
+}

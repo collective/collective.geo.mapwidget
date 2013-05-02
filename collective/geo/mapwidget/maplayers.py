@@ -120,6 +120,28 @@ class GoogleTerrainMapLayer(MapLayer):
     type = 'google'
 
 
+class ShapeDisplayLayer(MapLayer):
+
+    name = 'shapedisplay'
+
+    @property
+    def Title(self):
+        return u'%s' % self.context.Title().decode('utf-8')
+
+    @memoizedproperty
+    def jsfactory(self):
+        try:
+            template = self.context.restrictedTraverse(
+                str('%s-layer' % self.name))
+        except AttributeError:
+            return u""
+
+        return template() % {
+            'title': self.Title,
+            'coords': self.widget.coords()
+        }
+
+
 class DefaultMapLayers(object):
     """Utility to store default map layers
     """

@@ -4,6 +4,9 @@ Changelog
 1.7 (unreleased)
 ----------------
 
+- Added ShapeDisplayLayer
+  [gborelli]
+
 - Documented javascript files with http://abstract-open-solutions.github.io/code-illuminated/
   [gborelli]
 

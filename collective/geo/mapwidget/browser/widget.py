@@ -227,8 +227,10 @@ class MapLayers(dict):
                 elif isinstance(layerid, basestring):
                     layers.append(
                         getMultiAdapter(
-                            (self.view, self.request,
-                                self.context, self.widget),
+                            (
+                                self.view, self.request,
+                                self.context, self.widget
+                            ),
                             IMapLayer,
                             name=layerid
                         )

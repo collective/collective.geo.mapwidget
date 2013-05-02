@@ -23,15 +23,18 @@
               tal:attributes="src geosettings/bing_maps_js"></script>
       <tal:localization condition="context/@@collectivegeo-macros/localize">
         <script type="text/javascript"
-                tal:attributes="src context/@@collectivegeo-macros/language_file"></script>
-        <script type="text/javascript" tal:content="context/@@collectivegeo-macros/language_script"></script>
+          tal:attributes="src context/@@collectivegeo-macros/language_file"
+          ></script>
+        <script type="text/javascript"
+          tal:content="context/@@collectivegeo-macros/language_script"
+          ></script>
       </tal:localization>
     </metal:openlayers>
 
     <tal:comment replace="nothing">
       This macro define collective.geo map html infrastructure.
       It needs a variable 'cgmap' in the namespace.
-      It include alse extra javascript for layers configuration.
+      It include also extra javascript for layers configuration.
     </tal:comment>
     <metal:mapwidget define-macro="map-widget"
                   tal:define="cgmap nocall:cgmap | nothing;
@@ -61,7 +64,7 @@
       It needs mapid variable to work.
     </tal:comment>
     <metal:geocoding define-macro="geocoding">
-      <div class="field geocoder-widget"
+      <div class="geocoder-widget"
           tal:attributes="id string:${mapid}-geocoder">
         <label for="geocoding-address"
                i18n:translate="">Find places</label>
@@ -77,8 +80,10 @@
         <div class="results" style="display: none">
           <ul></ul>
         </div>
-        <div class="formHelp" i18n:translate="">
-          Select a location from the list below to set the coordinates.
+        <div class="formHelp" i18n:translate="">Insert the name of the
+         location you are looking for and then click on search button.
+         When a list of results will appear you can click on a location
+         from the list to set the coordinates.
         </div>
 
       </div>

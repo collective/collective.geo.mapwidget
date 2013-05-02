@@ -173,4 +173,12 @@
         permission="zope.Public"
     />
 
+    <browser:page
+        name="shapedisplay-layer"
+        for="*"
+        template="layers_templates/shapedisplay_layer.pt"
+        permission="zope.Public"
+    />
+
+
 </configure>

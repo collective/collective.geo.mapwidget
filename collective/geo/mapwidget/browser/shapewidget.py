@@ -27,6 +27,7 @@ class ShapeMapWidget(MapWidget):
             'add_edit_layer',
             '%s'
         );
+        $('#%s').collectivegeo('add_geocoder');
     });
 }(jQuery));
 """ % (self.mapid, wkt_field_id)
