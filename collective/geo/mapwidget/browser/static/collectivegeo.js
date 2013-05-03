@@ -1,4 +1,10 @@
 /*global window, jQuery, document, OpenLayers*/
+/*
+
+  Documentation is accessibile to this address
+  - http://<plone_url>/++resource++collective.geo.mapwidget/docs.html
+
+*/
 
 (function ($) {
     "use strict";
@@ -20,9 +26,9 @@
     // This class contains all method and utilities
     // to manage collective.geo maps.
     //
-    // Each map can get extra options from its data attributes
-    // if they are not already set when collectivegeo plugin
-    // is instantiated.
+    // Each map can get extra options from data attributes
+    // of map trigger if they are not already set when
+    // collectivegeo plugin is instantiated.
     //
     // Supported data:
     //   * cgeolatitude
@@ -85,7 +91,8 @@
                 OpenLayers.Lang.setCode(self.settings.lang);
             }
 
-            // fire mapload event to allow to
+            // Fire mapload event to allow to
+            // execute actions before maps are completely loaded
             $(window).trigger('mapload', self);
 
             // setup a default layers
@@ -94,20 +101,25 @@
 
             }
 
-            // TODO: setCenter doesn't work with map in hidden div
             if (self.settings.center && self.settings.zoom) {
                 self.setCenter(self.settings.center, self.settings.zoom);
             } else {
                 self.map.zoomToExtent();
             }
 
+            // fire maploadend event where map is completely loaded
             $(window).trigger('maploadend', self);
-            // TODO: call this method to resize maps on hidden divs
-            // self.map.updateSize();
 
         },
 
         // === MapWidget.setCenter(center, zoom) ===
+        //
+        // This method set the center of the map according to
+        // its display projection.
+        //
+        // params:
+        // * center: OpenLayers.LonLat object
+        // * zoom: integer
         setCenter: function (center, zoom) {
             var self = this,
                 displayProjection = self.map.displayProjection;
@@ -124,6 +136,24 @@
         },
 
         // === MapWidget.addLayers(layers) ===
+        //
+        // Add layers to a specific map. Each layer must
+        // be defined by a function:
+        //
+        // {{{
+        //  var layers = [
+        //     function () {
+        //       return new OpenLayers.Layer.TMS(
+        //         ...
+        //       )
+        //     }
+        //  ...
+        // ]
+        // }}}
+        //
+        // params:
+        // * layers: array of functions
+        // * mapid: string
         addLayers: function (layers, mapid) {
             var self = this,
                 i;
@@ -163,6 +193,8 @@
         },
 
         // === MapWidget.getDefaultOptions ===
+        //
+        // return default map options extending {{{settings.map_defaults}}}
         getDefaultOptions: function () {
             return $.extend({
                 theme: null, // disable default theme
@@ -189,6 +221,8 @@
 
         // === MapWidget.osmGetTileURL ===
         //
+        // method used by {{{OpenLayers.Layer.TMS}}} layer
+        // in {{{getURL}}} option
         osmGetTileURL: function (bounds) {
             var res = this.map.getResolution(),
                 x = Math.round((bounds.left - this.maxExtent.left) /
@@ -208,6 +242,10 @@
 
         // === MapWidget.addGeocoder ===
         //
+        // Add geocoder feature to the map.
+        // It requires a specific html structure to work properly
+        //
+        // see:
         addGeocoder: function () {
             var self = this,
                 geocoder = $('#' + self.mapid + "-geocoder"),
@@ -230,7 +268,13 @@
         },
 
         // === MapWidget.retrieveLocation ===
-        // it needs data-geocoderurl to work properly
+        // Map geocoder takes geocoderurl from map trigger data
+        // and retrieve locations in json format and populate
+        // geocoder {{{results}}} div.
+        //
+        // params:
+        // * geocoder: jQuery object
+        // * address: string
         retrieveLocation: function (geocoder, address) {
             var self = this,
                 geocoder_url = $(self.trigger).data('geocoderurl'),
@@ -240,9 +284,9 @@
                 input = geocoder.find('input'),
                 offset = input.offset(),
                 set_coordinates = function (e) {
-                    var lonlat = e.data.lonlat;
+                    var latlon = e.data.latlon;
                     // geocoder returns [latitude, longitude]
-                    self.setCoordinates(lonlat[1], lonlat[0]);
+                    self.setCoordinates(latlon[1], latlon[0]);
                     e.data.results.hide();
                     e.preventDefault();
                 },
@@ -272,7 +316,7 @@
                             link.bind(
                                 'click',
                                 {
-                                    lonlat: data[i][1],
+                                    latlon: data[i][1],
                                     results: results
                                 },
                                 set_coordinates
@@ -289,6 +333,12 @@
 
         // === MapWidget.setCoordinates ===
         //
+        // This method set coordinates to {{{MapWidget.edit_layer}}}
+        // and set value to {{{MapWidget.wkt_input}}} in WKT format.
+        //
+        // params:
+        // * longitude: float
+        // * latitude: float
         setCoordinates: function (longitude, latitude) {
             var self = this,
                 point = new OpenLayers.Geometry.Point(longitude, latitude);
@@ -746,7 +796,7 @@
 
         // === add_geocoder ===
         //
-        // ... it requires mapid-geocoder div
+        // Add geocoder feature to a map
         add_geocoder: function () {
             return this.each(function () {
                 var $this = $(this),
@@ -796,6 +846,5 @@
 
         }
     });
-
 
 }(jQuery));
