@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2013-04-25 14:51+0000\n"
+"POT-Creation-Date: 2013-05-08 06:40+0000\n"
 "PO-Revision-Date: 2009-09-20 13:24+0100\n"
 "Last-Translator: Anton Stonor <anton@headnet.dk>\n"
 "Language-Team: Anton Stonor <anton@headnet.dk>\n"
@@ -26,21 +26,25 @@ msgstr ""
 msgid "Additional Javascript code inserted after the map widget."
 msgstr "Ekstra javascript kan indsættes efter map widget'en."
 
-#: ../browser/controlpanel.py:83
+#: ../browser/controlpanel.py:84
 msgid "Advanced"
 msgstr "Avanceret"
 
-#: ../browser/controlpanel.py:84
+#: ../browser/controlpanel.py:85
 msgid "Advanced configurations"
 msgstr "Avancerede indstillinger"
 
-#: ../browser/controlpanel.py:143
+#: ../browser/controlpanel.py:142
 msgid "Apply"
 msgstr "Gem"
 
-#: ../browser/controlpanel.py:116
+#: ../browser/controlpanel.py:115
 msgid "Base settings"
 msgstr "Grundindstillinger"
+
+#: ../maplayers.py:77
+msgid "Bing"
+msgstr ""
 
 #: ../maplayers.py:89
 msgid "Bing Aerial"
@@ -54,11 +58,7 @@ msgstr "Bing Hybrid"
 msgid "Bing Roads"
 msgstr "Bing veje"
 
-#: ../maplayers.py:77
-msgid "Bing Streets"
-msgstr "Bing gader"
-
-#: ../browser/controlpanel.py:163
+#: ../browser/controlpanel.py:162
 msgid "Cancel"
 msgstr "Fortryd"
 
@@ -70,11 +70,11 @@ msgstr "Class attribut"
 msgid "Collective Geo Default Settings"
 msgstr "Plone Maps standardindstillinger"
 
-#: ../browser/controlpanel.py:118
+#: ../browser/controlpanel.py:117
 msgid "Configure Collective Geo Settings"
 msgstr "Indstil Plone Maps"
 
-#: ../browser/controlpanel.py:38
+#: ../browser/controlpanel.py:39
 msgid "Default map position"
 msgstr ""
 
@@ -83,7 +83,7 @@ msgid "Enable default layers."
 msgstr "Aktiver standard-lag"
 
 #. Default: "Find places"
-#: ../browser/collectivegeo_macros.pt:57
+#: ../browser/collectivegeo_macros.pt:67
 msgid "Find places"
 msgstr "Find stedet"
 
@@ -101,6 +101,10 @@ msgstr "Hybrid (Google)"
 
 #: ../interfaces.py:64
 msgid "If set to true, the default IMapLayers implementation adds all enabled default layers from the geo settings tool."
+msgstr ""
+
+#: ../browser/collectivegeo_macros.pt:81
+msgid "Insert the name of the location you are looking for and then click on search button. When a list of results will appear you can click on a location from the list to set the coordinates."
 msgstr ""
 
 #: ../interfaces.py:96
@@ -124,7 +128,7 @@ msgstr "Javascript til at indstille kortlag."
 msgid "Layers"
 msgstr "Kortlag"
 
-#: ../browser/geopointform.pt:32
+#: ../browser/geopointform.pt:14
 msgid "Manual settings"
 msgstr ""
 
@@ -141,7 +145,7 @@ msgid "Map id"
 msgstr "Map id"
 
 #. Default: "No corresponding geographic location could be found for the specified location, possibly because the address is relatively new, or because it may be incorrect."
-#: ../browser/collectivegeo_macros.pt:64
+#: ../browser/collectivegeo_macros.pt:69
 msgid "No corresponding geographic location could be found for the specified location, possibly because the address is relatively new, or because it may be incorrect."
 msgstr "Kunne ikke finde stedet. Det kan skyldes, at adressen er relativ ny eller skrevet forkert."
 
@@ -158,24 +162,19 @@ msgid "Satellite (Google)"
 msgstr "Satellit (Google)"
 
 #. Default: "Search"
-#: ../browser/collectivegeo_macros.pt:71
+#: ../browser/collectivegeo_macros.pt:77
 msgid "Search"
 msgstr "Søg"
 
-#. Default: "Select a location from the list below to set the coordinates."
-#: ../browser/collectivegeo_macros.pt:75
-msgid "Select a location from the list below to set the coordinates."
-msgstr "Klik på et sted på listen herunder, hvorefter det bliver det et punkt på kortet."
-
-#: ../browser/controlpanel.py:61
+#: ../browser/controlpanel.py:62
 msgid "Set default styles for geographical shapes"
 msgstr "Sæt standardindstillinger for layout af elementer oven på kortet"
 
-#: ../browser/controlpanel.py:39
+#: ../browser/controlpanel.py:40
 msgid "Set the centre point and the zoom level of the map used when the system cannot use any other point to center the map (e.g. when displaying the map to georeference an item for the first time)"
 msgstr ""
 
-#: ../browser/controlpanel.py:60
+#: ../browser/controlpanel.py:61
 msgid "Style"
 msgstr "Layout"
 

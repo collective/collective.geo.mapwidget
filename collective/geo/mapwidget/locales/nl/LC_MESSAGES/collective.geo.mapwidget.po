@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2013-04-25 14:51+0000\n"
+"POT-Creation-Date: 2013-05-08 06:40+0000\n"
 "PO-Revision-Date: 2009-09-20 13:24+0100\n"
 "Last-Translator: Rob Gietema <rob@fourdigits.nl>\n"
 "Language-Team: Rob Gietema <rob@fourdigits.nl>\n"
@@ -26,21 +26,25 @@ msgstr "Een mapping van mapids naar IMapWidgets"
 msgid "Additional Javascript code inserted after the map widget."
 msgstr "Extra Javascript code welke ingevoegd wordt na de map widget."
 
-#: ../browser/controlpanel.py:83
+#: ../browser/controlpanel.py:84
 msgid "Advanced"
 msgstr "Geavanceerd"
 
-#: ../browser/controlpanel.py:84
+#: ../browser/controlpanel.py:85
 msgid "Advanced configurations"
 msgstr "Geavanceerde configuraties"
 
-#: ../browser/controlpanel.py:143
+#: ../browser/controlpanel.py:142
 msgid "Apply"
 msgstr "Toepassen"
 
-#: ../browser/controlpanel.py:116
+#: ../browser/controlpanel.py:115
 msgid "Base settings"
 msgstr "Basis instellingen"
+
+#: ../maplayers.py:77
+msgid "Bing"
+msgstr ""
 
 #: ../maplayers.py:89
 msgid "Bing Aerial"
@@ -54,11 +58,7 @@ msgstr "Bing Hybrid"
 msgid "Bing Roads"
 msgstr "Bing Roads"
 
-#: ../maplayers.py:77
-msgid "Bing Streets"
-msgstr "Bing Streets"
-
-#: ../browser/controlpanel.py:163
+#: ../browser/controlpanel.py:162
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -70,11 +70,11 @@ msgstr "Klasse attribuut"
 msgid "Collective Geo Default Settings"
 msgstr "Collective Geo Standaard Instellingen"
 
-#: ../browser/controlpanel.py:118
+#: ../browser/controlpanel.py:117
 msgid "Configure Collective Geo Settings"
 msgstr "Set Collective Geo Instellingen in"
 
-#: ../browser/controlpanel.py:38
+#: ../browser/controlpanel.py:39
 msgid "Default map position"
 msgstr ""
 
@@ -83,7 +83,7 @@ msgid "Enable default layers."
 msgstr "Schakel standaard lagen in."
 
 #. Default: "Find places"
-#: ../browser/collectivegeo_macros.pt:57
+#: ../browser/collectivegeo_macros.pt:67
 msgid "Find places"
 msgstr "Zoek locaties"
 
@@ -102,6 +102,10 @@ msgstr "Hybrid (Google)"
 #: ../interfaces.py:64
 msgid "If set to true, the default IMapLayers implementation adds all enabled default layers from the geo settings tool."
 msgstr "Wanneer dit ingeschakeld is zal de standaard IMapLayers implementatie alle ingeschakelde stanaard lagen toevoegen uit de geo instellingen tool."
+
+#: ../browser/collectivegeo_macros.pt:81
+msgid "Insert the name of the location you are looking for and then click on search button. When a list of results will appear you can click on a location from the list to set the coordinates."
+msgstr ""
 
 #: ../interfaces.py:96
 msgid "Javascript code which returns a new instance of this layer and does not expect any parameters"
@@ -124,7 +128,7 @@ msgstr "Javascript om de lagen te configureren."
 msgid "Layers"
 msgstr "Lagen"
 
-#: ../browser/geopointform.pt:32
+#: ../browser/geopointform.pt:14
 msgid "Manual settings"
 msgstr ""
 
@@ -141,7 +145,7 @@ msgid "Map id"
 msgstr "Map id"
 
 #. Default: "No corresponding geographic location could be found for the specified location, possibly because the address is relatively new, or because it may be incorrect."
-#: ../browser/collectivegeo_macros.pt:64
+#: ../browser/collectivegeo_macros.pt:69
 msgid "No corresponding geographic location could be found for the specified location, possibly because the address is relatively new, or because it may be incorrect."
 msgstr "Er is geen corresponderende geografische locatie gevonden voor de gespecificeerde locatie, waarschijnlijk omdat het adres relatief nieuw of niet correct is."
 
@@ -158,24 +162,19 @@ msgid "Satellite (Google)"
 msgstr "Satellite (Google)"
 
 #. Default: "Search"
-#: ../browser/collectivegeo_macros.pt:71
+#: ../browser/collectivegeo_macros.pt:77
 msgid "Search"
 msgstr "Zoek"
 
-#. Default: "Select a location from the list below to set the coordinates."
-#: ../browser/collectivegeo_macros.pt:75
-msgid "Select a location from the list below to set the coordinates."
-msgstr "Select een locatie uit de lijst hier beneden om de coordinaten te selecteren."
-
-#: ../browser/controlpanel.py:61
+#: ../browser/controlpanel.py:62
 msgid "Set default styles for geographical shapes"
 msgstr "Zet de standaard stijl voor geografische vormen"
 
-#: ../browser/controlpanel.py:39
+#: ../browser/controlpanel.py:40
 msgid "Set the centre point and the zoom level of the map used when the system cannot use any other point to center the map (e.g. when displaying the map to georeference an item for the first time)"
 msgstr ""
 
-#: ../browser/controlpanel.py:60
+#: ../browser/controlpanel.py:61
 msgid "Style"
 msgstr "Stijl"
 

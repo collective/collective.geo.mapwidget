@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.geo.mapwidget\n"
-"POT-Creation-Date: 2013-04-25 14:51+0000\n"
+"POT-Creation-Date: 2013-05-08 06:40+0000\n"
 "PO-Revision-Date: 2012-01-13 22:16+0800\n"
 "Last-Translator: TsungWei Hu <marr.tw@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,21 +26,25 @@ msgstr "Map ID 與 IMapWidget 的對應"
 msgid "Additional Javascript code inserted after the map widget."
 msgstr "嵌入在地圖之後的 JavaScript 程式碼。"
 
-#: ../browser/controlpanel.py:83
+#: ../browser/controlpanel.py:84
 msgid "Advanced"
 msgstr "進階"
 
-#: ../browser/controlpanel.py:84
+#: ../browser/controlpanel.py:85
 msgid "Advanced configurations"
 msgstr "進階設定"
 
-#: ../browser/controlpanel.py:143
+#: ../browser/controlpanel.py:142
 msgid "Apply"
 msgstr "啟用"
 
-#: ../browser/controlpanel.py:116
+#: ../browser/controlpanel.py:115
 msgid "Base settings"
 msgstr "基本設定"
+
+#: ../maplayers.py:77
+msgid "Bing"
+msgstr ""
 
 #: ../maplayers.py:89
 msgid "Bing Aerial"
@@ -54,11 +58,7 @@ msgstr "Bing 混合圖"
 msgid "Bing Roads"
 msgstr "Bing 道路圖"
 
-#: ../maplayers.py:77
-msgid "Bing Streets"
-msgstr "Bing 街道圖"
-
-#: ../browser/controlpanel.py:163
+#: ../browser/controlpanel.py:162
 msgid "Cancel"
 msgstr "取消"
 
@@ -70,11 +70,11 @@ msgstr "class 屬性值"
 msgid "Collective Geo Default Settings"
 msgstr "地圖預設值"
 
-#: ../browser/controlpanel.py:118
+#: ../browser/controlpanel.py:117
 msgid "Configure Collective Geo Settings"
 msgstr "地圖設定"
 
-#: ../browser/controlpanel.py:38
+#: ../browser/controlpanel.py:39
 msgid "Default map position"
 msgstr ""
 
@@ -82,7 +82,7 @@ msgstr ""
 msgid "Enable default layers."
 msgstr "啟用預設圖層"
 
-#: ../browser/collectivegeo_macros.pt:57
+#: ../browser/collectivegeo_macros.pt:67
 msgid "Find places"
 msgstr "搜尋地點"
 
@@ -100,6 +100,10 @@ msgstr "Google 混合圖"
 
 #: ../interfaces.py:64
 msgid "If set to true, the default IMapLayers implementation adds all enabled default layers from the geo settings tool."
+msgstr ""
+
+#: ../browser/collectivegeo_macros.pt:81
+msgid "Insert the name of the location you are looking for and then click on search button. When a list of results will appear you can click on a location from the list to set the coordinates."
 msgstr ""
 
 #: ../interfaces.py:96
@@ -123,7 +127,7 @@ msgstr "用來設定圖層的 JavaScript"
 msgid "Layers"
 msgstr "圖層"
 
-#: ../browser/geopointform.pt:32
+#: ../browser/geopointform.pt:14
 msgid "Manual settings"
 msgstr ""
 
@@ -139,7 +143,7 @@ msgstr "Map Widget"
 msgid "Map id"
 msgstr "Map ID"
 
-#: ../browser/collectivegeo_macros.pt:64
+#: ../browser/collectivegeo_macros.pt:69
 msgid "No corresponding geographic location could be found for the specified location, possibly because the address is relatively new, or because it may be incorrect."
 msgstr "找不到對應的地點，可能因為地址過新，或是地址有誤。"
 
@@ -155,23 +159,19 @@ msgstr "傳回 JavaScript 程式碼來設定圖層。"
 msgid "Satellite (Google)"
 msgstr "Google 衛星圖"
 
-#: ../browser/collectivegeo_macros.pt:71
+#: ../browser/collectivegeo_macros.pt:77
 msgid "Search"
 msgstr "搜尋"
 
-#: ../browser/collectivegeo_macros.pt:75
-msgid "Select a location from the list below to set the coordinates."
-msgstr "從選單來指定座標。"
-
-#: ../browser/controlpanel.py:61
+#: ../browser/controlpanel.py:62
 msgid "Set default styles for geographical shapes"
 msgstr "指定預設的樣式"
 
-#: ../browser/controlpanel.py:39
+#: ../browser/controlpanel.py:40
 msgid "Set the centre point and the zoom level of the map used when the system cannot use any other point to center the map (e.g. when displaying the map to georeference an item for the first time)"
 msgstr ""
 
-#: ../browser/controlpanel.py:60
+#: ../browser/controlpanel.py:61
 msgid "Style"
 msgstr "樣式"
 

@@ -74,7 +74,7 @@ class BingMapLayer(MapLayer):
 
 class BingStreetMapLayer(BingMapLayer):
     name = u"bing_map"
-    Title = _(u"Bing Streets")
+    Title = _(u"Bing")
     #type = 'bing'
 
 

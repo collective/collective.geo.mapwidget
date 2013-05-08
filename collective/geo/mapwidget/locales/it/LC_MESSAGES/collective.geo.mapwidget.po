@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2013-04-25 14:51+0000\n"
-"PO-Revision-Date: 2013-04-25  14:51+0000\n"
+"POT-Creation-Date: 2013-05-08 06:40+0000\n"
+"PO-Revision-Date: 2013-08-08  06:40+0000\n"
 "Last-Translator: Giorgio Borelli <giorgio@giorgioborelli.it>\n"
 "Language-Team: Giorgio Borelli <giorgio@giorgioborelli.it>\n"
 "MIME-Version: 1.0\n"
@@ -19,74 +19,74 @@ msgstr ""
 
 #: ../interfaces.py:59
 msgid "A mapping from layerids to ILayers"
-msgstr ""
+msgstr "Una serie di layerid per ILayers"
 
 #: ../interfaces.py:85
 msgid "A mapping from mapids to IMapWidgets"
-msgstr ""
+msgstr "Una serie di mapid per IMapWidgets"
 
 #: ../interfaces.py:53
 msgid "Additional Javascript code inserted after the map widget."
-msgstr ""
+msgstr "Javascript aggiuntivo inserito dopo il Map widget"
 
-#: ../browser/controlpanel.py:83
+#: ../browser/controlpanel.py:84
 msgid "Advanced"
 msgstr "Avanzate"
 
-#: ../browser/controlpanel.py:84
+#: ../browser/controlpanel.py:85
 msgid "Advanced configurations"
 msgstr "Configurazioni avanzate"
 
-#: ../browser/controlpanel.py:143
+#: ../browser/controlpanel.py:142
 msgid "Apply"
 msgstr "Applica"
 
-#: ../browser/controlpanel.py:116
+#: ../browser/controlpanel.py:115
 msgid "Base settings"
 msgstr "Impostazioni di base"
 
+#: ../maplayers.py:77
+msgid "Bing"
+msgstr "Bing"
+
 #: ../maplayers.py:89
 msgid "Bing Aerial"
-msgstr ""
+msgstr "Bing, mappa aerea"
 
 #: ../maplayers.py:95
 msgid "Bing Hybrid"
-msgstr ""
+msgstr "Bing, mappa ibrida"
 
 #: ../maplayers.py:83
 msgid "Bing Roads"
-msgstr ""
+msgstr "Bing, mappa stradale"
 
-#: ../maplayers.py:77
-msgid "Bing Streets"
-msgstr ""
-
-#: ../browser/controlpanel.py:163
+#: ../browser/controlpanel.py:162
 msgid "Cancel"
 msgstr "Annulla"
 
 #: ../interfaces.py:41
 msgid "Class attribute"
-msgstr ""
+msgstr "Attributo class"
 
 #: ../browser/controlpanel.py:177
 msgid "Collective Geo Default Settings"
 msgstr "Impostazioni di default di Collective Geo"
 
-#: ../browser/controlpanel.py:118
+#: ../browser/controlpanel.py:117
 msgid "Configure Collective Geo Settings"
 msgstr "Configura Collective Geo"
 
-#: ../browser/controlpanel.py:38
+#: ../browser/controlpanel.py:39
 msgid "Default map position"
-msgstr ""
+msgstr "Posizione di default della mappa"
 
 #: ../interfaces.py:63
 msgid "Enable default layers."
-msgstr ""
+msgstr "Abilita i layer di default"
 
 #. Default: "Find places"
-#: ../browser/collectivegeo_macros.pt:57
+#: ../browser/collectivegeo_macros.pt:67
 msgid "Find places"
 msgstr "Ricerca luoghi"
 
@@ -96,109 +96,108 @@ msgstr "Impostazioni"
 
 #: ../maplayers.py:101
 msgid "Google"
-msgstr ""
+msgstr "Google"
 
 #: ../maplayers.py:113
 msgid "Hybrid (Google)"
-msgstr ""
+msgstr "Google, mappa ibrida"
 
 #: ../interfaces.py:64
 msgid "If set to true, the default IMapLayers implementation adds all enabled default layers from the geo settings tool."
-msgstr ""
+msgstr "Se impostato a True, IMapLayers aggiunge i layer di default"
+
+#: ../browser/collectivegeo_macros.pt:81
+msgid "Insert the name of the location you are looking for and then click on search button. When a list of results will appear you can click on a location from the list to set the coordinates."
+msgstr "Inserisci il name del luogo che stai cercando e clicca sul pulsante 'cerca'. Quando apparirà una lista di risultati puoi cliccare su uno di essi per impostare le coordinate."
 
 #: ../interfaces.py:96
 msgid "Javascript code which returns a new instance of this layer and does not expect any parameters"
-msgstr ""
+msgstr "Javascript che restituisce un'istanza di questo layer e non si aspetta alcun parametro"
 
 #: ../interfaces.py:52
 msgid "Javascript extras"
-msgstr ""
+msgstr "Extra Javascript"
 
 #: ../interfaces.py:95
 msgid "Javascript factory"
-msgstr ""
+msgstr "Javascript"
 
 #: ../interfaces.py:24
 msgid "Javascript to configure layers."
-msgstr ""
+msgstr "Javascript di configurazione dei layer"
 
 #: ../browser/controlpanel.py:105
 #: ../interfaces.py:58
 msgid "Layers"
 msgstr "Layer"
 
-#: ../browser/geopointform.pt:32
+#: ../browser/geopointform.pt:14
 msgid "Manual settings"
-msgstr ""
+msgstr "Impostazioni manuali"
 
 #: ../browser/geopointform.pt:5
 msgid "Map"
-msgstr ""
+msgstr "Mappa"
 
 #: ../interfaces.py:84
 msgid "Map Widgets"
-msgstr ""
+msgstr "Widget mappa"
 
 #: ../interfaces.py:34
 msgid "Map id"
-msgstr ""
+msgstr "Id mappa"
 
 #. Default: "No corresponding geographic location could be found for the specified location, possibly because the address is relatively new, or because it may be incorrect."
-#: ../browser/collectivegeo_macros.pt:64
+#: ../browser/collectivegeo_macros.pt:69
 msgid "No corresponding geographic location could be found for the specified location, possibly because the address is relatively new, or because it may be incorrect."
 msgstr "Nessun luogo è stato trovato per l'indirizzo specificato, probabilmente l'indirizzo è relativamente nuovo o non corretto."
 
 #: ../maplayers.py:54
 msgid "OpenStreetMap"
-msgstr ""
+msgstr "OpenStreetMap"
 
 #: ../interfaces.py:25
 msgid "Returns some js-code to set up available layers."
-msgstr ""
+msgstr "Restituisce del javascript per configurare i layer disponibili"
 
 #: ../maplayers.py:107
 msgid "Satellite (Google)"
-msgstr ""
+msgstr "Google, mappa satellitare"
 
 #. Default: "Search"
-#: ../browser/collectivegeo_macros.pt:71
+#: ../browser/collectivegeo_macros.pt:77
 msgid "Search"
 msgstr "Cerca"
 
-#. Default: "Select a location from the list below to set the coordinates."
-#: ../browser/collectivegeo_macros.pt:75
-msgid "Select a location from the list below to set the coordinates."
-msgstr "Seleziona un luogo dalla lista per impostare le coordinate sulla mappa."
-
-#: ../browser/controlpanel.py:61
+#: ../browser/controlpanel.py:62
 msgid "Set default styles for geographical shapes"
 msgstr "Imposta gli stili di default per la visualizzazione dei dati sulla mappa"
 
-#: ../browser/controlpanel.py:39
+#: ../browser/controlpanel.py:40
 msgid "Set the centre point and the zoom level of the map used when the system cannot use any other point to center the map (e.g. when displaying the map to georeference an item for the first time)"
-msgstr ""
+msgstr "Imposta il centro e il livello di zoom della mappa usati quando il sistema non ha altri punti di riferimento (per esempio quando viene visualizzata la mappa su un oggetto non ancora georeferenziato)."
 
-#: ../browser/controlpanel.py:60
+#: ../browser/controlpanel.py:61
 msgid "Style"
 msgstr "Stili"
 
 #: ../interfaces.py:47
 msgid "Style attribute"
-msgstr ""
+msgstr "Attributo stile"
 
 #: ../maplayers.py:119
 msgid "Terrain (Google)"
-msgstr ""
+msgstr "Google mappa terreno"
 
 #: ../interfaces.py:42
 msgid "The html element class attribute."
-msgstr ""
+msgstr "L'attributo class dell'elemento html"
 
 #: ../interfaces.py:48
 msgid "The html element style attribute."
-msgstr ""
+msgstr "L'attributo style dell'elemento hamo"
 
 #: ../interfaces.py:35
 msgid "Used to identify the map in the dom-tree and to lookup an IMapWidget component if necessary."
-msgstr ""
+msgstr "Usato per identificare la mappa all'interno della pagina e trovare il componente IMapWidget se necessario."
 

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-04-25 14:51+0000\n"
+"POT-Creation-Date: 2013-05-08 06:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,20 +29,24 @@ msgstr ""
 msgid "Additional Javascript code inserted after the map widget."
 msgstr ""
 
-#: ../browser/controlpanel.py:83
+#: ../browser/controlpanel.py:84
 msgid "Advanced"
 msgstr ""
 
-#: ../browser/controlpanel.py:84
+#: ../browser/controlpanel.py:85
 msgid "Advanced configurations"
 msgstr ""
 
-#: ../browser/controlpanel.py:143
+#: ../browser/controlpanel.py:142
 msgid "Apply"
 msgstr ""
 
-#: ../browser/controlpanel.py:116
+#: ../browser/controlpanel.py:115
 msgid "Base settings"
+msgstr ""
+
+#: ../maplayers.py:77
+msgid "Bing"
 msgstr ""
 
 #: ../maplayers.py:89
@@ -57,11 +61,7 @@ msgstr ""
 msgid "Bing Roads"
 msgstr ""
 
-#: ../maplayers.py:77
-msgid "Bing Streets"
-msgstr ""
-
-#: ../browser/controlpanel.py:163
+#: ../browser/controlpanel.py:162
 msgid "Cancel"
 msgstr ""
 
@@ -73,11 +73,11 @@ msgstr ""
 msgid "Collective Geo Default Settings"
 msgstr ""
 
-#: ../browser/controlpanel.py:118
+#: ../browser/controlpanel.py:117
 msgid "Configure Collective Geo Settings"
 msgstr ""
 
-#: ../browser/controlpanel.py:38
+#: ../browser/controlpanel.py:39
 msgid "Default map position"
 msgstr ""
 
@@ -85,7 +85,7 @@ msgstr ""
 msgid "Enable default layers."
 msgstr ""
 
-#: ../browser/collectivegeo_macros.pt:57
+#: ../browser/collectivegeo_macros.pt:67
 msgid "Find places"
 msgstr ""
 
@@ -103,6 +103,10 @@ msgstr ""
 
 #: ../interfaces.py:64
 msgid "If set to true, the default IMapLayers implementation adds all enabled default layers from the geo settings tool."
+msgstr ""
+
+#: ../browser/collectivegeo_macros.pt:81
+msgid "Insert the name of the location you are looking for and then click on search button. When a list of results will appear you can click on a location from the list to set the coordinates."
 msgstr ""
 
 #: ../interfaces.py:96
@@ -126,7 +130,7 @@ msgstr ""
 msgid "Layers"
 msgstr ""
 
-#: ../browser/geopointform.pt:32
+#: ../browser/geopointform.pt:14
 msgid "Manual settings"
 msgstr ""
 
@@ -142,7 +146,7 @@ msgstr ""
 msgid "Map id"
 msgstr ""
 
-#: ../browser/collectivegeo_macros.pt:64
+#: ../browser/collectivegeo_macros.pt:69
 msgid "No corresponding geographic location could be found for the specified location, possibly because the address is relatively new, or because it may be incorrect."
 msgstr ""
 
@@ -158,23 +162,19 @@ msgstr ""
 msgid "Satellite (Google)"
 msgstr ""
 
-#: ../browser/collectivegeo_macros.pt:71
+#: ../browser/collectivegeo_macros.pt:77
 msgid "Search"
 msgstr ""
 
-#: ../browser/collectivegeo_macros.pt:75
-msgid "Select a location from the list below to set the coordinates."
-msgstr ""
-
-#: ../browser/controlpanel.py:61
+#: ../browser/controlpanel.py:62
 msgid "Set default styles for geographical shapes"
 msgstr ""
 
-#: ../browser/controlpanel.py:39
+#: ../browser/controlpanel.py:40
 msgid "Set the centre point and the zoom level of the map used when the system cannot use any other point to center the map (e.g. when displaying the map to georeference an item for the first time)"
 msgstr ""
 
-#: ../browser/controlpanel.py:60
+#: ../browser/controlpanel.py:61
 msgid "Style"
 msgstr ""
 

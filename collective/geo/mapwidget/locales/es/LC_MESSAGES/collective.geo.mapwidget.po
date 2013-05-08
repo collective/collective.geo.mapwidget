@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.geo.mapwidget\n"
-"POT-Creation-Date: 2013-04-25 14:51+0000\n"
+"POT-Creation-Date: 2013-05-08 06:40+0000\n"
 "PO-Revision-Date: 2011-06-27 11:05-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language-Team: Spanish <plone-conosur@lists.plone.org>\n"
@@ -29,21 +29,25 @@ msgstr "Un mapeo de mapids a IMapWidgets"
 msgid "Additional Javascript code inserted after the map widget."
 msgstr "código de Javascript adicional insertado después del widget de mapa."
 
-#: ../browser/controlpanel.py:83
+#: ../browser/controlpanel.py:84
 msgid "Advanced"
 msgstr "Avanzado"
 
-#: ../browser/controlpanel.py:84
+#: ../browser/controlpanel.py:85
 msgid "Advanced configurations"
 msgstr "Configuraciones avanzadas"
 
-#: ../browser/controlpanel.py:143
+#: ../browser/controlpanel.py:142
 msgid "Apply"
 msgstr "Aplica"
 
-#: ../browser/controlpanel.py:116
+#: ../browser/controlpanel.py:115
 msgid "Base settings"
 msgstr "Configuración base"
+
+#: ../maplayers.py:77
+msgid "Bing"
+msgstr ""
 
 #: ../maplayers.py:89
 msgid "Bing Aerial"
@@ -57,11 +61,7 @@ msgstr "Bing Híbrido"
 msgid "Bing Roads"
 msgstr "Bing Carreteras"
 
-#: ../maplayers.py:77
-msgid "Bing Streets"
-msgstr "Bing Calles"
-
-#: ../browser/controlpanel.py:163
+#: ../browser/controlpanel.py:162
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -73,11 +73,11 @@ msgstr "Atributo de Clase"
 msgid "Collective Geo Default Settings"
 msgstr "Configuración predeterminada collective.geo"
 
-#: ../browser/controlpanel.py:118
+#: ../browser/controlpanel.py:117
 msgid "Configure Collective Geo Settings"
 msgstr "Ajustes a la configuración collective.geo"
 
-#: ../browser/controlpanel.py:38
+#: ../browser/controlpanel.py:39
 msgid "Default map position"
 msgstr ""
 
@@ -86,7 +86,7 @@ msgid "Enable default layers."
 msgstr "Habilitar capas por defecto"
 
 #. Default: "Find places"
-#: ../browser/collectivegeo_macros.pt:57
+#: ../browser/collectivegeo_macros.pt:67
 msgid "Find places"
 msgstr "Buscar lugares"
 
@@ -105,6 +105,10 @@ msgstr "Híbrido (Google)"
 #: ../interfaces.py:64
 msgid "If set to true, the default IMapLayers implementation adds all enabled default layers from the geo settings tool."
 msgstr "Si se define como verdadero, la implementación predeterminada de IMapLayers agrega todas las capas activas por defecto desde la herramienta de configuración geográfica."
+
+#: ../browser/collectivegeo_macros.pt:81
+msgid "Insert the name of the location you are looking for and then click on search button. When a list of results will appear you can click on a location from the list to set the coordinates."
+msgstr ""
 
 #: ../interfaces.py:96
 msgid "Javascript code which returns a new instance of this layer and does not expect any parameters"
@@ -127,7 +131,7 @@ msgstr "Javascript para configurar las capas."
 msgid "Layers"
 msgstr "Capas"
 
-#: ../browser/geopointform.pt:32
+#: ../browser/geopointform.pt:14
 msgid "Manual settings"
 msgstr ""
 
@@ -144,7 +148,7 @@ msgid "Map id"
 msgstr "Id de Mapa"
 
 #. Default: "No corresponding geographic location could be found for the specified location, possibly because the address is relatively new, or because it may be incorrect."
-#: ../browser/collectivegeo_macros.pt:64
+#: ../browser/collectivegeo_macros.pt:69
 msgid "No corresponding geographic location could be found for the specified location, possibly because the address is relatively new, or because it may be incorrect."
 msgstr "No hay ubicación geográfica correspondiente se pudo encontrar para la ubicación especificada, posiblemente porque la dirección es relativamente nueva, o porque puede ser incorrecta."
 
@@ -161,24 +165,19 @@ msgid "Satellite (Google)"
 msgstr "Satélite (Google)"
 
 #. Default: "Search"
-#: ../browser/collectivegeo_macros.pt:71
+#: ../browser/collectivegeo_macros.pt:77
 msgid "Search"
 msgstr "Buscar"
 
-#. Default: "Select a location from the list below to set the coordinates."
-#: ../browser/collectivegeo_macros.pt:75
-msgid "Select a location from the list below to set the coordinates."
-msgstr "Seleccione un lugar de la siguiente lista para establecer las coordenadas."
-
-#: ../browser/controlpanel.py:61
+#: ../browser/controlpanel.py:62
 msgid "Set default styles for geographical shapes"
 msgstr "Establecer estilos predeterminados para las formas geográficas"
 
-#: ../browser/controlpanel.py:39
+#: ../browser/controlpanel.py:40
 msgid "Set the centre point and the zoom level of the map used when the system cannot use any other point to center the map (e.g. when displaying the map to georeference an item for the first time)"
 msgstr ""
 
-#: ../browser/controlpanel.py:60
+#: ../browser/controlpanel.py:61
 msgid "Style"
 msgstr "Estilo"
 
