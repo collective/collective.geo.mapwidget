@@ -7,7 +7,9 @@
     enabled="True"
     expression=""
     id="++resource++collective.geo.mapwidget/collectivegeo.js"
+    insert-after="proj4js-compressed.js"
     inline="False" />
+
   <javascript
     cacheable="True"
     compression="safe"
@@ -15,5 +17,6 @@
     enabled="True"
     expression=""
     id="++resource++collective.geo.mapwidget/collectivegeo_init.js"
+    insert-after="++resource++collective.geo.mapwidget/collectivegeo.js"
     inline="False" />
 </object>
