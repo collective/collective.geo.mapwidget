@@ -4,6 +4,9 @@ Changelog
 1.7 (unreleased)
 ----------------
 
+- move IGeoCoder utility from c.geo.mapwidget
+  [gborelli]
+
 - Prevent multiple inclusions of Google maps and Bing javascripts
   [gborelli]
 

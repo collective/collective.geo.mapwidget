@@ -29,4 +29,12 @@
       name="maplayersVocab"
       provides="zope.schema.interfaces.IVocabularyFactory" />
 
+
+  <utility
+    provides=".interfaces.IGeoCoder"
+    factory=".utils.get_geocoder"
+    />
+
+
+
 </configure>

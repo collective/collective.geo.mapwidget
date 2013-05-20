@@ -8,7 +8,7 @@ import collective.geo.mapwidget
 
 CGEO_MAPWIDGET = PloneWithPackageLayer(
     zcml_package=collective.geo.mapwidget,
-    zcml_filename='configure.zcml',
+    zcml_filename='testing.zcml',
     gs_profile_id='collective.geo.mapwidget:default',
     name="CGEO_MAPWIDGET")
 

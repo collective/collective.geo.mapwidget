@@ -26,6 +26,7 @@ setup(name='collective.geo.mapwidget',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'geopy>=0.95.pre',
           'Products.CMFCore',
           'collective.geo.openlayers',
           'collective.geo.settings',

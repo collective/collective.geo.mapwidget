@@ -93,11 +93,30 @@ class IMapLayer(Interface):
 
     jsfactory = schema.Text(
         title=_(u"Javascript factory"),
-        description=_(u"Javascript code which returns a new instance of this "\
-                      u"layer and does not expect any parameters"),
+        description=_(
+            u"Javascript code which returns a new instance of this "
+            u"layer and does not expect any parameters"
+        ),
         required=True)
 
 
 class IDefaultMapLayers(Interface):
     """Utility to provide a list of default map layers
     """
+
+
+class IGeoCoder(Interface):
+    """Adapter for geocoding feature
+    """
+
+    def retrieve(address=None, google_api=None):
+        """Retrieve coordinates by an address
+
+        :param address: a string representing an address
+            to be converted in coordinates
+        :type address: string
+        :param google_api: google api token
+        :type google_api: string
+        :returns: a sequence of coordinates representing a point
+        :rtype: tuple
+        """

@@ -41,6 +41,13 @@
         allowed_attributes="mapwidgets"
         />
 
+    <browser:page
+        name="geocoderview"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".geocoder.GeoCoderView"
+        permission="zope2.View"
+        />
+
     <!-- ..interfaces.IMapView -->
     <adapter
         for="zope.interface.Interface
