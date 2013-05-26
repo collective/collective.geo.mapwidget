@@ -72,9 +72,11 @@
     //     );
     // }}}
 
+
     $(window).bind("load", function () {
-        var maps = $('.widget-cgmap'),
-            map_widgets = $('.map-widget .widget-cgmap'),
+        // get all visible map and map-widgets
+        var maps = $('.widget-cgmap').filter(':visible'),
+            map_widgets = $('.map-widget .widget-cgmap').filter(':visible'),
             geosetting_map = $('#geosettings-cgmap'),
             fieldset = $(maps).parents('.formPanel'),
             tabs;
@@ -110,13 +112,18 @@
         // </dl>
         //
         // }}}
-        if (fieldset.length > 0) {
+        // get hidden maps (maps with no size yet)
+        maps = $('.widget-cgmap').filter(':hidden');
+        if (maps.length > 0) {
             tabs = $('select.formTabs, ul.formTabs');
             tabs.bind("onClick", function (e, index) {
                 var curpanel = $(this).data('tabs').getCurrentPane();
-                curpanel.find('.widget-cgmap').collectivegeo('refresh');
+                curpanel.find('.widget-cgmap').collectivegeo(); // refresh
+                curpanel.find('.map-widget .widget-cgmap').collectivegeo('add_edit_layer');
+                curpanel.find('.map-widget .widget-cgmap').collectivegeo('add_geocoder');
             });
         }
+        
 
         // === Collective.geo controlpanel ==
         //
