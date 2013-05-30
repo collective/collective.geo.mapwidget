@@ -1,5 +1,6 @@
 from zope.component.hooks import getSite
 from zope.component import getGlobalSiteManager
+from Products.CMFCore.utils import getToolByName
 
 default_profile = 'profile-collective.geo.mapwidget:default'
 
@@ -9,3 +10,9 @@ def upgrade_to_17(context):
     """
     context.runImportStepFromProfile(default_profile, 'jsregistry')
     context.runImportStepFromProfile(default_profile, 'controlpanel')
+
+    # install collective.z3cform.mapwidget
+    qi = getToolByName(context, 'portal_quickinstaller')
+
+    if not qi.isProductInstalled('collective.z3cform.mapwidget'):
+        qi.installProduct('collective.z3cform.mapwidget')

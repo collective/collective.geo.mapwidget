@@ -15,7 +15,6 @@ from plone.app.testing import TEST_USER_NAME
 from plone.app.testing import TEST_USER_PASSWORD
 from plone.app.testing import setRoles
 
-# from collective.geo.geographer.interfaces import IGeoreferenceable
 from ..utils import GeoCoderUtility
 from ..interfaces import IGeoCoder
 from ..testing import CGEO_MAPWIDGET_INTEGRATION
@@ -101,7 +100,6 @@ class TestGeocoder(unittest.TestCase):
 
         self.obj = self.portal[self.oid]
         self.geo = getUtility(IGeoCoder)
-        # alsoProvides(self.obj, IGeoreferenceable)
 
     def test_geocoder_base(self):
         for item in test_params:
