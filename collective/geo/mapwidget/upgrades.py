@@ -5,7 +5,7 @@ from Products.CMFCore.utils import getToolByName
 default_profile = 'profile-collective.geo.mapwidget:default'
 
 
-def upgrade_to_17(context):
+def upgrade_to_20(context):
     """This upgrade step fixes javascript registry and static resources
     """
     context.runImportStepFromProfile(default_profile, 'jsregistry')

@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.7 (unreleased)
-----------------
+2.0b1 (2013-06-02)
+------------------
 
 - move IGeoCoder utility from c.geo.mapwidget
   [gborelli]

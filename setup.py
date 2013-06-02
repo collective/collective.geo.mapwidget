@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.7.dev0'
+version = '2.0b1'
 
 setup(name='collective.geo.mapwidget',
       version=version,
@@ -32,7 +32,7 @@ setup(name='collective.geo.mapwidget',
           'plone.app.z3cform',
           'collective.geo.openlayers > 2.5',
           'collective.geo.settings > 2.5',
-          'collective.z3cform.colorpicker>0.2',
+          'collective.z3cform.colorpicker > 0.2',
       ],
       extras_require={
           'test': [

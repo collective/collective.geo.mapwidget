@@ -12,11 +12,11 @@
       />
 
   <genericsetup:upgradeStep
-      title="Upgrade to 1.7"
+      title="Upgrade to 2.0"
       description=""
       source="*"
-      destination="1.7"
-      handler=".upgrades.upgrade_to_17"
+      destination="20"
+      handler=".upgrades.upgrade_to_20"
       profile="collective.geo.mapwidget:default" />
 
 </configure>
