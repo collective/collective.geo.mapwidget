@@ -4,7 +4,8 @@ Changelog
 2.0b2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Re-adds previously used maxResolution and maxExtent options, fixing issues 
+  with certain WMTS services. [href]
 
 
 2.0b1 (2013-06-02)

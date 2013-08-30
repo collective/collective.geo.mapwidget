@@ -98,7 +98,6 @@
             // setup a default layers
             if (self.map.layers.length === 0) {
                 self.addLayers(self.getDefaultLayers());
-
             }
 
             if (self.settings.center && self.settings.zoom) {
@@ -202,6 +201,9 @@
                 displayProjection: new OpenLayers.Projection("EPSG:4326"),
                 units: "m",
                 numZoomLevels: 19,
+                maxResolution: 156543.0339,
+                maxExtent: new OpenLayers.Bounds(-20037508.34, -20037508.34,
+                                                  20037508.34, 20037508.34),
                 controls: [
                     new OpenLayers.Control.ArgParser(),
                     new OpenLayers.Control.Attribution(),
