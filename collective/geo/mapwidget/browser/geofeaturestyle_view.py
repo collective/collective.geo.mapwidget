@@ -23,11 +23,13 @@ class GeoFeatureStyleView(object):
         self.request = request
         self.geofeaturestyle = None
         custom_styles = queryAdapter(self.context, IGeoCustomFeatureStyle)
-        if custom_styles and custom_styles.use_custom_styles:
+        if custom_styles and \
+                hasattr(custom_styles, 'use_custom_styles') and \
+                custom_styles.use_custom_styles:
             self.geofeaturestyle = custom_styles
         else:
             self.geofeaturestyle = \
-                    getUtility(IRegistry).forInterface(IGeoFeatureStyle)
+                getUtility(IRegistry).forInterface(IGeoFeatureStyle)
 
     def __getattribute__(self, name):
         """Proxy attribute access to our local styles.
