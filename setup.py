@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '2.0b2.dev0'
+version = '2.0.dev0'
 
 setup(name='collective.geo.mapwidget',
       version=version,
@@ -20,7 +20,8 @@ setup(name='collective.geo.mapwidget',
       author_email='giorgio@giorgioborelli.it',
       url='https://github.com/collective/collective.geo.mapwidget',
       license='GPL',
-      packages=find_packages(exclude=['ez_setup']),
+      packages=find_packages('src'),
+      package_dir={'': 'src'},
       namespace_packages=['collective', 'collective.geo'],
       include_package_data=True,
       zip_safe=False,
