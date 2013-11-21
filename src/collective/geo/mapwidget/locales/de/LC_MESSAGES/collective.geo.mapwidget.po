@@ -45,19 +45,19 @@ msgstr "Basis Einstellungen"
 
 #: ../maplayers.py:77
 msgid "Bing"
-msgstr ""
+msgstr "Bing"
 
 #: ../maplayers.py:89
 msgid "Bing Aerial"
-msgstr ""
+msgstr "Bing Luftbild"
 
 #: ../maplayers.py:95
 msgid "Bing Hybrid"
-msgstr ""
+msgstr "Bing Hybrid"
 
 #: ../maplayers.py:83
 msgid "Bing Roads"
-msgstr ""
+msgstr "Bing Strassen"
 
 #: ../browser/controlpanel.py:162
 msgid "Cancel"
@@ -93,11 +93,11 @@ msgstr "Geo Einstellungen"
 
 #: ../maplayers.py:101
 msgid "Google"
-msgstr ""
+msgstr "Google"
 
 #: ../maplayers.py:113
 msgid "Hybrid (Google)"
-msgstr ""
+msgstr "Hybrid (Google)"
 
 #: ../interfaces.py:64
 msgid "If set to true, the default IMapLayers implementation adds all enabled default layers from the geo settings tool."
@@ -105,7 +105,7 @@ msgstr "Wenn wahr, zeigt die Standard IMapLayers Implementation alle aktivierten
 
 #: ../browser/collectivegeo_macros.pt:81
 msgid "Insert the name of the location you are looking for and then click on search button. When a list of results will appear you can click on a location from the list to set the coordinates."
-msgstr ""
+msgstr "Geben Sie den Namen des Ortes ein den Sie suchen und klicken sie auf 'Suchen'. Aus der Resultatliste können Sie danach den gewünschten Ort anklicken um die Koordinaten zu setzen."
 
 #: ../interfaces.py:96
 msgid "Javascript code which returns a new instance of this layer and does not expect any parameters"
@@ -134,7 +134,7 @@ msgstr "Manuelle Einstellungen"
 
 #: ../browser/geopointform.pt:5
 msgid "Map"
-msgstr ""
+msgstr "Karte"
 
 #: ../interfaces.py:84
 msgid "Map Widgets"
@@ -150,7 +150,7 @@ msgstr "Es wurde keine geographische Position für den spezifierten Ort gefunden
 
 #: ../maplayers.py:54
 msgid "OpenStreetMap"
-msgstr ""
+msgstr "OpenStreetMap"
 
 #: ../interfaces.py:25
 msgid "Returns some js-code to set up available layers."
@@ -158,7 +158,7 @@ msgstr "Gibt Javascript Code zurück der die verfügbaren Ebenen aufbereitet."
 
 #: ../maplayers.py:107
 msgid "Satellite (Google)"
-msgstr ""
+msgstr "Satellit (Google)"
 
 #: ../browser/collectivegeo_macros.pt:77
 msgid "Search"
@@ -182,7 +182,7 @@ msgstr "Style Attribut"
 
 #: ../maplayers.py:119
 msgid "Terrain (Google)"
-msgstr ""
+msgstr "Gelände (Google)"
 
 #: ../interfaces.py:42
 msgid "The html element class attribute."
@@ -190,7 +190,7 @@ msgstr "Das Html Element Klassen Attribut."
 
 #: ../interfaces.py:48
 msgid "The html element style attribute."
-msgstr "DAs Html Element Style Attribut."
+msgstr "Das Html Element Style Attribut."
 
 #: ../interfaces.py:35
 msgid "Used to identify the map in the dom-tree and to lookup an IMapWidget component if necessary."

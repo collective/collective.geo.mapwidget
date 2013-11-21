@@ -4,7 +4,8 @@ Changelog
 2.1 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Updated German translation.
+  [href]
 
 
 2.0 (2013-10-29)
