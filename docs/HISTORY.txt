@@ -3,6 +3,8 @@ Changelog
 
 2.1 (unreleased)
 ----------------
+- Fixed google.GQueryError ImportError
+  [Jian Aijun] 
 
 - Updated German translation.
   [href]
