@@ -4,8 +4,6 @@ try:
 except ImportError:
     import simplejson as json
 
-from geopy.geocoders.google import GQueryError
-
 from zope.interface import alsoProvides
 from zope.component import getUtility
 
@@ -14,6 +12,8 @@ from plone.app.testing import TEST_USER_ID
 from plone.app.testing import TEST_USER_NAME
 from plone.app.testing import TEST_USER_PASSWORD
 from plone.app.testing import setRoles
+
+from geopy.exc import GeocoderQueryError
 
 from ..utils import GeoCoderUtility
 from ..interfaces import IGeoCoder
@@ -85,7 +85,7 @@ class DummyGeoCoder(GeoCoderUtility):
         for item in test_params:
             if address == item['address']:
                 return item['output']
-        raise GQueryError
+        raise GeocoderQueryError
 
 
 class TestGeocoder(unittest.TestCase):
@@ -107,7 +107,7 @@ class TestGeocoder(unittest.TestCase):
             self.assertEquals([loc for loc in locations], item['output'])
 
     def test_geocoder_error(self):
-        self.assertRaises(GQueryError,
+        self.assertRaises(GeocoderQueryError,
                           self.geo.retrieve,
                           "not existent place aklhj asaas")
 

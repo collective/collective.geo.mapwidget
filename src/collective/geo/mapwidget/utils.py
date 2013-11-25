@@ -1,6 +1,6 @@
 import urllib
 from geopy import geocoders
-from geopy.geocoders.google import GQueryError
+from geopy.exc import GeocoderQueryError
 from zope.interface import implements
 from Products.CMFCore import DirectoryView
 
@@ -52,5 +52,5 @@ class GeoCoderUtility(object):
         self.geocoder = geocoders.GoogleV3()
 
         if not address:
-            raise GQueryError
+            raise GeocoderQueryError
         return self.geocoder.geocode(address, exactly_one=False)

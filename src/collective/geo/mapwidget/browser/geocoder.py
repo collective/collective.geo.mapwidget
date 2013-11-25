@@ -4,6 +4,7 @@ except ImportError:
     import simplejson as json
 from zope.component import getUtility
 from Products.Five.browser import BrowserView
+from geopy.exc import GeocoderQueryError
 from ..interfaces import IGeoCoder
 
 
@@ -18,6 +19,6 @@ class GeoCoderView(BrowserView):
     def __call__(self, address=None, google_api=None):
         try:
             locations = self.geocoder.retrieve(address, google_api)
-        except GQueryError:
+        except GeocoderQueryError:
             return 'null'
         return json.dumps([loc for loc in locations])
