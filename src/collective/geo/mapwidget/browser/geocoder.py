@@ -4,7 +4,14 @@ except ImportError:
     import simplejson as json
 from zope.component import getUtility
 from Products.Five.browser import BrowserView
-from geopy.exc import GeocoderQueryError
+try:
+    # geopy < 0.96
+    from geopy.geocoders.googlev3 import GQueryError
+    GeocoderQueryError = GQueryError
+except ImportError:
+    # geopy >= 0.96
+    from geopy.exc import GeocoderQueryError
+
 from ..interfaces import IGeoCoder
 
 
