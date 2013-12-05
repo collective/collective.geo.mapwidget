@@ -1,12 +1,6 @@
 import urllib
 from geopy import geocoders
-try:
-    # geopy < 0.96
-    from geopy.geocoders.googlev3 import GQueryError
-    GeocoderQueryError = GQueryError
-except ImportError:
-    # geopy >= 0.96
-    from geopy.exc import GeocoderQueryError
+from geopy.exc import GeocoderQueryError
 
 from zope.interface import implements
 from Products.CMFCore import DirectoryView

@@ -28,7 +28,7 @@ setup(name='collective.geo.mapwidget',
       install_requires=[
           'setuptools',
           'BeautifulSoup',
-          'geopy>=0.95.pre',
+          'geopy>=0.96.2',
           'Products.CMFCore',
           'plone.app.z3cform',
           'collective.geo.openlayers > 2.5',

@@ -15,6 +15,7 @@ Found a bug? Please, use the `issue tracker`_.
 Requirements
 ============
 
+* geopy >= 0.96.2
 * `Plone`_ >= 4.1
 * `plone.app.z3cform`_
 * `collective.z3cform.colorpicker`_ >= 1.1
