@@ -3,8 +3,12 @@ Changelog
 
 2.1 (unreleased)
 ----------------
+
+- add get_feature_styles method to retrieve map styles
+  [gborelli]
+
 - Fixed google.GQueryError ImportError
-  [Jian Aijun] 
+  [Jian Aijun]
 
 - Updated German translation.
   [href]

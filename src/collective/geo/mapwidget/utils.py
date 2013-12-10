@@ -3,9 +3,30 @@ from geopy import geocoders
 from geopy.exc import GeocoderQueryError
 
 from zope.interface import implements
+from zope.schema import getFields
+from zope.component import getUtility
 from Products.CMFCore import DirectoryView
 
+from plone.registry.interfaces import IRegistry
+from collective.geo.settings.interfaces import IGeoFeatureStyle
+
 from .interfaces import IGeoCoder
+
+
+def get_feature_styles(context):
+    fields = [i for i in getFields(IGeoFeatureStyle)]
+    manager = IGeoFeatureStyle(context, None)
+    if not manager:
+        registry = getUtility(IRegistry)
+        manager = registry.forInterface(IGeoFeatureStyle)
+
+    styles = {
+        'use_custom_styles': getattr(manager, 'use_custom_styles', True)
+    }
+    for name in fields:
+        styles[name] = getattr(manager, name, None)
+
+    return styles
 
 
 def getProtocolFromRequest(request):

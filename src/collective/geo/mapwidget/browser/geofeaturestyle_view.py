@@ -3,6 +3,7 @@ from zope.component import getUtility, queryAdapter
 from plone.registry.interfaces import IRegistry
 from collective.geo.settings.interfaces import IGeoCustomFeatureStyle
 from collective.geo.settings.interfaces import IGeoFeatureStyle
+from ..utils import get_feature_styles
 
 MAP_STYLE_FIELDS = ['map_width', 'map_height']
 
@@ -21,15 +22,7 @@ class GeoFeatureStyleView(object):
 
         self.context = context
         self.request = request
-        self.geofeaturestyle = None
-        custom_styles = queryAdapter(self.context, IGeoCustomFeatureStyle)
-        if custom_styles and \
-                hasattr(custom_styles, 'use_custom_styles') and \
-                custom_styles.use_custom_styles:
-            self.geofeaturestyle = custom_styles
-        else:
-            self.geofeaturestyle = \
-                getUtility(IRegistry).forInterface(IGeoFeatureStyle)
+        self.styles = get_feature_styles(context)
 
     def __getattribute__(self, name):
         """Proxy attribute access to our local styles.
@@ -39,6 +32,6 @@ class GeoFeatureStyleView(object):
         normally using the parent method.
         """
         if name in MAP_STYLE_FIELDS:
-            return getattr(self.geofeaturestyle, name, None)
+            return self.styles.get(name, None)
         else:
             return super(GeoFeatureStyleView, self).__getattribute__(name)

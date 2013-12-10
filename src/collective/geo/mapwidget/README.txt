@@ -494,5 +494,3 @@ And another small test to get a 100% test coverage report:
     >>> mw1.addClass('myclass')
     >>> mw1.klass
     u'myclass'
-
-
