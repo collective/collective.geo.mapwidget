@@ -19,9 +19,8 @@ def get_feature_styles(context):
     if not manager:
         registry = getUtility(IRegistry)
         manager = registry.forInterface(IGeoFeatureStyle)
-
     styles = {
-        'use_custom_styles': getattr(manager, 'use_custom_styles', True)
+        'use_custom_styles': getattr(manager, 'use_custom_styles', False)
     }
     for name in fields:
         styles[name] = getattr(manager, name, None)

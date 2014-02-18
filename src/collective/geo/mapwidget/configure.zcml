@@ -35,6 +35,9 @@
     factory=".utils.get_geocoder"
     />
 
+  <adapter
+      factory='.indexer.collective_geo_styles'
+      name='collective_geo_styles' />
 
 
 </configure>

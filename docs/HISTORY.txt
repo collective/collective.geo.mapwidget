@@ -4,6 +4,10 @@ Changelog
 2.1 (unreleased)
 ----------------
 
+- Moved collective_geo_styles metadata and related indexer
+  from c.geo.contentlocations
+  [gborelli]
+
 - Added get_feature_styles method to retrieve map styles
   [gborelli]
 
