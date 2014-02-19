@@ -1,9 +1,10 @@
 from plone.indexer.decorator import indexer
-from collective.geo.mapwidget.utils import get_feature_styles
-from collective.geo.geographer.interfaces import IGeoreferenceable
+from collective.geo.settings.interfaces import IGeoFeatureStyle
+from .utils import get_feature_styles
+from zope.interface import Interface
 
 
-@indexer(IGeoreferenceable)
+@indexer(Interface)
 def collective_geo_styles(context):
     styles = get_feature_styles(context)
     return styles
