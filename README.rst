@@ -15,11 +15,11 @@ Found a bug? Please, use the `issue tracker`_.
 Requirements
 ============
 
-* geopy >= 0.96.2
-* `Plone`_ >= 4.1
+* geopy >= 0.98.1
+* `Plone`_ >= 4.2
 * `plone.app.z3cform`_
 * `collective.z3cform.colorpicker`_ >= 1.1
-* `collective.geo.openlayers`_ >= 3.0
+* `collective.geo.openlayers`_ >= 3.1
 * `collective.geo.settings`_ >= 3.0
 
 
