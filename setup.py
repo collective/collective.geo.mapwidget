@@ -28,12 +28,12 @@ setup(name='collective.geo.mapwidget',
       install_requires=[
           'setuptools',
           'BeautifulSoup',
-          'geopy>=0.98',
+          'geopy>=0.98.1',
           'Products.CMFCore',
           'plone.app.z3cform',
-          'collective.geo.openlayers > 3.0',
-          'collective.geo.settings > 2.5',
-          'collective.z3cform.colorpicker > 1.0',
+          'collective.geo.openlayers >= 3.1',
+          'collective.geo.settings >= 3.0',
+          'collective.z3cform.colorpicker >= 1.1',
       ],
       extras_require={
           'test': [
