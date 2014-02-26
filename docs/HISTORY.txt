@@ -1,8 +1,8 @@
 Changelog
 =========
 
-2.2 (unreleased)
-----------------
+2.1.1 (2014-02-26)
+------------------
 
 - Fix geopy version; geopy 0.98.1 is currently broken
   [gborelli]
