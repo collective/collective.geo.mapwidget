@@ -73,7 +73,8 @@
           possibly because the address is relatively new,
           or because it may be incorrect.
         </div>
-        <input type="text" value="" name="geocoding-address">
+        <input type="text" value="" name="geocoding-address"
+          tal:attributes="value context/location|context/getLocation|nothing">
         <button><span i18n:translate="">Search</span></button>
         <div class="results" style="display: none">
           <ul></ul>

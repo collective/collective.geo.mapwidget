@@ -4,6 +4,10 @@ Changelog
 2.1.2 (unreleased)
 ------------------
 
+- Add content type location's attribute as default value
+  for geocoding input field
+  [gborelli]
+
 - Fix #14 - GeoCoderView
   [gborelli]
 
