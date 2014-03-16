@@ -79,12 +79,20 @@ test_params = [
 ]
 
 
+class DummyGeoCoderResult(object):
+
+    def __init__(self, data):
+        self.address = data[0]
+        self.latitude = data[1][0]
+        self.longitude = data[1][1]
+
+
 class DummyGeoCoder(GeoCoderUtility):
 
     def retrieve(self, address=None, google_api=None):  # pylint: disable=W0613
         for item in test_params:
             if address == item['address']:
-                return item['output']
+                return [DummyGeoCoderResult(res) for res in item['output']]
         raise GeocoderQueryError
 
 
@@ -104,7 +112,11 @@ class TestGeocoder(unittest.TestCase):
     def test_geocoder_base(self):
         for item in test_params:
             locations = self.geo.retrieve(item['address'])
-            self.assertEquals([loc for loc in locations], item['output'])
+            self.assertEquals(
+                [(loc.address, (loc.latitude, loc.longitude))
+                    for loc in locations],
+                item['output']
+            )
 
     def test_geocoder_error(self):
         self.assertRaises(GeocoderQueryError,
@@ -125,7 +137,7 @@ class TestGeocoder(unittest.TestCase):
             )
             browser.open(obj_url)
             view_contents = json.loads(browser.contents)
-
+            import pdb; pdb.set_trace( )
             i = 0
             for place, (lat, lon) in view_contents:
                 test_place, (test_lat, test_lon) = item['output'][i]
