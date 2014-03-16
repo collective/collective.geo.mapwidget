@@ -137,7 +137,6 @@ class TestGeocoder(unittest.TestCase):
             )
             browser.open(obj_url)
             view_contents = json.loads(browser.contents)
-            import pdb; pdb.set_trace( )
             i = 0
             for place, (lat, lon) in view_contents:
                 test_place, (test_lat, test_lon) = item['output'][i]
