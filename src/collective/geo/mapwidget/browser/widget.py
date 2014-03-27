@@ -220,8 +220,12 @@ class MapLayers(dict):
         useDefaultLayers = getattr(self.widget, 'usedefault', True)
         if useDefaultLayers:
             default_layers = getUtility(IDefaultMapLayers)
-            layers.extend(default_layers.layers(self.view, self.request,
-                                                self.context, self.widget))
+            layers.extend(
+                default_layers.layers(
+                    self.view, self.request,
+                    self.context, self.widget
+                )
+            )
 
         maplayers = getattr(self.widget, '_layers', None)
         if maplayers:

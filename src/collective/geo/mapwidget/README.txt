@@ -376,7 +376,7 @@ and we should get an additional layer.
 
 
     >>> from collective.geo.mapwidget.maplayers import BingRoadsMapLayer
-    >>> mw1._layers = [BingRoadsMapLayer(context=portal)]
+    >>> mw1._layers = [BingRoadsMapLayer(context=portal, request=request)]
     >>> view = TestView(portal, request)
     >>> setTemplate(view, template)
     >>> view.mapfields = [mw1]

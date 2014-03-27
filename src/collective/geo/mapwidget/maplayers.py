@@ -45,7 +45,7 @@ class MapLayer(object):
         try:
             template = getMultiAdapter(
                 (self.context, self.request),
-                str('%s-layer' % self.name)
+                name=str('%s-layer' % self.name)
             )
         except AttributeError:
             return u""
@@ -66,7 +66,7 @@ class BingMapLayer(MapLayer):
         try:
             template = getMultiAdapter(
                 (self.context, self.request),
-                str('%s-layer' % self.name)
+                name=str('%s-layer' % self.name)
             )
         except AttributeError:
             return u""
@@ -138,7 +138,7 @@ class ShapeDisplayLayer(MapLayer):
         try:
             template = getMultiAdapter(
                 (self.context, self.request),
-                str('%s-layer' % self.name)
+                name=str('%s-layer' % self.name)
             )
         except AttributeError:
             return u""
