@@ -1,3 +1,4 @@
+from zope.component import getMultiAdapter
 from zope.publisher.browser import BrowserView
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
@@ -16,8 +17,9 @@ class CollectiveGeoMacros(BrowserView):
         """Return inline CSS for our map according to style settings.
         """
         inline_css = ''
-        geofeaturestyle = self.context.restrictedTraverse(
-            '@@geofeaturestyle-view'
+        geofeaturestyle = getMultiAdapter(
+            (self.context, self.request),
+            name='geofeaturestyle-view'
         )
         for style in INLINE_STYLES:
             value = getattr(geofeaturestyle, INLINE_STYLES[style], None)

@@ -147,9 +147,13 @@ class MapWidget(object):
             self.klass = u' '.join(frozenset(parts))
 
     def map_defaults(self):
-        settings = self.context.restrictedTraverse('@@geosettings-view')
+        settings = getMultiAdapter(
+            (self.context, self.request), name='geosettings-view'
+        )
         lon, lat = settings.map_center
-        pstate = self.context.restrictedTraverse('plone_portal_state')
+        pstate = getMultiAdapter(
+            (self.context, self.request), name='plone_portal_state'
+        )
         portal_url = pstate.portal_url()
 
         # Image path for changing OpenLayers default images.

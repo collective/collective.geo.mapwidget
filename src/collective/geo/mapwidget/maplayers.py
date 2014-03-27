@@ -5,6 +5,7 @@ or may be re-used in manually configured map-widgets.
 """
 from zope.interface import implements
 from zope.component import getUtility, queryMultiAdapter
+from zope.component import getMultiAdapter
 
 from plone.registry.interfaces import IRegistry
 from plone.memoize.instance import memoizedproperty
@@ -42,8 +43,10 @@ class MapLayer(object):
     @memoizedproperty
     def jsfactory(self):
         try:
-            template = self.context.restrictedTraverse(
-                str('%s-layer' % self.name))
+            template = getMultiAdapter(
+                (self.context, self.request),
+                str('%s-layer' % self.name)
+            )
         except AttributeError:
             return u""
         return template() % dict(title=self.Title, protocol=self.protocol)
@@ -61,8 +64,10 @@ class BingMapLayer(MapLayer):
         settings = getUtility(IRegistry).forInterface(IGeoSettings)
         api_key = settings.bingapi
         try:
-            template = self.context.restrictedTraverse(
-                str('%s-layer' % self.name))
+            template = getMultiAdapter(
+                (self.context, self.request),
+                str('%s-layer' % self.name)
+            )
         except AttributeError:
             return u""
         return template() % {
@@ -131,8 +136,10 @@ class ShapeDisplayLayer(MapLayer):
     @memoizedproperty
     def jsfactory(self):
         try:
-            template = self.context.restrictedTraverse(
-                str('%s-layer' % self.name))
+            template = getMultiAdapter(
+                (self.context, self.request),
+                str('%s-layer' % self.name)
+            )
         except AttributeError:
             return u""
 

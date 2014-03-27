@@ -1,5 +1,6 @@
 from Acquisition import aq_inner
 from zope.component import getUtility
+from zope.component import getMultiAdapter
 from Products.CMFCore.Expression import Expression, getExprContext
 
 from plone.memoize import instance, view
@@ -109,9 +110,9 @@ class GeoSettingsView(object):
     def language(self):
         """ Return the languagecode of the current context.
         """
-        portal_state = self.context.unrestrictedTraverse(
-            "@@plone_portal_state"
-        )
+        portal_state = getMultiAdapter(
+            (self.context, self.request),
+            name="plone_portal_state")
         lang = aq_inner(self.context).Language() or \
             portal_state.default_language()
 

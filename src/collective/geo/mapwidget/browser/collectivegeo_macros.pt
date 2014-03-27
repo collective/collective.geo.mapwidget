@@ -13,7 +13,7 @@
       A macro to include all necessary javascript files
     </tal:comment>
     <metal:openlayers define-macro="openlayers"
-        tal:define="geosettings python:context.restrictedTraverse('@@geosettings-view')">
+        tal:define="geosettings nocall:context/@@geosettings-view">
       <script type="text/javascript"
               tal:condition="geosettings/googlemaps"
               tal:attributes="src geosettings/google_maps_js"></script>
