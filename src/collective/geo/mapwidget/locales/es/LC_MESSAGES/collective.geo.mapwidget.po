@@ -1,16 +1,18 @@
 # collective.geo.mapwidget
-# Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2011.
+# Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2011 - 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.geo.mapwidget\n"
 "POT-Creation-Date: 2013-05-08 06:40+0000\n"
-"PO-Revision-Date: 2011-06-27 11:05-0400\n"
+"PO-Revision-Date: 2014-06-21 13:04-0430\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
-"Language-Team: Spanish <plone-conosur@lists.plone.org>\n"
+"Language-Team: ES <LL@li.org>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.7.1\n"
 "Language-Code: es\n"
 "Language-Name: Spanish\n"
 "Preferred-Encodings: utf-8 latin1\n"
@@ -47,7 +49,7 @@ msgstr "Configuración base"
 
 #: ../maplayers.py:77
 msgid "Bing"
-msgstr ""
+msgstr "Bing"
 
 #: ../maplayers.py:89
 msgid "Bing Aerial"
@@ -79,7 +81,7 @@ msgstr "Ajustes a la configuración collective.geo"
 
 #: ../browser/controlpanel.py:39
 msgid "Default map position"
-msgstr ""
+msgstr "Posición del mapa por defecto"
 
 #: ../interfaces.py:63
 msgid "Enable default layers."
@@ -109,6 +111,10 @@ msgstr "Si se define como verdadero, la implementación predeterminada de IMapLa
 #: ../browser/collectivegeo_macros.pt:81
 msgid "Insert the name of the location you are looking for and then click on search button. When a list of results will appear you can click on a location from the list to set the coordinates."
 msgstr ""
+"Introduzca el nombre de la ubicación que está buscando y a continuación, "
+"haga clic en el botón de búsqueda. Cuando aparece una lista de resultados "
+"que usted puede hacer clic en una ubicación en la lista para establecer las "
+"coordenadas."
 
 #: ../interfaces.py:96
 msgid "Javascript code which returns a new instance of this layer and does not expect any parameters"
@@ -133,11 +139,11 @@ msgstr "Capas"
 
 #: ../browser/geopointform.pt:14
 msgid "Manual settings"
-msgstr ""
+msgstr "Configuración manual"
 
 #: ../browser/geopointform.pt:5
 msgid "Map"
-msgstr ""
+msgstr "Mapa"
 
 #: ../interfaces.py:84
 msgid "Map Widgets"
@@ -176,6 +182,9 @@ msgstr "Establecer estilos predeterminados para las formas geográficas"
 #: ../browser/controlpanel.py:40
 msgid "Set the centre point and the zoom level of the map used when the system cannot use any other point to center the map (e.g. when displaying the map to georeference an item for the first time)"
 msgstr ""
+"Defina el punto central y el nivel de zoom del mapa utilizado cuando el "
+"sistema no puede utilizar cualquier otro punto para centrar el mapa (por "
+"ejemplo, al mostrar el mapa para georeferenciar un elemento por primera vez)"
 
 #: ../browser/controlpanel.py:61
 msgid "Style"
@@ -200,4 +209,3 @@ msgstr "El atributo del estilo del elemento HTML."
 #: ../interfaces.py:35
 msgid "Used to identify the map in the dom-tree and to lookup an IMapWidget component if necessary."
 msgstr "Se utiliza para identificar el mapa en el árbol DOM y para buscar un componente IMapWidget si es necesario."
-
