@@ -57,6 +57,7 @@ Contributors
 * Rob Gietema - robgietema
 * Leonardo J. Caballero G - macagua
 * Denis Krienbühl - href
+* Benoît Suttor - bsuttor
 
 
 .. _Plone: http://plone.org
