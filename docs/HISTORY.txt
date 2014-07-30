@@ -4,6 +4,10 @@ Changelog
 2.1.3 (unreleased)
 ------------------
 
+- Bug fix, utils check is a object use "use_custom_styles", 
+  if not sytles are take from global styles
+  [bsuttor]
+
 - Updated classifiers list for package
   [macagua]
 
