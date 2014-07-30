@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import urllib
 from geopy import geocoders
 from geopy.exc import GeocoderQueryError
@@ -16,11 +17,12 @@ from .interfaces import IGeoCoder
 def get_feature_styles(context):
     fields = [i for i in getFields(IGeoFeatureStyle)]
     manager = IGeoFeatureStyle(context, None)
-    if not manager:
+    use_custom_styles = getattr(manager, 'use_custom_styles', False)
+    if not use_custom_styles:
         registry = getUtility(IRegistry)
         manager = registry.forInterface(IGeoFeatureStyle)
     styles = {
-        'use_custom_styles': getattr(manager, 'use_custom_styles', False)
+        'use_custom_styles': use_custom_styles
     }
     for name in fields:
         styles[name] = getattr(manager, name, None)
