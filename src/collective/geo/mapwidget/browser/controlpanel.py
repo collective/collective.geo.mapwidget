@@ -72,6 +72,7 @@ class GeoStylesGroup(group.Group):
             'map_height',
             'polygoncolor',
             'display_properties',
+            'balloonstyle',
             'linewidth',
         )
         fields['linecolor'].widgetFactory = ColorpickerAlphaFieldWidget
