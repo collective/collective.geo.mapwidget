@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2013-05-08 06:40+0000\n"
+"POT-Creation-Date: 2014-08-16 13:20+0000\n"
 "PO-Revision-Date: 2009-09-20 13:24+0100\n"
 "Last-Translator: Anton Stonor <anton@headnet.dk>\n"
 "Language-Team: Anton Stonor <anton@headnet.dk>\n"
@@ -42,19 +42,19 @@ msgstr "Gem"
 msgid "Base settings"
 msgstr "Grundindstillinger"
 
-#: ../maplayers.py:77
+#: ../maplayers.py:82
 msgid "Bing"
 msgstr ""
 
-#: ../maplayers.py:89
+#: ../maplayers.py:94
 msgid "Bing Aerial"
 msgstr "Bing luftbilleder"
 
-#: ../maplayers.py:95
+#: ../maplayers.py:100
 msgid "Bing Hybrid"
 msgstr "Bing Hybrid"
 
-#: ../maplayers.py:83
+#: ../maplayers.py:88
 msgid "Bing Roads"
 msgstr "Bing veje"
 
@@ -91,11 +91,11 @@ msgstr "Find stedet"
 msgid "Geo Settings"
 msgstr "Kort-indstillinger"
 
-#: ../maplayers.py:101
+#: ../maplayers.py:106
 msgid "Google"
 msgstr "Google"
 
-#: ../maplayers.py:113
+#: ../maplayers.py:118
 msgid "Hybrid (Google)"
 msgstr "Hybrid (Google)"
 
@@ -103,7 +103,7 @@ msgstr "Hybrid (Google)"
 msgid "If set to true, the default IMapLayers implementation adds all enabled default layers from the geo settings tool."
 msgstr ""
 
-#: ../browser/collectivegeo_macros.pt:81
+#: ../browser/collectivegeo_macros.pt:82
 msgid "Insert the name of the location you are looking for and then click on search button. When a list of results will appear you can click on a location from the list to set the coordinates."
 msgstr ""
 
@@ -149,7 +149,7 @@ msgstr "Map id"
 msgid "No corresponding geographic location could be found for the specified location, possibly because the address is relatively new, or because it may be incorrect."
 msgstr "Kunne ikke finde stedet. Det kan skyldes, at adressen er relativ ny eller skrevet forkert."
 
-#: ../maplayers.py:54
+#: ../maplayers.py:57
 msgid "OpenStreetMap"
 msgstr "OpenStreetMap"
 
@@ -157,12 +157,12 @@ msgstr "OpenStreetMap"
 msgid "Returns some js-code to set up available layers."
 msgstr ""
 
-#: ../maplayers.py:107
+#: ../maplayers.py:112
 msgid "Satellite (Google)"
 msgstr "Satellit (Google)"
 
 #. Default: "Search"
-#: ../browser/collectivegeo_macros.pt:77
+#: ../browser/collectivegeo_macros.pt:78
 msgid "Search"
 msgstr "Søg"
 
@@ -182,7 +182,7 @@ msgstr "Layout"
 msgid "Style attribute"
 msgstr "Layout-attribut"
 
-#: ../maplayers.py:119
+#: ../maplayers.py:124
 msgid "Terrain (Google)"
 msgstr "Terrain (Google)"
 

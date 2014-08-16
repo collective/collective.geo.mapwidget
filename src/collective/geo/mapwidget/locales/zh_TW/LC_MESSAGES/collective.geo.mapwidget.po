@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.geo.mapwidget\n"
-"POT-Creation-Date: 2013-05-08 06:40+0000\n"
+"POT-Creation-Date: 2014-08-16 13:20+0000\n"
 "PO-Revision-Date: 2012-01-13 22:16+0800\n"
 "Last-Translator: TsungWei Hu <marr.tw@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,19 +42,19 @@ msgstr "啟用"
 msgid "Base settings"
 msgstr "基本設定"
 
-#: ../maplayers.py:77
+#: ../maplayers.py:82
 msgid "Bing"
 msgstr ""
 
-#: ../maplayers.py:89
+#: ../maplayers.py:94
 msgid "Bing Aerial"
 msgstr "Bing 衛星圖"
 
-#: ../maplayers.py:95
+#: ../maplayers.py:100
 msgid "Bing Hybrid"
 msgstr "Bing 混合圖"
 
-#: ../maplayers.py:83
+#: ../maplayers.py:88
 msgid "Bing Roads"
 msgstr "Bing 道路圖"
 
@@ -90,11 +90,11 @@ msgstr "搜尋地點"
 msgid "Geo Settings"
 msgstr "地圖設定"
 
-#: ../maplayers.py:101
+#: ../maplayers.py:106
 msgid "Google"
 msgstr "Google 地形圖"
 
-#: ../maplayers.py:113
+#: ../maplayers.py:118
 msgid "Hybrid (Google)"
 msgstr "Google 混合圖"
 
@@ -102,7 +102,7 @@ msgstr "Google 混合圖"
 msgid "If set to true, the default IMapLayers implementation adds all enabled default layers from the geo settings tool."
 msgstr ""
 
-#: ../browser/collectivegeo_macros.pt:81
+#: ../browser/collectivegeo_macros.pt:82
 msgid "Insert the name of the location you are looking for and then click on search button. When a list of results will appear you can click on a location from the list to set the coordinates."
 msgstr ""
 
@@ -147,7 +147,7 @@ msgstr "Map ID"
 msgid "No corresponding geographic location could be found for the specified location, possibly because the address is relatively new, or because it may be incorrect."
 msgstr "找不到對應的地點，可能因為地址過新，或是地址有誤。"
 
-#: ../maplayers.py:54
+#: ../maplayers.py:57
 msgid "OpenStreetMap"
 msgstr "OpenStreetMap"
 
@@ -155,11 +155,11 @@ msgstr "OpenStreetMap"
 msgid "Returns some js-code to set up available layers."
 msgstr "傳回 JavaScript 程式碼來設定圖層。"
 
-#: ../maplayers.py:107
+#: ../maplayers.py:112
 msgid "Satellite (Google)"
 msgstr "Google 衛星圖"
 
-#: ../browser/collectivegeo_macros.pt:77
+#: ../browser/collectivegeo_macros.pt:78
 msgid "Search"
 msgstr "搜尋"
 
@@ -179,7 +179,7 @@ msgstr "樣式"
 msgid "Style attribute"
 msgstr "樣式屬性值"
 
-#: ../maplayers.py:119
+#: ../maplayers.py:124
 msgid "Terrain (Google)"
 msgstr "Google 地形圖"
 

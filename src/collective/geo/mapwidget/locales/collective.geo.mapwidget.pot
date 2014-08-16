@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-05-08 06:40+0000\n"
+"POT-Creation-Date: 2014-08-16 13:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,19 +45,19 @@ msgstr ""
 msgid "Base settings"
 msgstr ""
 
-#: ../maplayers.py:77
+#: ../maplayers.py:82
 msgid "Bing"
 msgstr ""
 
-#: ../maplayers.py:89
+#: ../maplayers.py:94
 msgid "Bing Aerial"
 msgstr ""
 
-#: ../maplayers.py:95
+#: ../maplayers.py:100
 msgid "Bing Hybrid"
 msgstr ""
 
-#: ../maplayers.py:83
+#: ../maplayers.py:88
 msgid "Bing Roads"
 msgstr ""
 
@@ -93,11 +93,11 @@ msgstr ""
 msgid "Geo Settings"
 msgstr ""
 
-#: ../maplayers.py:101
+#: ../maplayers.py:106
 msgid "Google"
 msgstr ""
 
-#: ../maplayers.py:113
+#: ../maplayers.py:118
 msgid "Hybrid (Google)"
 msgstr ""
 
@@ -105,7 +105,7 @@ msgstr ""
 msgid "If set to true, the default IMapLayers implementation adds all enabled default layers from the geo settings tool."
 msgstr ""
 
-#: ../browser/collectivegeo_macros.pt:81
+#: ../browser/collectivegeo_macros.pt:82
 msgid "Insert the name of the location you are looking for and then click on search button. When a list of results will appear you can click on a location from the list to set the coordinates."
 msgstr ""
 
@@ -150,7 +150,7 @@ msgstr ""
 msgid "No corresponding geographic location could be found for the specified location, possibly because the address is relatively new, or because it may be incorrect."
 msgstr ""
 
-#: ../maplayers.py:54
+#: ../maplayers.py:57
 msgid "OpenStreetMap"
 msgstr ""
 
@@ -158,11 +158,11 @@ msgstr ""
 msgid "Returns some js-code to set up available layers."
 msgstr ""
 
-#: ../maplayers.py:107
+#: ../maplayers.py:112
 msgid "Satellite (Google)"
 msgstr ""
 
-#: ../browser/collectivegeo_macros.pt:77
+#: ../browser/collectivegeo_macros.pt:78
 msgid "Search"
 msgstr ""
 
@@ -182,7 +182,7 @@ msgstr ""
 msgid "Style attribute"
 msgstr ""
 
-#: ../maplayers.py:119
+#: ../maplayers.py:124
 msgid "Terrain (Google)"
 msgstr ""
 
