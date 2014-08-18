@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.geo.mapwidget\n"
-"POT-Creation-Date: 2013-05-08 06:40+0000\n"
+"POT-Creation-Date: 2014-08-16 13:20+0000\n"
 "PO-Revision-Date: 2013-09-11 15:30+0800\n"
 "Last-Translator: Jian Aijun <jianaijun@gmail.com>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sf.net>\n"
@@ -42,19 +42,19 @@ msgstr "应用"
 msgid "Base settings"
 msgstr "基本设置"
 
-#: ../maplayers.py:77
+#: ../maplayers.py:82
 msgid "Bing"
 msgstr "Bing"
 
-#: ../maplayers.py:89
+#: ../maplayers.py:94
 msgid "Bing Aerial"
 msgstr "Bing 卫星"
 
-#: ../maplayers.py:95
+#: ../maplayers.py:100
 msgid "Bing Hybrid"
 msgstr "Bing 混合"
 
-#: ../maplayers.py:83
+#: ../maplayers.py:88
 msgid "Bing Roads"
 msgstr "Bing 路况"
 
@@ -90,11 +90,11 @@ msgstr "查找地点"
 msgid "Geo Settings"
 msgstr "地理设置"
 
-#: ../maplayers.py:101
+#: ../maplayers.py:106
 msgid "Google"
 msgstr "Google"
 
-#: ../maplayers.py:113
+#: ../maplayers.py:118
 msgid "Hybrid (Google)"
 msgstr "混合 (Google)"
 
@@ -102,7 +102,7 @@ msgstr "混合 (Google)"
 msgid "If set to true, the default IMapLayers implementation adds all enabled default layers from the geo settings tool."
 msgstr "如果设置为true，默认的 IMapLayers 实现将从地理设置工具添加所有已启用默认图层。"
 
-#: ../browser/collectivegeo_macros.pt:81
+#: ../browser/collectivegeo_macros.pt:82
 msgid "Insert the name of the location you are looking for and then click on search button. When a list of results will appear you can click on a location from the list to set the coordinates."
 msgstr "要搜索地址，请输入地址并点击“搜索”按钮（或按 Enter 键）。搜索结果会显示在列表中，您可以单击列表中的一个位置来设置坐标。"
 
@@ -147,7 +147,7 @@ msgstr "地图 id"
 msgid "No corresponding geographic location could be found for the specified location, possibly because the address is relatively new, or because it may be incorrect."
 msgstr "在指定的位置无法找到相应的地理位置，可能因为地址是相对较新，或者它可能不正确。"
 
-#: ../maplayers.py:54
+#: ../maplayers.py:57
 msgid "OpenStreetMap"
 msgstr "OpenStreetMap"
 
@@ -155,11 +155,11 @@ msgstr "OpenStreetMap"
 msgid "Returns some js-code to set up available layers."
 msgstr "返回一些 js 代码来设置可用层。"
 
-#: ../maplayers.py:107
+#: ../maplayers.py:112
 msgid "Satellite (Google)"
 msgstr "卫星(Google)"
 
-#: ../browser/collectivegeo_macros.pt:77
+#: ../browser/collectivegeo_macros.pt:78
 msgid "Search"
 msgstr "搜索"
 
@@ -179,7 +179,7 @@ msgstr "样式"
 msgid "Style attribute"
 msgstr "样式属性"
 
-#: ../maplayers.py:119
+#: ../maplayers.py:124
 msgid "Terrain (Google)"
 msgstr "地形 (Google)"
 

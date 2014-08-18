@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2013-05-08 06:40+0000\n"
+"POT-Creation-Date: 2014-08-16 13:20+0000\n"
 "PO-Revision-Date: 2012-07-02 14:00+0000\n"
 "Last-Translator: Denis Krienbühl <denis.krienbuehl@gmail.com>\n"
 "Language-Team: <denis.krienbuehl@gmail.com>\n"
@@ -43,19 +43,19 @@ msgstr "Anwenden"
 msgid "Base settings"
 msgstr "Basis Einstellungen"
 
-#: ../maplayers.py:77
+#: ../maplayers.py:82
 msgid "Bing"
 msgstr "Bing"
 
-#: ../maplayers.py:89
+#: ../maplayers.py:94
 msgid "Bing Aerial"
 msgstr "Bing Luftbild"
 
-#: ../maplayers.py:95
+#: ../maplayers.py:100
 msgid "Bing Hybrid"
 msgstr "Bing Hybrid"
 
-#: ../maplayers.py:83
+#: ../maplayers.py:88
 msgid "Bing Roads"
 msgstr "Bing Strassen"
 
@@ -91,11 +91,11 @@ msgstr "Ortssuche"
 msgid "Geo Settings"
 msgstr "Geo Einstellungen"
 
-#: ../maplayers.py:101
+#: ../maplayers.py:106
 msgid "Google"
 msgstr "Google"
 
-#: ../maplayers.py:113
+#: ../maplayers.py:118
 msgid "Hybrid (Google)"
 msgstr "Hybrid (Google)"
 
@@ -103,7 +103,7 @@ msgstr "Hybrid (Google)"
 msgid "If set to true, the default IMapLayers implementation adds all enabled default layers from the geo settings tool."
 msgstr "Wenn wahr, zeigt die Standard IMapLayers Implementation alle aktivierten Standard-Ebenen der Geo Einstellungen."
 
-#: ../browser/collectivegeo_macros.pt:81
+#: ../browser/collectivegeo_macros.pt:82
 msgid "Insert the name of the location you are looking for and then click on search button. When a list of results will appear you can click on a location from the list to set the coordinates."
 msgstr "Geben Sie den Namen des Ortes ein den Sie suchen und klicken sie auf 'Suchen'. Aus der Resultatliste können Sie danach den gewünschten Ort anklicken um die Koordinaten zu setzen."
 
@@ -148,7 +148,7 @@ msgstr "Karten Id"
 msgid "No corresponding geographic location could be found for the specified location, possibly because the address is relatively new, or because it may be incorrect."
 msgstr "Es wurde keine geographische Position für den spezifierten Ort gefunden. Die Adresse ist entweder relativ neu oder inkorrekt."
 
-#: ../maplayers.py:54
+#: ../maplayers.py:57
 msgid "OpenStreetMap"
 msgstr "OpenStreetMap"
 
@@ -156,11 +156,11 @@ msgstr "OpenStreetMap"
 msgid "Returns some js-code to set up available layers."
 msgstr "Gibt Javascript Code zurück der die verfügbaren Ebenen aufbereitet."
 
-#: ../maplayers.py:107
+#: ../maplayers.py:112
 msgid "Satellite (Google)"
 msgstr "Satellit (Google)"
 
-#: ../browser/collectivegeo_macros.pt:77
+#: ../browser/collectivegeo_macros.pt:78
 msgid "Search"
 msgstr "Suchen"
 
@@ -180,7 +180,7 @@ msgstr ""
 msgid "Style attribute"
 msgstr "Style Attribut"
 
-#: ../maplayers.py:119
+#: ../maplayers.py:124
 msgid "Terrain (Google)"
 msgstr "Gelände (Google)"
 
