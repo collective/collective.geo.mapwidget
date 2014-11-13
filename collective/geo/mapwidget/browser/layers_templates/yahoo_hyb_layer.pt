@@ -1,1 +1,0 @@
-function(){return new OpenLayers.Layer.Yahoo('%(title)s',{'type':YAHOO_MAP_HYB,'sphericalMercator':true});}

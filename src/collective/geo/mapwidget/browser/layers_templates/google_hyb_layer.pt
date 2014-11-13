@@ -1,0 +1,1 @@
+function(){return new OpenLayers.Layer.Google('%(title)s',{'type':google.maps.MapTypeId.HYBRID,numZoomLevels:20,'sphericalMercator':true,transitionEffect:'resize'});}

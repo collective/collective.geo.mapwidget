@@ -1,9 +1,123 @@
 Changelog
 =========
 
-1.6 (unreleased)
+2.1.4 (unreleased)
+------------------
+
+- Nothing changed yet.
+
+
+2.1.3 (2014-08-16)
+------------------
+
+- Bug fix, utils check is a object use "use_custom_styles", 
+  if not sytles are take from global styles
+  [bsuttor]
+
+- Updated classifiers list for package
+  [macagua]
+
+- Updated Spanish translation
+  [macagua]
+
+- Use getMultiAdapter instead of restrictedTraverse in Views
+  [gborelli]
+
+
+2.1.2 (2014-03-16)
+------------------
+
+- Add content type location's attribute as default value
+  for geocoding input field
+  [gborelli]
+
+- Fix #14 - GeoCoderView
+  [gborelli]
+
+
+2.1.1 (2014-02-26)
+------------------
+
+- Fix geopy version; geopy 0.98.1 is currently broken
+  [gborelli]
+
+
+2.1 (2014-02-26)
 ----------------
 
+- Moved collective_geo_styles metadata and related indexer
+  from c.geo.contentlocations
+  [gborelli]
+
+- Added get_feature_styles method to retrieve map styles
+  [gborelli]
+
+- Fixed google.GQueryError ImportError
+  [Jian Aijun]
+
+- Updated German translation.
+  [href]
+
+
+2.0 (2013-10-29)
+----------------
+
+- Change package layout
+  [gborelli]
+
+- Re-adds previously used maxResolution and maxExtent options, fixing issues
+  with certain WMTS services. [href]
+
+
+2.0b1 (2013-06-02)
+------------------
+
+- move IGeoCoder utility from c.geo.mapwidget
+  [gborelli]
+
+- Prevent multiple inclusions of Google maps and Bing javascripts
+  [gborelli]
+
+- Moved Openlayers localization to geosettings_view
+  [gborelli]
+
+- Added ShapeDisplayLayer
+  [gborelli]
+
+- Documented javascript files with http://abstract-open-solutions.github.io/code-illuminated/
+  [gborelli]
+
+- Refactored collectivegeo javascript
+  [gborelli]
+
+- Moved static resource to static directory
+  [gborelli]
+
+- Removed all Yahoo maps references. See: collective.geo.bundle #19
+  [gborelli]
+
+- Removed YahooStreetMapLayer, YahooSatelliteMapLayer, YahooHybridMapLayer
+  and relative templates
+  [gborelli]
+
+- Removed yahoomaps, yahooapi, yahoo_maps_js from collective geo macros
+  [gborelli]
+
+- Added c.z3cform.colorpicker profile in metadata.xml. Now we depend on
+  c.z3cform.colorpicker > 0.2
+  [gborelli]
+
+- Added ShapeMapWidget and ShapeEditLayer and theirs respective adapters
+  [gborelli]
+
+
+1.6 (2013-01-29)
+----------------
+
+- added travs-ci configuration [gborelli]
+- refactored tests with plone.app.testing [gborelli]
+- removed tests.base module [gborelli]
+- removed imports from zope.app [gborelli]
 - Changed control panel form in order to make it more user friendly [gborelli]
 - Fixed translation domain in the collectivegeo_macros [rnd0101]
 - Allowed OSM and overlay URL helper functions to take into account
@@ -16,8 +130,8 @@ Changelog
 - Added German translation [href]
 - Changed javascript to indicate map loading through the custom 'map-load' event,
   ensuring that invisible maps on tabbed forms are loaded only when made visible.
-  Javascript code relying on collectivegeo.js must now implement 
-  $(window).bind('map-load', function(e, map) { }); which will be called once 
+  Javascript code relying on collectivegeo.js must now implement
+  $(window).bind('map-load', function(e, map) { }); which will be called once
   the map is ready. [href]
 - Disabled OpenLayer's KeyboardDefaults since they lead to the complete consumption
   of all + / - and arrow-key presses in input fields. [href]

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="collective.geo.mapwidget">
+
+  <includeDependencies package="." />
+  <i18n:registerTranslations directory="locales" />
+
+  <include package=".browser" />
+  <include file="profiles.zcml" />
+  <include file="maplayers.zcml" />
+
+  <adapter
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      provides="collective.geo.settings.interfaces.IGeoSettings"
+      factory="collective.geo.settings.utils.geo_settings"
+      />
+
+  <adapter
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      provides="collective.geo.settings.interfaces.IGeoFeatureStyle"
+      factory="collective.geo.settings.utils.geo_styles"
+      />
+
+  <utility
+      factory=".vocabularies.maplayersVocab"
+      name="maplayersVocab"
+      provides="zope.schema.interfaces.IVocabularyFactory" />
+
+
+  <utility
+    provides=".interfaces.IGeoCoder"
+    factory=".utils.get_geocoder"
+    />
+
+  <adapter
+      factory='.indexer.collective_geo_styles'
+      name='collective_geo_styles' />
+
+
+</configure>

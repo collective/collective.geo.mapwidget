@@ -1,0 +1,94 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="collective.geo.mapwidget"
+      tal:omit-tag="">
+  <head>
+  </head>
+
+  <body>
+
+    <tal:comment replace="nothing">
+      A macro to include all necessary javascript files
+    </tal:comment>
+    <metal:openlayers define-macro="openlayers"
+        tal:define="geosettings nocall:context/@@geosettings-view">
+      <script type="text/javascript"
+              tal:condition="geosettings/googlemaps"
+              tal:attributes="src geosettings/google_maps_js"></script>
+      <script type="text/javascript"
+              tal:condition="geosettings/bingmaps"
+              tal:attributes="src geosettings/bing_maps_js"></script>
+
+      <tal:localization condition="geosettings/localize">
+        <script type="text/javascript"
+          tal:attributes="src geosettings/language_file"
+          ></script>
+      </tal:localization>
+    </metal:openlayers>
+
+    <tal:comment replace="nothing">
+      This macro define collective.geo map html infrastructure.
+      It needs a variable 'cgmap' in the namespace.
+      It include also extra javascript for layers configuration.
+    </tal:comment>
+    <metal:mapwidget define-macro="map-widget"
+                  tal:define="cgmap nocall:cgmap | nothing;
+                              mapwidgets view/@@collectivegeo-maps/mapwidgets;
+                              cgmap python:cgmap or mapwidgets[0];
+                              mapid cgmap/mapid | string:map;
+                              map_defaults cgmap/map_defaults">
+      <div id="map" class="widget-cgmap"
+           tal:attributes="id mapid;
+              class cgmap/klass | string:widget-cgmap;
+              style context/@@collectivegeo-macros/map_inline_css;
+              data-cgeolatitude map_defaults/latitude|nothing;
+              data-cgeolongitude map_defaults/longitude|nothing;
+              data-cgeozoom map_defaults/zoom|nothing;
+              data-cgeolang map_defaults/lang|nothing;
+              data-geocoderurl map_defaults/geocoderurl|nothing;">
+        <!-- openlayers map -->
+      </div>
+      <script type="text/javascript"
+              tal:content="structure cgmap/layers/js | nothing"></script>
+      <script type="text/javascript"
+              tal:condition="cgmap/js|nothing"
+              tal:content="structure cgmap/js"><!-- additional javascript --></script>
+    </metal:mapwidget>
+
+    <tal:comment replace="nothing">
+      Macro to create html structure to geocoding feature.
+      It needs mapid variable to work.
+    </tal:comment>
+    <metal:geocoding define-macro="geocoding">
+      <div class="geocoder-widget"
+          tal:attributes="id string:${mapid}-geocoder">
+        <label for="geocoding-address"
+               i18n:translate="">Find places</label>
+        <div style="display: none"
+          class="geocoder-error fieldErrorBox"
+          i18n:translate="">No corresponding geographic location
+          could be found for the specified location,
+          possibly because the address is relatively new,
+          or because it may be incorrect.
+        </div>
+        <input type="text" value="" name="geocoding-address"
+          tal:attributes="value context/location|context/getLocation|nothing">
+        <button><span i18n:translate="">Search</span></button>
+        <div class="results" style="display: none">
+          <ul></ul>
+        </div>
+        <div class="formHelp" i18n:translate="">Insert the name of the
+         location you are looking for and then click on search button.
+         When a list of results will appear you can click on a location
+         from the list to set the coordinates.
+        </div>
+
+      </div>
+
+      <div class="visualClear" ><!-- clear floats --></div>
+    </metal:geocoding>
+  </body>
+
+</html>

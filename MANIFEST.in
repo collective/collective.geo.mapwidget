@@ -1,1 +1,4 @@
-global-include *.rst *.txt *.zcml *.pt *.js *.png *.pot *.po *.mo *.sh *.xml *.GPL
+recursive-include src *
+recursive-include docs *
+include *
+global-exclude *.pyc

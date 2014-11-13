@@ -1,0 +1,205 @@
+# collective.geo.mapwidget
+# Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2011 - 2014.
+msgid ""
+msgstr ""
+"Project-Id-Version: collective.geo.mapwidget\n"
+"POT-Creation-Date: 2014-08-16 13:20+0000\n"
+"PO-Revision-Date: 2014-06-21 13:04-0430\n"
+"Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
+"Language-Team: ES <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language-Code: es\n"
+"Language-Name: Spanish\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.geo.mapwidget\n"
+"Language: es\n"
+"X-Generator: Virtaal 0.7.1\n"
+"X-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
+
+#: ../interfaces.py:59
+msgid "A mapping from layerids to ILayers"
+msgstr "Un mapeo de layerids a ILayers"
+
+#: ../interfaces.py:85
+msgid "A mapping from mapids to IMapWidgets"
+msgstr "Un mapeo de mapids a IMapWidgets"
+
+#: ../interfaces.py:53
+msgid "Additional Javascript code inserted after the map widget."
+msgstr "código de Javascript adicional insertado después del widget de mapa."
+
+#: ../browser/controlpanel.py:84
+msgid "Advanced"
+msgstr "Avanzado"
+
+#: ../browser/controlpanel.py:85
+msgid "Advanced configurations"
+msgstr "Configuraciones avanzadas"
+
+#: ../browser/controlpanel.py:142
+msgid "Apply"
+msgstr "Aplica"
+
+#: ../browser/controlpanel.py:115
+msgid "Base settings"
+msgstr "Configuración base"
+
+#: ../maplayers.py:82
+msgid "Bing"
+msgstr "Bing"
+
+#: ../maplayers.py:94
+msgid "Bing Aerial"
+msgstr "Bing Aérea"
+
+#: ../maplayers.py:100
+msgid "Bing Hybrid"
+msgstr "Bing Híbrido"
+
+#: ../maplayers.py:88
+msgid "Bing Roads"
+msgstr "Bing Carreteras"
+
+#: ../browser/controlpanel.py:162
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: ../interfaces.py:41
+msgid "Class attribute"
+msgstr "Atributo de Clase"
+
+#: ../browser/controlpanel.py:177
+msgid "Collective Geo Default Settings"
+msgstr "Configuración predeterminada collective.geo"
+
+#: ../browser/controlpanel.py:117
+msgid "Configure Collective Geo Settings"
+msgstr "Ajustes a la configuración collective.geo"
+
+#: ../browser/controlpanel.py:39
+msgid "Default map position"
+msgstr "Posición del mapa por defecto"
+
+#: ../interfaces.py:63
+msgid "Enable default layers."
+msgstr "Habilitar capas por defecto"
+
+#. Default: "Find places"
+#: ../browser/collectivegeo_macros.pt:67
+msgid "Find places"
+msgstr "Buscar lugares"
+
+#: ../browser/controlpanel.py:176
+msgid "Geo Settings"
+msgstr "Ajustes Geográfica"
+
+#: ../maplayers.py:106
+msgid "Google"
+msgstr "Google"
+
+#: ../maplayers.py:118
+msgid "Hybrid (Google)"
+msgstr "Híbrido (Google)"
+
+#: ../interfaces.py:64
+msgid "If set to true, the default IMapLayers implementation adds all enabled default layers from the geo settings tool."
+msgstr "Si se define como verdadero, la implementación predeterminada de IMapLayers agrega todas las capas activas por defecto desde la herramienta de configuración geográfica."
+
+#: ../browser/collectivegeo_macros.pt:82
+msgid "Insert the name of the location you are looking for and then click on search button. When a list of results will appear you can click on a location from the list to set the coordinates."
+msgstr "Introduzca el nombre de la ubicación que está buscando y a continuación, haga clic en el botón de búsqueda. Cuando aparece una lista de resultados que usted puede hacer clic en una ubicación en la lista para establecer las coordenadas."
+
+#: ../interfaces.py:96
+msgid "Javascript code which returns a new instance of this layer and does not expect any parameters"
+msgstr "El código Javascript el cual devuelve una nueva instancia de esta capa y no espera que todos los parámetros"
+
+#: ../interfaces.py:52
+msgid "Javascript extras"
+msgstr "Javascript extras"
+
+#: ../interfaces.py:95
+msgid "Javascript factory"
+msgstr "Fábrica Javascript"
+
+#: ../interfaces.py:24
+msgid "Javascript to configure layers."
+msgstr "Javascript para configurar las capas."
+
+#: ../browser/controlpanel.py:105
+#: ../interfaces.py:58
+msgid "Layers"
+msgstr "Capas"
+
+#: ../browser/geopointform.pt:14
+msgid "Manual settings"
+msgstr "Configuración manual"
+
+#: ../browser/geopointform.pt:5
+msgid "Map"
+msgstr "Mapa"
+
+#: ../interfaces.py:84
+msgid "Map Widgets"
+msgstr "Widgets de Mapas"
+
+#: ../interfaces.py:34
+msgid "Map id"
+msgstr "Id de Mapa"
+
+#. Default: "No corresponding geographic location could be found for the specified location, possibly because the address is relatively new, or because it may be incorrect."
+#: ../browser/collectivegeo_macros.pt:69
+msgid "No corresponding geographic location could be found for the specified location, possibly because the address is relatively new, or because it may be incorrect."
+msgstr "No hay ubicación geográfica correspondiente se pudo encontrar para la ubicación especificada, posiblemente porque la dirección es relativamente nueva, o porque puede ser incorrecta."
+
+#: ../maplayers.py:57
+msgid "OpenStreetMap"
+msgstr "Open Street Map"
+
+#: ../interfaces.py:25
+msgid "Returns some js-code to set up available layers."
+msgstr "Devuelve algún código Javascript para configurar las capas disponibles."
+
+#: ../maplayers.py:112
+msgid "Satellite (Google)"
+msgstr "Satélite (Google)"
+
+#. Default: "Search"
+#: ../browser/collectivegeo_macros.pt:78
+msgid "Search"
+msgstr "Buscar"
+
+#: ../browser/controlpanel.py:62
+msgid "Set default styles for geographical shapes"
+msgstr "Establecer estilos predeterminados para las formas geográficas"
+
+#: ../browser/controlpanel.py:40
+msgid "Set the centre point and the zoom level of the map used when the system cannot use any other point to center the map (e.g. when displaying the map to georeference an item for the first time)"
+msgstr "Defina el punto central y el nivel de zoom del mapa utilizado cuando el sistema no puede utilizar cualquier otro punto para centrar el mapa (por ejemplo, al mostrar el mapa para georeferenciar un elemento por primera vez)"
+
+#: ../browser/controlpanel.py:61
+msgid "Style"
+msgstr "Estilo"
+
+#: ../interfaces.py:47
+msgid "Style attribute"
+msgstr "Atributo de Estilo"
+
+#: ../maplayers.py:124
+msgid "Terrain (Google)"
+msgstr "Tierra (Google)"
+
+#: ../interfaces.py:42
+msgid "The html element class attribute."
+msgstr "El atributo de la clase del elemento HTML."
+
+#: ../interfaces.py:48
+msgid "The html element style attribute."
+msgstr "El atributo del estilo del elemento HTML."
+
+#: ../interfaces.py:35
+msgid "Used to identify the map in the dom-tree and to lookup an IMapWidget component if necessary."
+msgstr "Se utiliza para identificar el mapa en el árbol DOM y para buscar un componente IMapWidget si es necesario."
+
