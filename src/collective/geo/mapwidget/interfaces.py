@@ -109,7 +109,7 @@ class IGeoCoder(Interface):
     """Adapter for geocoding feature
     """
 
-    def retrieve(address=None, google_api=None):
+    def retrieve(address=None, google_api=None, language=None):
         """Retrieve coordinates by an address
 
         :param address: a string representing an address
