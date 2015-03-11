@@ -3,9 +3,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2014-08-16 13:20+0000\n"
+"POT-Creation-Date: 2015-03-11 14:14+0000\n"
 "PO-Revision-Date: 2009-06-12  21:28+0000\n"
-"Last-Translator: Fabien Moret <martronic@martronic.ch>\n"
+"Last-Translator: Matthias Broquet [tiazma] <mbroquet@atreal.fr>\n"
 "Language-Team: Giorgio Borelli <giorgio@giorgioborelli.it>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -79,16 +79,16 @@ msgstr "Configurer Collective Geo"
 
 #: ../browser/controlpanel.py:39
 msgid "Default map position"
-msgstr ""
+msgstr "Position initiale sur la carte"
 
 #: ../interfaces.py:63
 msgid "Enable default layers."
-msgstr ""
+msgstr "Activer les calques par défaut"
 
 #. Default: "Find places"
 #: ../browser/collectivegeo_macros.pt:67
 msgid "Find places"
-msgstr "Rechercher des lieux"
+msgstr "Rechercher un emplacement"
 
 #: ../browser/controlpanel.py:176
 msgid "Geo Settings"
@@ -108,11 +108,11 @@ msgstr "Si vrai, l'implémentation IMapLayers par défaut ajoute tous les caclqu
 
 #: ../browser/collectivegeo_macros.pt:82
 msgid "Insert the name of the location you are looking for and then click on search button. When a list of results will appear you can click on a location from the list to set the coordinates."
-msgstr ""
+msgstr "Saisissez ici le nom de l'emplacement que vous recherchez. Une liste de résultat apparait ensuite ci-dessous, dans laquelle vous pouvez sélectionnez l'élément qui correspond à votre recherche."
 
 #: ../interfaces.py:96
 msgid "Javascript code which returns a new instance of this layer and does not expect any parameters"
-msgstr "Un code javascript qui retournu une nouvelle instance du calcque et qui n'attend aucun paramètre"
+msgstr "Un code javascript qui retourne une nouvelle instance du calcque et qui n'attend aucun paramètre"
 
 #: ../interfaces.py:52
 msgid "Javascript extras"
@@ -133,7 +133,7 @@ msgstr "Calques"
 
 #: ../browser/geopointform.pt:14
 msgid "Manual settings"
-msgstr ""
+msgstr "Paramétrage manuel"
 
 #: ../browser/geopointform.pt:5
 msgid "Map"
@@ -175,7 +175,7 @@ msgstr "Définissez le style par défaut pour les formes géographiques"
 
 #: ../browser/controlpanel.py:40
 msgid "Set the centre point and the zoom level of the map used when the system cannot use any other point to center the map (e.g. when displaying the map to georeference an item for the first time)"
-msgstr ""
+msgstr "Définissez ici la position initiale de la carte ainsi que le niveau de zoom. Ces valeurs seront utilisées lors du premier chargement du widget si aucune valeur par défaut n'a été définie."
 
 #: ../browser/controlpanel.py:61
 msgid "Style"

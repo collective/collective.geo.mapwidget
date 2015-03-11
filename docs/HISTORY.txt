@@ -4,6 +4,12 @@ Changelog
 2.1.4 (unreleased)
 ------------------
 
+- Added more french translations
+  [tiazma]
+
+- Precised translation domian in macro context
+  [tiazma]
+
 - Fixed error occurring when no location found
   [tiazma]
 
