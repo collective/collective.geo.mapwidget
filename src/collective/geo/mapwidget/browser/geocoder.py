@@ -27,6 +27,10 @@ class GeoCoderView(BrowserView):
             locations = self.geocoder.retrieve(address, google_api, language)
         except GeocoderQueryError:
             return 'null'
+
+        if not locations:
+            return 'null'
+
         return json.dumps(
             [(loc.address, (loc.latitude, loc.longitude)) for loc in locations]
         )
