@@ -18,9 +18,9 @@ Requirements
 * geopy >= 0.98
 * `Plone`_ >= 4.2
 * `plone.app.z3cform`_
-* `collective.z3cform.colorpicker`_ >= 1.1
+* `collective.z3cform.colorpicker`_ >= 1.2
 * `collective.geo.openlayers`_ >= 3.1
-* `collective.geo.settings`_ >= 3.0
+* `collective.geo.settings`_ >= 3.1
 
 
 Installation
