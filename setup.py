@@ -40,8 +40,8 @@ setup(name='collective.geo.mapwidget',
           'Products.CMFCore',
           'plone.app.z3cform',
           'collective.geo.openlayers >= 3.1',
-          'collective.geo.settings >= 3.0',
-          'collective.z3cform.colorpicker >= 1.1',
+          'collective.geo.settings >= 3.1',
+          'collective.z3cform.colorpicker >= 1.2',
       ],
       extras_require={
           'test': [
