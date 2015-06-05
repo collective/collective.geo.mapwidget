@@ -89,7 +89,8 @@ class DummyGeoCoderResult(object):
 
 class DummyGeoCoder(GeoCoderUtility):
 
-    def retrieve(self, address=None, google_api=None):  # pylint: disable=W0613
+    def retrieve(self, address=None, google_api=None,
+                 language=None):  # pylint: disable=W0613
         for item in test_params:
             if address == item['address']:
                 return [DummyGeoCoderResult(res) for res in item['output']]

@@ -61,7 +61,7 @@
       Macro to create html structure to geocoding feature.
       It needs mapid variable to work.
     </tal:comment>
-    <metal:geocoding define-macro="geocoding">
+    <metal:geocoding define-macro="geocoding" i18n:domain="collective.geo.mapwidget">
       <div class="geocoder-widget"
           tal:attributes="id string:${mapid}-geocoder">
         <label for="geocoding-address"

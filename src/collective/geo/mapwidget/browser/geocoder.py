@@ -2,7 +2,7 @@ try:
     import json
 except ImportError:
     import simplejson as json
-from zope.component import getUtility
+from zope.component import getUtility, getMultiAdapter
 from Products.Five.browser import BrowserView
 from geopy.exc import GeocoderQueryError
 
@@ -18,10 +18,19 @@ class GeoCoderView(BrowserView):
         self.geocoder = getUtility(IGeoCoder)
 
     def __call__(self, address=None, google_api=None):
+        context = self.context.aq_inner
+        portal_state = getMultiAdapter((context, self.request),
+                                       name=u'plone_portal_state')
+        language = portal_state.language()
+
         try:
-            locations = self.geocoder.retrieve(address, google_api)
+            locations = self.geocoder.retrieve(address, google_api, language)
         except GeocoderQueryError:
             return 'null'
+
+        if not locations:
+            return 'null'
+
         return json.dumps(
             [(loc.address, (loc.latitude, loc.longitude)) for loc in locations]
         )
