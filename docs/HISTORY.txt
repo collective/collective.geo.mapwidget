@@ -4,7 +4,8 @@ Changelog
 2.3 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Updated classifiers list for package
+  [macagua]
 
 
 2.2 (2015-05-02)
