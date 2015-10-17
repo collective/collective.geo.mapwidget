@@ -1,33 +1,19 @@
-from Acquisition import aq_inner
-
-from zope.schema import Choice
-from zope.schema.interfaces import IVocabularyFactory
-from zope.interface import implements
-from zope.component import queryUtility
-from zope.event import notify
-
-from z3c.form import field, form, subform, button
-from z3c.form.interfaces import IFormLayer
-
-from plone.z3cform import z2
-from plone.z3cform.fieldsets import extensible, group
-
-from Products.Five import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+# -*- coding: utf-8 -*-
 from Products.CMFPlone.utils import getToolByName
-
-from collective.z3cform.colorpicker.colorpickeralpha import (
-    ColorpickerAlphaFieldWidget
-)
-
-from collective.geo.settings.interfaces import IGeoSettings, IGeoFeatureStyle
-from collective.geo.settings.events import GeoSettingsEvent
-
-from collective.geo.mapwidget.interfaces import IMapView
-from collective.geo.mapwidget.browser.widget import MapWidget
-from collective.geo.mapwidget.maplayers import MapLayer
-
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from collective.geo.mapwidget import GeoMapwidgetMessageFactory as _
+from collective.geo.mapwidget.browser.widget import MapWidget
+from collective.geo.mapwidget.interfaces import IMapView
+from collective.geo.settings.events import GeoSettingsEvent
+from collective.geo.settings.interfaces import IGeoSettings, IGeoFeatureStyle
+from collective.z3cform.colorpicker.colorpickeralpha import \
+    ColorpickerAlphaFieldWidget
+from plone.z3cform.fieldsets import extensible, group
+from plone.z3cform.layout import FormWrapper
+from z3c.form import field, form, subform, button
+from zope.event import notify
+from zope.interface import implements
+from zope.schema import Choice
 
 
 def back_to_controlpanel(context):
@@ -109,6 +95,8 @@ def control_panel_fields():
 
 
 class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
+
+    # This is a copy of plone/app/z3cform/templates/macros.pt plus subforms
     template = ViewPageTemplateFile('form-with-subforms.pt')
     form.extends(form.EditForm, ignoreButtons=True)
 
@@ -117,6 +105,9 @@ class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
     heading = _(u'Configure Collective Geo Settings')
     fields = control_panel_fields()
     groups = (GeoStylesGroup, GeoAdvancedConfGroup)
+    label = _(u'Geo Settings')
+    form_name = _(u"Configure element")
+    description = _(u"Collective Geo Default Settings")
 
     level = 1
 
@@ -169,48 +160,10 @@ class GeoControlpanelForm(extensible.ExtensibleForm, form.EditForm):
         return back_to_controlpanel(self.context)['url']
 
 
-# TODO: Extend plone.z3cform.FormWrapper
-class GeoControlpanel(BrowserView):
-    __call__ = ViewPageTemplateFile('controlpanel.pt')
+class GeoControlpanel(FormWrapper):
 
-    label = _(u'Geo Settings')
-    description = _(u"Collective Geo Default Settings")
-    request_layer = IFormLayer
+    index = ViewPageTemplateFile('controlpanel.pt')
     form = GeoControlpanelForm
-
-    # NOTE: init code taken from plone.z3cform FormWrapper...
-    #       maybe extending FormWrapper would be an option?
-    def __init__(self, context, request):
-        super(GeoControlpanel, self).__init__(context, request)
-        if self.form is not None:
-            self.form_instance = self.form(
-                aq_inner(self.context),
-                self.request
-            )
-            self.form_instance.__name__ = self.__name__
-
-    @property
-    def back_link(self):
-        return back_to_controlpanel(self.context)['url']
-
-    def contents(self):
-        z2.switch_on(self)
-        self.form_instance.update()
-        return self.form_instance.render()
-
-    def update(self):
-        # see:
-        # Module plone.app.z3cform.kss.validation, line 47, in validate_input
-        # AttributeError: 'GeoControlpanel' object has no attribute 'update'
-        self.form_instance.update()
-        self.prefix = self.form_instance.prefix
-        self.widgets = self.form_instance.widgets
-        self.groups = self.form_instance.groups
-
-    def extractData(self):
-        """Stupid fix for plone.app.z3cform v. 0.5.0 - kss validation
-        """
-        return self.form_instance.extractData()
 
 
 class ControlPanelMapWidget(MapWidget):
