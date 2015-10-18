@@ -68,7 +68,7 @@ and use these configuration to initialize Openlayer maps.
     >>> print view()
     <html xmlns="http://www.w3.org/1999/xhtml">
     ...
-          <div id="default-cgmap" class="widget-cgmap" data-cgeolongitude="0.0" data-cgeolatitude="0.0" data-geocoderurl="http://nohost/plone/geocoderview" data-cgeozoom="10.0">
+          <div id="default-cgmap" class="widget-cgmap" data-cgeolatitude="0.0" data-cgeolongitude="0.0" data-cgeozoom="10.0" data-geocoderurl="http://nohost/plone/geocoderview">
     ...
 
 TODO: include map configuration with data attributes
@@ -144,7 +144,7 @@ Let's check this:
     >>> print view()
     <html xmlns="http://www.w3.org/1999/xhtml">
     ...
-        <div id="default-cgmap" class="widget-cgmap" data-cgeolongitude="0.0" data-cgeolatitude="0.0" data-geocoderurl="http://nohost/plone/geocoderview" data-cgeozoom="10.0">
+        <div id="default-cgmap" class="widget-cgmap" data-cgeolatitude="0.0" data-cgeolongitude="0.0" data-cgeozoom="10.0" data-geocoderurl="http://nohost/plone/geocoderview">
     ...
 
 That said, we can set these options and see the change reflected on our
@@ -337,14 +337,6 @@ name). So let's update our configuraion and fields:
           </div>
     ...
 
-The defaul IMaps implementation complains if an element
-in mapfields is not a string or IMapWidget:
-
-    >>> view.mapfields = ['mw1', mw2, None]
-    >>> print view()
-    Traceback (most recent call last):
-    ...
-    ValueError: Can't create IMapWidget for None
 
 Now we have covered the most important things about map widgets.
 Set us try some things with map layers.
@@ -418,15 +410,9 @@ request, context, widget), name):
             function(){return new OpenLayers.Layer.Bing({
     ...
 
-If _layers contains somethin which can't be converted into an IMapLayer
-instance, me get an exception:
-
-    >>> mw1._layers = ['bsm', None]
-    >>> print view()
-    Traceback (most recent call last):
-    ...
-    ValueError: Can't create IMapLayer for None
-
+If _layers contains something which can't be converted into an IMapLayer
+instance it will set a default location of
+data-cgeolatitude="0.0" data-cgeolongitude="0.0".
 
 Let's create a custom layer.
 
