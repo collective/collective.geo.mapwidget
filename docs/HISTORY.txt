@@ -4,6 +4,18 @@ Changelog
 2.3 (unreleased)
 ----------------
 
+- Fixed tests and doctests for plone5 and external api modifications
+  [pbauer]
+
+- moved resources to new plone5 resource registry
+  [pbauer]
+
+- Modified controlpanel code to use FormWrapper machinery
+  [pbauer]
+
+- Updated javascript to draw the map in new plone5 mockup hidden tab
+  [pbauer]
+
 - Updated classifiers list for package
   [macagua]
 
@@ -24,7 +36,7 @@ Changelog
 2.1.3 (2014-08-16)
 ------------------
 
-- Bug fix, utils check is a object use "use_custom_styles", 
+- Bug fix, utils check is a object use "use_custom_styles",
   if not sytles are take from global styles
   [bsuttor]
 
