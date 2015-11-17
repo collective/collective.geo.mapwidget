@@ -10,6 +10,18 @@ Changelog
 2.3 (2015-11-17)
 ----------------
 
+- Fixed tests and doctests for plone5 and external api modifications
+  [pbauer]
+
+- moved resources to new plone5 resource registry
+  [pbauer]
+
+- Modified controlpanel code to use FormWrapper machinery
+  [pbauer]
+
+- Updated javascript to draw the map in new plone5 mockup hidden tab
+  [pbauer]
+
 - Updated classifiers list for package
   [macagua]
 

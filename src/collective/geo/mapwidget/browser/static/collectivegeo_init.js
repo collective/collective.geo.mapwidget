@@ -115,7 +115,7 @@
         // get hidden maps (maps with no size yet)
         maps = $('.widget-cgmap').filter(':hidden');
         if (maps.length > 0) {
-            tabs = $('select.formTabs, ul.formTabs');
+            tabs = $('.autotoc-nav, .formTabs, ul.formTabs');
             tabs.bind("onClick", function (e, index) {
                 var curpanel = $(this).data('tabs').getCurrentPane();
                 curpanel.find('.widget-cgmap').collectivegeo(); // refresh
@@ -123,7 +123,7 @@
                 curpanel.find('.map-widget .widget-cgmap').collectivegeo('add_geocoder');
             });
         }
-        
+
 
         // === Collective.geo controlpanel ==
         //

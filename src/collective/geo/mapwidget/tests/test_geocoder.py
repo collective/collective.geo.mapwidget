@@ -23,56 +23,11 @@ test_params = [
     {
         'address': "Torino Italy",
         'output': [
-            (
-                u'Turin, Italy',
-                (45.070562099999997, 7.6866186000000001)
-            )
-        ]
-    },
-
-    {
-        'address': "Serravalle Italy",
-        'output': [
-            (
-                u'Serravalle di Chienti Macerata, Italy',
-                (43.075758700000002, 12.957291700000001)
-            ),
-            (
-                u'46030 Serravalle a Po Mantua, Italy',
-                (45.071769699999997, 11.0986653)
-            ),
-            (
-                u'Serravalle, 50019 Sesto Fiorentino Florence, Italy',
-                (43.847528799999999, 11.2683242)
-            ),
-            (
-                u'Serravalle, 12026 Piasco Cuneo, Italy',
-                (44.5675697, 7.4256900000000003)
-            ),
-            (
-                u'Serravalle, 06046 Norcia Perugia, Italy',
-                (42.785488399999998, 13.022334499999999)
-            ),
-            (
-                u'Serravalle, 54023 Filattiera Massa-Carrara, Italy',
-                (44.367425699999998, 9.9383029000000001)
-            ),
-            (
-                u'Serravalle, Berra Ferrara, Italy',
-                (44.967833300000002, 12.044703699999999)
-            ),
-            (
-                u'Serravalle, Asti, Italy',
-                (44.947478799999999, 8.1465417999999996)
-            ),
-            (
-                u'Serravalle, Bibbiena Arezzo, Italy',
-                (43.7736485, 11.8429064)
-            ),
-            (
-                u'Serravalle, 38061 Ala Trento, Italy',
-                (45.811786499999997, 11.0141562)
-            )
+            (u'Metropolitan City of Turin, Italy', (45.070312, 7.686856499999999)),  # noqa
+            (u'10040 Torino, Italy', (45.21208780000001, 7.7309388)),
+            (u'66020 Torino, Italy', (42.1852556, 14.53967)),
+            (u'Torino, Italy', (42.23149050000001, 14.5476195)),
+            (u'44037 Torino, Italy', (44.88877919999999, 11.9911579))
         ]
     }
 ]
@@ -113,15 +68,12 @@ class TestGeocoder(unittest.TestCase):
         for item in test_params:
             locations = self.geo.retrieve(item['address'])
             self.assertEquals(
-                [(loc.address, (loc.latitude, loc.longitude))
-                    for loc in locations],
+                [(loc.address, (loc.latitude, loc.longitude)) for loc in locations],
                 item['output']
             )
 
     def test_geocoder_error(self):
-        self.assertRaises(GeocoderQueryError,
-                          self.geo.retrieve,
-                          "not existent place aklhj asaas")
+        self.assertIsNone(self.geo.retrieve("not existent place aklhj asaas"))
 
     def test_geocoder_view(self):
         browser = Browser(self.layer['app'])

@@ -1,24 +1,20 @@
 <h3 tal:content="structure view/heading|nothing" />
 <div class="formHelp" tal:content="structure view/contents_top|nothing" />
 <div tal:attributes="class view/css_class|nothing" i18n:domain="collective.geo.mapwidget">
-  <dl id="map-form-wrapper" class="enableFormTabbing">
-    <dt id="fieldsetlegend-map"
-        i18n:translate="">
-      Map
-    </dt>
-    <dd id="fieldset-map"
+  <div id="map-form-wrapper">
+    <div id="fieldset-map"
         tal:define="mapid string:geosettings-cgmap">
       <metal:use use-macro="context/@@collectivegeo-macros/geocoding"/>
       <metal:map use-macro="context/@@collectivegeo-macros/map-widget" />
-    </dd>
-    <dt id="fieldsetlegend-advanced"
+    </div>
+    <div id="fieldsetlegend-advanced"
         i18n:translate="">
       Manual settings
-    </dt>
-    <dd id="fieldset-advanced">
+    </div>
+    <div id="fieldset-advanced">
       <metal:use use-macro="context/@@ploneform-macros/fields" />
-    </dd>
-  </dl>
+    </div>
+  </div>
 </div>
 <div class="visualClear"><!-- The buttons *should* be shown --></div>
 <metal:use use-macro="context/@@ploneform-macros/actions" />
