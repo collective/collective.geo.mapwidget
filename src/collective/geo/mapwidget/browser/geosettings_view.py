@@ -1,7 +1,6 @@
 from Acquisition import aq_inner
 from zope.component import getUtility
 from zope.component import getMultiAdapter
-from Products.CMFCore.Expression import Expression, getExprContext
 
 from plone.memoize import instance, view
 from plone.registry.interfaces import IRegistry
@@ -30,7 +29,7 @@ class GeoSettingsView(object):
 
     @property
     def zoom(self):
-        return  self.geosettings.zoom
+        return self.geosettings.zoom
 
     @property
     def map_center(self):

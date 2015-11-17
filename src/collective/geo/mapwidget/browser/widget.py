@@ -2,6 +2,7 @@
 from zope.interface import implements
 from zope.component import getMultiAdapter, getUtility
 from zope.publisher.interfaces.browser import IBrowserView
+from Products.CMFCore.Expression import Expression, getExprContext
 
 from Products.Five import BrowserView
 
@@ -171,7 +172,6 @@ class MapWidget(object):
             'imgpath': imgpath,
             'geocoderurl': "%s/geocoderview" % portal_url
         }
-
 
         # set default configuration
         # ret = ["cgmap.state = {'default': " \
