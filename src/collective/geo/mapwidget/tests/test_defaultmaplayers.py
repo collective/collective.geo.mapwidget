@@ -36,8 +36,9 @@ class TestDefaultMapLayers(unittest.TestCase):
 
     def test_layers_vocabulary(self):
         layer_ids = [i[0] for i in self._get_registered_layers()]
-        vocab_util = queryUtility(IVocabularyFactory,
-                        name='maplayersVocab')
+        vocab_util = queryUtility(
+            IVocabularyFactory,
+            name='maplayersVocab')
 
         self.failUnless(vocab_util)
 

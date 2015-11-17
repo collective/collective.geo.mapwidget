@@ -67,13 +67,15 @@ class TestGeocoder(unittest.TestCase):
     def test_geocoder_base(self):
         for item in test_params:
             locations = self.geo.retrieve(item['address'])
-            self.assertEquals(
-                [(loc.address, (loc.latitude, loc.longitude)) for loc in locations],
-                item['output']
-            )
+            res = [(l.address, (l.latitude, l.longitude)) for l in locations]
+            self.assertEquals(res, item['output'])
 
     def test_geocoder_error(self):
-        self.assertIsNone(self.geo.retrieve("not existent place aklhj asaas"))
+        self.assertRaises(
+            GeocoderQueryError,
+            self.geo.retrieve,
+            "not existent place aklhj asaas"
+        )
 
     def test_geocoder_view(self):
         browser = Browser(self.layer['app'])
