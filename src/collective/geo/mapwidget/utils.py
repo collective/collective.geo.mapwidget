@@ -1,17 +1,18 @@
 # -*- coding: utf-8 -*-
 import urllib
+from collective.geo.mapwidget.interfaces import IGeoCoder
+from collective.geo.settings.interfaces import IGeoFeatureStyle
+
 from geopy import geocoders
 from geopy.exc import GeocoderQueryError
+
+from plone import api
+from plone.registry.interfaces import IRegistry
 
 from zope.interface import implements
 from zope.schema import getFields
 from zope.component import getUtility
-from Products.CMFCore import DirectoryView
-
-from plone.registry.interfaces import IRegistry
-from collective.geo.settings.interfaces import IGeoFeatureStyle
-
-from .interfaces import IGeoCoder
+from zExceptions import NotFound
 
 
 def get_feature_styles(context):
@@ -46,16 +47,17 @@ def list_language_files():
     Keys are the language codes (lowercase, 2-4 in length).
     Values are the urls to the language files.
     """
+    portal = api.portal.get()
+    path = '++plone++openlayers.static/openlayers/Lang'
+    files = {}
+    try:
+        _dir = portal.restrictedTraverse(path)
+    except NotFound:
+        return {}
 
-    path = 'collective.geo.openlayers:skins/geo_openlayers/lang'
-    urlbase = 'lang/'
-    files = dict()
-
-    info = DirectoryView._dirreg.getDirectoryInfo(path)
-
-    if info:
-        for key in info.getContents(DirectoryView._dirreg)[0].keys():
-            files[key.replace('.js', '').lower()] = urlbase + key
+    for key in _dir.listDirectory():
+        lang = key.split('.')[0].lower()
+        files[lang] = '/'.join((path, key))
 
     return files
 

@@ -94,20 +94,20 @@ No language file should be included if the current language is English as
 OpenLayers itself is written in English.
 
     >>> set_language('en')
-    >>> 'lang/' in view()
+    >>> '++plone++openlayers.static/openlayers/Lang/' in view()
     False
 
 Once we switch to a language supported by OpenLayers we should get a
 translated version of OpenLayers
 
     >>> set_language('de')
-    >>> 'lang/de.js' in view()
+    >>> '++plone++openlayers.static/openlayers/Lang/de.js' in view()
     True
 
 Switching to an unsupported language should yield English again (no file)
 
     >>> set_language('ji')
-    >>> 'lang/' in view()
+    >>> '++plone++openlayers.static/openlayers/Lang/' in view()
     False
 
 A list of supported languages may be acquired through the utils
@@ -115,10 +115,10 @@ A list of supported languages may be acquired through the utils
     >>> from collective.geo.mapwidget import utils
     >>> languages = utils.list_language_files()
 
-    >>> languages['de'] == 'lang/de.js'
+    >>> languages['de'] == '++plone++openlayers.static/openlayers/Lang/de.js'
     True
 
-    >>> languages['es'] == 'lang/es.js'
+    >>> languages['es'] == '++plone++openlayers.static/openlayers/Lang/es.js'
     True
 
 

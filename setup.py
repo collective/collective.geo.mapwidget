@@ -39,13 +39,14 @@ setup(name='collective.geo.mapwidget',
           'geopy>=0.98',
           'Products.CMFCore',
           'plone.app.z3cform',
-          'collective.geo.openlayers >= 3.1',
+          'collective.geo.openlayers >= 4.0',
           'collective.geo.settings >= 3.1',
           'collective.z3cform.colorpicker >= 1.2',
       ],
       extras_require={
           'test': [
               'plone.app.testing',
+              'plone.app.contenttypes [test]'
           ]
       },
       entry_points="""
