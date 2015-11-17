@@ -1,4 +1,4 @@
-import unittest2 as unittest
+import unittest
 
 from zope.interface import Interface
 from zope.schema.interfaces import IVocabularyFactory

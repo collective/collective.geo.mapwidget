@@ -1,10 +1,9 @@
-import unittest2 as unittest
+import unittest
 try:
     import json
 except ImportError:
     import simplejson as json
 
-from zope.interface import alsoProvides
 from zope.component import getUtility
 
 from plone.testing.z2 import Browser

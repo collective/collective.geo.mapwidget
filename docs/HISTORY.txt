@@ -7,6 +7,9 @@ Changelog
 - Updated classifiers list for package
   [macagua]
 
+- Updated spanish translation
+  [macagua]
+
 
 2.2 (2015-05-02)
 ----------------
@@ -24,7 +27,7 @@ Changelog
 2.1.3 (2014-08-16)
 ------------------
 
-- Bug fix, utils check is a object use "use_custom_styles", 
+- Bug fix, utils check is a object use "use_custom_styles",
   if not sytles are take from global styles
   [bsuttor]
 

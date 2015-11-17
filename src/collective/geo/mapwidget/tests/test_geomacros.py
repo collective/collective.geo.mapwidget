@@ -1,5 +1,5 @@
 import urllib
-import unittest2 as unittest
+import unittest
 from decimal import Decimal
 
 from zope.component import getUtility
