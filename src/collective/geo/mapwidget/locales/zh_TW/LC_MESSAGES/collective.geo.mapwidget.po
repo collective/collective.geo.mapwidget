@@ -4,7 +4,7 @@ msgstr ""
 "POT-Creation-Date: 2014-08-16 13:20+0000\n"
 "PO-Revision-Date: 2012-01-13 22:16+0800\n"
 "Last-Translator: TsungWei Hu <marr.tw@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -36,7 +36,7 @@ msgstr "進階設定"
 
 #: ../browser/controlpanel.py:142
 msgid "Apply"
-msgstr "啟用"
+msgstr "儲存"
 
 #: ../browser/controlpanel.py:115
 msgid "Base settings"
@@ -44,7 +44,7 @@ msgstr "基本設定"
 
 #: ../maplayers.py:82
 msgid "Bing"
-msgstr ""
+msgstr "Bing"
 
 #: ../maplayers.py:94
 msgid "Bing Aerial"
@@ -64,7 +64,7 @@ msgstr "取消"
 
 #: ../interfaces.py:41
 msgid "Class attribute"
-msgstr "class 屬性值"
+msgstr "Class 屬性值"
 
 #: ../browser/controlpanel.py:177
 msgid "Collective Geo Default Settings"
@@ -76,7 +76,7 @@ msgstr "地圖設定"
 
 #: ../browser/controlpanel.py:39
 msgid "Default map position"
-msgstr ""
+msgstr "預設地圖位置"
 
 #: ../interfaces.py:63
 msgid "Enable default layers."
@@ -129,11 +129,11 @@ msgstr "圖層"
 
 #: ../browser/geopointform.pt:14
 msgid "Manual settings"
-msgstr ""
+msgstr "手動設定"
 
 #: ../browser/geopointform.pt:5
 msgid "Map"
-msgstr ""
+msgstr "地圖"
 
 #: ../interfaces.py:84
 msgid "Map Widgets"
@@ -169,7 +169,7 @@ msgstr "指定預設的樣式"
 
 #: ../browser/controlpanel.py:40
 msgid "Set the centre point and the zoom level of the map used when the system cannot use any other point to center the map (e.g. when displaying the map to georeference an item for the first time)"
-msgstr ""
+msgstr "設定地圖的中心點和縮放等級"
 
 #: ../browser/controlpanel.py:61
 msgid "Style"
@@ -185,11 +185,11 @@ msgstr "Google 地形圖"
 
 #: ../interfaces.py:42
 msgid "The html element class attribute."
-msgstr "HTML 元素 class 屬性值。"
+msgstr "HTML 元素 Class 屬性值。"
 
 #: ../interfaces.py:48
 msgid "The html element style attribute."
-msgstr "HTML 元素 style 屬性值。"
+msgstr "HTML 元素 Style 屬性值。"
 
 #: ../interfaces.py:35
 msgid "Used to identify the map in the dom-tree and to lookup an IMapWidget component if necessary."
