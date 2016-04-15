@@ -19,6 +19,7 @@ we log in as manager and verify the functionality of collective.geo.mapwidget co
     >>> browser.addHeader('Authorization',
     ...     'Basic %s:%s' % (SITE_OWNER_NAME, SITE_OWNER_PASSWORD))
     >>> browser.open('%s/@@collectivegeo-controlpanel' % portal_url)
+    >>> browser.open('%s/@@collectivegeo-controlpanel' % portal_url)
     >>> browser.getControl(name = 'form.widgets.zoom').value
     '10.0'
 
