@@ -97,7 +97,7 @@ class GeoAdvancedConfGroup(group.Group):
 
 def control_panel_fields():
     form_fields = field.Fields(IGeoSettings).select(
-        'default_layers', 'bingapi')
+        'default_layers', 'bingapi', 'googleapi')
     form_fields += field.Fields(IGeoFeatureStyle).select(
         'map_viewlet_position')
     default_layer_field = form_fields['default_layers']
