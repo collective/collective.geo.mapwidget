@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '2.4.dev0'
+version = '2.4'
 
 setup(name='collective.geo.mapwidget',
       version=version,

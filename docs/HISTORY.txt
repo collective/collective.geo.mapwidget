@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.4 (unreleased)
+2.4 (2016-08-02)
 ----------------
 
 - Show google api key field in controlpanel and also use it.
