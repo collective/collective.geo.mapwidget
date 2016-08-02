@@ -29,6 +29,9 @@ Installation
 This addon can be installed has any other addons, please follow official
 documentation_.
 
+Since 22th of June in 2016, Google changed its API policy. This means you need to have a valid api key for local (localhost) development.
+If you want to prevent the annoying JS Pop-up you need to obtain a new api key from the `Google console`_.
+
 
 Upgrading
 =========
@@ -67,3 +70,4 @@ Contributors
 .. _collective.geo.settings: http://pypi.python.org/pypi/collective.geo.settings
 .. _issue tracker: https://github.com/collective/collective.geo.bundle/issues
 .. _documentation: http://plone.org/documentation/kb/installing-add-ons-quick-how-to
+.. _Google console: https://console.developers.google.com/apis
