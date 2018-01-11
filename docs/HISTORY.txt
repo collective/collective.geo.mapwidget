@@ -21,6 +21,7 @@ Changelog
 
 - Fix not loaded map case when don't have jquery.tools.js and open edit view not 
   in "coordinates" tab
+- Add ImgPath in map's default options to point the resource folder
   [lucabel]
 
 
