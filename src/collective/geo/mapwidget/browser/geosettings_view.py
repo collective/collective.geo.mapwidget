@@ -37,7 +37,7 @@ class GeoSettingsView(object):
 
     @property
     def imgpath(self):
-        return  self.geosettings.imgpath
+        return self.geosettings.imgpath
 
     @property
     def googlemaps(self):
@@ -54,7 +54,7 @@ class GeoSettingsView(object):
 
     @property
     def googleapi(self):
-        return  self.geosettings.googleapi
+        return self.geosettings.googleapi
 
     @property
     def google_maps_js(self):
@@ -64,7 +64,7 @@ class GeoSettingsView(object):
 
     @property
     def bingapi(self):
-        return  self.geosettings.bingapi
+        return self.geosettings.bingapi
 
     @property
     def bingmaps(self):
