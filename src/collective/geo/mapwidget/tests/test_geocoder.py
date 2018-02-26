@@ -16,7 +16,7 @@ from geopy.exc import GeocoderQueryError
 
 from ..utils import GeoCoderUtility
 from ..interfaces import IGeoCoder
-from ..testing import CGEO_MAPWIDGET_INTEGRATION
+from ..testing import CGEO_MAPWIDGET_FUNCTIONAL
 
 
 test_params = [
@@ -52,7 +52,7 @@ class DummyGeoCoder(GeoCoderUtility):
 
 
 class TestGeocoder(unittest.TestCase):
-    layer = CGEO_MAPWIDGET_INTEGRATION
+    layer = CGEO_MAPWIDGET_FUNCTIONAL
 
     def setUp(self):
         self.portal = self.layer['portal']
@@ -83,6 +83,7 @@ class TestGeocoder(unittest.TestCase):
             'Authorization',
             'Basic %s:%s' % (TEST_USER_NAME, TEST_USER_PASSWORD,)
         )
+        browser.handleErrors = False
 
         for item in test_params:
             obj_url = (
