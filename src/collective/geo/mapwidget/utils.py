@@ -74,7 +74,7 @@ class GeoCoderUtility(object):
     def retrieve(self, address=None, google_api=None, language=None):
         # TODO: fix google_api > secret_key and client_id parameters
         # See https://github.com/geopy/geopy/blob/master/geopy/geocoders/googlev3.py#L31
-        self.geocoder = geocoders.GoogleV3()
+        self.geocoder = geocoders.GoogleV3(api_key=google_api)
 
         if not address:
             raise GeocoderQueryError
