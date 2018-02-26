@@ -201,6 +201,7 @@
                 displayProjection: new OpenLayers.Projection("EPSG:4326"),
                 units: "m",
                 numZoomLevels: 19,
+                ImgPath: '++plone++openlayers.static/openlayers/img',
                 maxResolution: 156543.0339,
                 maxExtent: new OpenLayers.Bounds(-20037508.34, -20037508.34,
                                                   20037508.34, 20037508.34),

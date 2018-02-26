@@ -115,9 +115,16 @@
         // get hidden maps (maps with no size yet)
         maps = $('.widget-cgmap').filter(':hidden');
         if (maps.length > 0) {
-            tabs = $('.autotoc-nav, .formTabs, ul.formTabs');
-            tabs.bind("onClick", function (e, index) {
-                var curpanel = $(this).data('tabs').getCurrentPane();
+            tabs = $('.autotoc-nav,.autotoc-nav a, .formTabs, ul.formTabs');
+            tabs.bind("click", function (e, index) {
+                var data = $(this).data('tabs');
+                var curpanel;
+                if (data){
+                    curpanel = $(this).data('tabs').getCurrentPane();
+                }
+                else{
+                    curpanel = $(this).parents('form').find('fieldset.active');
+                };
                 curpanel.find('.widget-cgmap').collectivegeo(); // refresh
                 curpanel.find('.map-widget .widget-cgmap').collectivegeo('add_edit_layer');
                 curpanel.find('.map-widget .widget-cgmap').collectivegeo('add_geocoder');
