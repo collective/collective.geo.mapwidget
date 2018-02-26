@@ -10,7 +10,7 @@ from collective.geo.mapwidget import utils
 
 
 _BINGURL = '%s://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6'
-_GOOGLEURL = '%s://maps.google.com/maps/api/js?v=3.2&sensor=false'
+_GOOGLEURL = '%s://maps.googleapis.com/maps/api/js?v=3&key=%s'
 
 
 class GeoSettingsView(object):
@@ -37,7 +37,7 @@ class GeoSettingsView(object):
 
     @property
     def imgpath(self):
-        return  self.geosettings.imgpath
+        return self.geosettings.imgpath
 
     @property
     def googlemaps(self):
@@ -54,17 +54,17 @@ class GeoSettingsView(object):
 
     @property
     def googleapi(self):
-        return  self.geosettings.googleapi
+        return self.geosettings.googleapi
 
     @property
     def google_maps_js(self):
         """return google maps 3 api javascript url
         """
-        return _GOOGLEURL % self.layer_protocol
+        return _GOOGLEURL % (self.layer_protocol, self.googleapi)
 
     @property
     def bingapi(self):
-        return  self.geosettings.bingapi
+        return self.geosettings.bingapi
 
     @property
     def bingmaps(self):

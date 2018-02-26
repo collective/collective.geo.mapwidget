@@ -45,8 +45,8 @@ class TestSetupHTTP(unittest.TestCase):
         self.geosettings.default_layers = [u'google_map']
         self.assertEquals(
             self.settings.google_maps_js,
-            '%s://maps.google.com/maps/api/js?v=3.2&sensor=false' %
-            self._protocol
+            '%s://maps.googleapis.com/maps/api/js?v=3&key=%s' %
+            (self._protocol, self.settings.googleapi)
         )
 
         self.geosettings.default_layers = [u'osm']

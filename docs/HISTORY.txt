@@ -4,6 +4,12 @@ Changelog
 3.0 (unreleased)
 ----------------
 
+- Fix google url and allow to set google api key (#25)
+  [pbauer]
+
+- Fix required version of collective.geo.openlayers.
+  [pbauer]
+
 - Fixed list_language_files collective.geo.openlayers doesn't use portal_skin anymore
   [giorgio]
 
