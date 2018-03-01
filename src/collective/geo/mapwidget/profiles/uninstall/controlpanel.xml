@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<object name="portal_controlpanel">
+  <configlet
+      remove="True" 
+      action_id="collective.geo.mapwidget"
+      appId="collective.geo.mapwidget"
+      category="Products"
+      title="Collective Geo"
+      />
+</object>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<componentregistry>
+ <utilities>
+  <utility
+      remove="True"
+      interface="collective.geo.mapwidget.interfaces.IDefaultMapLayers"
+      factory="collective.geo.mapwidget.maplayers.DefaultMapLayers" />
+ </utilities>
+</componentregistry>

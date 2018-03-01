@@ -10,6 +10,14 @@
       description='Extension profile for collective.geo.mapwidget.'
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="Collective Geo MapWidget (uninstall)"
+      directory="profiles/uninstall"
+      description='Uninstall extension profile for collective.geo.mapwidget.'
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
 
   <genericsetup:upgradeStep
       title="Upgrade to 2.0"
