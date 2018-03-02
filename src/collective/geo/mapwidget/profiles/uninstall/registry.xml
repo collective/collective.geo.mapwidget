@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<registry>
+  <records interface="collective.geo.settings.interfaces.IGeoSettings">
+    <value key="default_layers" purge="False">
+      <element remove="True">osm</element>
+      <element remove="True">google_ter</element>
+      <element remove="True">google_hyb</element>
+      <element remove="True">google_sat</element>
+      <element remove="True">google_map</element>
+    </value>
+  </records>
+</registry>

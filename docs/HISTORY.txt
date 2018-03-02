@@ -4,7 +4,8 @@ Changelog
 2.5 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Add uninstall profile.
+  [thet]
 
 
 2.4 (2016-08-02)
