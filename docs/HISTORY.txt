@@ -4,6 +4,10 @@ Changelog
 3.0 (unreleased)
 ----------------
 
+- Use google api key if defined for geocoding to avoid errors due to the new
+  google api policy
+  [mpeeters]
+
 - Fix google url and allow to set google api key (#25)
   [pbauer]
 
