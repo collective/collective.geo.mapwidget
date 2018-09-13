@@ -4,6 +4,9 @@ Changelog
 3.0 (unreleased)
 ----------------
 
+- Fix display of geocoding results
+  [mpeeters]
+
 - Use google api key if defined for geocoding to avoid errors due to the new
   google api policy
   [mpeeters]

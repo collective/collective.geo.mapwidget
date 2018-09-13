@@ -77,7 +77,7 @@
           tal:attributes="value context/location|context/getLocation|nothing">
         <button><span i18n:translate="">Search</span></button>
         <div class="results" style="display: none">
-          <ul></ul>
+          <ul><li></li></ul>
         </div>
         <div class="formHelp" i18n:translate="">Insert the name of the
          location you are looking for and then click on search button.
