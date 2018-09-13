@@ -7,6 +7,10 @@ Changelog
 - Add uninstall profile.
   [thet]
 
+- Use google api key if defined for geocoding to avoid errors due to the new
+  google api policy
+  [mpeeters]
+
 
 2.4 (2016-08-02)
 ----------------
