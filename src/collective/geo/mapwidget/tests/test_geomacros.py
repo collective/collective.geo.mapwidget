@@ -77,7 +77,7 @@ class TestSetupHTTP(unittest.TestCase):
 
         self.assertEqual(
             self.settings.imgpath,
-            "string:${portal_url}/img/"
+            "string:${portal_url}/++plone++openlayers.static/openlayers/img/"
         )
 
 
