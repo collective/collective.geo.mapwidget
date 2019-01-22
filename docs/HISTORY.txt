@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.0 (unreleased)
+3.0 (2019-01-22)
 ----------------
 
 - Fix bad adapter registration causing dexterity add view to fail with a 404.
