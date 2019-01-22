@@ -24,7 +24,7 @@ we log in as manager and verify the functionality of collective.geo.mapwidget co
     '10.0'
 
     >>> browser.getControl(name = 'form.widgets.imgpath').value
-    'string:${portal_url}/img/'
+    'string:${portal_url}/++plone++openlayers.static/openlayers/img/'
 
 we change the latitude and longitude coordinates and save data
     >>> browser.getControl(name = 'form.widgets.longitude').value = "-2.582259177802396"
