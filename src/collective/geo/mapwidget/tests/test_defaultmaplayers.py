@@ -91,6 +91,23 @@ class TestDefaultMapLayers(unittest.TestCase):
             for layer in layers:
                 self.assertEquals(layer.protocol, protocol)
 
+    def test_traversal(self):
+        """Regression test verifying that traversal is not broken by the mapwidget.
+
+        Traversing ++add++Document was resulting in the error:
+        AttributeError: 'MapWidgets' object has no attribute '__of__'
+
+        The problem is that within ++add++* an multi adapter lookup is made, where
+        the adapter is not named, has no specific provided interface and adapts
+        three objects.
+        collective.geo.mapwidget used to register the adapter for MapWidgets without
+        a provided interface and with unspecific three-tuple discriminators, causing
+        to be falsely adapted in the factory code.
+
+        This test verifies that that does not happen again.
+        """
+        self.assertTrue(self.portal.restrictedTraverse('++add++Document'))
+
 
 def test_suite():
     suite = unittest.TestSuite()

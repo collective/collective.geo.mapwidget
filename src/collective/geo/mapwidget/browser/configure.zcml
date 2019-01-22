@@ -50,9 +50,9 @@
 
     <!-- ..interfaces.IMapView -->
     <adapter
-        for="zope.interface.Interface
-             zope.interface.Interface
-             zope.interface.Interface"
+        for="zope.browser.interfaces.IBrowserView
+             zope.publisher.interfaces.browser.IBrowserRequest
+             OFS.interfaces.IItem"
         factory=".widget.MapWidgets"
         />
 

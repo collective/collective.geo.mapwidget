@@ -4,6 +4,9 @@ Changelog
 3.0 (unreleased)
 ----------------
 
+- Fix bad adapter registration causing dexterity add view to fail with a 404.
+  [jone]
+
 - Fix display of geocoding results
   [mpeeters]
 
@@ -32,7 +35,7 @@ Changelog
 - Updated javascript to draw the map in new plone5 mockup hidden tab
   [pbauer]
 
-- Fix not loaded map case when don't have jquery.tools.js and open edit view not 
+- Fix not loaded map case when don't have jquery.tools.js and open edit view not
   in "coordinates" tab
 - Add ImgPath in map's default options to point the resource folder
   [lucabel]
