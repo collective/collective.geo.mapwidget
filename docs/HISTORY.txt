@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.1 (unreleased)
+3.1 (2019-01-23)
 ----------------
 
 - Fix regression of "Fix bad adapter registration causing dexterity add view to fail with a 404". [mathias.leimgruber]
