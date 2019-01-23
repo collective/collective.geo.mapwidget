@@ -50,6 +50,12 @@
 
     <!-- ..interfaces.IMapView -->
     <adapter
+        for="z3c.form.interfaces.IFieldWidget
+             zope.publisher.interfaces.browser.IBrowserRequest
+             OFS.interfaces.IItem"
+        factory=".widget.MapWidgets"
+        />
+    <adapter
         for="zope.browser.interfaces.IBrowserView
              zope.publisher.interfaces.browser.IBrowserRequest
              OFS.interfaces.IItem"
