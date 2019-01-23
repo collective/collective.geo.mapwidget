@@ -4,7 +4,9 @@ Changelog
 3.1 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Fix regression of "Fix bad adapter registration causing dexterity add view to fail with a 404". [mathias.leimgruber]
+
+  The first discriminator might be a`View`-ish thing or a `z3c.form.interfaces.IFieldWidget`.
 
 
 3.0 (2019-01-22)
