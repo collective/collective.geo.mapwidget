@@ -79,7 +79,7 @@ class GeoCoderUtility(object):
                 'collective.geo.settings.interfaces.IGeoSettings.googleapi',
                 default=None,
             )
-        self.geocoder = geocoders.GoogleV3(api_key=google_api)
+        self.geocoder = geocoders.Nominatim()
 
         if not address:
             raise GeocoderQueryError
