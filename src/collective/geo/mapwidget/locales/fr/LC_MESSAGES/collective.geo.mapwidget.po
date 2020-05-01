@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2020-05-01 19:42+0000\n"
+"POT-Creation-Date: 2020-05-01 20:12+0000\n"
 "PO-Revision-Date: 2009-06-12  21:28+0000\n"
 "Last-Translator: Matthias Broquet [tiazma] <mbroquet@atreal.fr>\n"
 "Language-Team: Giorgio Borelli <giorgio@giorgioborelli.it>\n"
@@ -67,6 +67,10 @@ msgstr "Annuler"
 
 #: ../interfaces.py:41
 msgid "Class attribute"
+msgstr ""
+
+#: ../profiles/default/controlpanel.xml
+msgid "Collective Geo"
 msgstr ""
 
 #: ../browser/controlpanel.py:110

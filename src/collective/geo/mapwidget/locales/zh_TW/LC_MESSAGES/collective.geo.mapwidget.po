@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.geo.mapwidget\n"
-"POT-Creation-Date: 2020-05-01 19:42+0000\n"
+"POT-Creation-Date: 2020-05-01 20:12+0000\n"
 "PO-Revision-Date: 2012-01-13 22:16+0800\n"
 "Last-Translator: TsungWei Hu <marr.tw@gmail.com>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
@@ -65,6 +65,10 @@ msgstr "取消"
 #: ../interfaces.py:41
 msgid "Class attribute"
 msgstr "Class 屬性值"
+
+#: ../profiles/default/controlpanel.xml
+msgid "Collective Geo"
+msgstr ""
 
 #: ../browser/controlpanel.py:110
 msgid "Collective Geo Default Settings"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2020-05-01 19:42+0000\n"
+"POT-Creation-Date: 2020-05-01 20:12+0000\n"
 "PO-Revision-Date: 2009-09-20 13:24+0100\n"
 "Last-Translator: Rob Gietema <rob@fourdigits.nl>\n"
 "Language-Team: Rob Gietema <rob@fourdigits.nl>\n"
@@ -65,6 +65,10 @@ msgstr "Annuleren"
 #: ../interfaces.py:41
 msgid "Class attribute"
 msgstr "Klasse attribuut"
+
+#: ../profiles/default/controlpanel.xml
+msgid "Collective Geo"
+msgstr ""
 
 #: ../browser/controlpanel.py:110
 msgid "Collective Geo Default Settings"

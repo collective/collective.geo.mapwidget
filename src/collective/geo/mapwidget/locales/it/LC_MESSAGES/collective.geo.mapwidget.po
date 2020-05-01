@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2020-05-01 19:42+0000\n"
+"POT-Creation-Date: 2020-05-01 20:12+0000\n"
 "PO-Revision-Date: 2013-08-08  06:40+0000\n"
 "Last-Translator: Giorgio Borelli <giorgio@giorgioborelli.it>\n"
 "Language-Team: Giorgio Borelli <giorgio@giorgioborelli.it>\n"
@@ -68,6 +68,10 @@ msgstr "Annulla"
 #: ../interfaces.py:41
 msgid "Class attribute"
 msgstr "Attributo class"
+
+#: ../profiles/default/controlpanel.xml
+msgid "Collective Geo"
+msgstr ""
 
 #: ../browser/controlpanel.py:110
 msgid "Collective Geo Default Settings"
