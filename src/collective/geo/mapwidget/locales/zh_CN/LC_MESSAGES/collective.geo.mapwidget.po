@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.geo.mapwidget\n"
-"POT-Creation-Date: 2014-08-16 13:20+0000\n"
+"POT-Creation-Date: 2020-05-01 19:42+0000\n"
 "PO-Revision-Date: 2013-09-11 15:30+0800\n"
 "Last-Translator: Jian Aijun <jianaijun@gmail.com>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sf.net>\n"
@@ -26,19 +26,19 @@ msgstr "从 mapids 到 IMapWidgets 的映射"
 msgid "Additional Javascript code inserted after the map widget."
 msgstr "额外的JavaScript代码，插入到地图小部件之后。"
 
-#: ../browser/controlpanel.py:84
+#: ../browser/controlpanel.py:70
 msgid "Advanced"
 msgstr "高级"
 
-#: ../browser/controlpanel.py:85
+#: ../browser/controlpanel.py:71
 msgid "Advanced configurations"
 msgstr "高级配置"
 
-#: ../browser/controlpanel.py:142
+#: ../browser/controlpanel.py:133
 msgid "Apply"
 msgstr "应用"
 
-#: ../browser/controlpanel.py:115
+#: ../browser/controlpanel.py:103
 msgid "Base settings"
 msgstr "基本设置"
 
@@ -58,7 +58,7 @@ msgstr "Bing 混合"
 msgid "Bing Roads"
 msgstr "Bing 路况"
 
-#: ../browser/controlpanel.py:162
+#: ../browser/controlpanel.py:153
 msgid "Cancel"
 msgstr "取消"
 
@@ -66,15 +66,23 @@ msgstr "取消"
 msgid "Class attribute"
 msgstr "类属性"
 
-#: ../browser/controlpanel.py:177
+#: ../browser/controlpanel.py:110
 msgid "Collective Geo Default Settings"
 msgstr "Collective Geo 默认设置"
 
-#: ../browser/controlpanel.py:117
+#: ../profiles.zcml:12
+msgid "Collective Geo MapWidget"
+msgstr ""
+
+#: ../browser/controlpanel.py:105
 msgid "Configure Collective Geo Settings"
 msgstr "Collective Geo 设置配置"
 
-#: ../browser/controlpanel.py:39
+#: ../browser/controlpanel.py:109
+msgid "Configure element"
+msgstr ""
+
+#: ../browser/controlpanel.py:25
 msgid "Default map position"
 msgstr "默认地图位置"
 
@@ -82,11 +90,15 @@ msgstr "默认地图位置"
 msgid "Enable default layers."
 msgstr "启用默认图层。"
 
+#: ../profiles.zcml:12
+msgid "Extension profile for collective.geo.mapwidget."
+msgstr ""
+
 #: ../browser/collectivegeo_macros.pt:67
 msgid "Find places"
 msgstr "查找地点"
 
-#: ../browser/controlpanel.py:176
+#: ../browser/controlpanel.py:108
 msgid "Geo Settings"
 msgstr "地理设置"
 
@@ -122,18 +134,14 @@ msgstr "Javascript 工厂"
 msgid "Javascript to configure layers."
 msgstr "使用 Javascript 配置层。"
 
-#: ../browser/controlpanel.py:105
+#: ../browser/controlpanel.py:91
 #: ../interfaces.py:58
 msgid "Layers"
 msgstr "图层"
 
-#: ../browser/geopointform.pt:14
+#: ../browser/geopointform.pt:10
 msgid "Manual settings"
 msgstr "手动设置"
-
-#: ../browser/geopointform.pt:5
-msgid "Map"
-msgstr "地图"
 
 #: ../interfaces.py:84
 msgid "Map Widgets"
@@ -163,15 +171,19 @@ msgstr "卫星(Google)"
 msgid "Search"
 msgstr "搜索"
 
-#: ../browser/controlpanel.py:62
+#: ../browser/controlpanel.py:48
 msgid "Set default styles for geographical shapes"
 msgstr "设置地理形状的默认样式"
 
-#: ../browser/controlpanel.py:40
+#: ../browser/controlpanel.py:26
 msgid "Set the centre point and the zoom level of the map used when the system cannot use any other point to center the map (e.g. when displaying the map to georeference an item for the first time)"
 msgstr "设置地图使用的中心点和缩放级别，当系统不能使用任何其他的点作为地图中心时候（例如在第一次给一个条目显示地理地图时）"
 
-#: ../browser/controlpanel.py:61
+#: ../browser/controlpanel.pt:14
+msgid "Site Setup"
+msgstr ""
+
+#: ../browser/controlpanel.py:47
 msgid "Style"
 msgstr "样式"
 
@@ -194,4 +206,3 @@ msgstr "Html 元素样式属性。"
 #: ../interfaces.py:35
 msgid "Used to identify the map in the dom-tree and to lookup an IMapWidget component if necessary."
 msgstr "用于在 dom 树中标识地图和查找 IMapWidget 组件，如有必要。"
-

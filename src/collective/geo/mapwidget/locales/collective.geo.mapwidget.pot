@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-08-16 13:20+0000\n"
+"POT-Creation-Date: 2020-05-01 19:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,19 +29,19 @@ msgstr ""
 msgid "Additional Javascript code inserted after the map widget."
 msgstr ""
 
-#: ../browser/controlpanel.py:84
+#: ../browser/controlpanel.py:70
 msgid "Advanced"
 msgstr ""
 
-#: ../browser/controlpanel.py:85
+#: ../browser/controlpanel.py:71
 msgid "Advanced configurations"
 msgstr ""
 
-#: ../browser/controlpanel.py:142
+#: ../browser/controlpanel.py:133
 msgid "Apply"
 msgstr ""
 
-#: ../browser/controlpanel.py:115
+#: ../browser/controlpanel.py:103
 msgid "Base settings"
 msgstr ""
 
@@ -61,7 +61,7 @@ msgstr ""
 msgid "Bing Roads"
 msgstr ""
 
-#: ../browser/controlpanel.py:162
+#: ../browser/controlpanel.py:153
 msgid "Cancel"
 msgstr ""
 
@@ -69,15 +69,23 @@ msgstr ""
 msgid "Class attribute"
 msgstr ""
 
-#: ../browser/controlpanel.py:177
+#: ../browser/controlpanel.py:110
 msgid "Collective Geo Default Settings"
 msgstr ""
 
-#: ../browser/controlpanel.py:117
+#: ../profiles.zcml:12
+msgid "Collective Geo MapWidget"
+msgstr ""
+
+#: ../browser/controlpanel.py:105
 msgid "Configure Collective Geo Settings"
 msgstr ""
 
-#: ../browser/controlpanel.py:39
+#: ../browser/controlpanel.py:109
+msgid "Configure element"
+msgstr ""
+
+#: ../browser/controlpanel.py:25
 msgid "Default map position"
 msgstr ""
 
@@ -85,11 +93,15 @@ msgstr ""
 msgid "Enable default layers."
 msgstr ""
 
+#: ../profiles.zcml:12
+msgid "Extension profile for collective.geo.mapwidget."
+msgstr ""
+
 #: ../browser/collectivegeo_macros.pt:67
 msgid "Find places"
 msgstr ""
 
-#: ../browser/controlpanel.py:176
+#: ../browser/controlpanel.py:108
 msgid "Geo Settings"
 msgstr ""
 
@@ -125,17 +137,13 @@ msgstr ""
 msgid "Javascript to configure layers."
 msgstr ""
 
-#: ../browser/controlpanel.py:105
+#: ../browser/controlpanel.py:91
 #: ../interfaces.py:58
 msgid "Layers"
 msgstr ""
 
-#: ../browser/geopointform.pt:14
+#: ../browser/geopointform.pt:10
 msgid "Manual settings"
-msgstr ""
-
-#: ../browser/geopointform.pt:5
-msgid "Map"
 msgstr ""
 
 #: ../interfaces.py:84
@@ -166,15 +174,19 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: ../browser/controlpanel.py:62
+#: ../browser/controlpanel.py:48
 msgid "Set default styles for geographical shapes"
 msgstr ""
 
-#: ../browser/controlpanel.py:40
+#: ../browser/controlpanel.py:26
 msgid "Set the centre point and the zoom level of the map used when the system cannot use any other point to center the map (e.g. when displaying the map to georeference an item for the first time)"
 msgstr ""
 
-#: ../browser/controlpanel.py:61
+#: ../browser/controlpanel.pt:14
+msgid "Site Setup"
+msgstr ""
+
+#: ../browser/controlpanel.py:47
 msgid "Style"
 msgstr ""
 
@@ -197,4 +209,3 @@ msgstr ""
 #: ../interfaces.py:35
 msgid "Used to identify the map in the dom-tree and to lookup an IMapWidget component if necessary."
 msgstr ""
-

@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2015-03-11 14:14+0000\n"
+"POT-Creation-Date: 2020-05-01 19:42+0000\n"
 "PO-Revision-Date: 2009-06-12  21:28+0000\n"
 "Last-Translator: Matthias Broquet [tiazma] <mbroquet@atreal.fr>\n"
 "Language-Team: Giorgio Borelli <giorgio@giorgioborelli.it>\n"
@@ -29,19 +29,19 @@ msgstr "Un relation de mapids à IMapWidgets"
 msgid "Additional Javascript code inserted after the map widget."
 msgstr "Code javascript additionnel inséré après le widget de carte"
 
-#: ../browser/controlpanel.py:84
+#: ../browser/controlpanel.py:70
 msgid "Advanced"
 msgstr "Avancé"
 
-#: ../browser/controlpanel.py:85
+#: ../browser/controlpanel.py:71
 msgid "Advanced configurations"
 msgstr "Configuration avancée"
 
-#: ../browser/controlpanel.py:142
+#: ../browser/controlpanel.py:133
 msgid "Apply"
 msgstr "Appliquer"
 
-#: ../browser/controlpanel.py:115
+#: ../browser/controlpanel.py:103
 msgid "Base settings"
 msgstr "Paramètres de base"
 
@@ -61,7 +61,7 @@ msgstr ""
 msgid "Bing Roads"
 msgstr ""
 
-#: ../browser/controlpanel.py:162
+#: ../browser/controlpanel.py:153
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -69,15 +69,23 @@ msgstr "Annuler"
 msgid "Class attribute"
 msgstr ""
 
-#: ../browser/controlpanel.py:177
+#: ../browser/controlpanel.py:110
 msgid "Collective Geo Default Settings"
 msgstr "Paramètres par défaut de Collective Geo"
 
-#: ../browser/controlpanel.py:117
+#: ../profiles.zcml:12
+msgid "Collective Geo MapWidget"
+msgstr ""
+
+#: ../browser/controlpanel.py:105
 msgid "Configure Collective Geo Settings"
 msgstr "Configurer Collective Geo"
 
-#: ../browser/controlpanel.py:39
+#: ../browser/controlpanel.py:109
+msgid "Configure element"
+msgstr ""
+
+#: ../browser/controlpanel.py:25
 msgid "Default map position"
 msgstr "Position initiale sur la carte"
 
@@ -85,12 +93,16 @@ msgstr "Position initiale sur la carte"
 msgid "Enable default layers."
 msgstr "Activer les calques par défaut"
 
+#: ../profiles.zcml:12
+msgid "Extension profile for collective.geo.mapwidget."
+msgstr ""
+
 #. Default: "Find places"
 #: ../browser/collectivegeo_macros.pt:67
 msgid "Find places"
 msgstr "Rechercher un emplacement"
 
-#: ../browser/controlpanel.py:176
+#: ../browser/controlpanel.py:108
 msgid "Geo Settings"
 msgstr "Paramètres Geo"
 
@@ -126,18 +138,14 @@ msgstr ""
 msgid "Javascript to configure layers."
 msgstr "Javascript pour configurer les calques"
 
-#: ../browser/controlpanel.py:105
+#: ../browser/controlpanel.py:91
 #: ../interfaces.py:58
 msgid "Layers"
 msgstr "Calques"
 
-#: ../browser/geopointform.pt:14
+#: ../browser/geopointform.pt:10
 msgid "Manual settings"
 msgstr "Paramétrage manuel"
-
-#: ../browser/geopointform.pt:5
-msgid "Map"
-msgstr ""
 
 #: ../interfaces.py:84
 msgid "Map Widgets"
@@ -169,15 +177,19 @@ msgstr ""
 msgid "Search"
 msgstr "Chercher"
 
-#: ../browser/controlpanel.py:62
+#: ../browser/controlpanel.py:48
 msgid "Set default styles for geographical shapes"
 msgstr "Définissez le style par défaut pour les formes géographiques"
 
-#: ../browser/controlpanel.py:40
+#: ../browser/controlpanel.py:26
 msgid "Set the centre point and the zoom level of the map used when the system cannot use any other point to center the map (e.g. when displaying the map to georeference an item for the first time)"
 msgstr "Définissez ici la position initiale de la carte ainsi que le niveau de zoom. Ces valeurs seront utilisées lors du premier chargement du widget si aucune valeur par défaut n'a été définie."
 
-#: ../browser/controlpanel.py:61
+#: ../browser/controlpanel.pt:14
+msgid "Site Setup"
+msgstr ""
+
+#: ../browser/controlpanel.py:47
 msgid "Style"
 msgstr "Style"
 
@@ -200,4 +212,3 @@ msgstr "L'attribut style de l'élélment html"
 #: ../interfaces.py:35
 msgid "Used to identify the map in the dom-tree and to lookup an IMapWidget component if necessary."
 msgstr "Utilisé pour identifier une carte dans le dom-tree et rechercher un composant IMapWidget si nécessaire"
-

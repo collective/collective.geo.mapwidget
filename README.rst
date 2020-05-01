@@ -23,6 +23,28 @@ Requirements
 * `collective.geo.settings`_ >= 3.1
 
 
+Translations
+============
+
+This product has been translated into
+
+- Danish.
+
+- German.
+
+- Spanish.
+
+- French.
+
+- Italian.
+
+- Dutch.
+
+- Chinese Simplified.
+
+- Traditional Chinese.
+
+
 Installation
 ============
 

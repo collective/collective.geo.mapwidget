@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2014-08-16 13:20+0000\n"
+"POT-Creation-Date: 2020-05-01 19:42+0000\n"
 "PO-Revision-Date: 2009-09-20 13:24+0100\n"
 "Last-Translator: Anton Stonor <anton@headnet.dk>\n"
 "Language-Team: Anton Stonor <anton@headnet.dk>\n"
@@ -26,19 +26,19 @@ msgstr ""
 msgid "Additional Javascript code inserted after the map widget."
 msgstr "Ekstra javascript kan indsættes efter map widget'en."
 
-#: ../browser/controlpanel.py:84
+#: ../browser/controlpanel.py:70
 msgid "Advanced"
 msgstr "Avanceret"
 
-#: ../browser/controlpanel.py:85
+#: ../browser/controlpanel.py:71
 msgid "Advanced configurations"
 msgstr "Avancerede indstillinger"
 
-#: ../browser/controlpanel.py:142
+#: ../browser/controlpanel.py:133
 msgid "Apply"
 msgstr "Gem"
 
-#: ../browser/controlpanel.py:115
+#: ../browser/controlpanel.py:103
 msgid "Base settings"
 msgstr "Grundindstillinger"
 
@@ -58,7 +58,7 @@ msgstr "Bing Hybrid"
 msgid "Bing Roads"
 msgstr "Bing veje"
 
-#: ../browser/controlpanel.py:162
+#: ../browser/controlpanel.py:153
 msgid "Cancel"
 msgstr "Fortryd"
 
@@ -66,15 +66,23 @@ msgstr "Fortryd"
 msgid "Class attribute"
 msgstr "Class attribut"
 
-#: ../browser/controlpanel.py:177
+#: ../browser/controlpanel.py:110
 msgid "Collective Geo Default Settings"
 msgstr "Plone Maps standardindstillinger"
 
-#: ../browser/controlpanel.py:117
+#: ../profiles.zcml:12
+msgid "Collective Geo MapWidget"
+msgstr ""
+
+#: ../browser/controlpanel.py:105
 msgid "Configure Collective Geo Settings"
 msgstr "Indstil Plone Maps"
 
-#: ../browser/controlpanel.py:39
+#: ../browser/controlpanel.py:109
+msgid "Configure element"
+msgstr ""
+
+#: ../browser/controlpanel.py:25
 msgid "Default map position"
 msgstr ""
 
@@ -82,12 +90,16 @@ msgstr ""
 msgid "Enable default layers."
 msgstr "Aktiver standard-lag"
 
+#: ../profiles.zcml:12
+msgid "Extension profile for collective.geo.mapwidget."
+msgstr ""
+
 #. Default: "Find places"
 #: ../browser/collectivegeo_macros.pt:67
 msgid "Find places"
 msgstr "Find stedet"
 
-#: ../browser/controlpanel.py:176
+#: ../browser/controlpanel.py:108
 msgid "Geo Settings"
 msgstr "Kort-indstillinger"
 
@@ -123,17 +135,13 @@ msgstr "Javascript factory"
 msgid "Javascript to configure layers."
 msgstr "Javascript til at indstille kortlag."
 
-#: ../browser/controlpanel.py:105
+#: ../browser/controlpanel.py:91
 #: ../interfaces.py:58
 msgid "Layers"
 msgstr "Kortlag"
 
-#: ../browser/geopointform.pt:14
+#: ../browser/geopointform.pt:10
 msgid "Manual settings"
-msgstr ""
-
-#: ../browser/geopointform.pt:5
-msgid "Map"
 msgstr ""
 
 #: ../interfaces.py:84
@@ -166,15 +174,19 @@ msgstr "Satellit (Google)"
 msgid "Search"
 msgstr "Søg"
 
-#: ../browser/controlpanel.py:62
+#: ../browser/controlpanel.py:48
 msgid "Set default styles for geographical shapes"
 msgstr "Sæt standardindstillinger for layout af elementer oven på kortet"
 
-#: ../browser/controlpanel.py:40
+#: ../browser/controlpanel.py:26
 msgid "Set the centre point and the zoom level of the map used when the system cannot use any other point to center the map (e.g. when displaying the map to georeference an item for the first time)"
 msgstr ""
 
-#: ../browser/controlpanel.py:61
+#: ../browser/controlpanel.pt:14
+msgid "Site Setup"
+msgstr ""
+
+#: ../browser/controlpanel.py:47
 msgid "Style"
 msgstr "Layout"
 
@@ -197,4 +209,3 @@ msgstr "HTML-element style attribut."
 #: ../interfaces.py:35
 msgid "Used to identify the map in the dom-tree and to lookup an IMapWidget component if necessary."
 msgstr ""
-
