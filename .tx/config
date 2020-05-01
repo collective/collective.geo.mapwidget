@@ -1,0 +1,10 @@
+[main]
+host = https://www.transifex.com
+
+[plone-collective.collective-geo-mapwidget-pot]
+file_filter = src/collective/geo/mapwidget/locales/<lang>/LC_MESSAGES/collective.geo.mapwidget.po
+minimum_perc = 0
+source_file = src/collective/geo/mapwidget/locales/collective.geo.mapwidget.pot
+source_lang = en
+type = PO
+
