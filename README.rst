@@ -1,13 +1,8 @@
 Introduction
 ============
 
-collective.geo.mapwidget provides some handy page macros and adapters to easily manage
-multiple maps on one page.
-
-.. image:: https://secure.travis-ci.org/collective/collective.geo.mapwidget.png
-    :target: http://travis-ci.org/collective/collective.geo.mapwidget
-
-Found a bug? Please, use the `issue tracker`_.
+``collective.geo.mapwidget`` provides some handy page macros and adapters 
+to easily manage multiple maps on one page.
 
 .. contents:: Table of contents
 
@@ -21,6 +16,13 @@ Requirements
 * `collective.z3cform.colorpicker`_ >= 1.2
 * `collective.geo.openlayers`_ >= 3.1
 * `collective.geo.settings`_ >= 3.1
+
+
+Documentation
+=============
+
+Full documentation for end users can be found in the "docs" folder.
+It is also available online at https://collectivegeo.readthedocs.io/
 
 
 Translations
@@ -73,6 +75,28 @@ upgrade steps. To do this, follow these steps:
    are present.
 
 
+Tests status
+============
+
+This add-on is tested using Travis CI. The current status of the add-on is:
+
+.. image:: https://img.shields.io/travis/collective/collective.geo.mapwidget/master.svg
+    :target: https://travis-ci.org/collective/collective.geo.mapwidget
+
+.. image:: http://img.shields.io/pypi/v/collective.geo.mapwidget.svg
+   :target: https://pypi.org/project/collective.geo.mapwidget
+
+
+Contribute
+==========
+
+Have an idea? Found a bug? Let us know by `opening a ticket`_.
+
+- Issue Tracker: https://github.com/collective/collective.geo.mapwidget/issues
+- Source Code: https://github.com/collective/collective.geo.mapwidget
+- Documentation: https://collectivegeo.readthedocs.io/
+
+
 Contributors
 ============
 
@@ -81,15 +105,21 @@ Contributors
 * Silvio Tomatis - silviot
 * David Beitey - davidjb
 * Rob Gietema - robgietema
-* Leonardo J. Caballero G - macagua
+* Leonardo J. Caballero G. - macagua
 * Denis Krienbühl - href
 * Benoît Suttor - bsuttor
 
 
-.. _Plone: http://plone.org
-.. _plone.app.z3cform: http://pypi.python.org/pypi/plone.app.z3cform
-.. _collective.z3cform.colorpicker: http://pypi.python.org/pypi/collective.z3cform.colorpicker
-.. _collective.geo.openlayers: http://pypi.python.org/pypi/collective.geo.openlayers
-.. _collective.geo.settings: http://pypi.python.org/pypi/collective.geo.settings
-.. _issue tracker: https://github.com/collective/collective.geo.bundle/issues
-.. _documentation: http://plone.org/documentation/kb/installing-add-ons-quick-how-to
+License
+=======
+
+The project is licensed under the GPL.
+
+
+.. _Plone: https://plone.org/
+.. _plone.app.z3cform: https://pypi.org/project/plone.app.z3cform
+.. _collective.z3cform.colorpicker: https://pypi.org/project/collective.z3cform.colorpicker
+.. _collective.geo.openlayers: https://pypi.org/project/collective.geo.openlayers
+.. _collective.geo.settings: https://pypi.org/project/collective.geo.settings
+.. _`opening a ticket`: https://github.com/collective/collective.geo.bundle/issues
+.. _documentation: https://docs.plone.org/manage/installing/installing_addons.html
