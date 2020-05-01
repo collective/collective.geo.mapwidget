@@ -1,13 +1,12 @@
 # collective.geo.mapwidget
-# Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2011 - 2014.
+# Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2011 - 2014, 2020.
 msgid ""
 msgstr ""
-"Project-Id-Version: collective.geo.mapwidget\n"
-"POT-Creation-Date: 2014-08-16 13:20+0000\n"
-"PO-Revision-Date: 2014-10-08 14:34-0430\n"
+"Project-Id-Version: collective.geo.mapwidget 1.0\n"
+"POT-Creation-Date: 2020-05-01 20:12+0000\n"
+"PO-Revision-Date: 2020-05-01 16:03-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language-Team: ES <LL@li.org>\n"
-"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,6 +15,8 @@ msgstr ""
 "Language-Name: Spanish\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.geo.mapwidget\n"
+"Language: es\n"
+"X-Generator: Virtaal 0.7.1\n"
 "X-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
 
 #: ../interfaces.py:59
@@ -30,19 +31,19 @@ msgstr "Un mapeo de mapids a IMapWidgets"
 msgid "Additional Javascript code inserted after the map widget."
 msgstr "Código de Javascript adicional insertado después del widget de mapa."
 
-#: ../browser/controlpanel.py:84
+#: ../browser/controlpanel.py:70
 msgid "Advanced"
 msgstr "Avanzado"
 
-#: ../browser/controlpanel.py:85
+#: ../browser/controlpanel.py:71
 msgid "Advanced configurations"
 msgstr "Configuraciones avanzadas"
 
-#: ../browser/controlpanel.py:142
+#: ../browser/controlpanel.py:133
 msgid "Apply"
-msgstr "Aplica"
+msgstr "Aplicar"
 
-#: ../browser/controlpanel.py:115
+#: ../browser/controlpanel.py:103
 msgid "Base settings"
 msgstr "Configuración base"
 
@@ -62,7 +63,7 @@ msgstr "Bing Híbrido"
 msgid "Bing Roads"
 msgstr "Bing Carreteras"
 
-#: ../browser/controlpanel.py:162
+#: ../browser/controlpanel.py:153
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -70,15 +71,27 @@ msgstr "Cancelar"
 msgid "Class attribute"
 msgstr "Atributo de Clase"
 
-#: ../browser/controlpanel.py:177
+#: ../profiles/default/controlpanel.xml
+msgid "Collective Geo"
+msgstr "Configuración Geográfica"
+
+#: ../browser/controlpanel.py:110
 msgid "Collective Geo Default Settings"
 msgstr "Configuración predeterminada collective.geo"
 
-#: ../browser/controlpanel.py:117
+#: ../profiles.zcml:12
+msgid "Collective Geo MapWidget"
+msgstr "Collective Geo MapWidget"
+
+#: ../browser/controlpanel.py:105
 msgid "Configure Collective Geo Settings"
 msgstr "Ajustes a la configuración collective.geo"
 
-#: ../browser/controlpanel.py:39
+#: ../browser/controlpanel.py:109
+msgid "Configure element"
+msgstr "Configurar elementos"
+
+#: ../browser/controlpanel.py:25
 msgid "Default map position"
 msgstr "Posición del mapa por defecto"
 
@@ -86,12 +99,16 @@ msgstr "Posición del mapa por defecto"
 msgid "Enable default layers."
 msgstr "Habilitar capas por defecto."
 
+#: ../profiles.zcml:12
+msgid "Extension profile for collective.geo.mapwidget."
+msgstr "Perfil de extensión para el paquete collective.geo.mapwidget."
+
 #. Default: "Find places"
 #: ../browser/collectivegeo_macros.pt:67
 msgid "Find places"
 msgstr "Buscar lugares"
 
-#: ../browser/controlpanel.py:176
+#: ../browser/controlpanel.py:108
 msgid "Geo Settings"
 msgstr "Ajustes Geográfica"
 
@@ -127,18 +144,14 @@ msgstr "Fábrica Javascript"
 msgid "Javascript to configure layers."
 msgstr "Javascript para configurar las capas."
 
-#: ../browser/controlpanel.py:105
+#: ../browser/controlpanel.py:91
 #: ../interfaces.py:58
 msgid "Layers"
 msgstr "Capas"
 
-#: ../browser/geopointform.pt:14
+#: ../browser/geopointform.pt:10
 msgid "Manual settings"
 msgstr "Configuración manual"
-
-#: ../browser/geopointform.pt:5
-msgid "Map"
-msgstr "Mapa"
 
 #: ../interfaces.py:84
 msgid "Map Widgets"
@@ -170,15 +183,19 @@ msgstr "Satélite (Google)"
 msgid "Search"
 msgstr "Buscar"
 
-#: ../browser/controlpanel.py:62
+#: ../browser/controlpanel.py:48
 msgid "Set default styles for geographical shapes"
 msgstr "Establecer estilos predeterminados para las formas geográficas"
 
-#: ../browser/controlpanel.py:40
+#: ../browser/controlpanel.py:26
 msgid "Set the centre point and the zoom level of the map used when the system cannot use any other point to center the map (e.g. when displaying the map to georeference an item for the first time)"
 msgstr "Defina el punto central y el nivel de zoom del mapa utilizado cuando el sistema no puede utilizar cualquier otro punto para centrar el mapa (por ejemplo, al mostrar el mapa para georeferenciar un elemento por primera vez)"
 
-#: ../browser/controlpanel.py:61
+#: ../browser/controlpanel.pt:14
+msgid "Site Setup"
+msgstr "Configuración del Sitio"
+
+#: ../browser/controlpanel.py:47
 msgid "Style"
 msgstr "Estilo"
 
