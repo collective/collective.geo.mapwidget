@@ -4,7 +4,8 @@ Changelog
 2.6 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Add comment on empty ul tag. Browsers delete empty ul tag now. So JQuery can not get ul tag anymore and results search are blank.
+  [bsuttor]
 
 
 2.5 (2018-10-09)
