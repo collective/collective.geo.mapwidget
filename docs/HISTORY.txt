@@ -4,7 +4,8 @@ Changelog
 2.6 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Pin geopy down to 1.x now 2.0 released.
+  [djowett-ftw]
 
 
 2.5 (2018-10-09)
